@@ -241,7 +241,7 @@ OmniSDK Android 接入指南
 #### 1. 账号
 详情阅读API接口文档-[`IAccount`](./api/javadoc/com/kingsoft/shiyou/omnisdk/api/interfaces/IAccount.html)
 #### 2. 支付
-详情阅读API接口文档-[`IPay`](./api/html-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-pay/index.html)
+详情阅读API接口文档-[`IPay`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-pay/index.html)
 #### 3. 社交
 详情阅读API接口文档-[`ISocial`](./api/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-social/index.html)
 #### 4. 特定功能
