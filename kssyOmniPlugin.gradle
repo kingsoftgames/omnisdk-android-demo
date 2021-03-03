@@ -1,0 +1,100 @@
+// apply app-level build.gradle
+
+apply plugin: "KSSYOmniPlugin"
+
+// 注意：渠道名是由Omni定好的，不能自己更改。
+// 渠道名为 shiyou 目录的渠道文件夹名。
+//（${project.rootDir} 表示当前根目录）
+
+// hasProperty-"isDebugType" 可以自定义，但要配合"-P"修改；比如改成 "doDebug"，则 "-PdoDebug=true"；作用就是传参数。
+
+// * - 所有带“hasProperty”的，建议项目在Release版本推荐的默认配置，Debug调试通过指令传参，防止正式包将Debug参数上传。
+// * - 命令示例
+// * | 功能            | 命令                                                         | 备注                                 |
+// * | --------------- | ------------------------------------------------------------ | ------------------------------------ |
+// * | 预编译-生成配置 | ./gradlew omniPreChannels                                    | omniPreChannels 可用 omniPC 替换     |
+// * | 多渠道包编译    | ./gradlew omniChannelsBuild                                  | omniChannelsBuild 可用 omniCB 替换   |
+// * | 标签包编译      | ./gradlew omniSingleCpsBuild                                 | omniSingleCpsBuild 可用 omniSCB 替换 |
+// * | 传参数示例一    | ./gradlew -PopenLog=true omniChannelsBuild                 |                                      |
+// * | 传参数示例二    | ./gradlew -PisDebugType=true -PchannelNames=website_en,samsung omniCB |                                      |
+// * | 传参数示例三    | ./gradlew -PisDebugType=false -PskipCpsBuild=false omniChannelsBuild |                                      |
+OmniSDK {
+
+    // assemble: apk格式；bundle: aab格式。
+    buildType = "assemble" // "assemble,bundle"
+
+    // 清理工程：编译前是否清理工程的编译缓存，会增加编译时间，默认false，建议完整出包时设置为true
+    if (project.hasProperty("isClean")) {
+        preClean = isClean.toBoolean()
+    } else {
+        preClean = false
+    }
+    // 默认false: 即以buildType类型出包。
+    // 为true时，mixedBuild 未设置的以`buildType`类型出包；设置的以`mixedBuild-buildType`类型出包。
+    // 例1：比如 buildType 设置为 bundle，有渠道mixedBuild设置为assemble，那此渠道只出assemble；除非mixedBuild同时设置"assemble,bundle"
+    // 例外：当渠道要出cps包，此渠道一定会编译assemble，cps包依赖apk格式。
+    doMixedBuild = true
+
+    mixedBuild {
+        website_en {
+            buildType = "assemble,bundle" //2021年8月，GooglePlay 强制要求上aab格式
+        }
+    }
+
+    // 出包类型：false-release包，true-debug包。
+    if (project.hasProperty("isDebugType")) {
+        debugBuild = isDebugType.toBoolean()
+    } else {
+        debugBuild = false
+    }
+
+    // project_config.json#debugMode：是否开启sdk调试log
+    if (project.hasProperty("openLog")) {
+        logDebug = openLog.toBoolean()
+    } else {
+        logDebug = false
+    }
+
+    // 为 all 或空或不配置时，即出所有渠道包；指定出哪些渠道包，用英文","分割；例："huawei,website_en"。
+    if (project.hasProperty("channelNames")) {
+        customChannels = channelNames
+    } else {
+        customChannels = "all" // "huawei,website_en"
+    }
+
+    // 产物输出路径：必须是绝对路径
+    output = "${project.rootDir}/channels-output"
+
+    // 是否跳过cps标签包打包：true-跳过不出标签包，false-出相应的标签包
+    // 标签包列表的文件名为 `cps`，固定命名，没有文件后缀；
+    // 一行一个标签包；比如 `[cpsName,outAlias]` 或 `[cpsName]` 为一行；
+    // 标签包标签（cpsName）命名规则：
+    //   1. 英文、数字、下划线；
+    //   2. 整个文件禁止空格或空格行。
+    // 标签包产物命名规则为：`cps-[cpsName]-[channelName]-**.apk`；如果配置别名字段 `outAlias`，则是 `outAlias.apk`。
+    // 不配置 `cps` 文件时，不出标签包。
+    if (project.hasProperty("skipCpsBuild")) {
+        skipCps = skipCpsBuild.toBoolean()
+    } else {
+        skipCps = false
+    }
+}
+
+// 接入类型不同，编译接入方式不同，目前两种：app-level 或 libs-level
+// app-level 接入指令：./gradlew omniPreChannels
+// libs-level 接入指令：./gradlew omniPreChannels -PpreType=libs
+OmniSDKPreConfig {
+    if (project.hasProperty("preType")) {
+        type = preType
+    } else {
+        type = "app"
+    }
+}
+
+// 使用基础apk出标签包，有用时打开
+OmniCPS {
+    // 必须是签名后的apk包，并且未打入过cps信息的基础apk
+    baseApk = file("${project.rootDir}/replace_your_path/*.apk")
+    cpsFile = file("${project.rootDir}/shiyou/replace_channel_dir_name_or_replace_your_path/cps")
+    output = "${project.rootDir}/channels-output/single-cps/"
+}

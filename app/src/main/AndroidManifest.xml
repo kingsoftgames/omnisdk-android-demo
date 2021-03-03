@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.kingsoft.shiyou.omnisdk.demo">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:remove="android:maxSdkVersion" />
+
     <application
-        android:name="com.kingsoft.shiyou.omnisdk.project.OmniApplication"
+        android:name=".java.DemoApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.OmniSDKDemo">
-        <activity android:name=".java.JavaActivity"></activity>
-        <activity android:name=".kotlin.KotlinActivity">
+        android:theme="@style/Theme.OmniSDK"
+        tools:replace="android:theme,allowBackup">
+        <activity
+            android:name=".java.DemoAppActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:exported="true"
+            android:screenOrientation="sensor"
+            android:theme="@style/OmniDemoAppActivityTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

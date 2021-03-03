@@ -1,0 +1,18 @@
+// apply app-level or libs-level build.gradle
+
+// 脚本生成文件，格式禁止修改
+// OmniSDK 依赖
+
+dependencies {
+	// OmniSDK API 依赖
+	String apiVersion = "1.0.8"
+	api("com.kingsoft.shiyou.omnisdk.component:api:$apiVersion")
+
+	// website_en
+	implementation("com.kingsoft.shiyou.omnisdk.plugin:omni-account:1.0.8")
+	implementation("com.kingsoft.shiyou.omnisdk.plugin:google-pay:3.0.0")
+	implementation("com.kingsoft.shiyou.omnisdk.plugin:facebook:9.1.1")
+	implementation("com.kingsoft.shiyou.omnisdk.plugin:google:19.0.0")
+	implementation("com.kingsoft.shiyou.omnisdk.plugin:line:5.6.0")
+	implementation("com.kingsoft.shiyou.omnisdk.channel:website-en:1.0.8")
+}

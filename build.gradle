@@ -1,31 +1,38 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = "1.4.31"
+    ext.kotlin_version = "1.4.32"
     repositories {
+//        mavenLocal()
         google()
         jcenter()
+        // 金山世游仓库
+        maven {
+            url "https://maven.shiyou.kingsoft.com/repository/public/"
+        }
+        // 如果有接入华为渠道，还需要手动声明这个依赖仓库，本配置不影响其他渠道。
+        maven {
+            url "https://developer.huawei.com/repo/"
+        }
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.1.2"
+        classpath 'com.android.tools.build:gradle:4.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        // 编译插件
+        classpath("com.kingsoft.shiyou.omnisdk.build:plugin:3.2.0")
     }
 }
 
 allprojects {
     repositories {
+//        mavenLocal()
         google()
         jcenter()
-
-        // 金山世游仓库
-        maven {
-            url "https://maven.shiyou.kingsoft.com/repository/public/"
-        }
-        mavenLocal()//本地库，默认.m2/repository/
     }
 }
+
+// 引入渠道仓库配置
+apply from: ("${rootProject.rootDir}/kssyOmniChannelsRoot.gradle")
 
 task clean(type: Delete) {
     delete rootProject.buildDir

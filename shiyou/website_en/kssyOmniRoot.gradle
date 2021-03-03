@@ -1,0 +1,9 @@
+// apply project-level root build.gradle
+
+// 脚本生成文件，格式禁止修改
+allprojects {
+    repositories {
+        //金山世游仓库
+        maven { url "https://maven.shiyou.kingsoft.com/repository/public/" }
+    }
+}

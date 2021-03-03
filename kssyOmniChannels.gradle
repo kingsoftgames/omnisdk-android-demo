@@ -1,0 +1,70 @@
+// apply app-level build.gradle
+
+// 1. 本配置文件通过运行"gradlew omniPreChannels"自动生成；
+// 2. 运行指令前请按接入文档编译章节，在shiyou目录下配置好渠道信息、资源；
+// 3. 每次增加新渠道、或渠道增加资源（shiyou/*/main/目录）、或渠道新增依赖时，都要运行指令，以生成最新配置；其他情况无需运行。
+// 4. 修改版本号无需运行指令；
+// 5. 请将本文件变更提交代码库，以支持项目服务器编译。
+// 6. 如果不懂Android-Variants-Build，请不要修改配置结构；项目只需要"运行脚本->升级版本号->提交代码库"即可。
+
+// 多渠道配置：使用控制面板（默认在左侧下位置: "Build Variants"）切换"Run"编译的渠道，即工程默认渠道。
+android {
+	flavorDimensions "default"
+	// 多渠道列表
+	productFlavors {
+		website_en {
+			dimension "default"
+			applicationId "com.*****"
+			manifestPlaceholders = [
+					applovinKey: "*****",
+					facebookAppId: "*****",
+					facebookAppName: "*****",
+					googleAdmobAppid: "*****",
+			]
+		}
+		oppo_en {
+			dimension "default"
+			applicationId "com.********"
+			manifestPlaceholders = [
+					oppoAppKey: "********",
+			]
+		}
+	}
+
+	sourceSets {
+		main {
+			// 默认、所有资源渠道共享，不要修改。
+		}
+		// 多渠道资源配置，如果有
+		website_en {
+			assets.srcDirs += ["${project.rootDir}/shiyou/${name}/main/assets"]
+		}
+		oppo_en {
+			assets.srcDirs += ["${project.rootDir}/shiyou/${name}/main/assets"]
+		}
+	}
+}
+
+// 渠道依赖配置
+dependencies {
+
+	// 封版|发版 前请 Omni 确认是否需要升级到最新版本。
+	// OmniSDK API 依赖（所有渠道包的公共依赖）
+	String apiVersion = "1.2.5" // Please replace with the latest version if needed.
+	api("com.kingsoft.shiyou.omnisdk.component:api:$apiVersion")
+
+	// OmniSDK Plugin 依赖（所有渠道包的公共依赖）
+	implementation("com.kingsoft.shiyou.omnisdk.plugin:omni-account:1.1.0")
+
+	// 渠道的各自依赖，根据 shiyou/*/kssyOmni.gradle 下各渠道配置脚本生成
+	// website_en
+	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:google-pay:3.0.0")
+	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:facebook:9.1.1")
+	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:google:19.0.0")
+	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:line:5.6.0")
+	website_enImplementation("com.kingsoft.shiyou.omnisdk.channel:website-en:1.0.8")
+
+	// oppo_en
+	oppo_enImplementation("com.kingsoft.shiyou.omnisdk.channel:oppo-en:1.0.9")
+
+}

@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.kingsoft.shiyou.omnisdk.demo.common.view.CreateGameRoleView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/OmniDemoViewStyle"
+    android:importantForAutofill="no"
+    tools:ignore="HardcodedText">
+
+    <RelativeLayout
+        android:id="@+id/create_game_role_view_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/OmniDemoAppFunctionTitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:gravity="start"
+            android:text="输入游戏角色信息" />
+
+        <TextView
+            android:id="@+id/create_game_role_view_load_test_data_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="加载测试数据"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/create_game_role_view_line_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/create_game_role_view_title_layout"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/darker_gray" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/create_game_role_view_line_view"
+        android:layout_margin="5dp"
+        android:padding="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+            android:padding="0dp">
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent">
+
+                <EditText
+                    android:id="@+id/create_game_role_view_uid_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:enabled="false"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/create_game_role_view_role_id_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="角色ID"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/create_game_role_view_role_level_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="角色等级"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/create_game_role_view_role_name_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="角色名称"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/create_game_role_view_role_type_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="角色类型"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/create_game_role_view_role_vip_level_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="角色VIP等级"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/create_game_role_view_role_figure_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="体型"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/create_game_role_view_role_create_time_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="角色创建时间 Unix 时间戳，单位秒"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/create_game_role_view_server_id_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="服务器ID"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/create_game_role_view_server_name_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="服务器名称"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/create_game_role_view_zone_id_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="区ID"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/create_game_role_view_zone_name_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="区名称"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/create_game_role_view_account_age_in_game_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="账号游戏年龄（单位：天）"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/create_game_role_view_age_in_game_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="角色游戏年龄（单位：天）"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/create_game_role_view_balance_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="角色账户余额"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/create_game_role_view_gender_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="性别"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/create_game_role_view_party_name_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="所在公会或帮派"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp">
+
+                <EditText
+                    android:id="@+id/create_game_role_view_ext_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="扩展参数"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</com.kingsoft.shiyou.omnisdk.demo.common.view.CreateGameRoleView>

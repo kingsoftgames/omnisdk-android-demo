@@ -1,0 +1,10 @@
+// apply project-level root build.gradle
+
+// 部分渠道需要的依赖仓库
+allprojects {
+	repositories {
+		// 金山世游仓库
+		maven { url "https://maven.shiyou.kingsoft.com/repository/public/" }
+
+	}
+}

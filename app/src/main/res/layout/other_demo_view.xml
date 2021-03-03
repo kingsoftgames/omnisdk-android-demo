@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.kingsoft.shiyou.omnisdk.demo.common.view.OtherDemoView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/OmniDemoViewStyle"
+    android:importantForAutofill="no"
+    tools:ignore="HardcodedText">
+
+    <LinearLayout
+        android:id="@+id/other_demo_view_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/OmniDemoAppFunctionTitleStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="其他功能" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="1dp"
+            android:background="@android:color/darker_gray" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/other_demo_view_content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/other_demo_view_title_layout"
+        android:layout_margin="0dp"
+        android:orientation="vertical"
+        android:padding="0dp">
+
+        <Button
+            android:id="@+id/other_demo_view_show_score_dialog_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="应用商店评分" />
+
+        <Button
+            android:id="@+id/other_demo_view_web_js_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="web-js" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/other_demo_view_channel_method_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/other_demo_view_content_layout"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/darker_gray"
+        android:orientation="vertical"
+        android:padding="0dp" />
+
+</com.kingsoft.shiyou.omnisdk.demo.common.view.OtherDemoView>
