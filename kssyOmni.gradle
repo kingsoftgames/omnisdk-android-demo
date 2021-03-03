@@ -1,0 +1,4 @@
+// apply app or libs build.gradle
+// apply from: ("${rootProject.rootDir}/kssyOmni.gradle")
+
+apply plugin: "KSSYOmniPlugin"

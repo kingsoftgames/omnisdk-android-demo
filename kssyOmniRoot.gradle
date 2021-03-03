@@ -1,0 +1,2 @@
+// apply project root build.gradle
+// apply from: ("${rootProject.rootDir}/kssyOmniRoot.gradle")
