@@ -1,0 +1,2503 @@
+<!DOCTYPE HTML>
+<!-- NewPage -->
+<html lang="en"><head>
+    <title>OmniSDK </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="dc.created" content="2020-03-25">
+    <link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
+    <link rel="stylesheet" type="text/css" href="../../../../../dokka-javadoc-stylesheet.css" title="Style">
+    <link rel="stylesheet" type="text/css" href="../../../../../jquery/jquery-ui.css" title="Style">
+    <script type="text/javascript" src="../../../../../jquery/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../../../../../jquery/jquery-migrate-3.0.1.js"></script>
+    <script type="text/javascript" src="../../../../../jquery/jquery-ui.js"></script>
+
+    <script type="text/javascript" src="../../../../../search.js"></script>
+    <script async type="text/javascript" src="../../../../../module-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../../package-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../../type-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../../member-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../../tag-search-index.js"></script>
+</head><body>
+<script type="text/javascript">
+var pathtoroot = "../../../../../";
+</script>
+<noscript>
+    <div>JavaScript is disabled on your browser.</div>
+</noscript><header role="banner">
+    <nav role="navigation">
+        <div class="fixedNav">
+            <!-- ========= START OF TOP NAVBAR ======= -->
+            <div class="topNav"><a id="navbar.top">
+                <!--   -->
+            </a>
+                <div class="skipNav"><a href="#skip.navbar.top" title="Skip navigation links">Skip navigation links</a>
+                </div>
+                <a id="navbar.top.firstrow">
+                    <!--   -->
+                </a>
+                <ul class="navList" title="Navigation">
+    <li><a href="../../../../../index.html">Overview</a></li>
+    
+    <li><a href="package-summary.html">Package</a></li>
+    
+    <li class="navBarCell1Rev">Class</li>
+    
+    <li><a href="package-tree.html">Tree</a></li>
+    
+    <li><a href="../../../../../deprecated.html">Deprecated</a></li>
+    <li><a href="../../../../../index-files/index-1.html">Index</a></li>
+    <li>Help</li>
+</ul></div>
+            <div class="subNav">
+<ul class="navList" id="allclasses_navbar_top" style="display: block;">
+    <li><a href="../../../../../allclasses.html">All&nbsp;Classes</a></li>
+</ul>
+
+<ul class="navListSearch">
+<li><label for="search">SEARCH:</label>
+<input type="text" id="search" value="search" class="ui-autocomplete-input" autocomplete="off" placeholder="Search">
+<input type="reset" id="reset" value="reset">
+</li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+</div>
+<a id="skip.navbar.top">
+<!--   -->
+</a></div><!-- ========= END OF TOP NAVBAR ========= -->
+        </div>
+        <div class="navPadding">&nbsp;</div>
+        <script type="text/javascript"><!--
+        $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
+        //-->
+        </script>
+    </nav>
+</header>
+
+<main role="main">
+    <div class="header">
+        <div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html"></a></div>
+        <h2 title="Class OmniSDK" class="title">Class OmniSDK</h2>
+    </div>
+    <div class="contentContainer">
+        <!-- <ul class="inheritance">
+            <li>java.lang.Object</li>
+            <li>
+                <ul class="inheritance">
+                    <li>adaptation.Adaptation</li>
+                </ul>
+            </li>
+        </ul> TODO inheritance tree -->
+        <div class="description">
+            <ul class="blockList">
+                <li class="blockList">
+                    
+                    <dl>
+                        <dt>All Implemented Interfaces:</dt>
+                        <dd>
+                            
+                            <code>com.kingsoft.shiyou.omnisdk.api.interfaces.IAccount</code>
+                            
+                            ,
+                            
+                            
+                            <code>com.kingsoft.shiyou.omnisdk.api.interfaces.IAction</code>
+                            
+                            ,
+                            
+                            
+                            <code>com.kingsoft.shiyou.omnisdk.api.interfaces.IAd</code>
+                            
+                            ,
+                            
+                            
+                            <code>com.kingsoft.shiyou.omnisdk.api.interfaces.IDataMonitor</code>
+                            
+                            ,
+                            
+                            
+                            <code>com.kingsoft.shiyou.omnisdk.api.interfaces.IMethod</code>
+                            
+                            ,
+                            
+                            
+                            <code>com.kingsoft.shiyou.omnisdk.api.interfaces.IOmni</code>
+                            
+                            ,
+                            
+                            
+                            <code>com.kingsoft.shiyou.omnisdk.api.interfaces.IPay</code>
+                            
+                            ,
+                            
+                            
+                            <code>com.kingsoft.shiyou.omnisdk.api.interfaces.ISocial</code>
+                            
+                            ,
+                            
+                            
+                            <code>com.kingsoft.shiyou.omnisdk.core.interfaces.IActivityLifeCycle</code>
+                            
+                            ,
+                            
+                            
+                            <code>com.kingsoft.shiyou.omnisdk.core.interfaces.IApplicationLifeCycle</code>
+                            
+                            
+                        </dd>
+                    </dl>
+                    
+                    <hr>
+                    <pre class="wrap-overflow">
+
+public class <span class="typeNameLabel"><a href=OmniSDK.html>OmniSDK</a></span>
+ implements <a href=../com/kingsoft/shiyou/omnisdk/api/interfaces/IOmni.html>IOmni</a>
+                    </pre>
+                    <div class="block"><p>OmniSDK 入口类</p><pre><code>OmniSDK.instance.onApplicationCreate(this) // kotlin-demo</code></pre><pre><code>OmniSDK.getInstance().onApplicationCreate(this); // java-demo</code></pre></div>
+                </li>
+            </ul>
+        </div>
+        <div class="summary">
+            <ul class="blockList">
+                <li class="blockList">
+                <!-- ======== NESTED CLASS SUMMARY ======== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="nested.class.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Nested Class Summary</h3>
+                                <div class="memberSummary">
+                                    <table>
+                                        <caption><span>Nested Classes</span><span class="tabEnd">&nbsp;</span></caption>
+                                        <tr>
+                                            <th class="colFirst" scope="col">Modifier and Type</th>
+                                            <th class="colSecond" scope="col">Class</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>public class</code></td>
+                                            <th class="colSecond" scope="row"><code><a href="OmniSDK.Companion.html">OmniSDK.Companion</a></span></code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- =========== FIELD SUMMARY =========== -->
+                    
+                    <!-- ======== CONSTRUCTOR SUMMARY ======== -->
+                    
+                    <!-- =========== ENUM CONSTANT SUMMARY =========== -->
+                    
+                    <!-- ========== METHOD SUMMARY =========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="method.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Method Summary</h3>
+                                <div class="memberSummary">
+                                    <div role="tablist" aria-orientation="horizontal">
+                                        <button role="tab" aria-selected="true" aria-controls="memberSummary_tabpanel" tabindex="0" onkeydown="switchTab(event)" id="t0" class="activeTableTab">All Methods</button>
+                                        <!-- TODO: Instance and Concrete Methods #1118 -->
+                                    </div>
+                                    <div id="memberSummary_tabpanel" role="tabpanel">
+                                    <table aria-labelledby="t0">
+                                        <tr>
+                                            <th class="colFirst" scope="col">Modifier and Type</th>
+                                            <th class="colSecond" scope="col">Method</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+                                        
+                                        <tr id="i0" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onApplicationCreate(Application)>onApplicationCreate</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Application.html>Application</a> application) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onApplicationLowMemory()>onApplicationLowMemory</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onApplicationTrimMemory()>onApplicationTrimMemory</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onApplicationTerminate()>onApplicationTerminate</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i4" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onCreate(Activity,Bundle)>onCreate</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://developer.android.com/reference/kotlin/android/os/Bundle.html>Bundle</a> savedInstanceState) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i5" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onStart(Activity)>onStart</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i6" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onRestart(Activity)>onRestart</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i7" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onResume(Activity)>onResume</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i8" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onPause(Activity)>onPause</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i9" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onStop(Activity)>onStop</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i10" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onDestroy(Activity)>onDestroy</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i11" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onNewIntent(Activity,Intent)>onNewIntent</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://developer.android.com/reference/kotlin/android/content/Intent.html>Intent</a> intent) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i12" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onSaveInstanceState(Activity,Bundle)>onSaveInstanceState</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://developer.android.com/reference/kotlin/android/os/Bundle.html>Bundle</a> outState) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i13" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onRestoreInstanceState(Activity,Bundle)>onRestoreInstanceState</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://developer.android.com/reference/kotlin/android/os/Bundle.html>Bundle</a> savedInstanceState) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i14" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onConfigurationChanged(Activity,Configuration)>onConfigurationChanged</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://developer.android.com/reference/kotlin/android/content/res/Configuration.html>Configuration</a> newConfig) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i15" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onActivityResult(Activity,Integer,Integer,Intent)>onActivityResult</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> requestCode, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> resultCode, <a href=https://developer.android.com/reference/kotlin/android/content/Intent.html>Intent</a> data) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i16" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onRequestPermissionsResult(Activity,Integer,Array,IntArray)>onRequestPermissionsResult</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> requestCode, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;out <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; permissions, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html>IntArray</a> grantResults) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i17" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onBackPressed(Activity)>onBackPressed</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i18" class="altColor">
+                                            <td class="colFirst"><code><a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onKeyDown(Activity,Integer,KeyEvent)>onKeyDown</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> keyCode, <a href=https://developer.android.com/reference/kotlin/android/view/KeyEvent.html>KeyEvent</a> event) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i19" class="rowColor">
+                                            <td class="colFirst"><code>User</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#getOmniUser()>getOmniUser</a>() </code>
+                                            </th>
+                                            <td class="colLast">获取用户信息，未登录时为空</td>
+                                        </tr>
+                                        
+                                        <tr id="i20" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#login(Activity,Map,LoginCallback)>login</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html>Object</a>&gt; loginParam, LoginCallback callback) </code>
+                                            </th>
+                                            <td class="colLast">登录</td>
+                                        </tr>
+                                        
+                                        <tr id="i21" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#logout(Activity,ResponseCallback)>logout</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, ResponseCallback callback) </code>
+                                            </th>
+                                            <td class="colLast">登出</td>
+                                        </tr>
+                                        
+                                        <tr id="i22" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#switchAccount(Activity,Map,SwitchAccountCallback)>switchAccount</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html>Object</a>&gt; switchParam, SwitchAccountCallback callback) </code>
+                                            </th>
+                                            <td class="colLast">切换账号</td>
+                                        </tr>
+                                        
+                                        <tr id="i23" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#bindAccount(Activity,Map,BindAccountCallback)>bindAccount</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html>Object</a>&gt; bindParam, BindAccountCallback callback) </code>
+                                            </th>
+                                            <td class="colLast">绑定账号</td>
+                                        </tr>
+                                        
+                                        <tr id="i24" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#pay(Activity,Product,PayCallback)>pay</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, Product product, PayCallback callback) </code>
+                                            </th>
+                                            <td class="colLast">支付</td>
+                                        </tr>
+                                        
+                                        <tr id="i25" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#share(Activity,String,ShareParam,ResponseCallback)>share</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> platform, ShareParam param, ResponseCallback callback) </code>
+                                            </th>
+                                            <td class="colLast">分享，单个平台分享</td>
+                                        </tr>
+                                        
+                                        <tr id="i26" class="altColor">
+                                            <td class="colFirst"><code><a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#isMethodSupported(String)>isMethodSupported</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> methodName) </code>
+                                            </th>
+                                            <td class="colLast">反射的方法是否被支持调用</td>
+                                        </tr>
+                                        
+                                        <tr id="i27" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#invokeMethod(String)>invokeMethod</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> methodName) </code>
+                                            </th>
+                                            <td class="colLast">通过反射方法调用相应功能</td>
+                                        </tr>
+                                        
+                                        <tr id="i28" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#invokeMethod(String,Array)>invokeMethod</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> methodName, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html>Object</a>&gt; objects) </code>
+                                            </th>
+                                            <td class="colLast">通过反射方法调用相应功能</td>
+                                        </tr>
+                                        
+                                        <tr id="i29" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#showScoreDialog(Context,ResponseCallback)>showScoreDialog</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, ResponseCallback callback) </code>
+                                            </th>
+                                            <td class="colLast">渠道的应用商店评分引导，当且渠道有相应方法时有效</td>
+                                        </tr>
+                                        
+                                        <tr id="i30" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#openBrowserActivity(Context,String,String)>openBrowserActivity</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> url, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> customParams) </code>
+                                            </th>
+                                            <td class="colLast">跳转到浏览器</td>
+                                        </tr>
+                                        
+                                        <tr id="i31" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#openUserCenter(Context)>openUserCenter</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context) </code>
+                                            </th>
+                                            <td class="colLast">直接打开个人中心</td>
+                                        </tr>
+                                        
+                                        <tr id="i32" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#getSocialInfo(Activity,String,ResultCallback)>getSocialInfo</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> platformName, ResultCallback callback) </code>
+                                            </th>
+                                            <td class="colLast">获取社交信息</td>
+                                        </tr>
+                                        
+                                        <tr id="i33" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#getFriendInfo(Activity,String,ResultCallback)>getFriendInfo</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> platformName, ResultCallback callback) </code>
+                                            </th>
+                                            <td class="colLast">获取好友信息</td>
+                                        </tr>
+                                        
+                                        <tr id="i34" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#invite(Activity,String,String,ResultCallback)>invite</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> platformName, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> json, ResultCallback callback) </code>
+                                            </th>
+                                            <td class="colLast">社交-邀请</td>
+                                        </tr>
+                                        
+                                        <tr id="i35" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onExit(Activity,ExitCallback,Boolean)>onExit</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, ExitCallback callback, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> gameCustom) </code>
+                                            </th>
+                                            <td class="colLast">退出：1.</td>
+                                        </tr>
+                                        
+                                        <tr id="i36" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#loadInterstitialAd(Context,String,AdLoadCallback)>loadInterstitialAd</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> adId, AdLoadCallback callback) </code>
+                                            </th>
+                                            <td class="colLast">加载插屏广告</td>
+                                        </tr>
+                                        
+                                        <tr id="i37" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#showInterstitialAd(Context,String,AdShowCallback)>showInterstitialAd</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> adId, AdShowCallback callback) </code>
+                                            </th>
+                                            <td class="colLast">展示插屏广告</td>
+                                        </tr>
+                                        
+                                        <tr id="i38" class="altColor">
+                                            <td class="colFirst"><code><a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#isInterstitialAdReady(Object)>isInterstitialAdReady</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html>Object</a> objects) </code>
+                                            </th>
+                                            <td class="colLast">插屏广告是否准备好：即加载状态部分渠道，load#ed 无上层回调时使用</td>
+                                        </tr>
+                                        
+                                        <tr id="i39" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#loadRewardAd(Context,String,AdLoadCallback)>loadRewardAd</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> adId, AdLoadCallback callback) </code>
+                                            </th>
+                                            <td class="colLast">加载激励广告</td>
+                                        </tr>
+                                        
+                                        <tr id="i40" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#showRewardAd(Context,String,AdShowCallback)>showRewardAd</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> adId, AdShowCallback callback) </code>
+                                            </th>
+                                            <td class="colLast">展示激励广告</td>
+                                        </tr>
+                                        
+                                        <tr id="i41" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#isRewardAdReady(Object)>isRewardAdReady</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html>Object</a> objects) </code>
+                                            </th>
+                                            <td class="colLast">激励广告是否准备好：即加载状态部分渠道，load#ed 无上层回调时使用</td>
+                                        </tr>
+                                        
+                                        <tr id="i42" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#loadBannerAd(Activity,String,AdLoadCallback)>loadBannerAd</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> adId, AdLoadCallback callback) </code>
+                                            </th>
+                                            <td class="colLast">加载横幅广告</td>
+                                        </tr>
+                                        
+                                        <tr id="i43" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#showBannerAd(Activity,String,Integer,ViewGroup,AdShowCallback)>showBannerAd</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> adId, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> gravity, <a href=https://developer.android.com/reference/kotlin/android/view/ViewGroup.html>ViewGroup</a> container, AdShowCallback callback) </code>
+                                            </th>
+                                            <td class="colLast">展示横幅广告</td>
+                                        </tr>
+                                        
+                                        <tr id="i44" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#hideBannerAd(Activity,String)>hideBannerAd</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> adId) </code>
+                                            </th>
+                                            <td class="colLast">隐藏横幅广告</td>
+                                        </tr>
+                                        
+                                        <tr id="i45" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#isBannerAdReady(Object)>isBannerAdReady</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html>Object</a> objects) </code>
+                                            </th>
+                                            <td class="colLast">横幅广告是否准备好：即加载状态部分渠道，load#ed 无上层回调时使用</td>
+                                        </tr>
+                                        
+                                        <tr id="i46" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onCreateRole(RoleInfo)>onCreateRole</a>(RoleInfo roleInfo) </code>
+                                            </th>
+                                            <td class="colLast">建议在玩家新创建游戏角色的时候，调用此接口，上报角色数据。</td>
+                                        </tr>
+                                        
+                                        <tr id="i47" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onEnterGame(RoleInfo)>onEnterGame</a>(RoleInfo roleInfo) </code>
+                                            </th>
+                                            <td class="colLast">建议在登录完成后，进入游戏界面时，调用此接口，上报角色数据</td>
+                                        </tr>
+                                        
+                                        <tr id="i48" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onRoleLevelUp(RoleInfo)>onRoleLevelUp</a>(RoleInfo roleInfo) </code>
+                                            </th>
+                                            <td class="colLast">建议在角色等级升级时，调用此接口，上报角色数据</td>
+                                        </tr>
+                                        
+                                        <tr id="i49" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onMissionBegin(RoleInfo,String,String,Integer,Integer,String)>onMissionBegin</a>(RoleInfo roleInfo, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> missionId, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> missionName, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> doMissionTimes, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> roleCurrentPower, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> customParams) </code>
+                                            </th>
+                                            <td class="colLast">跟踪玩家的任务或关卡完成情况。当开始某个任务或关卡时，调用此接口</td>
+                                        </tr>
+                                        
+                                        <tr id="i50" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onMissionSuccess(RoleInfo,String,String,Integer,Integer,String)>onMissionSuccess</a>(RoleInfo roleInfo, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> missionId, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> missionName, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> doMissionTimes, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> roleCurrentPower, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> customParams) </code>
+                                            </th>
+                                            <td class="colLast">跟踪玩家的任务或关卡完成情况。当某个任务或关卡已经成功完成，调用此接口</td>
+                                        </tr>
+                                        
+                                        <tr id="i51" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onMissionFail(RoleInfo,String,String,Integer,Integer,String)>onMissionFail</a>(RoleInfo roleInfo, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> missionId, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> missionName, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> doMissionTimes, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> roleCurrentPower, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> customParams) </code>
+                                            </th>
+                                            <td class="colLast">跟踪玩家的任务或关卡完成情况。当某个任务或关卡执行失败时，调用此接口</td>
+                                        </tr>
+                                        
+                                        <tr id="i52" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onVirtualCurrencyPurchase(RoleInfo,Integer,String,Integer,String)>onVirtualCurrencyPurchase</a>(RoleInfo roleInfo, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> amount, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> virtualCurrencyType, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> virtualCurrencyTotal, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> gameTradeNo) </code>
+                                            </th>
+                                            <td class="colLast">跟踪玩家的购买及消费行为。当玩家通过充值获得游戏内虚拟货币时，调用此接口</td>
+                                        </tr>
+                                        
+                                        <tr id="i53" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onVirtualCurrencyReward(RoleInfo,Integer,String,Integer,String,String,String)>onVirtualCurrencyReward</a>(RoleInfo roleInfo, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> amount, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> virtualCurrencyType, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> virtualCurrencyTotal, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> gainChannel, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> gainChannelType, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> gameTradeNo) </code>
+                                            </th>
+                                            <td class="colLast">跟踪玩家的购买及消费行为。当玩家完成活动或任务后，系统赠送给玩家虚拟货币时，调用此接口</td>
+                                        </tr>
+                                        
+                                        <tr id="i54" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onVirtualCurrencyConsume(RoleInfo,Integer,String,Integer,String,Integer,String)>onVirtualCurrencyConsume</a>(RoleInfo roleInfo, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> amount, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> virtualCurrencyType, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> virtualCurrencyTotal, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> itemName, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> itemNum, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> itemType) </code>
+                                            </th>
+                                            <td class="colLast">跟踪玩家的购买及消费行为。当玩家消费虚拟货币时，调用此接口</td>
+                                        </tr>
+                                        
+                                        <tr id="i55" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onEvent(RoleInfo,String,String,Integer,String)>onEvent</a>(RoleInfo roleInfo, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> eventId, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> eventDesc, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> eventVal, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> eventBody) </code>
+                                            </th>
+                                            <td class="colLast">自定义事件，游戏可以通过此接口进行自助数据上报及分析</td>
+                                        </tr>
+                                        
+                                        <tr id="i56" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onPayFinish(PayInfo)>onPayFinish</a>(PayInfo payInfo) </code>
+                                            </th>
+                                            <td class="colLast">跟踪玩家的支付信息，支付成功时调用此接口。</td>
+                                        </tr>
+                                        
+                                        <tr id="i57" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onGameLoadResource()>onGameLoadResource</a>() </code>
+                                            </th>
+                                            <td class="colLast">游戏加载资源完成时调用该接口，发送相关信息。</td>
+                                        </tr>
+                                        
+                                        <tr id="i58" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onGameLoadConfig()>onGameLoadConfig</a>() </code>
+                                            </th>
+                                            <td class="colLast">游戏加载配置完成时调用该接口，发送相关信息。</td>
+                                        </tr>
+                                        
+                                        <tr id="i59" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onOpenAnnouncement()>onOpenAnnouncement</a>() </code>
+                                            </th>
+                                            <td class="colLast">用户打开公告时调用该接口，发送相关信息。</td>
+                                        </tr>
+                                        
+                                        <tr id="i60" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onCloseAnnouncement()>onCloseAnnouncement</a>() </code>
+                                            </th>
+                                            <td class="colLast">用户关闭公告时调用该接口，发送相关信息。</td>
+                                        </tr>
+                                        
+                                        <tr id="i61" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onNewUserMission(RoleInfo)>onNewUserMission</a>(RoleInfo roleInfo) </code>
+                                            </th>
+                                            <td class="colLast">用户完成新手任务时调用该接口，发送相关信息。</td>
+                                        </tr>
+                                        
+                                        <tr id="i62" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onPrivateFunCodeUse(RoleInfo,String,String,String,String)>onPrivateFunCodeUse</a>(RoleInfo roleInfo, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> funCode, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> funCodeDesc, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> funCodeType, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> funCodeBatchId) </code>
+                                            </th>
+                                            <td class="colLast">用户使用专用的功能码（激活码、礼品码等）时，调用该接口，发送相关信息。</td>
+                                        </tr>
+                                        
+                                        <tr id="i63" class="rowColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#onPublicFunCodeUse(RoleInfo,String,String,String,String)>onPublicFunCodeUse</a>(RoleInfo roleInfo, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> funCode, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> funCodeDesc, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> funCodeType, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> funCodeBatchId) </code>
+                                            </th>
+                                            <td class="colLast">用户使用公用的功能码（激活码、礼品码等）时，调用该接口，发送相关信息。</td>
+                                        </tr>
+                                        
+                                        <tr id="i64" class="altColor">
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=OmniSDK.html#addCommonAttribute(String,String)>addCommonAttribute</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> key, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> value) </code>
+                                            </th>
+                                            <td class="colLast">向上报的数据中添加共通属性，即每条数据都包含的属性。</td>
+                                        </tr>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <ul class="blockList">
+                                
+                                    <li class="blockList"><a id="methods.inherited.from.class.com.kingsoft.shiyou.omnisdk.core.interfaces.IApplicationLifeCycle">
+                                            <!--   -->
+                                        </a>
+                                            <h3>Methods inherited from class&nbsp;com.kingsoft.shiyou.omnisdk.core.interfaces.IApplicationLifeCycle</h3>
+                                            <code>equals, hashCode, toString</code></li>
+                                 
+                                    <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
+                                        <!--   -->
+                                    </a>
+                                        <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
+                                        <code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString,
+                                            wait, wait, wait</code></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                </li>
+            </ul>
+        </div>
+        <div class="details">
+            <ul class="blockList">
+                <li class="blockList">
+                    <!-- ========= CONSTRUCTOR DETAIL ======== -->
+                    
+                    <!-- ============ METHOD DETAIL ========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="method.detail">
+                                <!--   -->
+                            </a>
+                                <h3>Method Detail</h3>
+                                
+                                <a id="onApplicationCreate(Application)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onApplicationCreate</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onApplicationCreate(Application)>onApplicationCreate</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Application.html>Application</a> application)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onApplicationLowMemory()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onApplicationLowMemory</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onApplicationLowMemory()>onApplicationLowMemory</a>()</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onApplicationTrimMemory()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onApplicationTrimMemory</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onApplicationTrimMemory()>onApplicationTrimMemory</a>()</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onApplicationTerminate()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onApplicationTerminate</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onApplicationTerminate()>onApplicationTerminate</a>()</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onCreate(Activity,Bundle)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onCreate</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onCreate(Activity,Bundle)>onCreate</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://developer.android.com/reference/kotlin/android/os/Bundle.html>Bundle</a> savedInstanceState)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onStart(Activity)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onStart</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onStart(Activity)>onStart</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onRestart(Activity)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onRestart</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onRestart(Activity)>onRestart</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onResume(Activity)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onResume</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onResume(Activity)>onResume</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onPause(Activity)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onPause</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onPause(Activity)>onPause</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onStop(Activity)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onStop</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onStop(Activity)>onStop</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onDestroy(Activity)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onDestroy</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onDestroy(Activity)>onDestroy</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onNewIntent(Activity,Intent)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onNewIntent</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onNewIntent(Activity,Intent)>onNewIntent</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://developer.android.com/reference/kotlin/android/content/Intent.html>Intent</a> intent)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onSaveInstanceState(Activity,Bundle)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onSaveInstanceState</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onSaveInstanceState(Activity,Bundle)>onSaveInstanceState</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://developer.android.com/reference/kotlin/android/os/Bundle.html>Bundle</a> outState)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onRestoreInstanceState(Activity,Bundle)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onRestoreInstanceState</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onRestoreInstanceState(Activity,Bundle)>onRestoreInstanceState</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://developer.android.com/reference/kotlin/android/os/Bundle.html>Bundle</a> savedInstanceState)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onConfigurationChanged(Activity,Configuration)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onConfigurationChanged</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onConfigurationChanged(Activity,Configuration)>onConfigurationChanged</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://developer.android.com/reference/kotlin/android/content/res/Configuration.html>Configuration</a> newConfig)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onActivityResult(Activity,Integer,Integer,Intent)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onActivityResult</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onActivityResult(Activity,Integer,Integer,Intent)>onActivityResult</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> requestCode, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> resultCode, <a href=https://developer.android.com/reference/kotlin/android/content/Intent.html>Intent</a> data)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onRequestPermissionsResult(Activity,Integer,Array,IntArray)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onRequestPermissionsResult</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onRequestPermissionsResult(Activity,Integer,Array,IntArray)>onRequestPermissionsResult</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> requestCode, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;out <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>&gt; permissions, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html>IntArray</a> grantResults)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onBackPressed(Activity)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onBackPressed</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onBackPressed(Activity)>onBackPressed</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onKeyDown(Activity,Integer,KeyEvent)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onKeyDown</h4>
+                                        <pre class="methodSignature"> <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=OmniSDK.html#onKeyDown(Activity,Integer,KeyEvent)>onKeyDown</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> keyCode, <a href=https://developer.android.com/reference/kotlin/android/view/KeyEvent.html>KeyEvent</a> event)</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getOmniUser()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getOmniUser</h4>
+                                        <pre class="methodSignature"> User <a href=OmniSDK.html#getOmniUser()>getOmniUser</a>()</pre>
+                                        <div class="block"><p>获取用户信息，未登录时为空</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="login(Activity,Map,LoginCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>login</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#login(Activity,Map,LoginCallback)>login</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html>Object</a>&gt; loginParam, LoginCallback callback)</pre>
+                                        <div class="block"><p>登录</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>activity</code> - 上下文</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>loginParam</code> - 登录所需要的参数</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>callback</code> - 登录回调</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="logout(Activity,ResponseCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>logout</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#logout(Activity,ResponseCallback)>logout</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, ResponseCallback callback)</pre>
+                                        <div class="block"><p>登出</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>activity</code> - 上下文</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>callback</code> - 登出回调</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="switchAccount(Activity,Map,SwitchAccountCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>switchAccount</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#switchAccount(Activity,Map,SwitchAccountCallback)>switchAccount</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html>Object</a>&gt; switchParam, SwitchAccountCallback callback)</pre>
+                                        <div class="block"><p>切换账号</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>activity</code> - 上下文</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>switchParam</code> - 切换账号所需要的参数</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>callback</code> - 账号切换回调</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="bindAccount(Activity,Map,BindAccountCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>bindAccount</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#bindAccount(Activity,Map,BindAccountCallback)>bindAccount</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html>Object</a>&gt; bindParam, BindAccountCallback callback)</pre>
+                                        <div class="block"><p>绑定账号</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>activity</code> - 上下文</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>bindParam</code> - 绑定所需要的参数</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>callback</code> - 账号绑定回调</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="pay(Activity,Product,PayCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>pay</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#pay(Activity,Product,PayCallback)>pay</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, Product product, PayCallback callback)</pre>
+                                        <div class="block"><p>支付</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>activity</code> - 上下文</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>product</code> - 商品信息</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>callback</code> - 支付结果回调</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="share(Activity,String,ShareParam,ResponseCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>share</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#share(Activity,String,ShareParam,ResponseCallback)>share</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> platform, ShareParam param, ResponseCallback callback)</pre>
+                                        <div class="block"><p>分享，单个平台分享</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>activity</code> - 上下文</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>platform</code> - Omni支持的分享平台或指定应用包名</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>param</code> - 分享内容</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>callback</code> - 分享回调</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="isMethodSupported(String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>isMethodSupported</h4>
+                                        <pre class="methodSignature"> <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=OmniSDK.html#isMethodSupported(String)>isMethodSupported</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> methodName)</pre>
+                                        <div class="block"><p>反射的方法是否被支持调用</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>methodName</code> - 方法名</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="invokeMethod(String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>invokeMethod</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#invokeMethod(String)>invokeMethod</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> methodName)</pre>
+                                        <div class="block"><p>通过反射方法调用相应功能</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="invokeMethod(String,Array)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>invokeMethod</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#invokeMethod(String,Array)>invokeMethod</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> methodName, <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html>Object</a>&gt; objects)</pre>
+                                        <div class="block"><p>通过反射方法调用相应功能</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="showScoreDialog(Context,ResponseCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>showScoreDialog</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#showScoreDialog(Context,ResponseCallback)>showScoreDialog</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, ResponseCallback callback)</pre>
+                                        <div class="block"><p>渠道的应用商店评分引导，当且渠道有相应方法时有效</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>context</code> - 上下文</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>callback</code> - 评分结果回调</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="openBrowserActivity(Context,String,String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>openBrowserActivity</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#openBrowserActivity(Context,String,String)>openBrowserActivity</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> url, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> customParams)</pre>
+                                        <div class="block"><p>跳转到浏览器</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>context</code> - 上下文 no support application-context</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>url</code> - web-url</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>customParams</code> - 透传字段</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="openUserCenter(Context)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>openUserCenter</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#openUserCenter(Context)>openUserCenter</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context)</pre>
+                                        <div class="block"><p>直接打开个人中心</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>context</code> - 上下文 no support application-context</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getSocialInfo(Activity,String,ResultCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getSocialInfo</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#getSocialInfo(Activity,String,ResultCallback)>getSocialInfo</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> platformName, ResultCallback callback)</pre>
+                                        <div class="block"><p>获取社交信息</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>activity</code> - 上下文</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>platformName</code> - 哪个平台，如facebook</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>callback</code> - 回调信息</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getFriendInfo(Activity,String,ResultCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getFriendInfo</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#getFriendInfo(Activity,String,ResultCallback)>getFriendInfo</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> platformName, ResultCallback callback)</pre>
+                                        <div class="block"><p>获取好友信息</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>activity</code> - 上下文</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>platformName</code> - 哪个平台，如facebook</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>callback</code> - 回调信息</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="invite(Activity,String,String,ResultCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>invite</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#invite(Activity,String,String,ResultCallback)>invite</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> platformName, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> json, ResultCallback callback)</pre>
+                                        <div class="block"><p>社交-邀请</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>activity</code> - 上下文</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>platformName</code> - 哪个平台，如facebook</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>json</code> - <pre><code>{"message":"invite-message"}</code></pre></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>callback</code> - 回调信息</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onExit(Activity,ExitCallback,Boolean)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onExit</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onExit(Activity,ExitCallback,Boolean)>onExit</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, ExitCallback callback, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> gameCustom)</pre>
+                                        <div class="block"><p>退出：1. 游戏界面按钮主动退出；2. back键拦截退出，需要游戏实现onKeyDown</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>activity</code> - 上下文</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>callback</code> - 退出回调</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>gameCustom</code> - 游戏是否有自定义退出逻辑<ul><li><p>仅当渠道无退出逻辑时，才会生效，而使用游戏自定义退出逻辑；</p></li><li><p>默认<code>false</code>，当渠道无退出逻辑时，使用OmniSDK提供的退出逻辑。</p></li></ul></dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="loadInterstitialAd(Context,String,AdLoadCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>loadInterstitialAd</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#loadInterstitialAd(Context,String,AdLoadCallback)>loadInterstitialAd</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> adId, AdLoadCallback callback)</pre>
+                                        <div class="block"><p>加载插屏广告</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>context</code> - activity &amp; context</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>adId</code> - 广告id</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>callback</code> - 广告回调</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="showInterstitialAd(Context,String,AdShowCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>showInterstitialAd</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#showInterstitialAd(Context,String,AdShowCallback)>showInterstitialAd</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> adId, AdShowCallback callback)</pre>
+                                        <div class="block"><p>展示插屏广告</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>context</code> - activity &amp; context</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>adId</code> - 广告id</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>callback</code> - 广告回调</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="isInterstitialAdReady(Object)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>isInterstitialAdReady</h4>
+                                        <pre class="methodSignature"> <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=OmniSDK.html#isInterstitialAdReady(Object)>isInterstitialAdReady</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html>Object</a> objects)</pre>
+                                        <div class="block"><p>插屏广告是否准备好：即加载状态</p><p>部分渠道，load#ed 无上层回调时使用</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>objects</code> - 渠道规定的参数，例: "adId", "home"</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="loadRewardAd(Context,String,AdLoadCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>loadRewardAd</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#loadRewardAd(Context,String,AdLoadCallback)>loadRewardAd</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> adId, AdLoadCallback callback)</pre>
+                                        <div class="block"><p>加载激励广告</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>context</code> - activity &amp; context</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>adId</code> - 广告id</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>callback</code> - 广告回调</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="showRewardAd(Context,String,AdShowCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>showRewardAd</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#showRewardAd(Context,String,AdShowCallback)>showRewardAd</a>(<a href=https://developer.android.com/reference/kotlin/android/content/Context.html>Context</a> context, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> adId, AdShowCallback callback)</pre>
+                                        <div class="block"><p>展示激励广告</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>context</code> - activity &amp; context</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>adId</code> - 广告id</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>callback</code> - 广告回调</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="isRewardAdReady(Object)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>isRewardAdReady</h4>
+                                        <pre class="methodSignature"> <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=OmniSDK.html#isRewardAdReady(Object)>isRewardAdReady</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html>Object</a> objects)</pre>
+                                        <div class="block"><p>激励广告是否准备好：即加载状态</p><p>部分渠道，load#ed 无上层回调时使用</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>objects</code> - 渠道规定的参数，例: "adId", "home"</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="loadBannerAd(Activity,String,AdLoadCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>loadBannerAd</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#loadBannerAd(Activity,String,AdLoadCallback)>loadBannerAd</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> adId, AdLoadCallback callback)</pre>
+                                        <div class="block"><p>加载横幅广告</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>activity</code> - 上下文</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>adId</code> - 广告id</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>callback</code> - 广告回调</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="showBannerAd(Activity,String,Integer,ViewGroup,AdShowCallback)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>showBannerAd</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#showBannerAd(Activity,String,Integer,ViewGroup,AdShowCallback)>showBannerAd</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> adId, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> gravity, <a href=https://developer.android.com/reference/kotlin/android/view/ViewGroup.html>ViewGroup</a> container, AdShowCallback callback)</pre>
+                                        <div class="block"><p>展示横幅广告</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>activity</code> - 上下文</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>adId</code> - 广告id</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>gravity</code> - 支持 Gravity.</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>container</code> - 广告容器，如果为null 时，默认使用 SDK 创建的容器</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>callback</code> - 广告回调</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="hideBannerAd(Activity,String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>hideBannerAd</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#hideBannerAd(Activity,String)>hideBannerAd</a>(<a href=https://developer.android.com/reference/kotlin/android/app/Activity.html>Activity</a> activity, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> adId)</pre>
+                                        <div class="block"><p>隐藏横幅广告</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>activity</code> - 上下文</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>adId</code> - 广告id</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="isBannerAdReady(Object)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>isBannerAdReady</h4>
+                                        <pre class="methodSignature"> <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html>Boolean</a> <a href=OmniSDK.html#isBannerAdReady(Object)>isBannerAdReady</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html>Object</a> objects)</pre>
+                                        <div class="block"><p>横幅广告是否准备好：即加载状态</p><p>部分渠道，load#ed 无上层回调时使用</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>objects</code> - 渠道规定的参数，例: "adId", "home"</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onCreateRole(RoleInfo)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onCreateRole</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onCreateRole(RoleInfo)>onCreateRole</a>(RoleInfo roleInfo)</pre>
+                                        <div class="block"><p>建议在玩家新创建游戏角色的时候，调用此接口，上报角色数据。</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>roleInfo</code> - <ul><li><p>角色信息，请参考RoleInfo的定义</p></li></ul></dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onEnterGame(RoleInfo)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onEnterGame</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onEnterGame(RoleInfo)>onEnterGame</a>(RoleInfo roleInfo)</pre>
+                                        <div class="block"><p>建议在登录完成后，进入游戏界面时，调用此接口，上报角色数据</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>roleInfo</code> - － 角色信息，请参考RoleInfo的定义</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onRoleLevelUp(RoleInfo)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onRoleLevelUp</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onRoleLevelUp(RoleInfo)>onRoleLevelUp</a>(RoleInfo roleInfo)</pre>
+                                        <div class="block"><p>建议在角色等级升级时，调用此接口，上报角色数据</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>roleInfo</code> - － 角色信息，请参考RoleInfo的定义</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onMissionBegin(RoleInfo,String,String,Integer,Integer,String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onMissionBegin</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onMissionBegin(RoleInfo,String,String,Integer,Integer,String)>onMissionBegin</a>(RoleInfo roleInfo, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> missionId, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> missionName, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> doMissionTimes, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> roleCurrentPower, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> customParams)</pre>
+                                        <div class="block"><p>跟踪玩家的任务或关卡完成情况。当开始某个任务或关卡时，调用此接口</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>roleInfo</code> - <ul><li><p>角色信息，请参考RoleInfo的定义</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>missionId</code> - <ul><li><p>任务ID</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>missionName</code> - <ul><li><p>任务名称</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>doMissionTimes</code> - 次数，第几次执行该任务/关卡就传几</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>roleCurrentPower</code> - 角色当前体力值</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>customParams</code> - <ul><li><p>扩展参数，JSON格式，默认为null</p></li></ul></dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onMissionSuccess(RoleInfo,String,String,Integer,Integer,String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onMissionSuccess</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onMissionSuccess(RoleInfo,String,String,Integer,Integer,String)>onMissionSuccess</a>(RoleInfo roleInfo, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> missionId, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> missionName, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> doMissionTimes, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> roleCurrentPower, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> customParams)</pre>
+                                        <div class="block"><p>跟踪玩家的任务或关卡完成情况。当某个任务或关卡已经成功完成，调用此接口</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>roleInfo</code> - <ul><li><p>角色信息，请参考RoleInfo的定义</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>missionId</code> - <ul><li><p>任务ID</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>missionName</code> - <ul><li><p>任务名称</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>doMissionTimes</code> - 次数，第几次执行该任务/关卡就传几</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>roleCurrentPower</code> - 角色当前体力值</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>customParams</code> - <ul><li><p>扩展参数，JSON格式，默认为null</p></li></ul></dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onMissionFail(RoleInfo,String,String,Integer,Integer,String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onMissionFail</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onMissionFail(RoleInfo,String,String,Integer,Integer,String)>onMissionFail</a>(RoleInfo roleInfo, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> missionId, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> missionName, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> doMissionTimes, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> roleCurrentPower, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> customParams)</pre>
+                                        <div class="block"><p>跟踪玩家的任务或关卡完成情况。当某个任务或关卡执行失败时，调用此接口</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>roleInfo</code> - <ul><li><p>角色信息，请参考RoleInfo的定义</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>missionId</code> - <ul><li><p>任务ID</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>missionName</code> - <ul><li><p>任务名称</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>doMissionTimes</code> - 次数，第几次执行该任务/关卡就传几</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>roleCurrentPower</code> - 角色当前体力值</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>customParams</code> - <ul><li><p>扩展参数，JSON格式，默认为null</p></li></ul></dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onVirtualCurrencyPurchase(RoleInfo,Integer,String,Integer,String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onVirtualCurrencyPurchase</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onVirtualCurrencyPurchase(RoleInfo,Integer,String,Integer,String)>onVirtualCurrencyPurchase</a>(RoleInfo roleInfo, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> amount, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> virtualCurrencyType, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> virtualCurrencyTotal, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> gameTradeNo)</pre>
+                                        <div class="block"><p>跟踪玩家的购买及消费行为。当玩家通过充值获得游戏内虚拟货币时，调用此接口</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>roleInfo</code> - <ul><li><p>角色信息，请参考RoleInfo的定义</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>amount</code> - <ul><li><p>虚拟货币数量,如:10、100、100</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>virtualCurrencyType</code> - <ul><li><p>虚拟货币名称，如：元宝、金币等</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>virtualCurrencyTotal</code> - <ul><li><p>虚拟货币总量,如：100、1000、10000</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>gameTradeNo</code> - <ul><li><p>游戏传入的订单号,r如trade123456789</p></li></ul></dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onVirtualCurrencyReward(RoleInfo,Integer,String,Integer,String,String,String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onVirtualCurrencyReward</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onVirtualCurrencyReward(RoleInfo,Integer,String,Integer,String,String,String)>onVirtualCurrencyReward</a>(RoleInfo roleInfo, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> amount, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> virtualCurrencyType, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> virtualCurrencyTotal, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> gainChannel, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> gainChannelType, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> gameTradeNo)</pre>
+                                        <div class="block"><p>跟踪玩家的购买及消费行为。当玩家完成活动或任务后，系统赠送给玩家虚拟货币时，调用此接口</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>roleInfo</code> - <ul><li><p>角色信息，请参考RoleInfo的定义</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>amount</code> - <ul><li><p>虚拟货币数量,如:10、100、100</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>virtualCurrencyType</code> - <ul><li><p>虚拟货币名称，如：元宝、金币等</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>virtualCurrencyTotal</code> - <ul><li><p>虚拟货币总量,如：100、1000、10000</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>gainChannel</code> - <ul><li><p>货币来源，比如（每日登录奖励,抽宝箱等)</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>gainChannelType</code> - <ul><li><p>货币来源类型比如日常任务、闯关等</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>gameTradeNo</code> - <ul><li><p>游戏传入的订单号,r如trade123456789</p></li></ul></dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onVirtualCurrencyConsume(RoleInfo,Integer,String,Integer,String,Integer,String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onVirtualCurrencyConsume</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onVirtualCurrencyConsume(RoleInfo,Integer,String,Integer,String,Integer,String)>onVirtualCurrencyConsume</a>(RoleInfo roleInfo, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> amount, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> virtualCurrencyType, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> virtualCurrencyTotal, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> itemName, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> itemNum, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> itemType)</pre>
+                                        <div class="block"><p>跟踪玩家的购买及消费行为。当玩家消费虚拟货币时，调用此接口</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>roleInfo</code> - <ul><li><p>角色信息，请参考RoleInfo的定义</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>amount</code> - <ul><li><p>虚拟货币数量,如:10、100、100</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>virtualCurrencyType</code> - <ul><li><p>虚拟货币名称，如：元宝、金币等</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>virtualCurrencyTotal</code> - <ul><li><p>虚拟货币总量,如：100、1000、10000</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>itemName</code> - <ul><li><p>消费项目（比如十连抽，购买体力等)</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>itemNum</code> - 消费项目的数量,如1、2、3</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>itemType</code> - 消费类型 比如道具</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onEvent(RoleInfo,String,String,Integer,String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onEvent</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onEvent(RoleInfo,String,String,Integer,String)>onEvent</a>(RoleInfo roleInfo, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> eventId, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> eventDesc, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html>Integer</a> eventVal, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> eventBody)</pre>
+                                        <div class="block"><p>自定义事件，游戏可以通过此接口进行自助数据上报及分析</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>roleInfo</code> - <ul><li><p>角色信息，请参考RoleInfo的定义</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>eventId</code> - <ul><li><p>事件类型</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>eventDesc</code> - <ul><li><p>事件描述：比如：初始化成功、登录成功等</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>eventVal</code> - <ul><li><p>事件数值。XGSDK的统计平台可以对此数值进行sum／max／min／avg等操作</p></li></ul></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>eventBody</code> - － 事件详细定义，JSON格式，默认为null</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onPayFinish(PayInfo)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onPayFinish</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onPayFinish(PayInfo)>onPayFinish</a>(PayInfo payInfo)</pre>
+                                        <div class="block"><p>跟踪玩家的支付信息，支付成功时调用此接口。</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>payInfo</code> - <ul><li><p>支付信息，请参考Order的定义 必须字段： String uid;//账号ID int payAmount;//付费金额,单位分 String roleId;//角色ID String roleName;//角色名 String roleLevel;//角色等级 String serverId;//服ID String gameTradeNo;//游戏订单ID，支付成功后，透传给游戏</p></li></ul></dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onGameLoadResource()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onGameLoadResource</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onGameLoadResource()>onGameLoadResource</a>()</pre>
+                                        <div class="block"><p>游戏加载资源完成时调用该接口，发送相关信息。</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onGameLoadConfig()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onGameLoadConfig</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onGameLoadConfig()>onGameLoadConfig</a>()</pre>
+                                        <div class="block"><p>游戏加载配置完成时调用该接口，发送相关信息。</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onOpenAnnouncement()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onOpenAnnouncement</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onOpenAnnouncement()>onOpenAnnouncement</a>()</pre>
+                                        <div class="block"><p>用户打开公告时调用该接口，发送相关信息。</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onCloseAnnouncement()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onCloseAnnouncement</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onCloseAnnouncement()>onCloseAnnouncement</a>()</pre>
+                                        <div class="block"><p>用户关闭公告时调用该接口，发送相关信息。</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onNewUserMission(RoleInfo)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onNewUserMission</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onNewUserMission(RoleInfo)>onNewUserMission</a>(RoleInfo roleInfo)</pre>
+                                        <div class="block"><p>用户完成新手任务时调用该接口，发送相关信息。</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onPrivateFunCodeUse(RoleInfo,String,String,String,String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onPrivateFunCodeUse</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onPrivateFunCodeUse(RoleInfo,String,String,String,String)>onPrivateFunCodeUse</a>(RoleInfo roleInfo, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> funCode, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> funCodeDesc, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> funCodeType, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> funCodeBatchId)</pre>
+                                        <div class="block"><p>用户使用专用的功能码（激活码、礼品码等）时，调用该接口，发送相关信息。</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>roleInfo</code> - 角色信息</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>funCode</code> - 码值</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>funCodeDesc</code> - 码的描述</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>funCodeType</code> - 码的类型</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>funCodeBatchId</code> - 码的批号</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="onPublicFunCodeUse(RoleInfo,String,String,String,String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>onPublicFunCodeUse</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#onPublicFunCodeUse(RoleInfo,String,String,String,String)>onPublicFunCodeUse</a>(RoleInfo roleInfo, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> funCode, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> funCodeDesc, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> funCodeType, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> funCodeBatchId)</pre>
+                                        <div class="block"><p>用户使用公用的功能码（激活码、礼品码等）时，调用该接口，发送相关信息。</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>roleInfo</code> - 角色信息</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>funCode</code> - 码值</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>funCodeDesc</code> - 码的描述</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>funCodeType</code> - 码的类型</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>funCodeBatchId</code> - 码的批号</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="addCommonAttribute(String,String)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>addCommonAttribute</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=OmniSDK.html#addCommonAttribute(String,String)>addCommonAttribute</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> key, <a href=https://docs.oracle.com/javase/8/docs/api/java/lang/String.html>String</a> value)</pre>
+                                        <div class="block"><p>向上报的数据中添加共通属性，即每条数据都包含的属性。</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>key</code> - 字段名称</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>value</code> - 字段值</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                            </li>
+                        </ul>
+                    </section>
+                    
+                </li>
+            </ul>
+        </div>
+    </div>
+</main>
+<footer role="contentinfo">
+    <nav role="navigation">
+        <!-- ======= START OF BOTTOM NAVBAR ====== -->
+        <div class="bottomNav"><a id="navbar.bottom">
+            <!--   -->
+        </a>
+            <div class="skipNav"><a href="#skip.navbar.bottom" title="Skip navigation links">Skip navigation links</a>
+            </div>
+            <a id="navbar.bottom.firstrow">
+                <!--   -->
+            </a>
+            <ul class="navList" title="Navigation">
+    <li><a href="../../../../../index.html">Overview</a></li>
+    
+    <li><a href="package-summary.html">Package</a></li>
+    
+    <li class="navBarCell1Rev">Class</li>
+    
+    <li><a href="package-tree.html">Tree</a></li>
+    
+    <li><a href="../../../../../deprecated.html">Deprecated</a></li>
+    <li><a href="../../../../../index-files/index-1.html">Index</a></li>
+    <li>Help</li>
+</ul></div>
+        <a id="skip.navbar.bottom">
+            <!--   -->
+        </a>
+        <div class="subNav">
+<ul class="navList" id="allclasses_navbar_top" style="display: block;">
+    <li><a href="../../../../../allclasses.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+</div>
+<a id="skip.navbar.top">
+<!--   -->
+</a></div><!-- ======== END OF BOTTOM NAVBAR ======= -->
+    </nav>
+</footer><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" tabindex="0"
+    style="display: none;"></ul>
+<span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span>
+</body>
+</html>

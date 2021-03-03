@@ -1,0 +1,7 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+
+com.kingsoft.shiyou.omnisdk.api
+com.kingsoft.shiyou.omnisdk.api.interfaces
+com.kingsoft.shiyou.omnisdk.api.utils
+

@@ -1,0 +1,8 @@
+$dokka.format:javadoc-v1
+$dokka.linkExtension:html
+$dokka.location:com.kingsoft.shiyou.omnisdk.api.utils/OmniJavaUtils.ImageUriCallback///PointingToDeclaration/com/kingsoft/shiyou/omnisdk/api/utils/OmniJavaUtils.ImageUriCallback.html
+$dokka.location:com.kingsoft.shiyou.omnisdk.api/OmniSDK.Companion///PointingToDeclaration/com/kingsoft/shiyou/omnisdk/api/OmniSDK.Companion.html
+com.kingsoft.shiyou.omnisdk.api
+com.kingsoft.shiyou.omnisdk.api.interfaces
+com.kingsoft.shiyou.omnisdk.api.utils
+
