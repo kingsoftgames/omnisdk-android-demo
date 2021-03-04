@@ -416,7 +416,7 @@ public class JavaActivity extends AppCompatActivity {
         // 游戏订单号ID.有则传值，没有则传空字符串""
         String gameTradeNo = "gamecno123456789xxx";
 
-        // CP方服务器支付回调地址，有则传值，没有则传空字符串"".若传空字符串""则 SDK将使用S后台配置的回调地址
+        // CP方服务器支付回调地址，有则传值，没有则传空字符串"".若传空字符串""则SDK将使用后台配置的回调地址
         String gameCallbackUrl = "https://game.sdk.server/android/payment";
 
         // CP方自定义扩展数据,会在回调CP方服务器支付数据的时候原样返回.有则传值，没有则传空字符串""
@@ -586,10 +586,10 @@ public class JavaActivity extends AppCompatActivity {
                     for (int i = 0; i < friendsInList.size(); i++) {
                         FriendInfo friendInfo = friendsInList.get(i);
                         String id = friendInfo.getId();             // 好友社交平台账号ID
-                        String nickName = friendInfo.getNickName(); //昵称
-                        String imageUrl = friendInfo.getImageUrl(); //头像ICON地址
-                        int width = friendInfo.getWidth();          //头像宽度像素
-                        int height = friendInfo.getHeight();        //头像高度像素
+                        String nickName = friendInfo.getNickName(); // 昵称
+                        String imageUrl = friendInfo.getImageUrl(); // 头像ICON地址
+                        int width = friendInfo.getWidth();          // 头像宽度像素
+                        int height = friendInfo.getHeight();        // 头像高度像素
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
