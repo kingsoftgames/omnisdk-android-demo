@@ -274,15 +274,15 @@ OmniSDK Android 接入指南
 
 ## 6. 混淆配置
 #### OmniSDK 混淆配置
-- OmniSDK 混淆配置集成在自身依赖包内，编译时自动配置。
+  - OmniSDK 混淆配置集成在自身依赖包内，编译时自动配置。
 #### 第三方依赖库混淆配置说明
 第三方依赖库混淆配置，防止配置冲突由游戏应用配置，目前用到的如下：
-- Gson [必选](../proguard/gson-rules.pro)
+  - Gson [必选](../proguard/gson-rules.pro)
 #### 第三方依赖库混淆配置方法（建议）
-- 在游戏应用工程建立文件夹`proguard`。
-- 将相应的第三方依赖库混淆配置各按独立文件存放，比如`gson-rules.pro`。
-- 在游戏应用模块(app-level)根目录下的 ***build.gradle*** ，增加如下配置: 
-
+  - 在游戏应用工程建立文件夹`proguard`。
+  - 将相应的第三方依赖库混淆配置各按独立文件存放，比如`gson-rules.pro`。
+  - 在游戏应用模块(app-level)根目录下的 ***build.gradle*** ，增加如下配置: 
+    
     ```groovy
     android {
         buildTypes {
