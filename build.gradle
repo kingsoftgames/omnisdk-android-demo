@@ -1,4 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+// 引入渠道仓库配置
 apply from: ("${rootProject.rootDir}/kssyOmniRoot.gradle")
 
 buildscript {
@@ -10,7 +11,6 @@ buildscript {
         maven {
             url "https://maven.shiyou.kingsoft.com/repository/public/"
         }
-//        mavenLocal()//本地库，默认.m2/repository/
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.2"
@@ -27,12 +27,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-
-        // 金山世游仓库
-        maven {
-            url "https://maven.shiyou.kingsoft.com/repository/public/"
-        }
-
     }
 }
 

@@ -1,4 +1,21 @@
 // apply app or libs build.gradle
-// apply from: ("${rootProject.rootDir}/kssyOmni.gradle")
-
+/**
+ * 此配置为OmniSDK 编译插件为对应渠道自动生成的相关编译配置
+ * 不同渠道对应的配置是不同的，有些渠道会一些特殊配置
+ * 请用户不要对此文件做任何修改；
+ * ==> 如果需要修改，按照"Gradle编译原则"，只需要在`apply from`下面写上新规则，即可修改
+ * 请将以下引用写入 app or libs build.gradle 的最后一个apply 下面
+ * .gradle: `apply from: ("${rootProject.rootDir}/kssyOmniRoot.gradle")`
+ * .kts: `apply(from = "${rootProject.rootDir}/kssyOmniRoot.gradle")`
+ */
 apply plugin: "KSSYOmniPlugin"
+
+// OmniSDK 依赖
+dependencies {
+    api "com.kingsoft.shiyou.omnisdk.component:api:1.0.0"
+    implementation("com.kingsoft.shiyou.omnisdk.plugin:omni-account:1.0.0")
+    implementation("com.kingsoft.shiyou.omnisdk.plugin:google-pay:1.0.0")
+    implementation("com.kingsoft.shiyou.omnisdk.plugin:facebook:1.0.0")
+    implementation("com.kingsoft.shiyou.omnisdk.plugin:google:1.0.0")
+    implementation("com.kingsoft.shiyou.omnisdk.channel:website-en:1.0.0")
+}

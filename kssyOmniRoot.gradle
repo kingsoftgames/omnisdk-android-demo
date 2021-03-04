@@ -1,2 +1,15 @@
 // apply project root build.gradle
-// apply from: ("${rootProject.rootDir}/kssyOmniRoot.gradle")
+/**
+ * 此配置为OmniSDK 编译插件为对应渠道自动生成的相关编译配置
+ * 不同渠道对应的配置是不同的，有些渠道会一些特殊配置
+ * 请用户不要对此文件做任何修改
+ * 请将以下引用写入 project root build.gradle 的顶部
+ * .gradle: `apply from: ("${rootProject.rootDir}/kssyOmniRoot.gradle")`
+ * .kts: `apply(from = "${rootProject.rootDir}/kssyOmniRoot.gradle")`
+ */
+allprojects {
+    repositories {
+        //金山世游仓库
+        maven { url "https://maven.shiyou.kingsoft.com/repository/public/" }
+    }
+}
