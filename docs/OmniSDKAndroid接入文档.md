@@ -79,7 +79,7 @@ OmniSDK Android 接入指南
     ```
   
 ## 3. 初始化
-#### 1. Application（必接）
+### 1. Application（必接）
 * 若游戏应用无自定义的Application，则在游戏应用工程 **AndroidManifest.xml** 配置文件的  **&lt;application&gt;  tag** 中声明如下 ***android:name*** 的值:
     ```xml
     <application
@@ -135,7 +135,7 @@ OmniSDK Android 接入指南
     }
     ```
 
-#### 2. Activity生命周期方法接入 (必接)
+### 2. Activity生命周期方法接入 (必接)
 * 请在游戏自身Activity的相应生命周期方法中添加如下代码:
     ```java
 
@@ -262,31 +262,30 @@ OmniSDK Android 接入指南
 
 ## 5. API接口说明（可选功能）
 **注意:** 由于各个对接游戏需求不同，下面所有接口并不是都必须接入.请CP对接方务必先确定游戏对接需求然后集成所需接口API。  
-#### 1. 账号
+### 1. 账号
 详情阅读API接口文档-[`IAccount`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-account/index.html)
 
-#### 2. 支付
+### 2. 支付
 详情阅读API接口文档-[`IPay`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-pay/index.html)
 
-#### 3. 社交
+### 3. 社交
 详情阅读API接口文档-[`ISocial`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-social/index.html)
 
-#### 4. 特定功能
+### 4. 特定功能
 详情阅读API接口文档-[`IAction`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-action/index.html)
 
-#### 5. 通用方法
+### 5. 通用方法
 详情阅读API接口文档-[`IMethod`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-method/index.html)
 
 ## 6. 混淆配置
-
-#### OmniSDK 混淆配置
+### OmniSDK 混淆配置
 OmniSDK 混淆配置集成在自身依赖包内，编译时自动配置。
   
-#### 第三方依赖库混淆配置说明
+### 第三方依赖库混淆配置说明
 第三方依赖库混淆配置，防止配置冲突由游戏应用配置，目前用到的如下：
 - Gson [必选](../proguard/gson-rules.pro)
   
-#### 第三方依赖库混淆配置方法（建议）
+### 第三方依赖库混淆配置方法（建议）
 - 在游戏应用工程建立文件夹`proguard`。
 - 将相应的第三方依赖库混淆配置各按独立文件存放，比如`gson-rules.pro`。
 - 在游戏应用模块(app-level)根目录下的 ***build.gradle*** ，增加如下配置: 
