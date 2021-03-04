@@ -31,6 +31,7 @@ OmniSDK Android 接入指南
 # SDK获取
 1. 请CP对接方联系我方游戏项目负责人获取最新版本SDK
 2. [OmniSDK-Demo](https://github.com/kingsoftgames/omnisdk-android-demo)
+
 # 对接须知
 - 推荐使用Android Studio对接SDK
 - OmniSDK最低兼容版本为Android 4.4(API Level 19)
@@ -78,6 +79,7 @@ OmniSDK Android 接入指南
     apply from: ("${rootProject.rootDir}/kssyOmni.gradle")
     ```
 ## 3. 初始化
+
 #### 1. Application（必接）
 * 若游戏应用无自定义的Application，则在游戏应用工程 **AndroidManifest.xml** 配置文件的  **&lt;application&gt;  tag** 中声明如下 ***android:name*** 的值:
     ```xml
@@ -133,6 +135,7 @@ OmniSDK Android 接入指南
         // your code goes here
     }
     ```
+  
 #### 2. Activity生命周期方法接入 (必接)
 * 请在游戏自身Activity的相应生命周期方法中添加如下代码:
     ```java
@@ -263,25 +266,32 @@ OmniSDK Android 接入指南
 
 #### 1. 账号
 详情阅读API接口文档-[`IAccount`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-account/index.html)
+
 #### 2. 支付
 详情阅读API接口文档-[`IPay`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-pay/index.html)
+
 #### 3. 社交
 详情阅读API接口文档-[`ISocial`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-social/index.html)
+
 #### 4. 特定功能
 详情阅读API接口文档-[`IAction`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-action/index.html)
+
 #### 5. 通用方法
 详情阅读API接口文档-[`IMethod`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-method/index.html)
 
 ## 6. 混淆配置
+
 #### OmniSDK 混淆配置
-  - OmniSDK 混淆配置集成在自身依赖包内，编译时自动配置。
+- OmniSDK 混淆配置集成在自身依赖包内，编译时自动配置。
+  
 #### 第三方依赖库混淆配置说明
 第三方依赖库混淆配置，防止配置冲突由游戏应用配置，目前用到的如下：
-  - Gson [必选](../proguard/gson-rules.pro)
+- Gson [必选](../proguard/gson-rules.pro)
+  
 #### 第三方依赖库混淆配置方法（建议）
-  - 在游戏应用工程建立文件夹`proguard`。
-  - 将相应的第三方依赖库混淆配置各按独立文件存放，比如`gson-rules.pro`。
-  - 在游戏应用模块(app-level)根目录下的 ***build.gradle*** ，增加如下配置: 
+- 在游戏应用工程建立文件夹`proguard`。
+- 将相应的第三方依赖库混淆配置各按独立文件存放，比如`gson-rules.pro`。
+- 在游戏应用模块(app-level)根目录下的 ***build.gradle*** ，增加如下配置: 
     
     ```groovy
     android {
