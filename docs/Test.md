@@ -1,10 +1,12 @@
 Test
 ===
 
-&#26A0;
+github emoji: https://www.webfx.com/tools/emoji-cheat-sheet/
 
-&#9658;
-&#767;
-&#2400;
+"_config.yml"
+```yml
+gems:
+  - jemoji
+```
 
 :warning:
