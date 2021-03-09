@@ -13,15 +13,18 @@ OmniSDK Android 接入指南
         - [1. Application（必接）](#1-application必接)
         - [2. Activity生命周期方法接入 (必接)](#2-activity生命周期方法接入-必接)
     - [5. API接口说明（可选功能）](#5-api接口说明可选功能)
-        - [1. 账号](#1-账号)
-        - [2. 支付](#2-支付)
-        - [3. 社交](#3-社交)
-        - [4. 特定功能](#4-特定功能)
-        - [5. 通用方法](#5-通用方法)
+        - [全部接口](#全部接口)
+            - [1. 账号](#1-账号)
+            - [2. 支付](#2-支付)
+            - [3. 社交](#3-社交)
+            - [4. 特定功能](#4-特定功能)
+            - [5. 通用方法](#5-通用方法)
     - [6. 混淆配置](#6-混淆配置)
         - [OmniSDK 混淆配置](#omnisdk-混淆配置)
         - [第三方依赖库混淆配置说明](#第三方依赖库混淆配置说明)
         - [第三方依赖库混淆配置方法（建议）](#第三方依赖库混淆配置方法建议)
+- [附录](#附录)
+    - [SDK 常见状态码](#sdk-常见状态码)
 
 <!-- /TOC -->
 
@@ -261,20 +264,22 @@ OmniSDK Android 接入指南
     ```
 
 ## 5. API接口说明（可选功能）
-**注意:** 由于各个对接游戏需求不同，下面所有接口并不是都必须接入.请CP对接方务必先确定游戏对接需求然后集成所需接口API。  
-### 1. 账号
+**注意:** 由于各个对接游戏需求不同，下面所有接口并不是都必须接入.请CP对接方务必先确定游戏对接需求然后集成所需接口API。
+### 全部接口
+详情阅读API接口文档-[`OmniSDK`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api/-omni-s-d-k/index.html)
+#### 1. 账号
 详情阅读API接口文档-[`IAccount`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-account/index.html)
 
-### 2. 支付
+#### 2. 支付
 详情阅读API接口文档-[`IPay`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-pay/index.html)
 
-### 3. 社交
+#### 3. 社交
 详情阅读API接口文档-[`ISocial`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-social/index.html)
 
-### 4. 特定功能
+#### 4. 特定功能
 详情阅读API接口文档-[`IAction`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-action/index.html)
 
-### 5. 通用方法
+#### 5. 通用方法
 详情阅读API接口文档-[`IMethod`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-method/index.html)
 
 ## 6. 混淆配置
@@ -300,3 +305,7 @@ OmniSDK 混淆配置集成在自身依赖包内，编译时自动配置。
         }
     }
     ```
+  
+# 附录
+## SDK 常见状态码
+详情阅读 [状态码](OmniStatusCodes.md)
