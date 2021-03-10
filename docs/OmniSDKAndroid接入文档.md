@@ -12,13 +12,18 @@ OmniSDK Android 接入指南
     - [3. 初始化](#3-初始化)
         - [1. Application（必接）](#1-application必接)
         - [2. Activity生命周期方法接入 (必接)](#2-activity生命周期方法接入-必接)
+        - [3. 渠道统计接口 (必接)](#3-渠道统计接口-必接)
+                - [3.1 创建角色](#31-创建角色)
+                - [3.2 角色升级](#32-角色升级)
+                - [3.3 进入游戏](#33-进入游戏)
     - [5. API接口说明（可选功能）](#5-api接口说明可选功能)
         - [全部接口](#全部接口)
             - [1. 账号](#1-账号)
             - [2. 支付](#2-支付)
             - [3. 社交](#3-社交)
             - [4. 特定功能](#4-特定功能)
-            - [5. 通用方法](#5-通用方法)
+            - [5. 数据统计](#5-数据统计)
+            - [6. 通用方法](#6-通用方法)
     - [6. 混淆配置](#6-混淆配置)
         - [OmniSDK 混淆配置](#omnisdk-混淆配置)
         - [第三方依赖库混淆配置说明](#第三方依赖库混淆配置说明)
@@ -263,6 +268,82 @@ OmniSDK Android 接入指南
     }
     ```
 
+### 3. 渠道统计接口 (必接)
+详情阅读 [数据统计接口](#5-数据统计)
+##### 3.1 创建角色
+
+**应用场景**
+
+游戏在完成创建角色信息后，调用此接口传入角色信息。
+
+**方法定义**
+
+```java
+onCreateRole(RoleInfo)
+```
+
+**参数说明**
+
+详情阅读 [RoleInfo](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.core.entity/[android-jvm]-role-info/index.html)
+
+- 关于 RoleInfo 的说明
+    **1. 所有必接字段必须进行接入，否则会导致统计不完全，部分渠道审核无法通过！**
+    **2. 请严格按照规定的字段长度进行设置，否则可能发生游戏服务器端长度不够问题。**
+
+
+**代码示例**
+
+```java
+OmniSDK.getInstance().onCreateRole(roleInfo);
+```
+
+##### 3.2 角色升级
+
+**应用场景**
+
+角色等级接口，角色等级提升时调用。
+
+**方法定义**
+
+```java
+onRoleLevelUp(RoleInfo)
+```
+
+**参数说明**
+
+详情阅读 [RoleInfo](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.core.entity/[android-jvm]-role-info/index.html)
+
+**代码示例**
+
+```java
+roleInfo.setRoleLevel("2");
+OmniSDK.getInstance().onRoleLevelUp(roleInfo);
+```
+
+
+
+##### 3.3 进入游戏
+
+**应用场景**
+
+在角色信息都获取到以后，进行调用。
+
+**方法定义**
+
+```java
+onEnterGame(RoleInfo)
+```
+
+**参数说明**
+
+详情阅读 [RoleInfo](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.core.entity/[android-jvm]-role-info/index.html)
+
+**代码示例**
+
+```java
+OmniSDK.getInstance().onEnterGame(roleInfo)
+```
+
 ## 5. API接口说明（可选功能）
 **注意:** 由于各个对接游戏需求不同，下面所有接口并不是都必须接入.请CP对接方务必先确定游戏对接需求然后集成所需接口API。
 ### 全部接口
@@ -279,7 +360,10 @@ OmniSDK Android 接入指南
 #### 4. 特定功能
 详情阅读API接口文档-[`IAction`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-action/index.html)
 
-#### 5. 通用方法
+#### 5. 数据统计
+详情阅读API接口文档-[`IDataMonitor`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-data-monitor/index.html)
+
+#### 6. 通用方法
 详情阅读API接口文档-[`IMethod`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-method/index.html)
 
 ## 6. 混淆配置
