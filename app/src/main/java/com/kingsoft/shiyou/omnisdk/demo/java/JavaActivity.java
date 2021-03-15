@@ -278,18 +278,32 @@ public class JavaActivity extends AppCompatActivity {
         OmniSDK.getInstance().login(this, loginParams, new LoginCallback() {
             @Override
             public void onSuccess() {
-                // 登录成功, 获取登录用户数据
-                User user = OmniSDK.getInstance().getOmniUser();
+                // 登录成功, 获取登录用户数据(Json字符串格式)
+                String userJsonInfo = OmniSDK.getInstance().getUserInfo();
 
-                // CP方需使用该uid作为账号唯一标示ID
-                String userCpUid = user.getCpUid();
+                // 进行账号Json数据解析(比如可以使用Gson将其转成Map数据结构来进行解析,或者其他方式)
+                Map<String, Object> userMap =
+                        new Gson().fromJson(userJsonInfo, new TypeToken<Map<String, Object>>() {
+                        }.getType());
+
+                // SDK账号唯一标示ID
+                String uid = userMap.get("uid").toString();
+
+                // SDK账号Token值 (CP对接方需验证其有效性)
+                String token = userMap.get("token").toString();
+
+                // CP方需使用该cpUid作为账号唯一标示ID
+                String cpUid = userMap.get("cpUid").toString();
 
                 // 按照需求解析更多账号数据信息,比如是否为游客账号，账号昵称等等
-                if (1 == user.getType()) {
+                int accountType = Integer.parseInt(userMap.get("type").toString());
+                if (1 == accountType) {
                     // 当前账号类型为纯游客账号
-                    Log.e("SDK", "Guest Account");
+                    Log.i("SDK", "Guest Account");
                 }
-                Log.e("SDK", "Nickname = " + user.getShowName());
+                String showName = userMap.get("showName").toString();
+
+                Log.i("SDK", "showName = " + showName);
 
                 // CP自己的代码，比如进入游戏业务
             }
@@ -320,11 +334,23 @@ public class JavaActivity extends AppCompatActivity {
         OmniSDK.getInstance().switchAccount(this, switchAccountParams, new SwitchAccountCallback() {
             @Override
             public void onSuccess() {
-                // 账号切换成功, 获取新切换的用户数据
-                User user = OmniSDK.getInstance().getOmniUser();
 
-                // CP方需使用该uid作为账号唯一标示ID
-                String userCpUid = user.getCpUid();
+                // 账号切换成功, 获取新切换的用户数据(Json字符串格式)
+                String userJsonInfo = OmniSDK.getInstance().getUserInfo();
+
+                // 进行账号Json数据解析(比如可以使用Gson将其转成Map数据结构来进行解析,或者其他方式)
+                Map<String, Object> userMap =
+                        new Gson().fromJson(userJsonInfo, new TypeToken<Map<String, Object>>() {
+                        }.getType());
+
+                // SDK账号唯一标示ID
+                String uid = userMap.get("uid").toString();
+
+                // SDK账号Token值 (CP对接方需验证其有效性)
+                String token = userMap.get("token").toString();
+
+                // CP方需使用该cpUid作为账号唯一标示ID
+                String cpUid = userMap.get("cpUid").toString();
 
                 // CP自己的代码，比如退出当前游戏账号，使用新切换的账号重新开始游戏
             }
@@ -356,8 +382,23 @@ public class JavaActivity extends AppCompatActivity {
         OmniSDK.getInstance().bindAccount(this, bindAccountParams, new BindAccountCallback() {
             @Override
             public void onSuccess() {
-                // 账号绑定成功,获取新绑定的用户数据
-                User user = OmniSDK.getInstance().getOmniUser();
+
+                // 账号绑定成功,获取新绑定的用户数据(Json字符串格式)
+                String userJsonInfo = OmniSDK.getInstance().getUserInfo();
+
+                // 进行账号Json数据解析(比如可以使用Gson将其转成Map数据结构来进行解析,或者其他方式)
+                Map<String, Object> userMap =
+                        new Gson().fromJson(userJsonInfo, new TypeToken<Map<String, Object>>() {
+                        }.getType());
+
+                // SDK账号唯一标示ID
+                String uid = userMap.get("uid").toString();
+
+                // SDK账号Token值 (CP对接方需验证其有效性)
+                String token = userMap.get("token").toString();
+
+                // CP方需使用该cpUid作为账号唯一标示ID
+                String cpUid = userMap.get("cpUid").toString();
 
                 // CP自己的代码，比如回到游戏界面给玩家奖励
             }
@@ -409,6 +450,7 @@ public class JavaActivity extends AppCompatActivity {
         String productName = "750 Diamonds"; // 商品名称，有则传值，无则保持和商品ID一致
         String productDesc = "750 Diamonds"; // 商品描述，有则传值，无则保持和商品ID一致
         double productPrice = 9.99;          // 商品价格(单位为元,必传数据),比如9.99，0.99等等
+        double payAmount = 9.99;             // 实际支付总额(单位为元)
         String currency = "USD";             // 商品价格对应的货币单位（必传数据）, 比如 USD HKD 等等
         String serverId = "s01";             // 服务器 ID（必传数据），对于没有区服概念的游戏请直接传空字符串""
         String roleId = "r15996112_122";     // 游戏角色唯一标示ID（必传数据）
@@ -428,6 +470,7 @@ public class JavaActivity extends AppCompatActivity {
                 productName,
                 productDesc,
                 productPrice,
+                payAmount,
                 currency,
                 serverId,
                 roleId,
@@ -602,89 +645,6 @@ public class JavaActivity extends AppCompatActivity {
                 Log.e("SDK", "err = " + pair.toString());
             }
         });
-    }
-
-
-    /* ***************************** SDK 广告业务功能接口示例如下 ********************************** */
-
-    /**
-     * 加载Banner横幅广告
-     *
-     * @param adId 广告标示ID
-     */
-    public void loadBannerAd(String adId) {
-        OmniSDK.getInstance().loadBannerAd(this, adId, new AdLoadCallback() {
-            @Override
-            public void onLoadSucceed(String id, String adSource) {
-                // 广告加载成功
-            }
-
-            @Override
-            public void onLoadFailed(String id, int errorCode, String errorMsg) {
-                // 广告加载失败
-            }
-        });
-    }
-
-    /**
-     * 显示Banner横幅广告
-     *
-     * @param adId        广告标示ID
-     * @param adContainer Banner广告的父UI控件,CP方可以指定，传null则SDK内部会自己创建一个UI父控件
-     */
-    public void showBannerAd(String adId, ViewGroup adContainer) {
-
-        //Banner广告显示位置,比如 Gravity.CENTER_HORIZONTAL or Gravity.TOP
-        OmniSDK.getInstance().showBannerAd(this, adId, Gravity.TOP, adContainer, new AdShowCallback() {
-                    @Override
-                    public void onShownSucceed(String adId, String adSource) {
-
-                    }
-
-                    @Override
-                    public void onShowFailed(String adId, int errorCode, String errorMsg) {
-
-                    }
-
-                    @Override
-                    public void onLeaveActivity(String adId, String adSource) {
-
-                    }
-
-                    @Override
-                    public void onHaveRewarded(String adId, String adSource, String type) {
-
-                    }
-
-                    @Override
-                    public void onClosed(String adId, String adSource) {
-
-                    }
-
-                    @Override
-                    public void onClicked(String adId, String adSource) {
-
-                    }
-                }
-        );
-    }
-
-    /**
-     * 移除隐藏Banner横幅广告
-     *
-     * @param adId 广告标示ID
-     */
-    public void hideBannerAd(String adId) {
-        OmniSDK.getInstance().hideBannerAd(this, adId);
-    }
-
-    /**
-     * 检测Banner横幅广告是否被成功加载可以展现
-     *
-     * @param adId 广告标示ID
-     */
-    public void isBannerAdReady(String adId) {
-        OmniSDK.getInstance().isBannerAdReady(adId);
     }
 
 }
