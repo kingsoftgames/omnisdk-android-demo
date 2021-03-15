@@ -40,6 +40,9 @@ OmniSDK Android 接入指南
 1. 请CP对接方联系我方游戏项目负责人获取最新版本SDK
 2. [OmniSDK-Demo](https://github.com/kingsoftgames/omnisdk-android-demo)
 
+# 版本记录
+[版本记录](CHANGELOG.md)
+
 # 对接须知
 - 推荐使用Android Studio对接SDK
 - OmniSDK最低兼容版本为Android 4.4(API Level 19)
