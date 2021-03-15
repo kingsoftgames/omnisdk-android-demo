@@ -1,14 +1,12 @@
 package com.kingsoft.shiyou.omnisdk.demo.java;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.ViewGroup;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -17,8 +15,6 @@ import com.kingsoft.shiyou.omnisdk.api.callback.BindAccountCallback;
 import com.kingsoft.shiyou.omnisdk.api.callback.LoginCallback;
 import com.kingsoft.shiyou.omnisdk.api.callback.PayCallback;
 import com.kingsoft.shiyou.omnisdk.api.callback.SwitchAccountCallback;
-import com.kingsoft.shiyou.omnisdk.core.callback.AdLoadCallback;
-import com.kingsoft.shiyou.omnisdk.core.callback.AdShowCallback;
 import com.kingsoft.shiyou.omnisdk.core.callback.ResponseCallback;
 import com.kingsoft.shiyou.omnisdk.core.callback.ResultCallback;
 import com.kingsoft.shiyou.omnisdk.core.entity.FriendInfo;
