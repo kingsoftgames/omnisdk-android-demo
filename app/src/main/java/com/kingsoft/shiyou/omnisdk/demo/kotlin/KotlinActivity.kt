@@ -237,18 +237,36 @@ class KotlinActivity : AppCompatActivity() {
         // 调用SDK登录接口
         OmniSDK.instance.login(this, loginParams, object : LoginCallback {
             override fun onSuccess() {
-                // 登录成功, 获取登录用户数据
-                val user = OmniSDK.instance.getOmniUser()!!
 
-                // CP方需使用该uid作为账号唯一标示ID
-                val userCpUid = user.cpUid
+                // 登录成功, 获取登录用户数据(Json字符串格式)
+                val userJsonInfo: String = OmniSDK.instance.getUserInfo()!!
+
+                // 进行账号Json数据解析(比如可以使用Gson将其转成Map数据结构来进行解析,或者其他方式)
+
+                // 进行账号Json数据解析(比如可以使用Gson将其转成Map数据结构来进行解析,或者其他方式)
+                val userMap = Gson().fromJson<Map<String, Any>>(
+                    userJsonInfo,
+                    object : TypeToken<Map<String, Any>>() {}.type
+                )
+
+                // SDK账号唯一标示ID
+                val uid = userMap["uid"].toString()
+
+                // SDK账号Token值 (CP对接方需验证其有效性)
+                val token = userMap["token"].toString()
+
+                // CP方需使用该cpUid作为账号唯一标示ID
+                val cpUid = userMap["cpUid"].toString()
 
                 // 按照需求解析更多账号数据信息,比如是否为游客账号，账号昵称等等
-                if (1 == user.type) {
+                val accountType = userMap["type"].toString().toInt()
+                if (1 == accountType) {
                     // 当前账号类型为纯游客账号
                     Log.i("SDK", "Guest Account")
                 }
-                Log.i("SDK", "Nickname = ${user.showName}")
+                val showName = userMap["showName"].toString()
+
+                Log.e("SDK", "showName = $showName")
 
                 // CP自己的代码，比如进入游戏业务
             }
@@ -276,11 +294,26 @@ class KotlinActivity : AppCompatActivity() {
         // 调用SDK账号切换接口
         OmniSDK.instance.switchAccount(this, switchAccountParams, object : SwitchAccountCallback {
             override fun onSuccess() {
-                // 账号切换成功, 获取新切换的用户数据
-                val user = OmniSDK.instance.getOmniUser()!!
 
-                // CP方需使用该uid作为账号唯一标示ID
-                val userCpUid = user.cpUid
+                // 账号切换成功, 获取新切换的用户数据(Json字符串格式)
+                val userJsonInfo: String = OmniSDK.instance.getUserInfo()!!
+
+                // 进行账号Json数据解析(比如可以使用Gson将其转成Map数据结构来进行解析,或者其他方式)
+
+                // 进行账号Json数据解析(比如可以使用Gson将其转成Map数据结构来进行解析,或者其他方式)
+                val userMap = Gson().fromJson<Map<String, Any>>(
+                    userJsonInfo,
+                    object : TypeToken<Map<String, Any>>() {}.type
+                )
+
+                // SDK账号唯一标示ID
+                val uid = userMap["uid"].toString()
+
+                // SDK账号Token值 (CP对接方需验证其有效性)
+                val token = userMap["token"].toString()
+
+                // CP方需使用该cpUid作为账号唯一标示ID
+                val cpUid = userMap["cpUid"].toString()
 
                 // CP自己的代码，比如退出当前游戏账号，使用新切换的账号重新开始游戏
             }
@@ -309,8 +342,26 @@ class KotlinActivity : AppCompatActivity() {
         // 调用SDK账号绑定接口
         OmniSDK.instance.bindAccount(this, bindAccountParams, object : BindAccountCallback {
             override fun onSuccess() {
-                // 账号绑定成功,获取新绑定的用户数据
-                val user = OmniSDK.instance.getOmniUser()!!
+
+                // 账号绑定成功,获取新绑定的用户数据(Json字符串格式)
+                val userJsonInfo: String = OmniSDK.instance.getUserInfo()!!
+
+                // 进行账号Json数据解析(比如可以使用Gson将其转成Map数据结构来进行解析,或者其他方式)
+
+                // 进行账号Json数据解析(比如可以使用Gson将其转成Map数据结构来进行解析,或者其他方式)
+                val userMap = Gson().fromJson<Map<String, Any>>(
+                    userJsonInfo,
+                    object : TypeToken<Map<String, Any>>() {}.type
+                )
+
+                // SDK账号唯一标示ID
+                val uid = userMap["uid"].toString()
+
+                // SDK账号Token值 (CP对接方需验证其有效性)
+                val token = userMap["token"].toString()
+
+                // CP方需使用该cpUid作为账号唯一标示ID
+                val cpUid = userMap["cpUid"].toString()
 
                 // CP自己的代码，比如回到游戏界面给玩家奖励
             }
@@ -358,6 +409,7 @@ class KotlinActivity : AppCompatActivity() {
         val productName = "750 Diamonds" // 商品名称，有则传值，无则保持和商品ID一致
         val productDesc = "750 Diamonds" // 商品描述，有则传值，无则保持和商品ID一致
         val productPrice = 9.99          // 商品价格(单位为元,必传数据),比如9.99，0.99等等
+        val payAmount = 9.99              // 实际支付总额(单位为元)
         val currency = "USD"             // 商品价格对应的货币单位（必传数据）, 比如 USD HKD 等等
         val serverId = "s01"             // 服务器 ID（必传数据），对于没有区服概念的游戏请直接传空字符串""
         val roleId = "r15996112_122"     // 游戏角色唯一标示ID（必传数据）
@@ -377,6 +429,7 @@ class KotlinActivity : AppCompatActivity() {
             productName,
             productDesc,
             productPrice,
+            payAmount,
             currency,
             serverId,
             roleId,
