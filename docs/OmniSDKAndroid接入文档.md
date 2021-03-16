@@ -53,7 +53,7 @@ OmniSDK Android 接入指南
 * 将SDK ZIP解压后的 **project_config.json** 拷贝到游戏应用模块(app-level or libs-level)的 **/src/main/assets/shiyou/** 目录下
    
 ## 2. 配置Gradle脚本
-* 在游戏项目工程(root-level)根目录下的 ***build.gradle*** ，添加如下配置:
+1. 在游戏项目工程(root-level)根目录下的 ***build.gradle*** ，添加如下配置:
     ```groovy
    // 引入渠道仓库配置
     apply from: ("${rootProject.rootDir}/kssyOmniRoot.gradle")
@@ -84,11 +84,14 @@ OmniSDK Android 接入指南
         }
     }
     ```
-* 在游戏应用模块(app-level or libs-level)根目录下的 ***build.gradle*** ，添加如下配置:
+2. 在游戏应用模块(app-level or libs-level)根目录下的 ***build.gradle*** ，添加如下配置:
     ```groovy
     apply from: ("${rootProject.rootDir}/kssyOmni.gradle")
     ```
   
+3. `sync gradle`，即点击`Sync Now` 或 Android Studio 菜单栏的“大象”图标。同步依赖库成功后，即可集成开发。
+
+
 ## 3. 初始化
 ### 1. Application（必接）
 * 若游戏应用无自定义的Application，则在游戏应用工程 **AndroidManifest.xml** 配置文件的  **&lt;application&gt;  tag** 中声明如下 ***android:name*** 的值:
