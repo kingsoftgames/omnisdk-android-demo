@@ -30,6 +30,7 @@ OmniSDK Android 接入指南
         - [第三方依赖库混淆配置方法（建议）](#第三方依赖库混淆配置方法建议)
 - [附录](#附录)
     - [SDK 常见状态码](#sdk-常见状态码)
+    - [版本最低兼容问题](#版本最低兼容问题)
 
 <!-- /TOC -->
 
@@ -45,7 +46,7 @@ OmniSDK Android 接入指南
 
 # 对接须知
 - 推荐使用Android Studio对接SDK
-- OmniSDK最低兼容版本为Android 4.4(API Level 19)
+- OmniSDK最低兼容版本为 Android 5.0(API Level 21)，阅读[版本最低兼容问题](#版本最低兼容问题)。
 
 # 集成开发配置
 ## 1. 拷贝Gradle文件和集成参数配置文件
@@ -400,5 +401,17 @@ OmniSDK 混淆配置集成在自身依赖包内，编译时自动配置。
     ```
   
 # 附录
+## 版本最低兼容问题
+SGSDK 目前还支持Android 4.4(API Level 19)，但是 OmniSDK 对 Android 5.0(API Level 21) 以下将不再支持。
+
+原因有以下几个：
+1. 海外，Google 统计  Android 5.0以下的占有率已经非常低，并且机型内存太低。
+2. 国内重要渠道如小米、华为、应用宝等，都要求 API Level 24。
+3. OmniSDK 使用的网络库OkHttp，现在是 Android 5.0以上的底层网络库；很多第三方库的新版本都在引用，而且他们积极更新。
+如果不使用第三方SDK的高版本，比如 Facebook，有些功能可能会逐步无法使用，低版本的一些`API`被限制或废弃。
+4. 重要的第三方SDK（比如Facebook）、渠道SDK，最新版本都做了一些最低版本兼容要求。
+OmniSDK 现在使用的是他们的最新版本，如果降级去支付Android 5.0(API Level 21) 以下，会出现其他兼容性问题。
+5. 审核问题，比如 TLS 1.2问题，GooglePlay 2020-12-16已经禁止上线；如果不随审核升级而升级相应SDK新版本，渠道审核可能就无法通过。
+
 ## SDK 常见状态码
 详情阅读 [状态码](OmniStatusCodes.md)
