@@ -89,7 +89,7 @@ OmniSDK Android 接入指南
     apply from: ("${rootProject.rootDir}/kssyOmni.gradle")
     ```
   
-3. `sync gradle`，即点击`Sync Now` 或 Android Studio 菜单栏的“大象”图标。同步依赖库成功后，即可集成开发。
+3. `sync gradle`，即点击`Sync Now` 或 Android Studio 菜单栏的“大象”图标。依赖库同步成功后，即可往下集成开发。
 
 
 ## 3. 初始化
