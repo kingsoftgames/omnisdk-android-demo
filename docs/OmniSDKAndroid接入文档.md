@@ -361,6 +361,10 @@ OmniSDK.getInstance().onEnterGame(roleInfo)
 #### 1. 账号
 详情阅读API接口文档-[`IAccount`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-account/index.html)
 
+**重要提示**
+>接入的账号类型包含游客类型，**绑定账号**接口为必接；
+>游戏最好提供绑定按钮，让玩家可以主动绑定账号，防止帐号数据丢失。
+
 #### 2. 支付
 详情阅读API接口文档-[`IPay`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-pay/index.html)
 
