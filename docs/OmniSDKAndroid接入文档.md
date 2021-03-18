@@ -30,6 +30,7 @@ OmniSDK Android 接入指南
         - [第三方依赖库混淆配置方法（建议）](#第三方依赖库混淆配置方法建议)
 - [附录](#附录)
     - [版本最低兼容问题](#版本最低兼容问题)
+    - [配置文件申请指南](#配置文件申请指南)
     - [SDK 常见状态码](#sdk-常见状态码)
 
 <!-- /TOC -->
@@ -416,6 +417,11 @@ SGSDK 目前还支持Android 4.4(API Level 19)，但是 OmniSDK 对 Android 5.0(
 4. 重要的第三方SDK（比如Facebook）、渠道SDK，最新版本都做了一些最低版本兼容要求。
 OmniSDK 现在使用的是他们的最新版本，如果降级去支付Android 5.0(API Level 21) 以下，会出现其他兼容性问题。
 5. 审核问题，比如 TLS 1.2问题，GooglePlay 2020-12-16已经禁止上线；如果不随审核升级而升级相应SDK新版本，渠道审核可能就无法通过。
+
+
+## 配置文件申请指南
+- 与管理员、产品确认需要申请的参数，参考[配置文件申请指南](https://d7n9vj8ces.feishu.cn/docs/doccn5apz08CeDpLCDTtshsSKmd)，在后台填写参数。
+- 完成后通知 Omni 出包验证，参数无误，会发送所有的文件。
 
 ## SDK 常见状态码
 详情阅读 [状态码](OmniStatusCodes.md)
