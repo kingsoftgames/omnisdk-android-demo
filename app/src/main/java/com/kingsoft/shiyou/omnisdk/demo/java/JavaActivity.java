@@ -292,7 +292,8 @@ public class JavaActivity extends AppCompatActivity {
                 String cpUid = userMap.get("cpUid").toString();
 
                 // 按照需求解析更多账号数据信息,比如是否为游客账号，账号昵称等等
-                int accountType = Integer.parseInt(userMap.get("type").toString());
+                int accountType = (int) Double.parseDouble(userMap.get("type").toString());
+
                 if (1 == accountType) {
                     // 当前账号类型为纯游客账号
                     Log.i("SDK", "Guest Account");
