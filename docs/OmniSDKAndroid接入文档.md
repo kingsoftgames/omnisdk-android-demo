@@ -32,6 +32,7 @@ OmniSDK Android 接入指南
     - [版本最低兼容问题](#版本最低兼容问题)
     - [配置文件申请指南](#配置文件申请指南)
     - [SDK 常见状态码](#sdk-常见状态码)
+    - [API JavaDoc 阅读](#API-JavaDoc-阅读)
 
 <!-- /TOC -->
 
@@ -44,6 +45,7 @@ OmniSDK Android 接入指南
 
 # 版本记录
 [版本记录](CHANGELOG.md)
+- v1.0.5 调整接口的包名结构，接口名不变，请CP升级时注意。
 
 # 对接须知
 - 推荐使用Android Studio对接SDK
@@ -55,12 +57,14 @@ OmniSDK Android 接入指南
 * 将SDK ZIP解压后的 **project_config.json** 拷贝到游戏应用模块(app-level or libs-level)的 **/src/main/assets/shiyou/** 目录下
    
 ## 2. 配置Gradle脚本
+> Gradle版本，建议使用 3.6.*及以上版本；建议使用游戏引擎提供的最新版本。
 1. 在游戏项目工程(root-level)根目录下的 ***build.gradle*** ，添加如下配置:
     ```groovy
    // 引入渠道仓库配置
     apply from: ("${rootProject.rootDir}/kssyOmniRoot.gradle")
 
     buildscript {
+        // 建议更新到最新版本，或Omni建议的最低版本
         ext.kotlin_version = "1.4.31"
         repositories {
             google()
@@ -71,6 +75,7 @@ OmniSDK Android 接入指南
             }
         }
         dependencies {
+            // 建议使用 3.6.*及以上版本；建议使用游戏引擎提供的最新版本。
             classpath "com.android.tools.build:gradle:${your_version}"
             // kotlin 环境
             classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -91,7 +96,7 @@ OmniSDK Android 接入指南
     apply from: ("${rootProject.rootDir}/kssyOmni.gradle")
     ```
   
-3. `sync gradle`，即点击`Sync Now` 或 Android Studio 菜单栏的“大象”图标。依赖库同步成功后，即可往下集成开发。
+3. `sync gradle`，即点击`Sync Now` 或 Android Studio 菜单栏的“大象”图标。依赖库同步成功后，即可往下进行集成开发。
 
 
 ## 3. 初始化
@@ -119,6 +124,7 @@ OmniSDK Android 接入指南
     public void attachBaseContext(Context context) {
         super.attachBaseContext(context);
         MultiDex.install(context); // 64k方法数
+        OmniSDK.getInstance().onApplicationAttachBaseContext(base)
         // your code goes here
     }
 
@@ -276,7 +282,7 @@ OmniSDK Android 接入指南
     }
     ```
 
-### 3. 渠道统计接口 (必接)
+### 3. 渠道统计接口 (必接-提示)
 **提示**
 > 1. **如果游戏没有角色这一特征，就不需接入。**
 > 2. **目前海外渠道要求接入的有 vivo，应用宝。如果不发行这些渠道，可以不用接入。**
@@ -296,7 +302,7 @@ onCreateRole(RoleInfo)
 
 **参数说明**
 
-详情阅读 [RoleInfo](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.core.entity/[android-jvm]-role-info/index.html)
+详情阅读 [RoleInfo][RoleInfo]
 
 - 关于 RoleInfo 的说明
     1. **所有必接字段必须进行接入，否则会导致统计不完全，部分渠道审核无法通过！**
@@ -323,7 +329,7 @@ onRoleLevelUp(RoleInfo)
 
 **参数说明**
 
-详情阅读 [RoleInfo](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.core.entity/[android-jvm]-role-info/index.html)
+详情阅读 [RoleInfo][RoleInfo]
 
 **代码示例**
 
@@ -348,7 +354,7 @@ onEnterGame(RoleInfo)
 
 **参数说明**
 
-详情阅读 [RoleInfo](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.core.entity/[android-jvm]-role-info/index.html)
+详情阅读 [RoleInfo][RoleInfo]
 
 **代码示例**
 
@@ -358,29 +364,30 @@ OmniSDK.getInstance().onEnterGame(roleInfo)
 
 ## 5. API接口说明（可选功能）
 **注意:** 由于各个对接游戏需求不同，下面所有接口并不是都必须接入。请CP对接方务必先确定游戏对接需求然后集成所需接口API。
+****
 ### 全部接口
-详情阅读API接口文档-[`OmniSDK`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api/-omni-s-d-k/index.html)
+详情阅读API接口文档-[`OmniSDK`][OmniSDK_API]
 #### 1. 账号
-详情阅读API接口文档-[`IAccount`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-account/index.html)
+详情阅读API接口文档-[`IAccount`][IAccount]
 
 **重要提示**
 >接入的账号类型包含游客类型，**绑定账号**接口为必接；
 >游戏最好提供绑定按钮，让玩家可以主动绑定账号，防止帐号数据丢失。
 
 #### 2. 支付
-详情阅读API接口文档-[`IPay`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-pay/index.html)
+详情阅读API接口文档-[`IPay`][IPay]
 
 #### 3. 社交
-详情阅读API接口文档-[`ISocial`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-social/index.html)
+详情阅读API接口文档-[`ISocial`][ISocial]
 
 #### 4. 特定功能
-详情阅读API接口文档-[`IAction`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-action/index.html)
+详情阅读API接口文档-[`IAction`][IAction]
 
 #### 5. 数据统计
-详情阅读API接口文档-[`IDataMonitor`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-data-monitor/index.html)
+详情阅读API接口文档-[`IDataMonitor`][IDataMonitor]
 
 #### 6. 通用方法
-详情阅读API接口文档-[`IMethod`](./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-method/index.html)
+详情阅读API接口文档-[`IMethod`][IMethod]
 
 ## 6. 混淆配置
 ### OmniSDK 混淆配置
@@ -426,3 +433,16 @@ OmniSDK 现在使用的是他们的最新版本，如果降级去支付Android 5
 
 ## SDK 常见状态码
 详情阅读 [状态码](OmniStatusCodes.md)
+
+## API JavaDoc 阅读
+1. [全部接口](#全部接口)
+2. 如何查看接口、方法、参数的具体说明、数据、返回值等：点击相应的接口、方法、参数，跳转进去。
+
+[OmniSDK_API]:./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api/-omni-s-d-k/index.html
+[IAccount]:./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-account/index.html
+[IPay]:./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-pay/index.html
+[ISocial]:./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-social/index.html
+[IAction]:./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-action/index.html
+[IDataMonitor]:./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-data-monitor/index.html
+[IMethod]:./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-method/index.html
+[RoleInfo]:./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.entity/-role-info/index.html
