@@ -58,6 +58,7 @@ OmniSDK Android 接入指南
    
 ## 2. 配置Gradle脚本
 > Gradle版本，建议使用 3.6.*及以上版本；建议使用游戏引擎提供的最新版本。
+
 1. 在游戏项目工程(root-level)根目录下的 ***build.gradle*** ，添加如下配置:
     ```groovy
    // 引入渠道仓库配置
