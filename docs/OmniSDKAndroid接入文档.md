@@ -440,6 +440,7 @@ OmniSDK 现在使用的是他们的最新版本，如果降级去支付Android 5
 ## API JavaDoc 阅读
 1. [全部接口](#全部接口)
 2. 如何查看接口、方法、参数的具体说明、数据、返回值等：点击相应的接口、方法、参数，跳转进去。
+3. Since 标识：版本号，当前接口开始支持或变更信息，具体版本号定位到方法。
 
 [OmniSDK_API]:./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api/-omni-s-d-k/index.html
 [IAccount]:./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-account/index.html
