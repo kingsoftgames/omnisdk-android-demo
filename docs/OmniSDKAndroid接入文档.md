@@ -47,16 +47,14 @@ OmniSDK Android 接入指南
 2. [OmniSDK-Demo](https://github.com/kingsoftgames/omnisdk-android-demo)
 
 # 版本记录
-**[版本记录](CHANGELOG.md)**
-- v1.0.5 **重要节点版本**
+- **[版本历史记录](CHANGELOG.md)**
+- v1.0.5 ***重要节点版本***
   1. 调整接口的包名结构，接口名不变，请CP升级时注意。
-  2. 增加账号动态配置功能，CP必须更新替换新配置文件
+  2. 增加账号动态配置功能，CP必须更新替换为新配置文件
 
 # 对接须知
 - 推荐使用Android Studio对接SDK，目前未对其他编译器测试。
-
-- 确定游戏引用的 `API `包名路径**全部**为 <font color=red>`com.kingsoft.shiyou.omnisdk.api.*`</font>。
-
+- 确定游戏引用的 `API `包名路径***全部***为<font color=red> `com.kingsoft.shiyou.omnisdk.api.*` </font>。
 - OmniSDK最低兼容版本为 `Android 5.0(API Level 21)`、`targetSdkVersion 29`，阅读[版本最低兼容问题](#版本最低兼容问题)。
     ```groovy
     android {
@@ -72,14 +70,13 @@ OmniSDK Android 接入指南
 
 # 集成开发配置
 ## 1. 拷贝Gradle文件和集成参数配置文件
-* 将SDK ZIP解压后的 **kssyOmni.gradle** 和 **kssyOmniRoot.gradle** 文件拷贝到游戏自身应用模块根目录下。
-* 将SDK ZIP解压后的 **project_config.json** 拷贝到游戏应用模块(app-level or libs-level)的 **/src/main/assets/shiyou/** 目录下
+- 将SDK ZIP解压后的 `kssyOmni.gradle` 和 `kssyOmniRoot.gradle` 文件拷贝到游戏自身应用模块根目录下。
+- 将SDK ZIP解压后的 `project_config.json` 拷贝到游戏应用模块(app-level or libs-level)的 `/src/main/assets/shiyou/` 目录下
   
 ## 2. 配置Gradle脚本
 
-:warning: **[Gradle Plugin，最低版本兼容与建议](GradlePlugin.md)**
-
-1. 在游戏项目工程(root-level)根目录下的 ***build.gradle*** ，添加如下配置:
+- :warning: [Gradle Plugin，最低版本兼容与建议](GradlePlugin.md)
+- 在游戏项目工程(root-level)根目录下的 ***build.gradle*** ，添加如下配置:
     ```groovy
    // 引入渠道仓库配置
     apply from: ("${rootProject.rootDir}/kssyOmniRoot.gradle")
@@ -112,17 +109,17 @@ OmniSDK Android 接入指南
         }
     }
    ```
-2. 在游戏应用模块(app-level or libs-level)根目录下的 ***build.gradle*** ，添加如下配置:
+- 在游戏应用模块(app-level or libs-level)根目录下的 ***build.gradle*** ，添加如下配置:
     ```groovy
     apply from: ("${rootProject.rootDir}/kssyOmni.gradle")
     ```
   
-3. `sync gradle`，即点击`Sync Now` 或 Android Studio 菜单栏的“大象”图标。依赖库同步成功后，即可往下进行集成开发。
+- `sync gradle`，即点击`Sync Now` 或 Android Studio 菜单栏的“大象”图标。依赖库同步成功后，即可往下进行集成开发。
 
 
 ## 3. 初始化
-### 1. Application（必接）
-* 若游戏应用无自定义的Application，则在游戏应用工程 **AndroidManifest.xml** 配置文件的  **&lt;application&gt;  tag** 中声明如下 ***android:name*** 的值:
+### 3.1 Application（必接）
+* 若游戏应用无自定义的Application，则在游戏应用工程 ***AndroidManifest.xml*** 配置文件的 `&lt;application&gt;  tag` 中声明如下 `android:name` 的值:
     ```xml
     <application
         android:name="com.kingsoft.shiyou.omnisdk.project.OmniApplication"
@@ -130,7 +127,7 @@ OmniSDK Android 接入指南
     />
     ```
 
-* 若游戏应用已经有自身定义的Application并继承自android.app.Application,则请将继承类改为 **com.kingsoft.shiyou.omnisdk.project.OmniApplication** 即可,如下所示:
+* 若游戏应用已经有自身定义的Application并继承自android.app.Application，则请将继承类改为 `com.kingsoft.shiyou.omnisdk.project.OmniApplication` 即可,如下所示:
     ```java
     import com.kingsoft.shiyou.omnisdk.project.OmniApplication;
 
@@ -178,7 +175,7 @@ OmniSDK Android 接入指南
     }
     ```
 
-### 2. Activity生命周期方法接入 (必接)
+### 3.2 Activity生命周期方法接入 (必接)
 * 请在游戏自身Activity的相应生命周期方法中添加如下代码:
     ```java
 
@@ -303,13 +300,13 @@ OmniSDK Android 接入指南
     }
     ```
 
-### 3. 渠道统计接口 (必接)
-- **不接提示**
+### 3.3 渠道统计接口 (必接)
+- ***不接提示***
   1. 如果游戏没有角色这一特征，暂时可以不用接入。
   2. 目前海外渠道要求接入的有 vivo，应用宝。如果不发行这些渠道，暂时可以不用接入。
 
 详情阅读 [数据统计接口](#5-数据统计)
-##### 3.1 创建角色
+#### 3.3.1 创建角色
 
 **应用场景**
 
@@ -335,7 +332,7 @@ onCreateRole(RoleInfo)
 OmniSDK.getInstance().onCreateRole(roleInfo);
 ```
 
-##### 3.2 角色升级
+#### 3.3.2 角色升级
 
 **应用场景**
 
@@ -358,7 +355,7 @@ roleInfo.setRoleLevel("2");
 OmniSDK.getInstance().onRoleLevelUp(roleInfo);
 ```
 
-##### 3.3 进入游戏
+#### 3.3.3 进入游戏
 
 **应用场景**
 
@@ -381,10 +378,11 @@ OmniSDK.getInstance().onEnterGame(roleInfo)
 ```
 
 ## 5. API接口说明（可选功能）
-**注意:** 由于各个对接游戏需求不同，下面所有接口并不是都必须接入。请CP对接方务必先确定游戏对接需求然后集成所需接口API。
-****
+:warning: 由于各个对接游戏需求不同，下面所有接口并不是都必须接入。请CP对接方务必先确定游戏对接需求然后集成所需接口API。
+
 ### 全部接口
 - API接口文档-[`OmniSDK`][OmniSDK_API]
+
 #### 1. 账号
 - API接口文档-[`IAccount`][IAccount]
 - 重要提示
