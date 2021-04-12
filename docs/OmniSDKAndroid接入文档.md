@@ -119,7 +119,7 @@ OmniSDK Android 接入指南
 
 ## 3. 初始化
 ### 3.1 Application（必接）
-* 若游戏应用无自定义的Application，则在游戏应用工程 ***AndroidManifest.xml*** 配置文件的 `&lt;application&gt;  tag` 中声明如下 `android:name` 的值:
+* 若游戏应用无自定义的Application，则在游戏应用工程 ***AndroidManifest.xml*** 配置文件的 `<application>` 中声明如下 `android:name` 的值:
     ```xml
     <application
         android:name="com.kingsoft.shiyou.omnisdk.project.OmniApplication"
