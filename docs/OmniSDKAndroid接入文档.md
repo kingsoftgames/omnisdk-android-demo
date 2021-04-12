@@ -47,10 +47,8 @@ OmniSDK Android 接入指南
 2. [OmniSDK-Demo](https://github.com/kingsoftgames/omnisdk-android-demo)
 
 # 版本记录
-- **[版本历史记录](CHANGELOG.md)**
-- v1.0.5 ***重要节点版本***
-  1. 调整接口的包名结构，接口名不变，请CP升级时注意。
-  2. 增加账号动态配置功能，CP必须更新替换为新配置文件
+- :star2: **[版本历史记录](CHANGELOG.md)**
+- :tada: v1.0.5 ***重要节点版本***
 
 # 对接须知
 - 推荐使用Android Studio对接SDK，目前未对其他编译器测试。
@@ -77,6 +75,7 @@ OmniSDK Android 接入指南
 
 - :warning: [Gradle Plugin，最低版本兼容与建议](GradlePlugin.md)
 - 在游戏项目工程(root-level)根目录下的 ***build.gradle*** ，添加如下配置:
+
     ```groovy
    // 引入渠道仓库配置
     apply from: ("${rootProject.rootDir}/kssyOmniRoot.gradle")
@@ -120,6 +119,7 @@ OmniSDK Android 接入指南
 ## 3. 初始化
 ### 3.1 Application（必接）
 * 若游戏应用无自定义的Application，则在游戏应用工程 ***AndroidManifest.xml*** 配置文件的 `<application>` 中声明如下 `android:name` 的值:
+
     ```xml
     <application
         android:name="com.kingsoft.shiyou.omnisdk.project.OmniApplication"
@@ -128,6 +128,7 @@ OmniSDK Android 接入指南
     ```
 
 * 若游戏应用已经有自身定义的Application并继承自android.app.Application，则请将继承类改为 `com.kingsoft.shiyou.omnisdk.project.OmniApplication` 即可,如下所示:
+
     ```java
     import com.kingsoft.shiyou.omnisdk.project.OmniApplication;
 
@@ -137,6 +138,7 @@ OmniSDK Android 接入指南
     ```
    
 * 若游戏应用已经有自身定义的Application并继承其他的android.app.Application子类，则需要在其自定义Application的相应方法中添加如下代码:
+
     ```java
     @Override
     public void attachBaseContext(Context context) {
@@ -177,6 +179,7 @@ OmniSDK Android 接入指南
 
 ### 3.2 Activity生命周期方法接入 (必接)
 * 请在游戏自身Activity的相应生命周期方法中添加如下代码:
+
     ```java
 
     @Override
@@ -304,8 +307,8 @@ OmniSDK Android 接入指南
 - ***不接提示***
   1. 如果游戏没有角色这一特征，暂时可以不用接入。
   2. 目前海外渠道要求接入的有 vivo，应用宝。如果不发行这些渠道，暂时可以不用接入。
+- 详情阅读 [数据统计接口](#5-数据统计)
 
-详情阅读 [数据统计接口](#5-数据统计)
 #### 3.3.1 创建角色
 
 **应用场景**
@@ -378,20 +381,20 @@ OmniSDK.getInstance().onEnterGame(roleInfo)
 ```
 
 ## 5. API接口说明（可选功能）
-:warning: 由于各个对接游戏需求不同，下面所有接口并不是都必须接入。请CP对接方务必先确定游戏对接需求然后集成所需接口API。
+:pushpin: 由于各个对接游戏需求不同，下面所有接口并不是都必须接入。请CP对接方务必先确定游戏对接需求然后集成所需接口API。
 
 ### 全部接口
-- API接口文档-[`OmniSDK`][OmniSDK_API]
+- API接口文档 - [`OmniSDK`][OmniSDK_API]
 
 #### 1. 账号
-- API接口文档-[`IAccount`][IAccount]
+- API接口文档 - [`IAccount`][IAccount]
 - 重要提示
   >接入的账号类型包含游客类型，**绑定账号**接口最好必接；
   >
   >游戏最好提供绑定按钮，让玩家可以主动绑定账号，防止帐号数据丢失。
 
 #### 2. 支付
-- API接口文档-[`IPay`][IPay]
+- API接口文档 - [`IPay`][IPay]
 - 重要提示
   >如果要接支付，必须接[账号](#1-账号)；
   >
@@ -399,7 +402,7 @@ OmniSDK.getInstance().onEnterGame(roleInfo)
 
 #### 3. 社交
 - 可选
-- API接口文档-[`ISocial`][ISocial]
+- API接口文档 - [`ISocial`][ISocial]
 - 重要提示
   >社交信息获取需要使用对应账号类型登录；
   >
@@ -407,15 +410,15 @@ OmniSDK.getInstance().onEnterGame(roleInfo)
 
 #### 4. 特定功能
 - 可选
-- API接口文档-[`IAction`][IAction]
+- API接口文档 - [`IAction`][IAction]
 
 #### 5. 数据统计
 - 参考[渠道统计接口](#3-渠道统计接口-必接)；
-- API接口文档-[`IDataMonitor`][IDataMonitor]
+- API接口文档 - [`IDataMonitor`][IDataMonitor]
 
 #### 6. 通用方法
 - 可选
-- API接口文档-[`IMethod`][IMethod]
+- API接口文档 - [`IMethod`][IMethod]
 
 ## 6. 混淆配置
 ### OmniSDK 混淆配置
