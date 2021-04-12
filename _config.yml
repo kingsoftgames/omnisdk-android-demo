@@ -1,3 +1,10 @@
 theme: jekyll-theme-cayman
 gems:
   - jemoji
+title: OmniSDK 接入手册
+description: OmniSDK 是一个聚合SDK，提供了账号，支付，事件统计等功能模块，游戏CP方完成一次对接后即可在各个应用商店平台和第三方发布渠道进行游戏发布。
+# 侧边栏设置
+sidebar: true # 是否开启侧边栏
+sidebar-about-description: "世界那么大，我想出去看看。" # 个人简介
+github:
+  is_project_page: false
