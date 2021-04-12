@@ -48,7 +48,7 @@ OmniSDK Android 接入指南
 
 # 版本记录
 - :star2: **[版本历史记录](CHANGELOG.md)**
-- :tada: v1.0.5 ***重要节点版本***
+- :tada: v1.0.5 ***[重要节点版本](CHANGELOG.md#Version-1.0.5)***
 
 # 对接须知
 - 推荐使用Android Studio对接SDK，目前未对其他编译器测试。
