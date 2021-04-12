@@ -1,4 +1,4 @@
-[<<返回首页](/OmniSDKDemo)
+[<<返回首页](/sdk-docs)
 
 OmniSDK Android 接入指南
 ====
@@ -53,16 +53,31 @@ OmniSDK Android 接入指南
   2. 增加账号动态配置功能，CP必须更新替换新配置文件
 
 # 对接须知
-- 推荐使用Android Studio对接SDK
-- OmniSDK最低兼容版本为 Android 5.0(API Level 21)，阅读[版本最低兼容问题](#版本最低兼容问题)。
+- 推荐使用Android Studio对接SDK，目前未对其他编译器测试。
+
+- 确定游戏引用的 `API `包名路径**全部**为 <font color=red>`com.kingsoft.shiyou.omnisdk.api.*`</font>。
+
+- OmniSDK最低兼容版本为 `Android 5.0(API Level 21)`、`targetSdkVersion 29`，阅读[版本最低兼容问题](#版本最低兼容问题)。
+    ```groovy
+    android {
+        compileSdkVersion 29
+        // buildToolsVersion "29.0.3" // 无如必要，不需要指定此版本号
+    
+        defaultConfig {
+            minSdkVersion 21
+            targetSdkVersion 29
+        }
+    }
+    ```
 
 # 集成开发配置
 ## 1. 拷贝Gradle文件和集成参数配置文件
 * 将SDK ZIP解压后的 **kssyOmni.gradle** 和 **kssyOmniRoot.gradle** 文件拷贝到游戏自身应用模块根目录下。
 * 将SDK ZIP解压后的 **project_config.json** 拷贝到游戏应用模块(app-level or libs-level)的 **/src/main/assets/shiyou/** 目录下
-   
+  
 ## 2. 配置Gradle脚本
-> Gradle版本，建议使用 3.6.*及以上版本；建议使用游戏引擎提供的最新版本。
+
+:warning: **[Gradle Plugin，最低版本兼容与建议](GradlePlugin.md)**
 
 1. 在游戏项目工程(root-level)根目录下的 ***build.gradle*** ，添加如下配置:
     ```groovy
@@ -71,7 +86,7 @@ OmniSDK Android 接入指南
 
     buildscript {
         // 建议更新到最新版本，或Omni建议的最低版本
-        ext.kotlin_version = "1.4.31"
+        // ext.kotlin_version = "1.4.31" // 如果需要用 kotlin 接入，则依赖
         repositories {
             google()
             jcenter()
@@ -84,9 +99,9 @@ OmniSDK Android 接入指南
             // 建议使用 3.6.*及以上版本；建议使用游戏引擎提供的最新版本。
             classpath "com.android.tools.build:gradle:${your_version}"
             // kotlin 环境
-            classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+            // classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // 如果需要用 kotlin 接入，则依赖
             // 编译插件
-            classpath "com.kingsoft.shiyou.omnisdk.build:plugin:1.0.2"
+            classpath "com.kingsoft.shiyou.omnisdk.build:plugin:1.0.3"
         }
     }
 
@@ -96,7 +111,7 @@ OmniSDK Android 接入指南
             jcenter()
         }
     }
-    ```
+   ```
 2. 在游戏应用模块(app-level or libs-level)根目录下的 ***build.gradle*** ，添加如下配置:
     ```groovy
     apply from: ("${rootProject.rootDir}/kssyOmni.gradle")
@@ -308,8 +323,7 @@ onCreateRole(RoleInfo)
 
 **参数说明**
 
-详情阅读 [RoleInfo][RoleInfo]
-
+- API文档 [RoleInfo][RoleInfo]
 - 关于 RoleInfo 的说明
   1. **所有必接字段必须进行接入，否则会导致统计不完全，部分渠道审核无法通过！**
   2. **请严格按照规定的字段长度进行设置，否则可能发生游戏服务器端长度不够问题。**
@@ -335,7 +349,7 @@ onRoleLevelUp(RoleInfo)
 
 **参数说明**
 
-详情阅读 [RoleInfo][RoleInfo]
+- API文档 [RoleInfo][RoleInfo]
 
 **代码示例**
 
@@ -343,8 +357,6 @@ onRoleLevelUp(RoleInfo)
 roleInfo.setRoleLevel("2");
 OmniSDK.getInstance().onRoleLevelUp(roleInfo);
 ```
-
-
 
 ##### 3.3 进入游戏
 
@@ -360,7 +372,7 @@ onEnterGame(RoleInfo)
 
 **参数说明**
 
-详情阅读 [RoleInfo][RoleInfo]
+- API文档 [RoleInfo][RoleInfo]
 
 **代码示例**
 
@@ -372,42 +384,54 @@ OmniSDK.getInstance().onEnterGame(roleInfo)
 **注意:** 由于各个对接游戏需求不同，下面所有接口并不是都必须接入。请CP对接方务必先确定游戏对接需求然后集成所需接口API。
 ****
 ### 全部接口
-详情阅读API接口文档-[`OmniSDK`][OmniSDK_API]
+- API接口文档-[`OmniSDK`][OmniSDK_API]
 #### 1. 账号
-详情阅读API接口文档-[`IAccount`][IAccount]
-
-**重要提示**
->接入的账号类型包含游客类型，**绑定账号**接口为必接；
->游戏最好提供绑定按钮，让玩家可以主动绑定账号，防止帐号数据丢失。
+- API接口文档-[`IAccount`][IAccount]
+- 重要提示
+  >接入的账号类型包含游客类型，**绑定账号**接口最好必接；
+  >
+  >游戏最好提供绑定按钮，让玩家可以主动绑定账号，防止帐号数据丢失。
 
 #### 2. 支付
-详情阅读API接口文档-[`IPay`][IPay]
+- API接口文档-[`IPay`][IPay]
+- 重要提示
+  >如果要接支付，必须接[账号](#1-账号)；
+  >
+  >如果游戏无账号功能，用`OmniSDK`提供的游客类型，进行静默注册登录后，再进行后续支付等操作。
 
 #### 3. 社交
-详情阅读API接口文档-[`ISocial`][ISocial]
+- 可选
+- API接口文档-[`ISocial`][ISocial]
+- 重要提示
+  >社交信息获取需要使用对应账号类型登录；
+  >
+  >比如需要`Facebook`好友信息，需要用`Facebook`进行登录，则要接[账号](#1-账号)。
 
 #### 4. 特定功能
-详情阅读API接口文档-[`IAction`][IAction]
+- 可选
+- API接口文档-[`IAction`][IAction]
 
 #### 5. 数据统计
-详情阅读API接口文档-[`IDataMonitor`][IDataMonitor]
+- 参考[渠道统计接口](#3-渠道统计接口-必接)；
+- API接口文档-[`IDataMonitor`][IDataMonitor]
 
 #### 6. 通用方法
-详情阅读API接口文档-[`IMethod`][IMethod]
+- 可选
+- API接口文档-[`IMethod`][IMethod]
 
 ## 6. 混淆配置
 ### OmniSDK 混淆配置
 OmniSDK 混淆配置集成在自身依赖包内，编译时自动配置，CP 无需额外配置。
-  
+
 ### 第三方依赖库混淆配置说明
 第三方依赖库混淆配置，防止配置冲突，需要由游戏应用配置，目前用到的如下：
 - Gson [必选](../proguard/gson-rules.pro)
-  
+
 ### 第三方依赖库混淆配置方法（建议）
 - 在游戏应用工程建立文件夹`proguard`。
 - 将相应的第三方依赖库混淆配置各按独立文件存放，比如`gson-rules.pro`。
 - 在游戏应用模块(app-level)根目录下的 ***build.gradle*** ，增加如下配置: 
-    
+
     ```groovy
     android {
         buildTypes {
@@ -418,7 +442,7 @@ OmniSDK 混淆配置集成在自身依赖包内，编译时自动配置，CP 无
         }
     }
     ```
-  
+
 # 附录
 ## 版本最低兼容问题
 SGSDK 目前还支持Android 4.4(API Level 19)，但是 OmniSDK 对 Android 5.0(API Level 21) 以下将不再支持。
