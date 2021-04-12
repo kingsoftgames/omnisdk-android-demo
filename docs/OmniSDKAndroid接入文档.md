@@ -52,7 +52,7 @@ OmniSDK Android 接入指南
 
 # 对接须知
 - 推荐使用Android Studio对接SDK，目前未对其他编译器测试。
-- 确定游戏引用的 `API `包名路径***全部***为<font color=red> `com.kingsoft.shiyou.omnisdk.api.*` </font>。
+- :pushpin: 确定游戏引用的 `API `包名路径***全部*** 为<font color=red> `com.kingsoft.shiyou.omnisdk.api.*` </font>。
 - OmniSDK最低兼容版本为 `Android 5.0(API Level 21)`、`targetSdkVersion 29`，阅读[版本最低兼容问题](#版本最低兼容问题)。
     ```groovy
     android {
@@ -73,7 +73,7 @@ OmniSDK Android 接入指南
   
 ## 2. 配置Gradle脚本
 
-- :warning: [Gradle Plugin，最低版本兼容与建议](GradlePlugin.md)
+- :bookmark: [Gradle Plugin，最低版本兼容与建议](GradlePlugin.md)
 - 在游戏项目工程(root-level)根目录下的 ***build.gradle*** ，添加如下配置:
 
     ```groovy
