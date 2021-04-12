@@ -48,7 +48,7 @@ OmniSDK Android 接入指南
 
 # 版本记录
 - :star2: **[版本历史记录](CHANGELOG.md)**
-- :tada: v1.0.5 ***[重要节点版本](CHANGELOG.md#Version-1.0.5)***
+- :tada: 重要节点版本：[v1.0.5](CHANGELOG.md#Version-1.0.5)
 
 # 对接须知
 - 推荐使用Android Studio对接SDK，目前未对其他编译器测试。
@@ -109,6 +109,7 @@ OmniSDK Android 接入指南
     }
    ```
 - 在游戏应用模块(app-level or libs-level)根目录下的 ***build.gradle*** ，添加如下配置:
+
     ```groovy
     apply from: ("${rootProject.rootDir}/kssyOmni.gradle")
     ```
@@ -123,7 +124,7 @@ OmniSDK Android 接入指南
     ```xml
     <application
         android:name="com.kingsoft.shiyou.omnisdk.project.OmniApplication"
-        ...
+        //...
     />
     ```
 
@@ -388,14 +389,14 @@ OmniSDK.getInstance().onEnterGame(roleInfo)
 
 #### 1. 账号
 - API接口文档 - [`IAccount`][IAccount]
-- 重要提示
+- 重要提示:loudspeaker:
   >接入的账号类型包含游客类型，**绑定账号**接口最好必接；
   >
   >游戏最好提供绑定按钮，让玩家可以主动绑定账号，防止帐号数据丢失。
 
 #### 2. 支付
 - API接口文档 - [`IPay`][IPay]
-- 重要提示
+- 重要提示:loudspeaker:
   >如果要接支付，必须接[账号](#1-账号)；
   >
   >如果游戏无账号功能，用`OmniSDK`提供的游客类型，进行静默注册登录后，再进行后续支付等操作。
@@ -403,7 +404,7 @@ OmniSDK.getInstance().onEnterGame(roleInfo)
 #### 3. 社交
 - 可选
 - API接口文档 - [`ISocial`][ISocial]
-- 重要提示
+- 重要提示:loudspeaker:
   >社交信息获取需要使用对应账号类型登录；
   >
   >比如需要`Facebook`好友信息，需要用`Facebook`进行登录，则要接[账号](#1-账号)。
