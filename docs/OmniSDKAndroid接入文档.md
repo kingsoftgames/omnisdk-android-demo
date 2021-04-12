@@ -13,12 +13,12 @@ OmniSDK Android 接入指南
     - [1. 拷贝Gradle文件和集成参数配置文件](#1-拷贝gradle文件和集成参数配置文件)
     - [2. 配置Gradle脚本](#2-配置gradle脚本)
     - [3. 初始化](#3-初始化)
-        - [1. Application（必接）](#1-application必接)
-        - [2. Activity生命周期方法接入 (必接)](#2-activity生命周期方法接入-必接)
-        - [3. 渠道统计接口 (必接)](#3-渠道统计接口-必接)
-            - [3.1 创建角色](#31-创建角色)
-            - [3.2 角色升级](#32-角色升级)
-            - [3.3 进入游戏](#33-进入游戏)
+        - [3.1 Application（必接）](#31-application必接)
+        - [3.2 Activity生命周期方法接入 (必接)](#32-activity生命周期方法接入-必接)
+        - [3.3 渠道统计接口 (必接)](#33-渠道统计接口-必接)
+            - [3.3.1 创建角色](#331-创建角色)
+            - [3.3.2 角色升级](#332-角色升级)
+            - [3.3.3 进入游戏](#333-进入游戏)
     - [5. API接口说明（可选功能）](#5-api接口说明可选功能)
         - [全部接口](#全部接口)
             - [1. 账号](#1-账号)
@@ -35,7 +35,7 @@ OmniSDK Android 接入指南
     - [版本最低兼容问题](#版本最低兼容问题)
     - [配置文件申请指南](#配置文件申请指南)
     - [SDK 常见状态码](#sdk-常见状态码)
-    - [API JavaDoc 阅读](#API-JavaDoc-阅读)
+    - [API JavaDoc 阅读](#api-javadoc-阅读)
 
 <!-- /TOC -->
 
@@ -48,7 +48,7 @@ OmniSDK Android 接入指南
 
 # 版本记录
 - :star2: **[版本历史记录](CHANGELOG.md)**
-- :tada: 重要节点版本：[v1.0.5](CHANGELOG.md#Version-1.0.5)
+- :tada: 重要节点版本：[v1.0.5](CHANGELOG.md#version-105)
 
 # 对接须知
 - 推荐使用Android Studio对接SDK，目前未对其他编译器测试。
@@ -389,14 +389,14 @@ OmniSDK.getInstance().onEnterGame(roleInfo)
 
 #### 1. 账号
 - API接口文档 - [`IAccount`][IAccount]
-- 重要提示:loudspeaker:
+- 重要提示 :speaker:
   >接入的账号类型包含游客类型，**绑定账号**接口最好必接；
   >
   >游戏最好提供绑定按钮，让玩家可以主动绑定账号，防止帐号数据丢失。
 
 #### 2. 支付
 - API接口文档 - [`IPay`][IPay]
-- 重要提示:loudspeaker:
+- 重要提示 :speaker:
   >如果要接支付，必须接[账号](#1-账号)；
   >
   >如果游戏无账号功能，用`OmniSDK`提供的游客类型，进行静默注册登录后，再进行后续支付等操作。
@@ -404,7 +404,7 @@ OmniSDK.getInstance().onEnterGame(roleInfo)
 #### 3. 社交
 - 可选
 - API接口文档 - [`ISocial`][ISocial]
-- 重要提示:loudspeaker:
+- 重要提示 :speaker:
   >社交信息获取需要使用对应账号类型登录；
   >
   >比如需要`Facebook`好友信息，需要用`Facebook`进行登录，则要接[账号](#1-账号)。
