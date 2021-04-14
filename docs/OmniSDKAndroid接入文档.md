@@ -384,9 +384,8 @@ OmniSDK.getInstance().onEnterGame(roleInfo)
 ```
 
 ## 5. API接口说明（可选功能）
-:pushpin: 
-- 由于各个对接游戏需求不同，下面所有接口并不是都必须接入。请CP对接方务必先确定游戏对接需求然后集成所需接口API。
-- OmniSDK 接口对线程无要求，游戏可以直接在子线程中调用。回调时如果需要在主线程处理一些UI事件，需要游戏切换到主线程，比如可以使用runOnUiThread。
+- :bookmark: 由于各个对接游戏需求不同，下面所有接口并不是都必须接入。请CP对接方务必先确定游戏对接需求然后集成所需接口API。
+- :pushpin: OmniSDK 接口对线程无要求，游戏可以直接在子线程中调用。回调时如果需要在主线程处理一些UI事件，需要游戏切换到主线程，比如可以使用runOnUiThread。
 
 ### 全部接口
 - API接口文档 - [`OmniSDK`][OmniSDK_API]
