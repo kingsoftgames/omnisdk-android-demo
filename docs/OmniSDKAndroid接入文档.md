@@ -52,7 +52,7 @@ OmniSDK Android 接入指南
 
 # 对接须知
 - 推荐使用Android Studio对接SDK，目前未对其他编译器测试。
-- :pushpin: 确定游戏引用的 `API `包名路径***全部*** 为<font color=red> `com.kingsoft.shiyou.omnisdk.api.*` </font>。
+- :pushpin: 检查游戏引用的 `Omni-API `包名路径***全部*** 为<font color=red> `com.kingsoft.shiyou.omnisdk.api.*` </font>。
 - OmniSDK最低兼容版本为 `Android 5.0(API Level 21)`、`targetSdkVersion 29`，阅读[版本最低兼容问题](#版本最低兼容问题)。
     ```groovy
     android {
@@ -118,6 +118,8 @@ OmniSDK Android 接入指南
 
 
 ## 3. 初始化
+runOnUiThread
+
 ### 3.1 Application（必接）
 * 若游戏应用无自定义的Application，则在游戏应用工程 ***AndroidManifest.xml*** 配置文件的 `<application>` 中声明如下 `android:name` 的值:
 
@@ -382,7 +384,9 @@ OmniSDK.getInstance().onEnterGame(roleInfo)
 ```
 
 ## 5. API接口说明（可选功能）
-:pushpin: 由于各个对接游戏需求不同，下面所有接口并不是都必须接入。请CP对接方务必先确定游戏对接需求然后集成所需接口API。
+:pushpin: 
+- 由于各个对接游戏需求不同，下面所有接口并不是都必须接入。请CP对接方务必先确定游戏对接需求然后集成所需接口API。
+- OmniSDK 接口对线程无要求，游戏可以直接在子线程中调用。回调时如果需要在主线程处理一些UI事件，需要游戏切换到主线程，比如可以使用runOnUiThread。
 
 ### 全部接口
 - API接口文档 - [`OmniSDK`][OmniSDK_API]
@@ -399,7 +403,7 @@ OmniSDK.getInstance().onEnterGame(roleInfo)
 - 重要提示 :speaker:
   >如果要接支付，必须接[账号](#1-账号)；
   >
-  >如果游戏无账号功能，用`OmniSDK`提供的游客类型，进行静默注册登录后，再进行后续支付等操作。
+  >如果游戏无账号功能，先调用`OmniSDK`提供的游客类型账号接口，进行静默注册登录后，再进行后续支付等操作。
 
 #### 3. 社交
 - 可选
@@ -479,3 +483,5 @@ OmniSDK 现在使用的是他们的最新版本，如果降级去支付Android 5
 [IDataMonitor]:./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-data-monitor/index.html
 [IMethod]:./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-method/index.html
 [RoleInfo]:./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.entity/-role-info/index.html
+
+[emoji]:https://www.webfx.com/tools/emoji-cheat-sheet/
