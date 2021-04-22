@@ -10,5 +10,5 @@ OmniSDK Android
 ### Demo Guide
 
 - Before running, replace your `project_config.json`、`kssyOmni.gradle`、`kssyOmniRoot.gradle`.
-- 使用Java语言对接, SDK接口示例代码都在 com.kingsoft.shiyou.omnisdk.demo.java.* 包下，其他代码对接方无需关注。
-- 使用Kotlin语言对接, SDK接口示例代码都在 com.kingsoft.shiyou.omnisdk.demo.kotlin.* 包下，其他代码对接方无需关注。
+- 使用Java语言对接, SDK接口示例代码都在 __com.kingsoft.shiyou.omnisdk.demo.java.*__ 包下，其他代码对接方无需关注。
+- 使用Kotlin语言对接, SDK接口示例代码都在 __com.kingsoft.shiyou.omnisdk.demo.kotlin.*__ 包下，其他代码对接方无需关注。
