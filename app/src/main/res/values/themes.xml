@@ -1,16 +1,82 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.OmniSDKDemo" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
+
+    <style name="OmniDemoAppActivityTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="OmniDemoViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:background">@drawable/demo_view_background</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+    <style name="OmniDemoAppFunctionTitleStyle">
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:clickable">false</item>
+        <item name="singleLine">true</item>
+        <item name="android:textSize">18sp</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textColor">@color/demo_dark_red</item>
+    </style>
+
+    <style name="OmniDemoAppInputStyle">
+        <item name="android:layout_height">32dp</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:clickable">true</item>
+        <item name="singleLine">true</item>
+        <item name="paddingStart">6dp</item>
+        <item name="paddingEnd">6dp</item>
+        <item name="android:background">@drawable/demo_input_edit_bg</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="OmniDemoAppButtonStyle">
+        <item name="android:layout_height">32dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="singleLine">true</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:background">@drawable/demo_action_button_bg</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="OmniDemoDialogTheme" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="Theme.OmniSDK" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.OmniSDK.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.OmniSDK.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.OmniSDK.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

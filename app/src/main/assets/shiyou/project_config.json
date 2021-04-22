@@ -1,44 +1,73 @@
 {
-  "version": "1.0.0",
-  "support": "sg",
   "package_name": "com.kingsoft.shiyou.omnisdk.demo",
-  "project": {
-    "SgSafeApi": "https://safeapi.kingsoftgame.com/v2/"
-  },
+  "version": "1.0.6",
+  "support": "sg",
   "plugin": [
     {
-      "plugin_name": "google",
-      "description": "google插件",
-      "artifactId": "google",
-      "version": "1.0.0"
-    },
-    {
-      "plugin_name": "facebook",
-      "class_name": "com.kingsoft.shiyou.omnisdk.plugin.facebook.OmniPlugin",
-      "description": "facebook插件",
-      "artifactId": "facebook",
-      "version": "1.0.0"
-    },
-    {
       "plugin_name": "account",
+      "is_account": false,
+      "class_name": "",
       "description": "世游帐号功能插件",
       "artifactId": "omni-account",
-      "version": "1.0.0"
+      "version": "1.0.6"
     },
     {
       "plugin_name": "googlepay",
+      "is_account": false,
+      "class_name": "",
       "description": "世游支付功能插件",
       "artifactId": "google-pay",
-      "version": "1.0.0"
+      "version": "1.0.6"
+    },
+    {
+      "plugin_name": "facebook",
+      "is_account": true,
+      "account_type": 3,
+      "class_name": "",
+      "description": "facebook插件",
+      "artifactId": "facebook",
+      "version": "1.0.6"
+    },
+    {
+      "plugin_name": "google",
+      "is_account": true,
+      "account_type": 4,
+      "class_name": "",
+      "description": "google插件",
+      "artifactId": "google",
+      "version": "1.0.6"
     }
   ],
   "channel": [
     {
       "channel_name": "website_en",
       "class_name": "com.kingsoft.shiyou.omnisdk.channel.website.OmniChannel",
-      "description": "海外官网渠道",
+      "description": "海外官网渠道包",
       "artifactId": "website-en",
-      "version": "1.0.0"
+      "version": "1.0.6"
     }
-  ]
+  ],
+  "project": {
+    "facebookAppId": "376592313397790",
+    "hideSeasunLogin": "false",
+    "HwFunChannels": "facebook,google",
+    "cpCustomizedUi": "false",
+    "HwMustPermission": "false",
+    "hideGuestLogin": "false",
+    "debugMode": "true",
+    "SgChannelName": "website",
+    "SgChannelCode": "29",
+    "SgChannelVersion": "1.0",
+    "SgChannelId": "sgoverseas",
+    "SgPlanId": "16",
+    "facebookAppName": "OmniSdkDemo",
+    "SgNotifyUrl": "https://dev-api.sgsdk.com:8443/v2/pchannel/order/channel_pay/1011/29/1/1",
+    "SgSafeApi": "https://dev-api.sgsdk.com:8443/v2/",
+    "SgPackageName": "com.kingsoft.shiyou.omnisdk.demo",
+    "SgAppId": "0",
+    "appChannelId": "0",
+    "facebookLoginProtocolScheme": "fb376592313397790",
+    "SgBuildNumber": "20210223073734",
+    "HwRequestPermission": "true"
+  }
 }

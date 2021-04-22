@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.kingsoft.shiyou.omnisdk.demo.common.view.DataMonitorDemoView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/OmniDemoViewStyle"
+    android:importantForAutofill="no"
+    tools:ignore="HardcodedText">
+
+    <LinearLayout
+        android:id="@+id/data_monitor_demo_view_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/OmniDemoAppFunctionTitleStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="事件数据监控" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="1dp"
+            android:background="@android:color/darker_gray" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/data_monitor_demo_view_title_layout"
+        android:layout_margin="0dp"
+        android:orientation="vertical"
+        android:padding="0dp">
+
+        <Button
+            android:id="@+id/data_monitor_demo_view_create_game_role_event_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="监控角色创建事件" />
+
+        <Button
+            android:id="@+id/data_monitor_demo_view_enter_game_event_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="监控角色进入游戏事件" />
+
+        <Button
+            android:id="@+id/data_monitor_demo_view_level_up_event_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="监控角色升级事件" />
+
+        <Button
+            android:id="@+id/data_monitor_demo_view_game_resource_load_event_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="监控游戏资源加载" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/demo_content_bg"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/data_monitor_demo_view_track_consume_amount_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="消耗数量"
+                    android:imeOptions="actionDone"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/data_monitor_demo_view_track_consume_virtual_currency_type_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="消耗虚拟币类型"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/data_monitor_demo_view_track_consume_virtual_currency_amount_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="消耗虚拟币总金额"
+                    android:imeOptions="actionDone"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/data_monitor_demo_view_track_consume_item_name_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="item名称"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/data_monitor_demo_view_track_consume_item_num_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="item数量"
+                    android:imeOptions="actionDone"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/data_monitor_demo_view_track_consume_item_type_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="item类型"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/data_monitor_demo_view_track_consume_event_btn"
+                style="@style/OmniDemoAppButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:text="监控虚拟币消耗事件" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/demo_content_bg"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent">
+
+                <EditText
+                    android:id="@+id/data_monitor_demo_view_track_event_id_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="事件唯一标示(id)"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/data_monitor_demo_view_track_event_description_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="事件描述(description)"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/data_monitor_demo_view_track_event_value_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="事件值(value)"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/data_monitor_demo_view_track_event_body_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="事件主体(body)"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/data_monitor_demo_view_track_event_btn"
+                style="@style/OmniDemoAppButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:text="监控自定义事件" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.kingsoft.shiyou.omnisdk.demo.common.view.DataMonitorDemoView>
