@@ -184,12 +184,12 @@ class AppView(val demoActivity: AppCompatActivity) {
     fun showMessageDialog(content: String) = showMessageDialog(content, "")
 
     fun showMessageDialog(content: String, title: String) = demoActivity.runOnUiThread {
-        DemoDialogUtil.showDialogWithContent(demoActivity, title, content)
+        DemoDialogUtil.showDialogWithContent(demoActivity, "Demo: $title", content)
     }
 
     fun showToastMessage(content: String, duration: Int = Toast.LENGTH_SHORT) =
         demoActivity.runOnUiThread {
-            Toast.makeText(demoActivity, content, duration).show()
+            Toast.makeText(demoActivity, "Demo: $content", duration).show()
         }
 
 }
