@@ -36,7 +36,7 @@ class AccountApi(private val demoActivity: Activity, private val callback: IAcco
          * 指定登录类型,其key值必须为`loginType`,value为Int类型
          * `0`或者不设置表示不指定特定登录类型,直接使用OMNI SDK登录界面。
          * 非`0`表示CP使用自身的登录选项UI界面,在用户选择账号类型后传入对应的账号标示ID调用接口完成登录业务.
-         * （比如 `2`为邮箱账号 `3`为Facebook账号, `4`为Google账号等等）
+         * （比如`1`为游客账号 `2`为邮箱账号 `3`为Facebook账号, `4`为Google账号等等）
          */
         loginParams["loginType"] = mLoginType
 
