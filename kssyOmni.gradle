@@ -4,10 +4,10 @@ apply plugin: "KSSYOmniPlugin"
 
 // OmniSDK 依赖
 dependencies {
-    api("com.kingsoft.shiyou.omnisdk.component:api:1.0.3")
-    implementation("com.kingsoft.shiyou.omnisdk.plugin:omni-account:1.0.2")
-    implementation("com.kingsoft.shiyou.omnisdk.plugin:google-pay:1.0.2")
-    implementation("com.kingsoft.shiyou.omnisdk.plugin:facebook:1.0.2")
-    implementation("com.kingsoft.shiyou.omnisdk.plugin:google:1.0.2")
-    api("com.kingsoft.shiyou.omnisdk.channel:website-en:1.0.2")
+    api("com.kingsoft.shiyou.omnisdk.component:api:1.0.6")
+    implementation("com.kingsoft.shiyou.omnisdk.plugin:omni-account:1.0.6")
+    implementation("com.kingsoft.shiyou.omnisdk.plugin:facebook:1.0.6")
+    implementation("com.kingsoft.shiyou.omnisdk.plugin:google:1.0.6")
+    implementation("com.kingsoft.shiyou.omnisdk.plugin:google-pay:1.0.6")
+    api("com.kingsoft.shiyou.omnisdk.channel:website-en:1.0.6")
 }

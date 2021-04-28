@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.kingsoft.shiyou.omnisdk.demo.common.view.method.TranssionMethodDemoView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/OmniDemoViewStyle"
+    android:importantForAutofill="no"
+    tools:ignore="HardcodedText">
+
+    <LinearLayout
+        android:id="@+id/transsion_method_demo_view_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/OmniDemoAppFunctionTitleStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Transsion传音渠道独有功能方法接口" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="1dp"
+            android:background="@android:color/darker_gray" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/transsion_method_demo_view_show_float_btn"
+        style="@style/OmniDemoAppButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_below="@id/transsion_method_demo_view_title_layout"
+        android:layout_marginTop="10dp"
+        android:text="展示悬浮窗广告" />
+
+    <Button
+        android:id="@+id/transsion_method_demo_view_close_float_btn"
+        style="@style/OmniDemoAppButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_below="@id/transsion_method_demo_view_show_float_btn"
+        android:layout_marginTop="10dp"
+        android:text="关闭悬浮窗广告" />
+
+</com.kingsoft.shiyou.omnisdk.demo.common.view.method.TranssionMethodDemoView>
