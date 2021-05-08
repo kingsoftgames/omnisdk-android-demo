@@ -52,7 +52,7 @@ OmniSDK KSSYOmniPlugin
 # 版本支持说明
 
 ## 版本支持
-| AGP & Gradle   | Java | Kotlin | KSSYOmniPlugin | 技术支持截止日期                            | 备注 |
+| AGP & Gradle   | Java | Kotlin | KSSYOmniPlugin | 技术支持截止日期                            | 备注 | 
 | ------------ | ---- | ------ | ------------------------------------------------------------ | ------------ | ------------ |
 | 3.3.3 & 4.10.3 | 支持 | 不支持 | 1.0.3 & 2.x | 2022年12月 |1. 除sunit(茄子渠道)外，需要在gradle.properties 里增加：<br/>`android.enableR8=true`<br/>`android.enableR8.fullMode=true`<br/>2. sunit(茄子渠道)配置：需要在gradle.properties 里增加：<br/>`android.enableR8=false`<br/>`android.enableR8.fullMode=true`<br/>并在 proguard-rules.pro 添加 `-ignorewarnings`<br/>3. 如果使用 `KSSYOmniPlugin 2.x`，需要对 sunit(茄子渠道) 单独配置。  |
 | 3.4.3 & 5.3.1  | 支持 | 支持   | 1.0.3 & 2.x | 2022年12月 |1. 不需要特殊编译配置<br/>2. 注意 `kotlin` 版本限制，[Kotlin-Gradle Version](https://kotlinlang.org/docs/gradle.html) <br/>3. 目前测试`Kotlin 1.4.32 `及以下支持。 |
@@ -98,7 +98,7 @@ android.enableJetifier=true
 ## 功能说明
 
 ### 多渠道出包配置参数
-| 参数名         | 功能                                    | 备注                               |
+| 参数名         | 功能                                    | 备注                               | 
 | ------------ | ------------------ | ------------------------------------------------------ |
 | debugBuild     | 出包类型：false-release包，true-debug包 | 不配置时，默认false                               |
 | customChannels | 指定出哪些渠道包                        | 不配置时或"all"，出所有渠道包。                   |
