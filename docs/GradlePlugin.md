@@ -53,6 +53,8 @@ OmniSDK KSSYOmniPlugin
 
 ## 版本支持
 
+可 :left_right_arrow: 滑动
+
 | AGP & Gradle   | Java | Kotlin | KSSYOmniPlugin | 技术支持截止日期 | 备注                                                         |
 | -------------- | ---- | ------ | -------------- | ---------------- | ------------------------------------------------------------ |
 | 3.3.3 & 4.10.3 | 支持 | 不支持 | 1.0.3 & 2.x    | 2022年12月       | 1. 除sunit(茄子渠道)外，需要在gradle.properties 里增加：<br/>`android.enableR8=true`<br/>`android.enableR8.fullMode=true`<br/>2. sunit(茄子渠道)配置：需要在gradle.properties 里增加：<br/>`android.enableR8=false`<br/>`android.enableR8.fullMode=true`<br/>并在 proguard-rules.pro 添加 `-ignorewarnings`<br/>3. 如果使用 `KSSYOmniPlugin 2.x`，需要对 sunit(茄子渠道) 单独配置。 |
