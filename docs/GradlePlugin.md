@@ -54,11 +54,11 @@ OmniSDK KSSYOmniPlugin
 ## 版本支持
 | AGP & Gradle   | Java | Kotlin | KSSYOmniPlugin | 技术支持截止日期                            | 备注 |
 | ------------ | ---- | ------ | ------------------------------------------------------------ | ------------ | ------------ |
-| 3.3.3 & 4.10.3 | 支持 | 不支持 | 1.0.3 & 2.x | 2022年12月 |1. 除sunit(茄子渠道)外，需要在gradle.properties 里增加： <br/> `android.enableR8=true` <br/> `android.enableR8.fullMode=true`<br/> 2. sunit(茄子渠道)配置：需要在gradle.properties 里增加： <br/> `android.enableR8=false` <br/> `android.enableR8.fullMode=true` <br/> 并在 proguard-rules.pro 添加 `-ignorewarnings`<br/> 3. 如果使用 `KSSYOmniPlugin 2.x`，需要对 sunit(茄子渠道) 单独配置。 |
-| 3.4.3 & 5.3.1  | 支持 | 支持   | 1.0.3 & 2.x | 2022年12月 |1. 不需要特殊编译配置 <br/>2. 注意 `kotlin` 版本限制，[Kotlin-Gradle Version](https://kotlinlang.org/docs/gradle.html) <br/>3. 目前测试`Kotlin 1.4.32 `及以下支持。 |
+| 3.3.3 & 4.10.3 | 支持 | 不支持 | 1.0.3 & 2.x | 2022年12月 |1. 除sunit(茄子渠道)外，需要在gradle.properties 里增加：<br/>`android.enableR8=true`<br/>`android.enableR8.fullMode=true`<br/>2. sunit(茄子渠道)配置：需要在gradle.properties 里增加：<br/>`android.enableR8=false`<br/>`android.enableR8.fullMode=true`<br/>并在 proguard-rules.pro 添加 `-ignorewarnings`<br/>3. 如果使用 `KSSYOmniPlugin 2.x`，需要对 sunit(茄子渠道) 单独配置。  |
+| 3.4.3 & 5.3.1  | 支持 | 支持   | 1.0.3 & 2.x | 2022年12月 |1. 不需要特殊编译配置<br/>2. 注意 `kotlin` 版本限制，[Kotlin-Gradle Version](https://kotlinlang.org/docs/gradle.html) <br/>3. 目前测试`Kotlin 1.4.32 `及以下支持。 |
 | 3.5.4 & 5.5.1  | 支持 | 支持   | 1.0.3 & 2.x | 2022年12月 |不需要特殊编译配置 |
-| 3.6.4 & 5.6.4  | 支持 | 支持   | 1.0.3 & 2.x | 目前长期维护 |不需要特殊编译配置 <br/>建议使用 2.x及后续版本 |
-| 4.1.2 & 6.5.1  | 支持 | 支持   | 1.0.3 & 2.x | 目前长期维护 |不需要特殊编译配置 <br/>建议使用 2.x及后续版本 |
+| 3.6.4 & 5.6.4  | 支持 | 支持   | 1.0.3 & 2.x | 目前长期维护 |不需要特殊编译配置<br/>建议使用 2.x及后续版本 |
+| 4.1.2 & 6.5.1  | 支持 | 支持   | 1.0.3 & 2.x | 目前长期维护 |不需要特殊编译配置<br/>建议使用 2.x及后续版本 |
 
 ## Java 接入
 如果使用`Java`语言接入，兼容 `AGP 3.3.3 & Gradle 4.10.3` 以上。
