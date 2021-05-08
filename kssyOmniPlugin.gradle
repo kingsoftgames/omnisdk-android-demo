@@ -1,0 +1,77 @@
+// apply app-level build.gradle
+
+apply plugin: "KSSYOmniPlugin"
+
+OmniSDK {
+
+    // 出包类型：false-release包，true-debug包。
+    // 建议屏蔽其他功能出debug包： ./gradlew -PisDebug=true -PchannelNames=website_en,samsung -PskipCpsBuild=true OmniChannelsBuild
+
+    // 这个 hasProperty-"isDebug" 可以自定义，但要配合"-P"修改；比如改成 "doDebug"，则 "-PdoDebug=true"。下面同理，作用就是传值给gradlew使用。
+    if (project.hasProperty("isDebug")) {
+        debugBuild = isDebug
+    } else {
+        debugBuild = "false"
+    }
+
+    // 不配置时，默认出所有渠道包
+    if (project.hasProperty("channelNames")) {
+        customChannels = channelNames
+    } else {
+        // 为 all 或空时，即出所有渠道包；指定出哪些渠道包，用英文","分割；例："huawei,website_en"。
+        // 注意：渠道包的标识名是由Omni定好的，不能自己更改。
+        customChannels = "all" // "huawei,website_en"
+    }
+
+    // 产物输出路径：必须是绝对路径（${project.rootDir} 表示当前根目录）
+    output = "${project.rootDir}/channels-output"
+
+    // 签名：如果在 buildTypes.release.signingConfig 配置了签名，则不需要设置本字段；未配置，填写签名标识或脚本；
+    //      如果这两处签名配置都未配置，打出的是未签名release包。
+    // 两种签名方式，优先 buildTypes.release.signingConfig，只要配置 buildTypes.release.signingConfig，则 signatureName 签名就不会生效。
+    // 签名标识调用的签名脚本：具体参考 apksignerTest.sh，自定义时请详细阅读文档说明。
+//    signatureName = "${project.rootDir}/apksignerTest.sh"
+
+    // 可替换资源
+    resChannels {
+        website_en {
+            // 标准目录
+            // -app/src/main/
+            // -------------/assets
+            // -------------/java
+            // -------------/res
+            // -------------/AndroidManifest.xml
+            // shiyou/*channel*/main：配置目录，将按标准目录，循环copy到对应的app/src/main目录下。
+            // 1. resDir 方式，研发必须保证需要copy的资源存放的目录与最终位置一一对应。适合需要大量资源替换，或编译前动态拉取资源。
+            // 2. resFile 方式，研发直接配置需要替换的资源路径 [src-srcFilePath, dst-dstDirPath]，相对路径 [工程rootDir]。适合少量资源替换。
+            // resFile 以json形式配置，具体结构参数示例文件。规范：都以“/”开头，dst以“/”结尾。
+            // 两种方式可同时使用。执行顺序 resDir -> resFiles，即 resFiles 可以覆盖 resDir的资源操作。
+            // 注意：不要用这个方法copy代码，除非这些代码是所有渠道共同代换的。脚本只是做覆盖功能，并不会进行删除操作。
+            resDir = "main" // 路径不可修改，此文件名可自定义。
+//            resFile = "resFile.json" // 路径不可修改，此文件名可自定义。比如你可以改为 "aaResFile.json"
+        }
+
+        vivo // 这样写是无效的
+        vivo{} // 这样写是无效的
+    }
+
+    // 是否跳过cps标签包打包：true-跳过，false-出相应的标签包
+    // 不配置时，默认值为 false
+    if (project.hasProperty("skipCpsBuild")) {
+        skipCps = skipCpsBuild
+    } else {
+        skipCps = "false"
+    }
+
+    // 仅更改标签包的标签包，标签包列表文件名“cps”：一行一个标签包，整个文件不要有空格行。比如 [cpsName,outAlias] 为一行
+    // 标签包出包默认命名，channel-cps-cpsName.apk；如果配置了outAlias，则是 outAlias.apk
+    // 标签包标签（cpsName）命名规则(建议)：英文、数字、下划线。
+
+    // 不配置时，不出标签包；配置哪些渠道包的标识名，就出哪些渠道包的标签包。
+    cpsChannels {
+        website_en
+        vivo
+//        huawei
+//        samsung
+    }
+}

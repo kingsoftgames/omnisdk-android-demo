@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "support": "sg",
+  "package_name": "com.kingsoft.shiyou.omnisdk.demo",
+  "project": {
+    "SgSafeApi": "https://dev-api.sgsdk.com:1443/",
+    "permission": "WRITE_EXTERNAL_STORAGE|CAMERA",
+    "SgAppId": "1011",
+    "debugMode": "true",
+    "SgPlanId": "16",
+    "SgChannelCode": "31",
+    "SgChannelId": "vivo",
+    "SgPackageName": "com.kingsoft.shiyou.omnisdk.demo",
+    "appId": "***",
+    "appSecret": "***"
+  },
+  "plugin": [
+    {
+      "plugin_name": "account",
+      "description": "世游帐号功能插件",
+      "artifactId": "omni-account",
+      "version": "1.0.6"
+    }
+  ],
+  "channel": [
+    {
+      "channel_name": "vivo",
+      "description": "海外vivo渠道",
+      "artifactId": "vivo",
+      "version": "1.0.6"
+    }
+  ]
+}

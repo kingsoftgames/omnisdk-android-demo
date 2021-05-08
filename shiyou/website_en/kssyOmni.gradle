@@ -8,8 +8,11 @@ dependencies {
 
 	// OmniSDK Plugin 依赖
 	implementation("com.kingsoft.shiyou.omnisdk.plugin:omni-account:1.0.6")
+	implementation("com.kingsoft.shiyou.omnisdk.plugin:google-pay:1.0.6")
+	implementation("com.kingsoft.shiyou.omnisdk.plugin:facebook:1.0.6")
+	implementation("com.kingsoft.shiyou.omnisdk.plugin:google:1.0.6")
 
 	// OmniSDK 渠道包 依赖
 	String channelVersion = "1.0.6"
-	implementation("com.kingsoft.shiyou.omnisdk.channel:vivo:$channelVersion")
+	implementation("com.kingsoft.shiyou.omnisdk.channel:website-en:$channelVersion")
 }

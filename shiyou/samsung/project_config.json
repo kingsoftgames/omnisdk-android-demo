@@ -1,0 +1,54 @@
+{
+  "version": "1.0.0",
+  "support": "sg",
+  "package_name": "com.kingsoft.shiyou.omnisdk.demo",
+  "project": {
+    "SgSafeApi": "https://dev-api.sgsdk.com:1443/",
+    "permission": "WRITE_EXTERNAL_STORAGE|CAMERA",
+    "SgAppId": "1011",
+    "debugMode": "true",
+    "SgPlanId": "16",
+    "SgChannelCode": "22",
+    "SgChannelId": "samsung",
+    "SgNotifyUrl": "https://dev-api.sgsdk.com:1443/pchannel/order/channel_pay/1011/22/1/1",
+    "SgPackageName": "com.kingsoft.shiyou.omnisdk.demo",
+    "SamsungPayMode": "2",
+    "facebookAppId": "*****",
+    "googleAdmobAppid": "*****",
+    "googleClientId": "*****",
+    "googleServerClientId": "*****",
+    "facebookAppName": "GameName",
+    "hideGuestLogin": "false",
+    "hideSeasunLogin": "false"
+  },
+  "plugin": [
+    {
+      "plugin_name": "google",
+      "description": "google插件",
+      "artifactId": "google",
+      "version": "1.0.6"
+    },
+    {
+      "plugin_name": "facebook",
+      "class_name": "com.kingsoft.shiyou.omnisdk.plugin.facebook.OmniPlugin",
+      "description": "facebook插件",
+      "artifactId": "facebook",
+      "version": "1.0.6"
+    },
+    {
+      "plugin_name": "account",
+      "description": "世游帐号功能插件",
+      "artifactId": "omni-account",
+      "version": "1.0.6"
+    }
+  ],
+  "channel": [
+    {
+      "channel_name": "samsung",
+      "class_name": "com.kingsoft.shiyou.omnisdk.channel.samsung.OmniChannel",
+      "description": "海外三星渠道",
+      "artifactId": "samsung",
+      "version": "1.0.6"
+    }
+  ]
+}

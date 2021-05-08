@@ -7,12 +7,14 @@ apply plugin: "kotlin-kapt"
 
 // 导入 OmniSDK 依赖
 apply from: ("${rootProject.rootDir}/kssyOmni.gradle")
+// 导入 KSSYOmniPlugin
+apply from: ("${rootProject.rootDir}/kssyOmniPlugin.gradle")
 
 android {
     compileSdkVersion 30
 
     defaultConfig {
-        applicationId "com.kingsoft.shiyou.omnisdk.demo"
+        // applicationId "com.kingsoft.shiyou.omnisdk.demo" //不要配置，编译插件自动读取配置文件包名
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -21,12 +23,29 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+//    signingConfigs {
+//        // 签名配置
+//        release {
+//            try {
+//                storeFile file("${rootProject.rootDir}/your-storeFile")
+//                storePassword "your-store-password"
+//                keyAlias "your-alias"
+//                keyPassword "your-alias-password"
+//            } catch (ex) {
+//                throw new InvalidUserDataException(ex.toString())
+//            }
+//        }
+//    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true // 开启代码混淆：保护代码、减少包大小
+//            multiDexKeepProguard = file("multidex-config.pro") // 分包配置
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release // release包签名
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

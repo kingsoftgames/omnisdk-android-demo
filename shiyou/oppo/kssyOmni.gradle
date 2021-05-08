@@ -11,5 +11,5 @@ dependencies {
 
 	// OmniSDK 渠道包 依赖
 	String channelVersion = "1.0.6"
-	implementation("com.kingsoft.shiyou.omnisdk.channel:vivo:$channelVersion")
+	implementation("com.kingsoft.shiyou.omnisdk.channel:oppo:$channelVersion")
 }

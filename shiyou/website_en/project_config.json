@@ -1,0 +1,62 @@
+{
+  "version": "1.0.0",
+  "support": "sg",
+  "package_name": "com.kingsoft.shiyou.omnisdk.demo",
+  "project": {
+    "SgSafeApi": "https://dev-api.sgsdk.com:1443/",
+    "permission": "WRITE_EXTERNAL_STORAGE|CAMERA",
+    "SgAppId": "1064",
+    "debugMode": "true",
+    "SgPlanId": "63",
+    "SgChannelCode": "12",
+    "SgChannelName": "website",
+    "SgChannelVersion": "1.0",
+    "SgChannelId": "sgoverseas",
+    "appChannelId": "*****",
+    "SgSocailInfos": "picture,gender",
+    "SgFriendInfos": "picture",
+    "SgPackageName": "com.kingsoft.shiyou.omnisdk.demo",
+    "gameSecret": "*****",
+    "facebookAppId": "*****",
+    "googleAdmobAppid": "*****",
+    "googleClientId": "*****",
+    "googleServerClientId": "*****",
+    "facebookAppName": "GameName"
+  },
+  "plugin": [
+    {
+      "plugin_name": "google",
+      "description": "google插件",
+      "artifactId": "google",
+      "version": "0.0.1"
+    },
+    {
+      "plugin_name": "facebook",
+      "class_name": "com.kingsoft.shiyou.omnisdk.plugin.facebook.OmniPlugin",
+      "description": "facebook插件",
+      "artifactId": "facebook",
+      "version": "0.0.1"
+    },
+    {
+      "plugin_name": "account",
+      "description": "世游帐号功能插件",
+      "artifactId": "omni-account",
+      "version": "0.0.1"
+    },
+    {
+      "plugin_name": "googlepay",
+      "description": "世游支付功能插件",
+      "artifactId": "google-pay",
+      "version": "0.0.1"
+    }
+  ],
+  "channel": [
+    {
+      "channel_name": "website_en",
+      "class_name": "com.kingsoft.shiyou.omnisdk.channel.website.OmniChannel",
+      "description": "海外官网渠道",
+      "artifactId": "website-en",
+      "version": "0.0.1"
+    }
+  ]
+}

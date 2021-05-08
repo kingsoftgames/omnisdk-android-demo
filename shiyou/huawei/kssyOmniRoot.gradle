@@ -2,6 +2,9 @@
 
 allprojects {
     repositories {
+        //华为渠道
+        maven { url 'https://developer.huawei.com/repo/' }
+
         //金山世游仓库
         maven { url "https://maven.shiyou.kingsoft.com/repository/public/" }
     }
