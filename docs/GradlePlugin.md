@@ -98,12 +98,12 @@ android.enableJetifier=true
 ## 功能说明
 
 ### 多渠道出包配置参数
-| 参数名         | 功能                                    | 备注                                              |
-| -------------- | --------------------------------------- | ------------------------------------------------- |
+| 参数名         | 功能                                    | 备注                               |
+| ------------ | ------------------ | ------------------------------------------------------ |
 | debugBuild     | 出包类型：false-release包，true-debug包 | 不配置时，默认false                               |
 | customChannels | 指定出哪些渠道包                        | 不配置时或"all"，出所有渠道包。                   |
 | output         | 产物输出路径，必须是绝对路径            | 不配置时，输出到工程根目录"/channels-output/"下。 |
-| signatureName  | 自定义签名脚本                          | 详细参考 [apksignerTest.sh](#apksignertestsh-说明)                        |
+| signatureName  | 自定义签名脚本                          | 详细参考 [apksignerTest.sh](#apksignertestsh-说明)     |
 
 ### 渠道包资源替换配置参数
 
@@ -121,6 +121,7 @@ android.enableJetifier=true
 | ------ | ------------------------------------------------------ |
 | src    | 源文件路径名，相对工程根目录的路径；以“/”开头。        |
 | dst    | 目标路径，相对工程根目录的路径；以“/”开头，以“/”结尾。 |
+
 
 ```json
 [
@@ -310,7 +311,7 @@ public static void main(String[] args) {
 
 # Android 标准目录参考
 
-```java
+```groovy
 // 主module，默认是app
 -GameName
 ---app/libs 
