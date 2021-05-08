@@ -11,7 +11,7 @@ OmniSDK Android 接入指南
 - [对接须知](#对接须知)
 - [集成开发配置](#集成开发配置)
     - [1. 拷贝Gradle文件和集成参数配置文件](#1-拷贝gradle文件和集成参数配置文件)
-    - [2. 配置Gradle脚本](#2-配置gradle脚本)
+    - [2. 配置Gradle](#2-配置gradle)
     - [3. 初始化](#3-初始化)
         - [3.1 Application（必接）](#31-application必接)
         - [3.2 Activity生命周期方法接入 (必接)](#32-activity生命周期方法接入-必接)
@@ -31,6 +31,9 @@ OmniSDK Android 接入指南
         - [OmniSDK 混淆配置](#omnisdk-混淆配置)
         - [第三方依赖库混淆配置说明](#第三方依赖库混淆配置说明)
         - [第三方依赖库混淆配置方法（建议）](#第三方依赖库混淆配置方法建议)
+    - [7. 多渠道编译配置](#7-多渠道编译配置)
+        - [编译配置说明](#编译配置说明)
+        - [多渠道编译配置Gradle](#多渠道编译配置gradle)
 - [附录](#附录)
     - [版本最低兼容问题](#版本最低兼容问题)
     - [配置文件申请指南](#配置文件申请指南)
@@ -68,10 +71,10 @@ OmniSDK Android 接入指南
 
 # 集成开发配置
 ## 1. 拷贝Gradle文件和集成参数配置文件
-- 将SDK ZIP解压后的 `kssyOmni.gradle` 和 `kssyOmniRoot.gradle` 文件拷贝到游戏自身应用模块根目录下。
+- 将SDK ZIP解压后的 `kssyOmni.gradle`、`kssyOmniRoot.gradle`、`kssyOmniPlugin.gradle` 文件拷贝到游戏自身应用模块根目录下。
 - 将SDK ZIP解压后的 `project_config.json` 拷贝到游戏应用模块(app-level or libs-level)的 `/src/main/assets/shiyou/` 目录下
   
-## 2. 配置Gradle脚本
+## 2. 配置Gradle
 
 - :bookmark: [Gradle Plugin，最低版本兼容与建议](GradlePlugin.md)
 - 在游戏项目工程(root-level)根目录下的 ***build.gradle*** ，添加如下配置:
@@ -81,8 +84,6 @@ OmniSDK Android 接入指南
     apply from: ("${rootProject.rootDir}/kssyOmniRoot.gradle")
 
     buildscript {
-        // 建议更新到最新版本，或Omni建议的最低版本
-        // ext.kotlin_version = "1.4.31" // 如果需要用 kotlin 接入，则依赖
         repositories {
             google()
             jcenter()
@@ -92,10 +93,8 @@ OmniSDK Android 接入指南
             }
         }
         dependencies {
-            // 建议使用 3.6.*及以上版本；建议使用游戏引擎提供的最新版本。
+            // 建议使用 3.6.4及以上版本；建议使用游戏引擎提供的最新版本。
             classpath "com.android.tools.build:gradle:${your_version}"
-            // kotlin 环境
-            // classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // 如果需要用 kotlin 接入，则依赖
             // 编译插件
             classpath "com.kingsoft.shiyou.omnisdk.build:plugin:1.0.3"
         }
@@ -114,13 +113,61 @@ OmniSDK Android 接入指南
     apply from: ("${rootProject.rootDir}/kssyOmni.gradle")
     ```
   
+- 在游戏应用模块(app-level)根目录下的 ***build.gradle*** ，添加如下配置:
+
+    ```groovy
+    apply from: ("${rootProject.rootDir}/kssyOmniPlugin.gradle") // 编译插件，必须在(app-level)级别添加
+  
+    android {
+        defaultConfig {
+            // applicationId "游戏包名" // 本行删除，不要自己配置，编译脚本会自动读取 project_config.json#package_name。
+            // 包名需要 project_config.json#package_name、世游后台、相关第三方后台必须保持一致，改动时需要相关方一起改动。
+            // multiDexEnabled = true  // 64k 方法数，如出现分包问题打开
+        }
+        // 使用Java8，大部分第三方SDK强制要求
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+        signingConfigs {
+            // 签名配置
+            release {
+                try {
+                    storeFile file("${rootProject.rootDir}/your-storeFile")
+                    storePassword "your-store-password"
+                    keyAlias "your-alias"
+                    keyPassword "your-alias-password"
+                } catch (ex) {
+                    throw new InvalidUserDataException(ex.toString())
+                }
+            }
+        }
+    
+        buildTypes {
+            release {
+                minifyEnabled true // 开启代码混淆：保护代码、减少包大小
+                multiDexKeepProguard = file("multidex-config.pro") // 分包配置
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+                signingConfig signingConfigs.release // release包签名
+            }
+        }
+    
+        dependencies {
+          // implementation("androidx.multidex:multidex:2.0.1") // 64k 方法数，如出现分包问题打开
+        }
+    }
+    ```  
+  
 - `sync gradle`，即点击`Sync Now` 或 Android Studio 菜单栏的“大象”图标。依赖库同步成功后，即可往下进行集成开发。
 
 
 ## 3. 初始化
-runOnUiThread
-
 ### 3.1 Application（必接）
+* 为兼容部分渠道配置，统一添加以下配置:
+    ```xml
+    <application
+            tools:replace="android:theme,allowBackup">
+    ```
 * 若游戏应用无自定义的Application，则在游戏应用工程 ***AndroidManifest.xml*** 配置文件的 `<application>` 中声明如下 `android:name` 的值:
 
     ```xml
@@ -385,7 +432,7 @@ OmniSDK.getInstance().onEnterGame(roleInfo)
 
 ## 5. API接口说明（可选功能）
 - :bookmark: 由于各个对接游戏需求不同，下面所有接口并不是都必须接入。请CP对接方务必先确定游戏对接需求然后集成所需接口API。
-- :pushpin: OmniSDK 接口对线程无要求，游戏可以直接在子线程中调用。回调时如果需要在主线程处理一些UI事件，需要游戏切换到主线程，比如可以使用runOnUiThread。
+- :pushpin: OmniSDK 接口对线程调用无要求，游戏可以直接在子线程中调用。回调时如果需要在主线程处理一些UI事件，需要游戏自己切换到主线程，比如可以使用`runOnUiThread`。
 
 ### 全部接口
 - API接口文档 - [`OmniSDK`][OmniSDK_API]
@@ -426,11 +473,12 @@ OmniSDK.getInstance().onEnterGame(roleInfo)
 
 ## 6. 混淆配置
 ### OmniSDK 混淆配置
-OmniSDK 混淆配置集成在自身依赖包内，编译时自动配置，CP 无需额外配置。
+- OmniSDK 混淆配置集成在自身依赖包内，编译时自动配置，CP 无需额外配置。
+- 64k 分包配置文件参考，`multidex-config.pro` [下载](./proguard/multidex-config.pro)
 
 ### 第三方依赖库混淆配置说明
 第三方依赖库混淆配置，防止配置冲突，需要由游戏应用配置，目前用到的如下：
-- Gson [必选](../proguard/gson-rules.pro)
+- Gson [必选-下载](./proguard/gson-rules.pro)
 
 ### 第三方依赖库混淆配置方法（建议）
 - 在游戏应用工程建立文件夹`proguard`。
@@ -448,6 +496,14 @@ OmniSDK 混淆配置集成在自身依赖包内，编译时自动配置，CP 无
     }
     ```
 
+## 7. 多渠道编译配置
+
+### 编译配置说明
+详情参考：[编译配置](编译配置.md)
+
+### 多渠道编译配置Gradle
+详情参考：[OmniSDK KSSYOmniPlugin](GradlePlugin.md)
+
 # 附录
 ## 版本最低兼容问题
 SGSDK 目前还支持Android 4.4(API Level 19)，但是 OmniSDK 对 Android 5.0(API Level 21) 以下将不再支持。
@@ -463,6 +519,7 @@ OmniSDK 现在使用的是他们的最新版本，如果降级去支付Android 5
 
 
 ## 配置文件申请指南
+- [Google-Facebook 参数获取说明](google_help.md)。
 - 与管理员、产品确认需要申请的参数，参考[配置文件申请指南](https://d7n9vj8ces.feishu.cn/docs/doccn5apz08CeDpLCDTtshsSKmd)，在后台填写参数。
 - 完成后通知 Omni 出包验证，参数无误，会发送所有的文件。
 
