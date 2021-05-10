@@ -71,7 +71,9 @@ OmniSDK KSSYOmniPlugin
 
 因`Kotlin`支持限制，`Gradle`无法降级。注意使用的`Kotlin`版本，随着`Kotlin`的快速升级，`Gradle`的版本将越来越高。
 
-目前测试`Kotlin 1.4.32`及以下支持`AGP 3.4.3 & Gradle 5.3.1` 以上版本；后续请注意`Kotlin`升级。
+目前测试 `Kotlin 1.4.32` 及以下支持`AGP 3.4.3 & Gradle 5.3.1` 以上版本；后续请注意`Kotlin`升级。
+
+推荐使用 `Kotlin 1.4.32` 版本。1.4.x 系列最新稳定版本。
 
 ## gradle.properties 配置
 ```properties
@@ -186,7 +188,7 @@ OmniSDK {
 - 在工程根目录下创建 `/shiyou/` 文件夹；
 - 根据游戏需要出的渠道包，在 `/shiyou/` 目录下使用[渠道包的标识名](#渠道包的标识名)创建对应的文件夹；
 - 将各自渠道的文件：`kssyOmni.gradle`(必配)、`kssyOmniRoot.gradle`(必配)、`project_config.json`(必配)、`cps`(如果有)、`替换资源`(如果有)，放置在各自的 “渠道包的标识名” 文件夹下。
-- 使用默认配置（即出所有渠道包和cps标签包）或在 `kssyOmniPlugin.gradle` 定义编译配置。
+- 使用默认配置（即出所有渠道包和cps标签包）或在 `kssyOmniPlugin.gradle` 自定义编译配置。
 
 ## 2. 编译配置示例
 文件名：kssyOmniPlugin.gradle
@@ -242,7 +244,10 @@ OmniSDK {
             resDir = "main" // 路径不可修改，此文件名可自定义。
             resFile = "resFile.json" // 路径不可修改，此文件名可自定义。比如你可以改为 "aaResFile.json"
         }
-
+      
+        oppo {
+           resDir = "main" // resFile也可以单独使用
+        }
         vivo // 这样写是无效的
         vivo{} // 这样写是无效的
     }
