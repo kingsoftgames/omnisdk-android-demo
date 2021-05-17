@@ -36,8 +36,10 @@ OmniSDK Android 接入指南
         - [多渠道编译配置Gradle](#多渠道编译配置gradle)
 - [附录](#附录)
     - [版本最低兼容问题](#版本最低兼容问题)
+    - [OmniSDK业务流程图](#omnisdk业务流程图)
     - [配置文件申请指南](#配置文件申请指南)
     - [SDK 常见状态码](#sdk-常见状态码)
+    - [集成与测试要点](#集成与测试要点)
     - [API JavaDoc 阅读](#api-javadoc-阅读)
 
 <!-- /TOC -->
@@ -51,29 +53,30 @@ OmniSDK Android 接入指南
 
 # 版本记录
 - :star2: **[版本历史记录](CHANGELOG.md)**
-- :tada: 重要节点版本：[v1.0.5](CHANGELOG.md#version-105)
+- :tada: 重要 `OmniSDK` 节点版本：[v1.0.5](CHANGELOG.md#version-105)
+- :tada: `KSSYOmniPlugin`：[2.0.1](GradlePlugin.md)
 
 # 对接须知
 - 推荐使用Android Studio对接SDK，目前未对其他编译器测试。
 - :pushpin: 检查游戏引用的 `Omni-API `包名路径***全部*** 为<font color=red> `com.kingsoft.shiyou.omnisdk.api.*` </font>。
-- OmniSDK最低兼容版本为 `Android 5.0(API Level 21)`、`targetSdkVersion 29`，阅读[版本最低兼容问题](#版本最低兼容问题)。
+- OmniSDK 最低兼容版本为 `Android 5.0(API Level 21)`，阅读[版本最低兼容问题](#版本最低兼容问题)。
     ```groovy
     android {
-        compileSdkVersion 29
+        compileSdkVersion 30 // 建议与 targetSdkVersion 相同
         // buildToolsVersion "29.0.3" // 无如必要，不需要指定此版本号
     
         defaultConfig {
             minSdkVersion 21
-            targetSdkVersion 29
+            targetSdkVersion 30 // 建议
         }
     }
     ```
+- 如无特殊说明，OmniSDK 本身不会申请任何权限。权限一般由游戏或渠道SDK申请。  
 
 # 集成开发配置
 ## 1. 拷贝Gradle文件和集成参数配置文件
-- 将SDK ZIP解压后的 `kssyOmni.gradle`、`kssyOmniRoot.gradle`、`kssyOmniPlugin.gradle` 文件拷贝到游戏自身应用模块根目录下。
+- 将SDK ZIP解压后的 `kssyOmni.gradle`、`kssyOmniRoot.gradle`、`kssyOmniPlugin.gradle` 文件拷贝到游戏工程根目录下。
 - 将SDK ZIP解压后的 `project_config.json` 拷贝到游戏应用模块(app-level or libs-level)的 `/src/main/assets/shiyou/` 目录下
-  
 ## 2. 配置Gradle
 
 - :bookmark: [Gradle Plugin，最低版本兼容与建议](GradlePlugin.md)
@@ -82,7 +85,7 @@ OmniSDK Android 接入指南
     ```groovy
    // 引入渠道仓库配置
     apply from: ("${rootProject.rootDir}/kssyOmniRoot.gradle")
-
+   
     buildscript {
         repositories {
             google()
@@ -96,10 +99,10 @@ OmniSDK Android 接入指南
             // 建议使用 3.6.4及以上版本；建议使用游戏引擎提供的最新版本。
             classpath "com.android.tools.build:gradle:${your_version}"
             // 编译插件
-            classpath "com.kingsoft.shiyou.omnisdk.build:plugin:1.0.3"
+            classpath "com.kingsoft.shiyou.omnisdk.build:plugin:2.0.1"
         }
     }
-
+   
     allprojects {
         repositories {
             google()
@@ -117,7 +120,7 @@ OmniSDK Android 接入指南
 
     ```groovy
     apply from: ("${rootProject.rootDir}/kssyOmniPlugin.gradle") // 编译插件，必须在(app-level)级别添加
-  
+    
     android {
         defaultConfig {
             // applicationId "游戏包名" // 本行删除，不要自己配置，编译脚本会自动读取 project_config.json#package_name。
@@ -156,7 +159,7 @@ OmniSDK Android 接入指南
           // implementation("androidx.multidex:multidex:2.0.1") // 64k 方法数，如出现分包问题打开
         }
     }
-    ```  
+    ```
   
 - `sync gradle`，即点击`Sync Now` 或 Android Studio 菜单栏的“大象”图标。依赖库同步成功后，即可往下进行集成开发。
 
@@ -181,7 +184,7 @@ OmniSDK Android 接入指南
 
     ```java
     import com.kingsoft.shiyou.omnisdk.project.OmniApplication;
-
+   
     public class GameApplication extends OmniApplication {
         //...
     }   
@@ -197,28 +200,28 @@ OmniSDK Android 接入指南
         OmniSDK.getInstance().onApplicationAttachBaseContext(base)
         // your code goes here
     }
-
+    
     @Override
     public void onCreate() {
         super.onCreate();
         OmniSDK.getInstance().onApplicationCreate(this);
         // your code goes here
     }
-
+    
     @Override
     public void onLowMemory() {
         super.onLowMemory();
         OmniSDK.getInstance().onApplicationLowMemory();
         // your code goes here
     }
-
+    
     @Override
     public void onTrimMemory(int level) {
         super.onTrimMemory(level);
         OmniSDK.getInstance().onApplicationTrimMemory();
         // your code goes here
     }
-
+    
     @Override
     public void onTerminate() {
         super.onTerminate();
@@ -231,84 +234,84 @@ OmniSDK Android 接入指南
 * 请在游戏自身Activity的相应生命周期方法中添加如下代码:
 
     ```java
-
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         OmniSDK.getInstance().onCreate(this, savedInstanceState);
         // your code goes here
     }
-
+    
     @Override
     public void onStart() {
         super.onStart();
         OmniSDK.getInstance().onStart(this);
         // your code goes here
     }
-
+    
     @Override
     public void onRestart() {
         super.onRestart();
         OmniSDK.getInstance().onRestart(this);
         // your code goes here
     }
-
+    
     @Override
     public void onResume() {
         super.onResume();
         OmniSDK.getInstance().onResume(this);
         // your code goes here
     }
-
+    
     @Override
     public void onPause() {
         super.onPause();
         OmniSDK.getInstance().onPause(this);
         // your code goes here
     }
-
+    
     @Override
     public void onStop() {
         super.onStop();
         OmniSDK.getInstance().onStop(this);
         // your code goes here
     }
-
+    
     @Override
     public void onDestroy() {
         super.onDestroy();
         OmniSDK.getInstance().onDestroy(this);
         // your code goes here
     }
-
+    
     @Override
     public void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         OmniSDK.getInstance().onNewIntent(this, intent);
         // your code goes here
     }
-
+    
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         OmniSDK.getInstance().onSaveInstanceState(this, outState);
         // your code goes here
     }
-
+    
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         OmniSDK.getInstance().onRestoreInstanceState(this, savedInstanceState);
         // your code goes here
     }
-
+    
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         OmniSDK.getInstance().onConfigurationChanged(this, newConfig);
         // your code goes here
     }
-
+    
     @Override
     public void onActivityResult(
             int requestCode,
@@ -322,7 +325,7 @@ OmniSDK Android 接入指南
                 data);
         // your code goes here
     }
-
+    
     @Override
     public void onRequestPermissionsResult(
             int requestCode,
@@ -335,14 +338,14 @@ OmniSDK Android 接入指南
                 grantResults);
         // your code goes here
     }
-
+    
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         OmniSDK.getInstance().onBackPressed(this);
         // your code goes here
     }
-
+    
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (OmniSDK.getInstance().onKeyDown(this, keyCode, event)) {
@@ -517,6 +520,8 @@ SGSDK 目前还支持Android 4.4(API Level 19)，但是 OmniSDK 对 Android 5.0(
 OmniSDK 现在使用的是他们的最新版本，如果降级去支付Android 5.0(API Level 21) 以下，会出现其他兼容性问题。
 5. 审核问题，比如 TLS 1.2问题，GooglePlay 2020-12-16已经禁止上线；如果不随审核升级而升级相应SDK新版本，渠道审核可能就无法通过。
 
+## OmniSDK业务流程图
+[OmniSDK业务流程图](OmniSDK业务流程.md)
 
 ## 配置文件申请指南
 - [Google-Facebook 参数获取说明](google_help.md)。
@@ -526,8 +531,11 @@ OmniSDK 现在使用的是他们的最新版本，如果降级去支付Android 5
 ## SDK 常见状态码
 详情阅读 [状态码](OmniStatusCodes.md)
 
+## 集成与测试要点
+[集成与测试要点][集成与测试要点]：本文档持续更新中，会将Omni、项目遇到的公共问题记录。建议每次测试、特别是测试渠道前查看。
+
 ## API JavaDoc 阅读
-1. [全部接口](#全部接口)
+1. [全部接口][OmniSDK_API]
 2. 如何查看接口、方法、参数的具体说明、数据、返回值等：点击相应的接口、方法、参数，跳转进去。
 3. Since 标识：版本号，当前接口开始支持或变更信息，具体版本号定位到方法。
 
@@ -541,3 +549,4 @@ OmniSDK 现在使用的是他们的最新版本，如果降级去支付Android 5
 [RoleInfo]:./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.entity/-role-info/index.html
 
 [emoji]:https://www.webfx.com/tools/emoji-cheat-sheet/
+[集成与测试要点]:https://d7n9vj8ces.feishu.cn/mindnotes/bmncnEiMKr172vpNu83YrC108ne#mindmap
