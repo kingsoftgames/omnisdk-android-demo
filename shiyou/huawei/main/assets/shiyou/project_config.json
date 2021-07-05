@@ -1,17 +1,17 @@
 {
   "version": "1.0.8",
   "support": "sg",
-  "package_name": "com.jssygp.bulletangelceshi.huawei",
+  "package_name": "*****.huawei",
   "project": {
     "SgSafeApi": "https://dev-api.sgsdk.com:1443/",
-    "SgAppId": "1011",
+    "SgAppId": "*****",
     "debugMode": "true",
-    "SgPlanId": "16",
+    "SgPlanId": "*****",
     "SgChannelCode": "27",
     "SgChannelId": "huawei",
-    "HuaweiClientId": "103967201",
-    "SgNotifyUrl": "https://dev-api.sgsdk.com:1443/pchannel/order/channel_pay/1011/27/1/1",
-    "SgPackageName": "com.jssygp.bulletangelceshi.huawei"
+    "HuaweiClientId": "*****",
+    "SgNotifyUrl": "*****",
+    "SgPackageName": "*****.huawei"
   },
   "plugin": [
     {
