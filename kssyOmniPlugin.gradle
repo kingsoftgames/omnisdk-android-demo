@@ -2,19 +2,56 @@
 
 apply plugin: "KSSYOmniPlugin"
 
+// 所有带“hasProperty”的，建议项目设Release配置为默认配置，Debug调试通过指令修改，防止出包时将Debug配置上传。
 OmniSDK {
 
+    //（${project.rootDir} 表示当前根目录）
     // 出包类型：false-release包，true-debug包。
     // 建议屏蔽其他功能出debug包： ./gradlew -PisDebug=true -PchannelNames=website_en,samsung -PskipCpsBuild=true OmniChannelsBuild
 
-    // 这个 hasProperty-"isDebug" 可以自定义，但要配合"-P"修改；比如改成 "doDebug"，则 "-PdoDebug=true"。下面同理，作用就是传值给gradlew使用。
-    if (project.hasProperty("isDebug")) {
-        debugBuild = isDebug
-    } else {
-        debugBuild = "false"
+    // assemble: 出apk包；bundle: 出aab包；"assemble,bundle" 同时出apk、aab包
+    // 配置建议，2021年8月，GooglePlay 强制要求上AAB包；其他渠道的应用商店目前技术上应该没有能力支持AAB：总-assemble，GP-bundle
+    buildType = "assemble"
+//    buildType = "assemble,bundle"
+
+    // 清理工程：即是否执行"./gradlew clean"，会增加编译时间，默认true，建议完整出包时设置为true
+    preClean = true
+
+    // 默认false: 即以buildType类型出包。
+    // 为true时，mixedBuild 未设置的以`buildType`类型出包；设置的以`mixedBuild-buildType`类型出包。
+    // 例1：比如 buildType 设置为 bundle，有渠道mixedBuild设置为assemble，那此渠道只出assemble；除非mixedBuild同时设置"assemble,bundle"
+    // 例外：当渠道要出cps包，此渠道一定会编译assemble，cps包依赖apk格式包。
+    // 混合类型出包，会比统一类型出包，时间慢。
+    doMixedBuild = true
+
+    mixedBuild {
+        website_en {
+            buildType = "assemble"
+        }
+        huawei {
+            buildType = "assemble,bundle"
+        }
+        transsion {
+            buildType = "bundle"
+        }
     }
 
-    // 不配置时，默认出所有渠道包
+    // 这个 hasProperty-"isDebug" 可以自定义，但要配合"-P"修改；比如改成 "doDebug"，则 "-PdoDebug=true"。下面同理，作用就是传值给gradlew使用。
+    if (project.hasProperty("isDebug")) {
+        debugBuild = isDebug.toBoolean()
+    } else {
+        debugBuild = false
+    }
+
+    // project_config.json#debugMode：是否开启sdk调试log
+    if (project.hasProperty("openLog")) {
+        logDebug = openLog.toBoolean()
+    } else {
+        logDebug = false
+    }
+
+    // 不配置时，默认出`buildType`指定类型的所有渠道包
+    // 也可以通过 `gradlew assembleWebsite_enRelease`、`gradlew bundleWebsite_enRelease`、`gradlew assembleWebsite_enDebug` 指令单独出渠道包
     if (project.hasProperty("channelNames")) {
         customChannels = channelNames
     } else {
@@ -23,44 +60,29 @@ OmniSDK {
         customChannels = "all" // "huawei,website_en"
     }
 
-    // 产物输出路径：必须是绝对路径（${project.rootDir} 表示当前根目录）
+    // 产物输出路径：必须是绝对路径
     output = "${project.rootDir}/channels-output"
 
-    // 签名：如果在 buildTypes.release.signingConfig 配置了签名，则不需要设置本字段；未配置，填写签名标识或脚本；
-    //      如果这两处签名配置都未配置，打出的是未签名release包。
-    // 两种签名方式，优先 buildTypes.release.signingConfig，只要配置 buildTypes.release.signingConfig，则 signatureName 签名就不会生效。
-    // 签名标识调用的签名脚本：具体参考 apksignerTest.sh，自定义时请详细阅读文档说明。
-//    signatureName = "${project.rootDir}/apksignerTest.sh"
+    // 1. 当 signingConfig 配置时，优先使用signingFile配置，signingFile无效
+    // 2. 根据 ABB 构建-签名规则，无法使用apksigner对 ABB 格式进行命令行签名
+    // 3. 强烈建议项目配置 signingConfig
+    // 4. 如果没有配置signingConfig，脚本会用signingFile在构建时自动生成signingConfig；
+    // 5. 如果两个都没有配置，则需要项目手动签名
+    // 6. 签名文件管理建议：建议签名统一管理，在服务器构建时，按照格式、路径，生成signingFile.properties，无需放入版本控制。服务器构建时，omni会自动生成signingConfig。
 
-    // 可替换资源
-    resChannels {
-        website_en {
-            // 标准目录
-            // -app/src/main/
-            // -------------/assets
-            // -------------/java
-            // -------------/res
-            // -------------/AndroidManifest.xml
-            // shiyou/*channel*/main：配置目录，将按标准目录，循环copy到对应的app/src/main目录下。
-            // 1. resDir 方式，研发必须保证需要copy的资源存放的目录与最终位置一一对应。适合需要大量资源替换，或编译前动态拉取资源。
-            // 2. resFile 方式，研发直接配置需要替换的资源路径 [src-srcFilePath, dst-dstDirPath]，相对路径 [工程rootDir]。适合少量资源替换。
-            // resFile 以json形式配置，具体结构参数示例文件。规范：都以“/”开头，dst以“/”结尾。
-            // 两种方式可同时使用。执行顺序 resDir -> resFiles，即 resFiles 可以覆盖 resDir的资源操作。
-            // 注意：不要用这个方法copy代码，除非这些代码是所有渠道共同代换的。脚本只是做覆盖功能，并不会进行删除操作。
-            resDir = "main" // 路径不可修改，此文件名可自定义。
-//            resFile = "resFile.json" // 路径不可修改，此文件名可自定义。比如你可以改为 "aaResFile.json"
-        }
-
-        vivo // 这样写是无效的
-        vivo{} // 这样写是无效的
-    }
+//     请预先配置apksigner路径，让命令行可以调用：*/Android/sdk/build-tools/{verson}/apksigner
+//     密码请使用下面两种方式配置，Omni 只透传值给指令；https://developer.android.com/studio/command-line/apksigner#options-sign-key-cert
+//     pass:<password>- 密码与 apksigner sign 命令的其余部分一起提供（内嵌在其中）。
+//     file:<filename> - 密码存储在给定文件中的某一行。
+//     比如 "storePassword": "pass:kspassword" 或 "storePassword": "file:ks.pwd"
+//    signingFile = "${project.rootDir}/signingFile.properties"
 
     // 是否跳过cps标签包打包：true-跳过，false-出相应的标签包
     // 不配置时，默认值为 false
     if (project.hasProperty("skipCpsBuild")) {
-        skipCps = skipCpsBuild
+        skipCps = skipCpsBuild.toBoolean()
     } else {
-        skipCps = "false"
+        skipCps = false
     }
 
     // 仅更改标签包的标签包，标签包列表文件名“cps”：一行一个标签包，整个文件不要有空格行。比如 [cpsName,outAlias] 为一行
@@ -71,7 +93,15 @@ OmniSDK {
     cpsChannels {
         website_en
         vivo
-//        huawei
+        huawei
 //        samsung
     }
+}
+
+
+OmniCPS {
+    // 必须是签名后的apk包，并且未打入过cps信息的基础apk
+    baseApk = file("${project.rootDir}/omnisdk-demo.apk")
+    cpsFile = file("${project.rootDir}/shiyou/website_en/cps")
+    output = "${project.rootDir}/channels-output/single-cps/"
 }

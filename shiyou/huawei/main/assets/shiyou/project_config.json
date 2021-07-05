@@ -1,7 +1,7 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.8",
   "support": "sg",
-  "package_name": "com.kingsoft.shiyou.omnisdk.demo",
+  "package_name": "com.jssygp.bulletangelceshi.huawei",
   "project": {
     "SgSafeApi": "https://dev-api.sgsdk.com:1443/",
     "SgAppId": "1011",
@@ -9,29 +9,16 @@
     "SgPlanId": "16",
     "SgChannelCode": "27",
     "SgChannelId": "huawei",
-    "HuaweiClientId": "00000",
+    "HuaweiClientId": "103967201",
     "SgNotifyUrl": "https://dev-api.sgsdk.com:1443/pchannel/order/channel_pay/1011/27/1/1",
-    "SgPackageName": "com.kingsoft.shiyou.omnisdk.demo"
+    "SgPackageName": "com.jssygp.bulletangelceshi.huawei"
   },
   "plugin": [
-    {
-      "plugin_name": "google",
-      "description": "google插件",
-      "artifactId": "google",
-      "version": "1.0.6"
-    },
-    {
-      "plugin_name": "facebook",
-      "class_name": "com.kingsoft.shiyou.omnisdk.plugin.facebook.OmniPlugin",
-      "description": "facebook插件",
-      "artifactId": "facebook",
-      "version": "1.0.6"
-    },
     {
       "plugin_name": "account",
       "description": "世游帐号功能插件",
       "artifactId": "omni-account",
-      "version": "1.0.6"
+      "version": "1.0.8"
     }
   ],
   "channel": [
@@ -39,7 +26,7 @@
       "channel_name": "huawei",
       "description": "华为渠道",
       "artifactId": "huawei",
-      "version": "1.0.6"
+      "version": "5.0.5.300"
     }
   ]
 }

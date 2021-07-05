@@ -1,0 +1,30 @@
+{
+	"agcgw_all":{
+		"CN":"connect-drcn.hispace.hicloud.com",
+		"CN_back":"connect-drcn.dbankcloud.cn",
+		"DE":"connect-dre.hispace.hicloud.com",
+		"DE_back":"connect-dre.dbankcloud.cn",
+		"RU":"connect-drru.hispace.hicloud.com",
+		"RU_back":"connect-drru.dbankcloud.cn",
+		"SG":"connect-dra.hispace.hicloud.com",
+		"SG_back":"connect-dra.dbankcloud.cn"
+	},
+	"client":{
+		"cp_id":"900086000020922936",
+		"product_id":"736430079244841848",
+		"client_id":"579411148663697792",
+		"client_secret":"BD68034C5C787097723D43AA53C3CEBF26C6A55C9535CC7C4677659B32119CF6",
+		"project_id":"736430079244841848",
+		"app_id":"103967201",
+		"api_key":"CgB6e3x9ZyIPB7uaQBzSdLuClT/YudeqMDkpgb5yfH443NBuUnPfM6Gmz50ix6MzMy8fN9GASvJXdYoCMNB5nF4h",
+		"package_name":"com.jssygp.bulletangelceshi.huawei"
+	},
+	"configuration_version":"2.0",
+	"appInfos":[
+		{
+			"package_name":"com.jssygp.bulletangelceshi.huawei",
+			"app_id":"103967201"
+		}
+	],
+	"sgsdk_comment": "以上参数是通过 sg-test-sign-key 密钥生成的测试参数，请使用自己的正式参数，覆盖 agconnect-services.json"
+}

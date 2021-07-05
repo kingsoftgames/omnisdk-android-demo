@@ -1,8 +1,0 @@
-// apply project root build.gradle
-
-allprojects {
-    repositories {
-        //金山世游仓库
-        maven { url "https://maven.shiyou.kingsoft.com/repository/public/" }
-    }
-}

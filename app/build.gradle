@@ -6,7 +6,7 @@ apply plugin: 'kotlin-parcelize'
 apply plugin: "kotlin-kapt"
 
 // 导入 OmniSDK 依赖
-apply from: ("${rootProject.rootDir}/kssyOmni.gradle")
+apply from: ("${rootProject.rootDir}/kssyOmniChannels.gradle")
 // 导入 KSSYOmniPlugin
 apply from: ("${rootProject.rootDir}/kssyOmniPlugin.gradle")
 
@@ -20,29 +20,30 @@ android {
         versionCode 1
         versionName "1.0"
 
+//        ndk {
+//            abiFilters 'armeabi-v7a', 'x86', 'armeabi'
+//        }
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-//    signingConfigs {
-//        // 签名配置
-//        release {
-//            try {
-//                storeFile file("${rootProject.rootDir}/your-storeFile")
-//                storePassword "your-store-password"
-//                keyAlias "your-alias"
-//                keyPassword "your-alias-password"
-//            } catch (ex) {
-//                throw new InvalidUserDataException(ex.toString())
-//            }
-//        }
-//    }
+    signingConfigs {
+        // 签名配置
+        release {
+            storeFile file("${rootProject.rootDir}/config/seasungame")
+            storePassword "seasun123"
+            keyAlias "seasun"
+            keyPassword "seasun123"
+        }
+    }
 
     buildTypes {
         release {
             minifyEnabled true // 开启代码混淆：保护代码、减少包大小
 //            multiDexKeepProguard = file("multidex-config.pro") // 分包配置
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-//            signingConfig signingConfigs.release // release包签名
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+//            proguardFiles file("${rootProject.rootDir}/proguard").listFiles().toList().toArray()
+            signingConfig signingConfigs.release // release包签名
         }
     }
 
@@ -53,6 +54,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    lintOptions {
+        abortOnError false
+    }
+
 }
 
 dependencies {
