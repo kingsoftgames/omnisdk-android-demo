@@ -1,4 +1,4 @@
-theme: jekyll-theme-cayman
+theme: themes
 gems:
   - jemoji
 title: OmniSDK 接入手册
