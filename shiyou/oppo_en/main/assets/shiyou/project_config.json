@@ -1,0 +1,37 @@
+{
+  "package_name": "com.********",
+  "version": "1.0.8",
+  "support": "sg",
+  "plugin": [{
+    "plugin_name": "account",
+    "is_account": false,
+    "account_type": 0,
+    "class_name": "",
+    "description": "世游帐号功能插件",
+    "artifactId": "omni-account",
+    "version": "1.0.8"
+  }],
+  "channel": [{
+    "channel_name": "oppo_en",
+    "class_name": "com.kingsoft.shiyou.omnisdk.channel.oppo.OmniChannel",
+    "description": "海外oppo包",
+    "artifactId": "oppo-en",
+    "version": "1.0.8"
+  }],
+  "project": {
+    "SgChannelId": "oppo",
+    "oppoAppKey": "********",
+    "SgPlanId": "********",
+    "SgNotifyUrl": "********",
+    "AppSecret": "********",
+    "SgAppId": "********",
+    "SgPackageName": "com.********",
+    "SgChannelVersion": "1.0",
+    "SgBuildNumber": "20210706021233",
+    "SgSafeApi": "https://api.omnisdk.com/",
+    "PublicKey": "********",
+    "SgChannelName": "oppo",
+    "debugMode": "true",
+    "SgChannelCode": "********"
+  }
+}

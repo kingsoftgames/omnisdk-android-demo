@@ -1,32 +1,60 @@
 {
+  "package_name": "com.******.huawei",
   "version": "1.0.8",
   "support": "sg",
-  "package_name": "*****.huawei",
+  "plugin": [{
+    "plugin_name": "account",
+    "is_account": false,
+    "account_type": 0,
+    "class_name": "",
+    "description": "世游帐号功能插件",
+    "artifactId": "omni-account",
+    "version": "1.0.8"
+  }, {
+    "plugin_name": "google",
+    "is_account": true,
+    "account_type": 4,
+    "class_name": "",
+    "description": "google插件",
+    "artifactId": "google",
+    "version": "19.0.0"
+  }, {
+    "plugin_name": "facebook",
+    "is_account": true,
+    "account_type": 3,
+    "class_name": "",
+    "description": "facebook插件",
+    "artifactId": "facebook",
+    "version": "9.1.1"
+  }],
+  "channel": [{
+    "channel_name": "huawei",
+    "class_name": "",
+    "description": "huawei渠道",
+    "artifactId": "huawei",
+    "version": "5.0.5.300"
+  }],
   "project": {
-    "SgSafeApi": "https://dev-api.sgsdk.com:1443/",
-    "SgAppId": "*****",
+    "HuaweiIntouchPublicKey": "******",
+    "integratedAccountEnabled": "false",
+    "googleServerClientId": "******",
+    "facebookAppId": "******",
+    "HwFunChannels": "google,facebook",
     "debugMode": "true",
-    "SgPlanId": "*****",
-    "SgChannelCode": "27",
+    "SgChannelName": "huawei",
+    "SgChannelCode": "******",
+    "HuaweiClientSecret": "******",
+    "SgChannelVersion": "1.0",
+    "HuaweiClientId": "******",
+    "cpCustomizedUi": "false",
     "SgChannelId": "huawei",
-    "HuaweiClientId": "*****",
-    "SgNotifyUrl": "*****",
-    "SgPackageName": "*****.huawei"
-  },
-  "plugin": [
-    {
-      "plugin_name": "account",
-      "description": "世游帐号功能插件",
-      "artifactId": "omni-account",
-      "version": "1.0.8"
-    }
-  ],
-  "channel": [
-    {
-      "channel_name": "huawei",
-      "description": "华为渠道",
-      "artifactId": "huawei",
-      "version": "5.0.5.300"
-    }
-  ]
+    "SgPlanId": "******",
+    "facebookAppName": "******",
+    "SgNotifyUrl": "******",
+    "SgSafeApi": "https://api.omnisdk.com/",
+    "SgPackageName": "com.******.huawei",
+    "SgAppId": "******",
+    "facebookLoginProtocolScheme": "fb******",
+    "SgBuildNumber": "******"
+  }
 }

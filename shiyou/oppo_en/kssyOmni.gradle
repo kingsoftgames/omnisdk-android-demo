@@ -8,7 +8,7 @@ dependencies {
 	String apiVersion = "1.0.8"
 	api("com.kingsoft.shiyou.omnisdk.component:api:$apiVersion")
 
-// vk
+	// oppo_en
 	implementation("com.kingsoft.shiyou.omnisdk.plugin:omni-account:1.0.8")
-	implementation("com.kingsoft.shiyou.omnisdk.channel:vk:3.1.0")
+	implementation("com.kingsoft.shiyou.omnisdk.channel:oppo-en:1.0.8")
 }

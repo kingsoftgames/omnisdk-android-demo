@@ -14,31 +14,27 @@ android {
 	productFlavors {
 		huawei {
 			dimension "default"
-			applicationId "com.jssygp.bulletangelceshi.huawei"
-		}
-		vk {
-			dimension "default"
-			applicationId "com.durakking.bestonlinecard"
-			// vk 渠道特殊配置
-			resValue("integer", "com_vk_sdk_AppId", "7877340")
+			applicationId "com.******.huawei"
+			manifestPlaceholders = [
+					facebookAppId: "******",
+					facebookAppName: "******",
+			]
 		}
 		website_en {
 			dimension "default"
-			applicationId "com.jssygp.bulletangel"
+			applicationId "com.*****"
 			manifestPlaceholders = [
-					applovinKey: "_r63Ozwv0Q3pB36qHicpG1yCsTbEpH_fsc-Wq5oI1wZsrs_rx-mnZT5RJTmelL7_OHieFwTbpXS3rWeSaqhUVr",
-					facebookAppId: "230387711488913",
-					facebookAppName: "Bullet Angel",
-					googleAdmobAppid: "ca-app-pub-4638173289828736~5175605488",
+					applovinKey: "*****",
+					facebookAppId: "*****",
+					facebookAppName: "*****",
+					googleAdmobAppid: "*****",
 			]
 		}
-		vivo_en {
+		oppo_en {
 			dimension "default"
-			applicationId "com.jssygp.bulletangel.vivo"
+			applicationId "com.********"
 			manifestPlaceholders = [
-					appId: "2020091514000924586",
-					facebookAppId: "230387711488913",
-					facebookAppName: "Bullet Angel",
+					oppoAppKey: "********",
 			]
 		}
 	}
@@ -51,18 +47,16 @@ android {
 		huawei {
 			assets.srcDirs = ["${project.rootDir}/shiyou/${name}/main/assets"]
 		}
-		vk {
-			assets.srcDirs = ["${project.rootDir}/shiyou/${name}/main/assets"]
-		}
 		website_en {
 			assets.srcDirs = ["${project.rootDir}/shiyou/${name}/main/assets"]
 		}
-		vivo_en {
+		oppo_en {
 			assets.srcDirs = ["${project.rootDir}/shiyou/${name}/main/assets"]
 		}
 	}
 }
 
+// 华为渠道编译依赖
 if (getGradle().getStartParameter().getTaskRequests().toString().contains("Huawei")) {
 	apply plugin: "com.huawei.agconnect"
 }
@@ -80,23 +74,18 @@ dependencies {
 
 	// 渠道的各自依赖，根据 shiyou/*/kssyOmni.gradle 下各渠道配置脚本生成
 	// huawei
-	huaweiImplementation("com.kingsoft.shiyou.omnisdk.plugin:google:1.0.6")
-	huaweiImplementation("com.kingsoft.shiyou.omnisdk.plugin:facebook:1.0.6")
-	huaweiImplementation("com.kingsoft.shiyou.omnisdk.channel:huawei:1.0.6")
+	huaweiImplementation("com.kingsoft.shiyou.omnisdk.plugin:google:19.0.0")
+	huaweiImplementation("com.kingsoft.shiyou.omnisdk.plugin:facebook:9.1.1")
+	huaweiImplementation("com.kingsoft.shiyou.omnisdk.channel:huawei:5.0.5.300")
 
-// vk
-	vkImplementation("com.kingsoft.shiyou.omnisdk.channel:vk:3.1.0")
-
-// website_en
+	// website_en
 	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:google-pay:3.0.0")
 	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:facebook:9.1.1")
 	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:google:19.0.0")
 	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:line:5.6.0")
 	website_enImplementation("com.kingsoft.shiyou.omnisdk.channel:website-en:1.0.8")
 
-// vivo_en
-	vivo_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:google:19.0.0")
-	vivo_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:facebook:9.1.1")
-	vivo_enImplementation("com.kingsoft.shiyou.omnisdk.channel:vivo-en:1.6.0.0")
+	// oppo_en
+	oppo_enImplementation("com.kingsoft.shiyou.omnisdk.channel:oppo-en:1.0.8")
 
 }

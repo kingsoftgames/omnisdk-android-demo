@@ -1,14 +1,16 @@
-// apply app or libs build.gradle
+// apply app-level or libs-level build.gradle
 
+// 脚本生成文件，格式禁止修改
 // OmniSDK 依赖
+
 dependencies {
 	// OmniSDK API 依赖
-	String apiVersion = "1.0.6"
+	String apiVersion = "1.0.8"
 	api("com.kingsoft.shiyou.omnisdk.component:api:$apiVersion")
 
 	// huawei
-	implementation("com.kingsoft.shiyou.omnisdk.plugin:google:1.0.6")
-	implementation("com.kingsoft.shiyou.omnisdk.plugin:facebook:1.0.6")
-	implementation("com.kingsoft.shiyou.omnisdk.plugin:omni-account:1.0.6")
-	implementation("com.kingsoft.shiyou.omnisdk.channel:huawei:1.0.6")
+	implementation("com.kingsoft.shiyou.omnisdk.plugin:omni-account:1.0.8")
+	implementation("com.kingsoft.shiyou.omnisdk.plugin:google:19.0.0")
+	implementation("com.kingsoft.shiyou.omnisdk.plugin:facebook:9.1.1")
+	implementation("com.kingsoft.shiyou.omnisdk.channel:huawei:5.0.5.300")
 }

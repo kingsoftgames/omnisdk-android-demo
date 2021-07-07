@@ -1,5 +1,6 @@
-// apply project root build.gradle
+// apply project-level root build.gradle
 
+// 脚本生成文件，格式禁止修改
 allprojects {
     repositories {
         //华为渠道
