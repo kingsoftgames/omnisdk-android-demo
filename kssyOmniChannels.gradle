@@ -12,14 +12,6 @@ android {
 	flavorDimensions "default"
 	// 多渠道列表
 	productFlavors {
-		huawei {
-			dimension "default"
-			applicationId "com.******.huawei"
-			manifestPlaceholders = [
-					facebookAppId: "******",
-					facebookAppName: "******",
-			]
-		}
 		website_en {
 			dimension "default"
 			applicationId "com.*****"
@@ -44,9 +36,6 @@ android {
 			// 默认、所有资源渠道共享，不要修改。
 		}
 		// 多渠道资源配置，如果有
-		huawei {
-			assets.srcDirs = ["${project.rootDir}/shiyou/${name}/main/assets"]
-		}
 		website_en {
 			assets.srcDirs = ["${project.rootDir}/shiyou/${name}/main/assets"]
 		}
@@ -54,11 +43,6 @@ android {
 			assets.srcDirs = ["${project.rootDir}/shiyou/${name}/main/assets"]
 		}
 	}
-}
-
-// 华为渠道编译依赖
-if (getGradle().getStartParameter().getTaskRequests().toString().contains("Huawei")) {
-	apply plugin: "com.huawei.agconnect"
 }
 
 // 渠道依赖配置
@@ -73,11 +57,6 @@ dependencies {
 	implementation("com.kingsoft.shiyou.omnisdk.plugin:omni-account:1.0.8")
 
 	// 渠道的各自依赖，根据 shiyou/*/kssyOmni.gradle 下各渠道配置脚本生成
-	// huawei
-	huaweiImplementation("com.kingsoft.shiyou.omnisdk.plugin:google:19.0.0")
-	huaweiImplementation("com.kingsoft.shiyou.omnisdk.plugin:facebook:9.1.1")
-	huaweiImplementation("com.kingsoft.shiyou.omnisdk.channel:huawei:5.0.5.300")
-
 	// website_en
 	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:google-pay:3.0.0")
 	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:facebook:9.1.1")

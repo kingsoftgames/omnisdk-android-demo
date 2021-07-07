@@ -1,3 +1,0 @@
-{
-	"sgsdk_comment": "以上参数是通过 sg-test-sign-key 密钥生成的测试参数，请使用自己的正式参数，覆盖 agconnect-services.json"
-}
