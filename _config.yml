@@ -1,10 +1,41 @@
-theme: themes
-gems:
-  - jemoji
-title: OmniSDK 接入手册
+title:       OmniSDK 接入手册
+email:       ''
 description: OmniSDK 是一个聚合SDK，提供了账号，支付，事件统计等功能模块，游戏CP方完成一次对接后即可在各个应用商店平台和第三方发布渠道进行游戏发布。
-# 侧边栏设置
-sidebar: true # 是否开启侧边栏
-sidebar-about-description: "世界那么大，我想出去看看。" # 个人简介
-github:
-  is_project_page: false
+baseurl:     '' # The subpath of your site, e.g. /blog
+url:         '' # The base hostname & protocol for your site
+twitter:     ''
+github:      ''
+instagram:   ''
+facebook:    ''
+
+markdown:  kramdown
+permalink: pretty
+paginate:  60
+
+sass:
+  style: compressed
+
+gems:
+  - jekyll-paginate
+  - jekyll/tagging
+  - jemoji
+
+include:
+  - _pages
+
+exclude:
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+
+# Tags
+tag_page_dir:         tag
+tag_page_layout:      tag_page
+tag_permalink_style:  pretty
+
+# Pages path
+defaults:
+  - scope:
+      path: '_pages'
+    values:
+      permalink: /:basename:output_ext
