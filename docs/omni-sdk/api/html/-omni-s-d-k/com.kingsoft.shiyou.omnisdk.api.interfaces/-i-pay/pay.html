@@ -1,0 +1,128 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>pay</title>
+<link href="../../../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script src="https://unpkg.com/kotlin-playground@1" data-selector="code.runnablesample"></script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="OmniSDK::com.kingsoft.shiyou.omnisdk.api.interfaces/IPay/pay/#android.app.Activity#com.kingsoft.shiyou.omnisdk.api.entity.Product#com.kingsoft.shiyou.omnisdk.api.callback.PayCallback/PointingToDeclaration//-1876245343">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">OmniSDK</a>/<a href="../index.html">com.kingsoft.shiyou.omnisdk.api.interfaces</a>/<a href="index.html">IPay</a>/<a href="pay.html">pay</a></div>
+            <div class="pull-right d-flex">
+              <div class="filter-section" id="filter-section"><button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":omniAPI:dokkaHtml/release">androidJvm</button></div>
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>pay</span></h1>
+          </div>
+<div class="divergent-group" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace">abstract fun <a href="pay.html">pay</a>(activity: <a href="https://developer.android.com/reference/kotlin/android/app/Activity.html">Activity</a>, <span>@<a href="https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html">NonNull</a>() </span>product: <a href="../../com.kingsoft.shiyou.omnisdk.api.entity/-product/index.html">Product</a>, callback: <a href="../../com.kingsoft.shiyou.omnisdk.api.callback/-pay-callback/index.html">PayCallback</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<h3 class=""> 支付</h3><ul><li><p class="paragraph">如果要接支付，必须接<a href="../-i-account/index.html">账号</a></p></li><li><p class="paragraph">如果游戏无账号功能，先调用OmniSDK提供的游客类型账号接口，进行静默注册登录后，再进行后续支付等操作。</p></li></ul><h2 class="">Samples</h2><div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Samples"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="sample-container"><code class="runnablesample monospace" theme="idea"><pre>import android.app.Activity
+import android.content.Context
+import com.kingsoft.shiyou.omnisdk.api.OmniSDK
+import com.kingsoft.shiyou.omnisdk.api.callback.*
+import com.kingsoft.shiyou.omnisdk.api.entity.*
+import com.kingsoft.shiyou.omnisdk.api.interfaces.*
+import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils
+import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils.toJson
+fun main() { 
+   //sampleStart 
+   // 代码仅做参考，请根据需求按接口文档使用
+
+// kotlin
+// 创建商品数据实体: 注意 skuType 商品类型，注意参数正确
+val gameProduct = Product(
+    skuType = SkuType.INAPP,
+    productId = &quot;&quot;,
+    productName = &quot;&quot;,
+    productDesc = &quot;&quot;,
+    productPrice = 0.0,
+    payAmount = 0.0,
+    currency = &quot;&quot;,
+    serverId = &quot;&quot;,
+    roleId = &quot;&quot;,
+    gameTradeNo = &quot;&quot;,
+    gameCallbackUrl = &quot;&quot;,
+    extJson = &quot;&quot;
+)
+
+// 调用支付接口
+OmniSDK.instance.pay(activity, gameProduct, object : PayCallback {
+    override fun onCancel() {
+        // 游戏处理回调结果
+    }
+
+    override fun onFailure(
+        order: Order?,
+        codeMsg: Pair&lt;Pair&lt;Int, String&gt;, Pair&lt;Int, String&gt;?&gt;
+    ) {
+        // 游戏处理回调结果
+    }
+
+    override fun onSuccess(
+        order: Order,
+        codeMsg: Pair&lt;Pair&lt;Int, String&gt;, Pair&lt;Int, String&gt;?&gt;
+    ) {
+        // 游戏处理回调结果
+    }
+})
+
+/*
+
+// java
+// 创建商品数据实体: 注意 skuType 商品类型，注意参数正确
+Product gameProduct = new Product(
+    SkuType.INAPP,
+    &quot;&quot;,
+    &quot;&quot;,
+    &quot;&quot;,
+    0.0,
+    0.0,
+    &quot;&quot;,
+    &quot;&quot;,
+    &quot;&quot;,
+    &quot;&quot;,
+    &quot;&quot;,
+    &quot;&quot;
+);
+
+// 调用支付接口
+OmniSDK.getInstance().pay(activity, gameProduct, new PayCallback() {
+    @Override
+    public void onCancel() {
+        // 游戏处理回调结果
+    }
+
+    @Override
+    public void onFailure(@Nullable Order order, @Nullable @NonNull Pair&lt;Pair&lt;Integer, String&gt;, Pair&lt;Integer, String&gt;&gt; codeMsg) {
+        // 游戏处理回调结果
+    }
+
+    @Override
+    public void onSuccess(@NonNull Order order, @Nullable @NonNull Pair&lt;Pair&lt;Integer, String&gt;, Pair&lt;Integer, String&gt;&gt; codeMsg) {
+        // 游戏处理回调结果
+    }
+});
+
+ */ 
+   //sampleEnd
+}</pre></code></div></div></div><h2 class="">Parameters</h2><div data-togglable="Parameters"><div class="platform-hinted WithExtraAttributes" data-platform-hinted="data-platform-hinted" data-togglable="Parameters"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">activity</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">上下文</p></div></div></div></div></div><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">product</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">商品信息</p></div></div></div></div></div><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">callback</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">支付结果回调</p></div></div></div></div></div></div></div></div></div></div></div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

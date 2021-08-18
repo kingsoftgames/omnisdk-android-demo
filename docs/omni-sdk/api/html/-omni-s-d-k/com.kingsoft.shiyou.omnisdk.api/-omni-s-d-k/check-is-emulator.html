@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>checkIsEmulator</title>
+<link href="../../../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script src="https://unpkg.com/kotlin-playground@1" data-selector="code.runnablesample"></script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="OmniSDK::com.kingsoft.shiyou.omnisdk.api/OmniSDK/checkIsEmulator/#android.content.Context#com.kingsoft.shiyou.omnisdk.api.callback.EmulatorCallback?#kotlin.Int/PointingToDeclaration//-1876245343">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">OmniSDK</a>/<a href="../index.html">com.kingsoft.shiyou.omnisdk.api</a>/<a href="index.html">OmniSDK</a>/<a href="check-is-emulator.html">checkIsEmulator</a></div>
+            <div class="pull-right d-flex">
+              <div class="filter-section" id="filter-section"><button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":omniAPI:dokkaHtml/release">androidJvm</button></div>
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>check</span><wbr></wbr><span>Is</span><wbr></wbr><span>Emulator</span></h1>
+          </div>
+<div class="divergent-group" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="check-is-emulator.html">checkIsEmulator</a>(context: <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>, callback: <a href="../../com.kingsoft.shiyou.omnisdk.api.callback/-emulator-callback/index.html">EmulatorCallback</a>?, suspectNum: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<h3 class=""> 检查是否为模拟器</h3><p class="paragraph">检测正确率：理论上90%～95%的正确率</p><h4 class="">Return</h4><p class="paragraph"><code>true</code> 模拟器；<code>false</code> 真机</p><h4 class="">Since</h4><ul><li><p class="paragraph">1.0.8 上线</p></li><li><p class="paragraph">1.1.0 修复已知问题，请尽快升级</p></li></ul><h2 class="">Samples</h2><div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Samples"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="sample-container"><code class="runnablesample monospace" theme="idea"><pre>import android.app.Activity
+import android.content.Context
+import com.kingsoft.shiyou.omnisdk.api.OmniSDK
+import com.kingsoft.shiyou.omnisdk.api.callback.*
+import com.kingsoft.shiyou.omnisdk.api.entity.*
+import com.kingsoft.shiyou.omnisdk.api.interfaces.*
+import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils
+import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils.toJson
+fun main() { 
+   //sampleStart 
+   // 代码仅做参考，请根据需求按接口文档使用
+
+// kotlin
+val isEmulator = OmniSDK.instance.checkIsEmulator(context, null, 3)
+
+/*
+
+// java
+boolean isEmulator = OmniSDK.getInstance().checkIsEmulator(context, null, 3);
+
+ */
+
+// 游戏处理剩余逻辑
+return false 
+   //sampleEnd
+}</pre></code></div></div></div><h2 class="">Parameters</h2><div data-togglable="Parameters"><div class="platform-hinted WithExtraAttributes" data-platform-hinted="data-platform-hinted" data-togglable="Parameters"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">context</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">上下文，不能为null</p></div></div></div></div></div><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">callback</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">设备信息回调，可以为null</p></div></div></div></div></div><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">suspectNum</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">疑似点个数：最小值3，区间3～7(7+一维n)，推荐3</p></div></div></div></div></div></div></div></div></div></div></div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

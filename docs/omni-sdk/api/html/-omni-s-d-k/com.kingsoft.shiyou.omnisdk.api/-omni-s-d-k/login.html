@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>login</title>
+<link href="../../../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script src="https://unpkg.com/kotlin-playground@1" data-selector="code.runnablesample"></script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="OmniSDK::com.kingsoft.shiyou.omnisdk.api/OmniSDK/login/#android.app.Activity#kotlin.collections.Map[kotlin.String,kotlin.Any]#com.kingsoft.shiyou.omnisdk.api.callback.LoginCallback/PointingToDeclaration//-1876245343">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">OmniSDK</a>/<a href="../index.html">com.kingsoft.shiyou.omnisdk.api</a>/<a href="index.html">OmniSDK</a>/<a href="login.html">login</a></div>
+            <div class="pull-right d-flex">
+              <div class="filter-section" id="filter-section"><button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":omniAPI:dokkaHtml/release">androidJvm</button></div>
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>login</span></h1>
+          </div>
+<div class="divergent-group" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="login.html">login</a>(activity: <a href="https://developer.android.com/reference/kotlin/android/app/Activity.html">Activity</a>, loginParam: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>&gt;, callback: <a href="../../com.kingsoft.shiyou.omnisdk.api.callback/-login-callback/index.html">LoginCallback</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<h2 class=""> 登录</h2><h3 class=""> 描述</h3><ol><li><p class="paragraph">若项目需自定义登录选项UI界面,请务必先调用接口<a href="get-account-mode.html">getAccountMode</a>获取账号模式，</p></li><li><p class="paragraph">然后根据返回的模式来进行自定义界面的显示和相关业务处理。</p></li></ol><h3 class=""> 值类型</h3><ul><li><p class="paragraph">指定登录账号类型时，key为&quot;accountType&quot;。</p></li><li><p class="paragraph">0，表示不指定特定登录类型，直接使用默认登录界面；</p></li><li><p class="paragraph">非0，表示指定特定登录类型(具体查看AccountType)，游戏使用自身的登录选项UI界面，这种方式游戏需要额外自己保存、更新登录信息；</p></li></ul><h3 class=""> 游客账号</h3><ul><li><p class="paragraph">接入的账号类型包含游客类型，绑定账号接口最好必接；</p></li><li><p class="paragraph">游戏引导玩家主动绑定账号，防止帐号数据丢失。</p></li></ul><h4 class="">Since</h4><p class="paragraph">1.0.8 参数名由 <code>&quot;loginType&quot;</code> 变更为 <code>&quot;accountType&quot;</code></p><h2 class="">Samples</h2><div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Samples"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="sample-container"><code class="runnablesample monospace" theme="idea"><pre>import android.app.Activity
+import android.content.Context
+import com.kingsoft.shiyou.omnisdk.api.OmniSDK
+import com.kingsoft.shiyou.omnisdk.api.callback.*
+import com.kingsoft.shiyou.omnisdk.api.entity.*
+import com.kingsoft.shiyou.omnisdk.api.interfaces.*
+import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils
+import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils.toJson
+fun main() { 
+   //sampleStart 
+   // 代码仅做参考，请根据需求按接口文档使用
+
+// kotlin
+OmniSDK.instance.login(
+    activity = activity,
+    loginParam = mapOf&lt;String, Any&gt;(OmniConstant.accountType to AccountType.NONE.id),
+    callback = object : LoginCallback {
+        override fun onSuccess() {
+            // 游戏处理回调结果
+        }
+
+        override fun onFailure(responseCode: Pair&lt;Int, String&gt;) {
+            // 游戏处理回调结果
+        }
+
+        override fun onCancel() {
+            // 游戏处理回调结果
+        }
+
+    })
+
+/*
+
+// java
+// 构建登录请求数据Map
+Map&lt;String, Object&gt; loginParams = new HashMap&lt;&gt;();
+loginParams.put(OmniConstant.accountType, AccountType.NONE.getId());
+
+// 调用SDK登录接口
+OmniSDK.getInstance().login(activity, loginParams, new LoginCallback() {
+
+    @Override
+    public void onCancel() {
+        // 游戏处理回调结果
+    }
+
+    @Override
+    public void onFailure(@NonNull Pair&lt;Integer, String&gt; responseCode) {
+        // 游戏处理回调结果
+    }
+
+    @Override
+    public void onSuccess() {
+        // 游戏处理回调结果
+    }
+});
+
+ */ 
+   //sampleEnd
+}</pre></code></div></div></div><h2 class="">See also</h2><div data-togglable="See also"><div class="platform-hinted WithExtraAttributes" data-platform-hinted="data-platform-hinted" data-togglable="See also"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div data-togglable="See also"><div class="table" data-togglable="See also"><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes RowTitle"><div class=""><span class="inline-flex">AccountType</span><span class="inline-flex"><div data-togglable="See also"></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes RowTitle"><div class=""><span class="inline-flex"><a href="get-account-mode.html">com.kingsoft.shiyou.omnisdk.api.OmniSDK</a></span><span class="inline-flex"><div data-togglable="See also"></div></span></div><div></div></div></div></div></div></div></div></div><h2 class="">Parameters</h2><div data-togglable="Parameters"><div class="platform-hinted WithExtraAttributes" data-platform-hinted="data-platform-hinted" data-togglable="Parameters"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">activity</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">上下文</p></div></div></div></div></div><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">loginParam</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">登录所需要的参数：(OmniConstant.accountType, AccountType.*.id)</p></div></div></div></div></div><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">callback</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">登录回调</p></div></div></div></div></div></div></div></div></div></div></div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

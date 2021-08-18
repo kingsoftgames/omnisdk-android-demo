@@ -1,0 +1,18 @@
+[
+  {
+    "src": "/shiyou/website_en/***.json",
+    "dst": "/app/src/main/assets/"
+  },
+  {
+    "src": "/shiyou/website_en/home.png",
+    "dst": "/app/src/main/res/drawable/"
+  },
+  {
+    "src": "/shiyou/website_en/x.png",
+    "dst": "/app/src/main/res/drawable-v24/"
+  },
+  {
+    "src": "/shiyou/website_en/g_colors.xml",
+    "dst": "/app/src/main/res/values/"
+  }
+]

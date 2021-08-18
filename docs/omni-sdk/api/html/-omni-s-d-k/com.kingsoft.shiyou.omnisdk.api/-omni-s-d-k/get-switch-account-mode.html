@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>getSwitchAccountMode</title>
+<link href="../../../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script src="https://unpkg.com/kotlin-playground@1" data-selector="code.runnablesample"></script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="OmniSDK::com.kingsoft.shiyou.omnisdk.api/OmniSDK/getSwitchAccountMode/#android.content.Context/PointingToDeclaration//-1876245343">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">OmniSDK</a>/<a href="../index.html">com.kingsoft.shiyou.omnisdk.api</a>/<a href="index.html">OmniSDK</a>/<a href="get-switch-account-mode.html">getSwitchAccountMode</a></div>
+            <div class="pull-right d-flex">
+              <div class="filter-section" id="filter-section"><button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":omniAPI:dokkaHtml/release">androidJvm</button></div>
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>get</span><wbr></wbr><span>Switch</span><wbr></wbr><span>Account</span><wbr></wbr><span>Mode</span></h1>
+          </div>
+<div class="divergent-group" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="get-switch-account-mode.html">getSwitchAccountMode</a>(context: <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<h3 class=""> 获取账号切换功能模式</h3><p class="paragraph">该接口主要用在下面两种情况下:</p><ol><li><p class="paragraph">项目在游戏内显示账号切换功能入口前务必先调用该接口进行判断，<code>0</code>关闭账号切换入口，其他值开启账号切换入口</p></li><li><p class="paragraph">若项目需要自定义账号切换UI的界面，此时务必先调用该接口然后通过返回的模式来完成相关账号切换UI界面的显示和业务处理</p></li></ol><h4 class="">Return</h4><p class="paragraph">账号切换功能模式:</p><ul><li><p class="paragraph"><code>0</code> 禁止提供账号切换的功能，项目需关闭账号切换的功能入口</p></li><li><p class="paragraph"><code>1</code> 可以开启账号切换功能入口，但禁止自定义切换账号UI界面。触发切换账号时直接调用SDK的账号切换接口并保证<code>accountType</code>传值0</p></li><li><p class="paragraph"><code>2</code> 可以开启账号切换功能入口，若项目自定义切换账号选项UI界面，则只能显示OmniSDK提供的账号类型选项。</p></li><li><p class="paragraph"><code>3</code> 可以开启账号切换功能入口，若项目自定义切换账号选项UI界面，必须显示渠道账号，同时可选集成sdk提供的账号类型。</br>对于渠道账号切换选项，项目需先调用OmniSDK提供的查询当前渠道信息的相关接口；然后通过返回的渠道数据（比如渠道ID，渠道名称等等）来定制渠道账号切换选项UI（比如背景图片，文字等等）的显示，</br>并在触发渠道账号切换的时候调用SDK的切换账号接口并保证<code>accountType</code>传值-1</p></li></ul><h4 class="">Since</h4><p class="paragraph">1.0.7</p><h2 class="">Samples</h2><div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Samples"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="sample-container"><code class="runnablesample monospace" theme="idea"><pre>import android.app.Activity
+import android.content.Context
+import com.kingsoft.shiyou.omnisdk.api.OmniSDK
+import com.kingsoft.shiyou.omnisdk.api.callback.*
+import com.kingsoft.shiyou.omnisdk.api.entity.*
+import com.kingsoft.shiyou.omnisdk.api.interfaces.*
+import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils
+import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils.toJson
+fun main() { 
+   //sampleStart 
+   // 代码仅做参考，请根据需求按接口文档使用
+
+// kotlin
+val switchAccountMode = OmniSDK.instance.getSwitchAccountMode(context)
+
+/*
+
+// java
+int switchAccountMode = OmniSDK.getInstance().getSwitchAccountMode(context);
+
+ */
+
+// 游戏处理剩余逻辑
+return 0 
+   //sampleEnd
+}</pre></code></div></div></div><h2 class="">Parameters</h2><div data-togglable="Parameters"><div class="platform-hinted WithExtraAttributes" data-platform-hinted="data-platform-hinted" data-togglable="Parameters"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">context</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">上下文</p></div></div></div></div></div></div></div></div></div></div></div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

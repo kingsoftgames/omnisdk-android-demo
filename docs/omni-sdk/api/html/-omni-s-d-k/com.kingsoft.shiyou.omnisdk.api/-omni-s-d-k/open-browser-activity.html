@@ -1,0 +1,82 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>openBrowserActivity</title>
+<link href="../../../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script src="https://unpkg.com/kotlin-playground@1" data-selector="code.runnablesample"></script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="OmniSDK::com.kingsoft.shiyou.omnisdk.api/OmniSDK/openBrowserActivity/#android.content.Context#kotlin.String#kotlin.String/PointingToDeclaration//-1876245343">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">OmniSDK</a>/<a href="../index.html">com.kingsoft.shiyou.omnisdk.api</a>/<a href="index.html">OmniSDK</a>/<a href="open-browser-activity.html">openBrowserActivity</a></div>
+            <div class="pull-right d-flex">
+              <div class="filter-section" id="filter-section"><button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":omniAPI:dokkaHtml/release">androidJvm</button></div>
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>open</span><wbr></wbr><span>Browser</span><wbr></wbr><span>Activity</span></h1>
+          </div>
+<div class="divergent-group" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="open-browser-activity.html">openBrowserActivity</a>(context: <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>, url: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, jsonParams: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<h2 class=""> 打开应用内浏览器</h2><h3 class=""> jsonParams 结构示例</h3><div class="sample-container"><code class="" theme="idea"><pre>{<br>	&quot;default_browser&quot;: false,<br>	&quot;show_refresh&quot;: true,<br>	&quot;show_share&quot;: true,<br>	&quot;show_close&quot;: true,<br>	&quot;show_prev&quot;: true,<br>	&quot;show_next&quot;: true,<br>	&quot;layout&quot;: 0,<br>	&quot;orientation&quot;: 0,<br>	&quot;share_param&quot;: {<br>		&quot;platform&quot;: &quot;facebook,system&quot;,<br>		&quot;share_type&quot;: 0,<br>		&quot;image_type&quot;: 0,<br>		&quot;image_uri&quot;: 0,<br>		&quot;title&quot;: &quot;OmniShare&quot;,<br>		&quot;content&quot;: &quot;content&quot;,<br>		&quot;url&quot;: &quot;https://developers.facebook.com/&quot;<br>	},<br>	&quot;game_headers&quot;: {<br>		&quot;h5&quot;: true,<br>		&quot;appid&quot;: 198707,<br>		&quot;platform&quot;: &quot;android&quot;,<br>		&quot;heg&quot;: 175.55<br>	},<br>	&quot;title&quot;: &quot;Omni Webview&quot;,<br>	&quot;game_ext&quot;: &quot;roleId=123456789&quot;<br>}</pre></code></div><h3 class=""> jsonParams 说明：==&gt; <a href="https://kingsoftgames.github.io/sdk-docs/docs/omni-sdk/api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-action/open-browser-activity.html">Jump Javadoc</a></h3><table><thead><tr><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td>参数名</td><td>功能</td><td>默认值</td><td>备注</td></tr><tr><td>default_browser</td><td>1. &quot;true&quot; 时，走 CustomTabs，即用户默认浏览器。（采用内置启动，即还在游戏栈内，并不是跳转到浏览器打开）；</br>2. &quot;false&quot; 时，走Android WebView，可以使用SDK提供内部交互接口。</br>3. 强烈建议非活动页面使用 CustomTabs 方式，即&quot;default_browser=true&quot;</td><td>false</td><td>1. CustomTabs 其实就是标准的手机浏览器，出于隐私原因，不允许应用与网页内容进行交互，因此除SDK提供的Tab-ShareButton（这是允许添加的）外，其他功能按标准手机浏览器来处理。（失败时，补位Android WebView，概率极低）</br>2. 使用 CustomTabs 的好处：其完全支持当前手机默认浏览器的所有功能，缺点是除Tab-ShareButton等，无法使用SDK提供的内部交互接口。</br>3. 使用 Android WebView 的好处：可以使用SDK提供的内部交互接口，但是仅做基础性支持，支持的 h5 语法或功能以当前用户手机安装的 Android WebView 组件版本为限。</td></tr><tr><td>layout</td><td>功能栏显示位置：0=底部，1=顶部，2=不显示</td><td>不显示</td><td></td></tr><tr><td>show_share</td><td>分享按钮：true=显示，false=不显示</td><td>false</td><td>Android WebView &amp; CustomTabs</td></tr><tr><td>show_refresh</td><td>刷新按钮：true=显示，false=不显示</td><td>false</td><td>Android WebView</td></tr><tr><td>show_close</td><td>页面关闭按钮：true=显示，false=不显示</td><td>false</td><td>Android WebView</td></tr><tr><td>show_prev</td><td>页面上一页按钮：true=显示，false=不显示</td><td>false</td><td>Android WebView</td></tr><tr><td>show_next</td><td>页面下一页按钮：true=显示，false=不显示</td><td>false</td><td>Android WebView</td></tr><tr><td>orientation</td><td>横坚屏：1=强制横屏，2=强制坚屏，0=用户感应，10=先横屏但允许用户感应，20=先坚屏但允许用户感应。</td><td>0</td><td>但是当 h5 在 WebView 模式下，调用IJS.setOrientation时，以IJS.setOrientation为主。值含义相同</td></tr><tr><td>share_param</td><td>分享参数，与ISocial.share参数格式相同；建议通过BrowserParams组装参数后，通过OmniUtils.toJson转化成JsonString</td><td>无</td><td>不配置，且show_share为true时：默认分享当前页面链接</td></tr><tr><td>title</td><td>页面标题</td><td>h5-currentTitle</td><td></td></tr><tr><td>game_headers</td><td>游戏需求添加的 http-headers，json格式；组成Map后，通过OmniUtils.toJson转化成JsonString</td><td>无</td><td></td></tr><tr><td>game_ext</td><td>游戏透传字段，WebView 可通过IJS.getCpParams交互获取</td><td>无</td><td></td></tr></tbody></table><h4 class="">Since</h4><p class="paragraph">1.1.0 jsonParams 支持自定义功能</p><h2 class="">Samples</h2><div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Samples"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="sample-container"><code class="runnablesample monospace" theme="idea"><pre>import android.app.Activity
+import android.content.Context
+import com.kingsoft.shiyou.omnisdk.api.OmniSDK
+import com.kingsoft.shiyou.omnisdk.api.callback.*
+import com.kingsoft.shiyou.omnisdk.api.entity.*
+import com.kingsoft.shiyou.omnisdk.api.interfaces.*
+import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils
+import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils.toJson
+fun main() { 
+   //sampleStart 
+   // 代码仅做参考，请根据需求按接口文档使用
+
+// kotlin
+// 组装自定义参数
+val browserParams = BrowserParams(
+    defaultBrowser = false,
+    layout = 0,
+    showShare = false,
+    showRefresh = false,
+    showClose = false,
+    showPrev = false,
+    showNext = false,
+    orientation = 0,
+    shareParam = null,
+    title = &quot;title&quot;,
+    gameHeaders = null,
+    gameExt = &quot;&quot;
+)
+
+// 调用接口
+OmniSDK.instance.openBrowserActivity(context, url, toJson(browserParams))
+
+/*
+
+// java
+// 组装自定义参数
+BrowserParams browserParams = new BrowserParams(false, 0, false, false, false, false, false, 0, null, &quot;title&quot;, null, &quot;&quot;);
+
+// 调用接口
+OmniSDK.getInstance().openBrowserActivity(context, url, OmniUtils.INSTANCE.toJson(browserParams));
+
+ */ 
+   //sampleEnd
+}</pre></code></div></div></div><h2 class="">See also</h2><div data-togglable="See also"><div class="platform-hinted WithExtraAttributes" data-platform-hinted="data-platform-hinted" data-togglable="See also"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div data-togglable="See also"><div class="table" data-togglable="See also"><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes RowTitle"><div class=""><span class="inline-flex">IJS</span><span class="inline-flex"><div data-togglable="See also"></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes RowTitle"><div class=""><span class="inline-flex">BrowserParams</span><span class="inline-flex"><div data-togglable="See also"></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes RowTitle"><div class=""><span class="inline-flex">ISocial.share</span><span class="inline-flex"><div data-togglable="See also"></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes RowTitle"><div class=""><span class="inline-flex">OmniUtils.toJson</span><span class="inline-flex"><div data-togglable="See also"></div></span></div><div></div></div></div></div></div></div></div></div><h2 class="">Parameters</h2><div data-togglable="Parameters"><div class="platform-hinted WithExtraAttributes" data-platform-hinted="data-platform-hinted" data-togglable="Parameters"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">context</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">上下文 no support application-context</p></div></div></div></div></div><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">url</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">web-url</p></div></div></div></div></div><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">jsonParams</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">自定义功能</p></div></div></div></div></div></div></div></div></div></div></div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+
