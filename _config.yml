@@ -1,50 +1,7 @@
+theme: just-the-docs
+gems:
+  - jemoji
 title: OmniSDK 接入手册
 description: OmniSDK 是一个聚合SDK，提供了账号，支付，事件统计等功能模块，游戏CP方完成一次对接后即可在各个应用商店平台和第三方发布渠道进行游戏发布。
 github:
   is_project_page: false
-
-site_name: OmniSDK 接入手册
-site_author: OmniSDK
-site_description: OmniSDK 接入手册
-copyright: Copyright &copy; 2018 - 2021 Kingsoft
-
-
-extra_css:
-  - css/extra.css
-
-docs_dir: 'docs'
-
-theme:
-  name: material
-  custom_dir: docs/material
-
-  palette:
-    scheme: drake
-    primary: white
-
-  font: false
-
-  language: zh
-
-#theme: jekyll-theme-cayman
-gems:
-  - jemoji
-
-markdown_extensions:
-  - toc:
-      permalink: true
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.inlinehilite
-  - pymdownx.tabbed
-
-nav:
-  - 使用: index.md
-  - 标签事件: tag-event.md
-  - 生命周期: lifecycle.md
-  - 前台更新: live.md
-  - 切换线程: switch-thread.md
-  - 1.x文档: api/index.html
