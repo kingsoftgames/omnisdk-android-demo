@@ -1,4 +1,5 @@
-remote_theme: d-txy/jekyll-TeXt-theme
+theme: jekyll-theme-cayman
+#remote_theme: d-txy/jekyll-TeXt-theme
 gems:
   - jemoji
 title: OmniSDK 接入手册
