@@ -1,4 +1,4 @@
-remote_theme: mmistakes/minimal-mistakes
+remote_theme: publiccodenet/jekyll-theme
 gems:
   - jemoji
 title: OmniSDK 接入手册
