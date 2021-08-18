@@ -1,4 +1,4 @@
-theme: jekyll-gitbook
+remote_theme: sighingnow/jekyll-gitbook
 gems:
   - jemoji
 title: OmniSDK 接入手册
