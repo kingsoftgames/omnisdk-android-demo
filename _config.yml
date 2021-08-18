@@ -1,4 +1,4 @@
-remote_theme: sighingnow/jekyll-gitbook
+remote_theme: amitmerchant1990/reverie
 gems:
   - jemoji
 title: OmniSDK 接入手册
