@@ -1,4 +1,4 @@
-theme: just-the-docs
+remote_theme: just-the-docs
 gems:
   - jemoji
 title: OmniSDK 接入手册
