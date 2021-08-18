@@ -1,4 +1,4 @@
-remote_theme: kitian616/jekyll-TeXt-theme
+remote_theme: d-txy/jekyll-TeXt-theme
 gems:
   - jemoji
 title: OmniSDK 接入手册
