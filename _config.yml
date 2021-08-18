@@ -1,4 +1,4 @@
-remote_theme: just-the-docs
+remote_theme: poole/poole
 gems:
   - jemoji
 title: OmniSDK 接入手册
