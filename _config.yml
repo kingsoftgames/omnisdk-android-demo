@@ -1,4 +1,4 @@
-remote_theme: publiccodenet/jekyll-theme
+theme: jekyll-gitbook
 gems:
   - jemoji
 title: OmniSDK 接入手册
