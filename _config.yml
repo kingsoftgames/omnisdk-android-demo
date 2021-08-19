@@ -1,5 +1,5 @@
-theme: Jinja2
-#remote_theme: d-txy/jekyll-TeXt-theme
+#theme: jekyll-theme-cayman
+remote_theme: pallets/jinja
 gems:
   - jemoji
 title: OmniSDK 接入手册
