@@ -1,4 +1,4 @@
-theme: jekyll-theme-cayman
+theme: Jinja2
 #remote_theme: d-txy/jekyll-TeXt-theme
 gems:
   - jemoji
