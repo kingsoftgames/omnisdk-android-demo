@@ -54,26 +54,28 @@ OmniSDK Android 接入指南
 
 # 术语
 
-- JDK：Java Development Kit Java开发工具包。
-- ADT：Android Development Tools，Android 开发套件，[Android Studio][Android Studio] 默认集成，其他 IDE 需要手动集成。
+- **JDK**：Java Development Kit Java开发工具包。
+- **ADT**：Android Development Tools，Android 开发套件，[Android Studio][Android Studio] 默认集成，其他 IDE 需要手动集成。
 - [Android Studio][Android Studio]：Android 官方 IDE工具，内部集成完整的 Android 编译环境。
-- root-level：项目根目录。
-- app-level：主工程目录（通常命名为app），即 GameActivity 所在的目录。
-- libs-level：libs 级别的工程目录。
-- GameActivity：游戏主Activity，继承 `android.app.NativeActivity` 或 `com.google.androidgamesdk.GameActivity`。（通常是这个命名，具体以引擎命名为主）
+- **root-leve**l：项目根目录。
+- **app-level**：主工程目录（通常命名为app），即 GameActivity 所在的目录。
+- **libs-level**：libs 级别的工程目录。
+- **GameActivity**：游戏主Activity，继承 `android.app.NativeActivity` 或 `com.google.androidgamesdk.GameActivity`。（通常是这个命名，具体以引擎命名为主）
 
 # 环境与代码
 
 ## 编译环境
+
 1. Android 开发、编译环境依赖 JDK（11）、ADT、Gradle Tools，请根据游戏引擎的“移动平台或Android（安卓）游戏开发”相关章节，配置好相关环境。
 2. Android 开发，支持任意支持 Java 进行 Android 开发的 IDE工具：[Android Studio][Android Studio]、IDEA、VS Code等，只需要配置相关环境。
 3. OmniSDK 编译指令（或说Android编译指令）不依赖IDE工具，可以直接通过命令行执行。
 4. **Android 12 开始 Android 官方最新依赖库开始要求 JDK（11）**。
     - 从【Android Studio】 Settings > Build, Execution, Deployment > Build Tools > Gradle > Gradle JDK：查看工程当前使用的 Java 版本号。
     - 通过命令行 `java -version` 查看电脑的 Java 版本号。
+
 ## 代码建议
 
-1. 建议游戏项目直接在 **app-level** 开发，不要新建 Module（libs-level）来接入，有些编译功能目前不支持。
+1. 建议游戏项目直接在 **app-level** 开发，不要新建 Module（**libs-level**）来接入，有些编译功能目前不支持。
 2. 根据调研，主流的引擎都可以导出可编译的Android工程结构，通常在“移动平台或Android（安卓）游戏开发”相关的“Android调试”类似章节有说明。
 3. 建议使用 **Android Studio** 进行 Java 代码接口的接入，主要原因是接口有实时代码、文档提示，实时编译、调试功能，可及时发现问题。
 
@@ -127,12 +129,13 @@ OmniSDK Android 接入指南
     ```groovy
     apply from: ("${rootProject.rootDir}/kssyOmniPlugin.gradle") // OmniSDK 编译插件，必须在(app-level)级别添加
     
+    // 读取密钥
     def signingP = new Properties()
     signingP.load(new FileInputStream(file(rootProject.file("signing.properties"))))
    
     android {
         compileSdkVersion 31 // 与 targetSdkVersion 相同
-        // buildToolsVersion "31.0.0" // 无如必要，不需要指定此版本号
+        // buildToolsVersion "31.0.0" // 无如必要，不需要指定此版本号，保持最新即可
     
         defaultConfig {
             // applicationId "游戏包名" // 本行删除，不要自己配置，编译脚本会自动读取 project_config.json#package_name。
@@ -161,7 +164,7 @@ OmniSDK Android 接入指南
         buildTypes {
             release {
                 minifyEnabled true // 开启代码混淆：保护代码、减少包大小
-                multiDexKeepProguard = file("multidex-config.pro") // 分包配置，如果需要
+                // multiDexKeepProguard = file("multidex-config.pro") // 分包配置，如果需要
                 proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
                 signingConfig signingConfigs.release // release包签名
             }
@@ -411,6 +414,7 @@ OmniSDK Android 接入指南
             }
         });
         ```
+
 #### 3.2 功能逻辑处理说明
 - OmniSDK 秉持只接一次API接口的设计理念，在配合 `shiyou` 文件夹的多渠道配置后，可一次出多个渠道产物。
 - OmniSDK 会提供一些识别性API，比如获取当前渠道名等，方便游戏自定义特定渠道或功能的逻辑，从而游戏不需要为特定功能或渠道拉取特定代码分支，减少代码维护成本。

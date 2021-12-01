@@ -40,5 +40,5 @@ OmniSDK 支付 API
 
 
 
-[IPay]:./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-pay/index.html
-[querySkuDetailsList]:./api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/[android-jvm]-i-channel-invoke-method/query-sku-details-list.html
+[IPay]:../api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/-i-pay/index.html
+[querySkuDetailsList]:../api/html/-omni-s-d-k/com.kingsoft.shiyou.omnisdk.api.interfaces/[android-jvm]-i-channel-invoke-method/query-sku-details-list.html
