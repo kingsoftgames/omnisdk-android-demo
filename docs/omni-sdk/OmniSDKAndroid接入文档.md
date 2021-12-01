@@ -38,7 +38,7 @@ OmniSDK Android 接入指南
     - [开启混淆，保护代码安全](#开启混淆保护代码安全)
     - [开启混淆行号，方便调试定位](#开启混淆行号方便调试定位)
 - [附录](#附录)
-    - [Android 新手指南及 JavaDoc 阅读](#android-新手指南及-javadoc-阅读)
+    - [Android 新手指南及 Javadoc 阅读](#android-新手指南及-Javadoc-阅读)
     - [SDK 常见状态码](#sdk-常见状态码)
     - [OmniSDK 业务集成与测试流程](#omnisdk-业务集成与测试流程)
     - [多语言](#多语言)
@@ -63,7 +63,7 @@ OmniSDK Android 接入指南
 
 # 对接须知
 
-- :pushpin: 接入前，**请花十分钟时间阅读下本文档各章节**；:100: 推荐花两分钟阅读下 [Android 新手指南及 JavaDoc 阅读](https://d7n9vj8ces.feishu.cn/docs/doccn2XLPh8odaiQDipvzBOcCzf)。
+- :pushpin: 接入前，**请花十分钟时间阅读下本文档各章节**；:100: 推荐花两分钟阅读下 [Android 新手指南及 Javadoc 阅读](https://d7n9vj8ces.feishu.cn/docs/doccn2XLPh8odaiQDipvzBOcCzf)。
 - 推荐使用 [Android Studio](https://developer.android.com/studio) 最新版本对接SDK，目前未对其他编译器做兼容测试。
 - :pushpin: 检查游戏引用的 `Omni-API `包名路径***全部*** 为<font color=red> **`com.kingsoft.shiyou.omnisdk.api.*`** </font>。
 - :round_pushpin: 如无特殊说明，**OmniSDK 本身不会申请任何权限**；权限一般由游戏或渠道SDK申请。
@@ -431,77 +431,6 @@ OmniSDK Android 接入指南
   1. 如果游戏没有角色这一特征，可以不用接入。
   2. 目前暂没有渠道强制要求接入，可以不用接入。
 
-### 5.1 创建角色
-
-**应用场景**
-
-游戏在完成创建角色信息后，调用此接口传入角色信息。
-
-**方法定义**
-
-```java
-onCreateRole(RoleInfo)
-```
-
-**参数说明**
-
-- API文档 [RoleInfo][RoleInfo]
-- 关于 RoleInfo 的说明
-  1. **所有必接字段必须进行接入，否则会导致统计不完全，部分渠道审核无法通过！**
-  2. **请严格按照规定的字段长度进行设置，否则可能发生游戏服务器端长度不够问题。**
-
-
-**代码示例**
-
-```java
-OmniSDK.getInstance().onCreateRole(roleInfo);
-```
-
-### 5.2 角色升级
-
-**应用场景**
-
-角色等级接口，角色等级提升时调用。
-
-**方法定义**
-
-```java
-onRoleLevelUp(RoleInfo)
-```
-
-**参数说明**
-
-- API文档 [RoleInfo][RoleInfo]
-
-**代码示例**
-
-```java
-roleInfo.setRoleLevel("2");
-OmniSDK.getInstance().onRoleLevelUp(roleInfo);
-```
-
-### 5.3 进入游戏
-
-**应用场景**
-
-在角色信息都获取到以后，进行调用。
-
-**方法定义**
-
-```java
-onEnterGame(RoleInfo)
-```
-
-**参数说明**
-
-- API文档 [RoleInfo][RoleInfo]
-
-**代码示例**
-
-```java
-OmniSDK.getInstance().onEnterGame(roleInfo)
-```
-
 ## 6. 通用方法
 - 可选
 - API接口文档 - [`IMethod`][IMethod]
@@ -594,7 +523,7 @@ OmniSDK.getInstance().onEnterGame(roleInfo)
     ```
 
 # 附录
-## Android 新手指南及 JavaDoc 阅读
+## Android 新手指南及 Javadoc 阅读
 
 > v1.0.8 开始，使用 Android Studio 编译器，可以直接在[代码上查看API文档](https://d7n9vj8ces.feishu.cn/docs/doccn2XLPh8odaiQDipvzBOcCzf#pjSuFB)。
 
