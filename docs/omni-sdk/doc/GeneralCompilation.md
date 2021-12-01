@@ -1,4 +1,4 @@
-[<<返回上一页](/sdk-docs/docs/omni-sdk/OmniSDK接入指南.md#通通用编译与CPS标签包)         [返回首页>>](/sdk-docs)
+[<<返回上一页](/docs/omni-sdk/OmniSDK接入指南.md#通用编译与CPS标签包)         [返回首页>>](/sdk-docs)
 
 OmniSDK 通用编译与CPS标签包
 =====

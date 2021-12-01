@@ -1,4 +1,4 @@
-[<<返回上一页](../docs/omni-sdk/OmniSDK接入指南.md#331-账号)         [返回首页>>](/sdk-docs)
+[<<返回上一页](/docs/omni-sdk/OmniSDK接入指南.md#331-账号)         [返回首页>>](/sdk-docs)
 
 OmniSDK 账号 API
 =====
