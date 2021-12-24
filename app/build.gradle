@@ -9,7 +9,7 @@ apply plugin: "kotlin-kapt"
 apply from: ("${rootProject.rootDir}/kssyOmniPlugin.gradle")
 
 // 导入 OmniSDK 依赖
-apply from: ("${rootProject.rootDir}/kssyOmniChannels.gradle")
+apply from: ("${rootProject.rootDir}/kssyOmniChannelsApp.gradle")
 
 def signingP = new Properties();
 signingP.load(new FileInputStream(file(rootProject.file("signing.properties"))))

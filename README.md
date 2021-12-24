@@ -30,9 +30,9 @@ OmniSDK Android
 ## 如何运行
 1. 通过 [Android Studio](https://developer.android.com/studio/intro?hl=zh-cn) 打开 Demo 工程；
 2. 请将从 `OmniSDK` 申请到 `shiyou` 文件夹替换 Demo 根目录下 `shiyou` 文件夹；
-3. 命令行执行 `gradlew omniPreChannels`，生成两个文件 ***kssyOmniChannels.gradle*** 和 ***kssyOmniChannelsRoot.gradle***；
+3. 命令行执行 `gradlew omniPreChannels -PpreType=libs`，更新文件 ***kssyOmniChannels.gradle***、***kssyOmniChannelsApp.gradle***、***kssyOmniChannelsRoot.gradle***；
 4. 配置 `app/build.gradle` 下的签名配置节点，将其修改成自己签名信息。
-5. 点击IDE **Sync Project with Gradle Files** 按钮，进行依赖同步与初始化。
+5. 点击IDE **Sync Project with Gradle Files** (🐘)按钮，进行依赖同步与初始化。
     - 或 `File > Sync Project with Gradle Files`。
     - 或 `Tools > Android > Sync Project with Gradle Files`。
 6. 运行 Demo 。

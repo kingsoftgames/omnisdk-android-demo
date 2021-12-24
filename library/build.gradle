@@ -1,6 +1,9 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
+// 导入 OmniSDK 依赖
+apply from: ("${rootProject.rootDir}/kssyOmniChannels.gradle")
+
 android {
     compileSdkVersion 31
 
