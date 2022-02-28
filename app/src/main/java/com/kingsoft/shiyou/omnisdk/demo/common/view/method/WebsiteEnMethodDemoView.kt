@@ -2,21 +2,19 @@ package com.kingsoft.shiyou.omnisdk.demo.common.view.method
 
 import android.content.Context
 import android.util.AttributeSet
-import android.widget.EditText
 import com.kingsoft.shiyou.omnisdk.demo.R
 import com.kingsoft.shiyou.omnisdk.demo.common.ApiManager
 import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.IOtherApi
 import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.IOtherCallback
 import com.kingsoft.shiyou.omnisdk.demo.common.view.DemoView
-import com.kingsoft.shiyou.omnisdk.demo.common.view.EditTextDelegate
 
 /**
- * Description: Sunit茄子渠道独有功能方法接口相关Demo UI
+ * Description: Transsion传音渠道独有功能方法接口相关Demo UI
  *
- * @author: LuXing created on 2021/3/29 14:13
+ * @author: LuXing created on 2021/3/29 16:47
  *
  */
-class SunitMethodDemoView : DemoView, IOtherCallback {
+class WebsiteEnMethodDemoView : DemoView, IOtherCallback {
 
     private lateinit var otherApi: IOtherApi
 
@@ -28,22 +26,27 @@ class SunitMethodDemoView : DemoView, IOtherCallback {
         defStyleAttr
     )
 
-    private val rewardedEt: EditText by EditTextDelegate()
-    private val eventEt: EditText by EditTextDelegate()
-
     override fun initView() {
         otherApi = ApiManager.instance.getOtherApi(appActivity, this)
-        rewardedEt
-        eventEt
-        R.id.sunit_method_demo_view_rewarded_btn.addClickListener {
-            if (rewardedEt.checkContent()) {
-                otherApi.invokeShowRewardedBadgeViewMethod(rewardedEt.content())
-            }
+
+        R.id.website_method_demo_view_query_inapp_skus_btn.addClickListener {
+            otherApi.invokeQuerySkuDetailsList(
+                listOf(
+                    "com.sungray.dhlove.usd.1",
+                    "com.sungray.dhlove.usd.2",
+                    "com.sungray.dhlove.usd.3",
+                    "com.sungray.dhlove.usd.4"
+                ), 0
+            )
         }
-        R.id.sunit_method_demo_view_event_btn.addClickListener {
-            if (eventEt.checkContent()) {
-                otherApi.invokeOnSunitEventMethod(appActivity.baseContext, eventEt.content())
-            }
+        R.id.website_method_demo_view_query_subs_skus_btn.addClickListener {
+            otherApi.invokeQuerySkuDetailsList(
+                listOf(
+                    "com.sungray.dhlove.pack.52",
+                    "com.sungray.dhlove.pack.53",
+                    "com.sungray.dhlove.pack.54"
+                ), 1
+            )
         }
     }
 

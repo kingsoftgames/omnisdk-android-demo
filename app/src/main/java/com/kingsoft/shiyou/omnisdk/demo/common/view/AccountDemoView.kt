@@ -5,11 +5,9 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import android.widget.TextView
-import com.kingsoft.shiyou.omnisdk.api.entity.RoleInfo
+import android.widget.*
+import com.kingsoft.shiyou.omnisdk.api.OmniSDK
+import com.kingsoft.shiyou.omnisdk.api.entity.OmniConstant
 import com.kingsoft.shiyou.omnisdk.demo.R
 import com.kingsoft.shiyou.omnisdk.demo.common.ApiManager
 import com.kingsoft.shiyou.omnisdk.demo.common.html
@@ -32,25 +30,16 @@ class AccountDemoView : DemoView, IAccountCallback {
 
     private lateinit var titleTv: TextView
     private lateinit var loginContainer: RelativeLayout
-
-    /**
-     * 指定登录账号类型输入框
-     */
+    private lateinit var loginButton: Button
+    private lateinit var loginTypeContainer: LinearLayout
     private val loginTypeEt: EditText by EditTextDelegate()
 
-    private lateinit var accountContainer: LinearLayout
+    private lateinit var accountManageContainer: LinearLayout
     private lateinit var gameRoleInfoTv: TextView
 
-    /**
-     * 指定切换账号类型输入框
-     */
+    private lateinit var switchTypeContainer: LinearLayout
     private val switchTypeEt: EditText by EditTextDelegate()
-
-    private lateinit var bindContainer: LinearLayout
-
-    /**
-     * 指定绑定账号类型输入框
-     */
+    private lateinit var bindTypeContainer: LinearLayout
     private val bindTypeEt: EditText by EditTextDelegate()
 
     constructor(context: Context) : this(context, null)
@@ -62,182 +51,212 @@ class AccountDemoView : DemoView, IAccountCallback {
     )
 
     override fun initView() {
-
-        // 获取账号API接口实例
-        accountApi = ApiManager.instance.getAccountApi(this)
-
-        loginContainer = findViewById(R.id.account_demo_view_login_container)
-        accountContainer = findViewById(R.id.account_demo_view_account_container)
+        accountApi = ApiManager.instance.getAccountApi(appActivity, this)
         titleTv = findViewById(R.id.account_demo_view_title_tv)
+        initLoginView()
+        initAccountManageView()
+        showLoginView()
+    }
 
-        R.id.account_demo_view_login_btn.addClickListener {
+    private fun initLoginView() {
+        loginContainer = findViewById(R.id.account_demo_view_login_container)
+
+        loginButton = findViewById(R.id.account_demo_view_login_btn)
+        loginButton.setOnClickListener {
             accountApi.loginImpl(0)
         }
+
+        loginTypeContainer = findViewById(R.id.account_demo_view_login_type_container)
         loginTypeEt
         R.id.account_demo_view_login_type_btn.addClickListener {
-            val loginType = loginTypeEt.text.toString().toIntOrNull()
+            val loginType = loginTypeEt.content().toIntOrNull()
             loginType?.let {
                 accountApi.loginImpl(it)
             } ?: appView.showToastMessage("无效账号类型")
         }
+        if (OmniSDK.instance.getAccountMode(baseContext) == 2) {
+            // 仅仅容许渠道账号登录
+            loginTypeContainer.visibility = View.GONE
+            val channel = OmniSDK.instance.getChannelName().uppercase()
+            loginButton.text = "${channel}登录"
+        }
+    }
 
-        R.id.account_demo_view_logout_btn.addClickListener {
-            showProcessingDialog()
-            accountApi.logoutImpl()
+    private fun initAccountManageView() {
+        accountManageContainer = findViewById(R.id.account_demo_view_account_manage_container)
+
+        // 角色数据构建
+        gameRoleInfoTv = findViewById(R.id.account_demo_view_game_role_info_tv)
+        gameRoleInfoTv.setOnClickListener {
+            val createGameRoleView = LayoutInflater.from(appActivity)
+                .inflate(R.layout.create_game_role_view, null) as CreateGameRoleView
+            createGameRoleView.appView = appView
+            createGameRoleView.gameRoleInfo = appView.gameRoleInfo
+            DemoDialogUtil.showDialogWithView(
+                appView.appActivity, "", createGameRoleView,
+                { _, _ ->
+                    if (createGameRoleView.gameRoleInfo.roleId.isBlank()) {
+                        appView.showErrorDialog("角色数据无效：角色ID为必要数据")
+                    } else {
+                        // 刷新角色信息数据
+                        appView.gameRoleInfo = createGameRoleView.gameRoleInfo
+                        refreshGameRoleInfo()
+                    }
+                }, { _, _ -> }, "创建(更新)", "取消"
+            )
         }
 
+        // 账号切换
+        switchTypeContainer = findViewById(R.id.account_demo_view_switch_container)
         switchTypeEt
-        R.id.account_demo_view_switch_btn.addClickListener {
-            val typeString = switchTypeEt.text.toString()
-            val switchType = if (typeString.isBlank()) {
-                0
-            } else {
-                typeString.toIntOrNull()
-            }
+        R.id.account_demo_view_switch_type_btn.addClickListener {
+            val switchType = switchTypeEt.content().toIntOrNull()
             switchType?.let {
                 accountApi.switchAccountImpl(it)
             } ?: appView.showToastMessage("无效账号类型")
         }
 
-        bindContainer = findViewById(R.id.account_demo_view_bind_container)
+        // 账号绑定
+        bindTypeContainer = findViewById(R.id.account_demo_view_bind_container)
         bindTypeEt
-        R.id.account_demo_view_bind_btn.addClickListener {
-            val typeString = bindTypeEt.text.toString()
-            val bindType = if (typeString.isBlank()) {
-                0
-            } else {
-                typeString.toIntOrNull()
-            }
+        R.id.account_demo_view_bind_type_btn.addClickListener {
+            val bindType = bindTypeEt.content().toIntOrNull()
             bindType?.let { type ->
                 accountApi.bindAccountImpl(type)
             } ?: appView.showToastMessage("无效账号类型")
         }
 
-        gameRoleInfoTv = findViewById(R.id.account_demo_view_game_role_info_tv)
-        gameRoleInfoTv.setOnClickListener {
-            val createGameRoleView = LayoutInflater.from(demoActivity)
-                .inflate(R.layout.create_game_role_view, null) as CreateGameRoleView
-            createGameRoleView.appView = appView
-            createGameRoleView.gameRole = appView.gameRole
-            DemoDialogUtil.showDialogWithView(
-                appView.demoActivity, "", createGameRoleView,
-                { _, _ ->
-
-                    if (createGameRoleView.gameRole.roleId.isBlank()) {
-                        appView.showToastMessage("角色ID为必要数据")
-                    } else {
-                        // 刷新角色信息数据
-                        appView.gameRole = createGameRoleView.gameRole
-                        refreshGameRoleInfo()
-                    }
-
-                }, { _, _ -> }, "创建(更新)", "取消"
-            )
+        // 账号登出
+        R.id.account_demo_view_logout_btn.addClickListener {
+            showProcessingDialog()
+            accountApi.logoutImpl()
         }
-
-        showLoginView()
     }
 
-    private fun refreshGameRoleInfo() {
-        gameRoleInfoTv.text = appView.gameRole.display()
-    }
-
-    private fun RoleInfo.display(): CharSequence {
-        return """
-            <b><font color="#8B0000">游戏角色信息: </font></b><br />
-            <b>uid:</b> $uid <br />
-            <b>roleId:</b> $roleId <br />
-            <b>roleLevel:</b> $roleLevel <br />
-            <b>roleName:</b> $roleName <br />
-            <b>roleType:</b> $roleType <br />
-            <b>roleVipLevel:</b> $roleVipLevel <br />
-            <b>roleFigure:</b> $roleFigure <br />
-            <b>roleCreateTime:</b> $roleCreateTime <br />
-            <b>serverId:</b> $serverId <br />
-            <b>serverName:</b> $serverName <br />
-            <b>zoneId:</b> $zoneId <br />
-            <b>zoneName:</b> $zoneName <br />
-            <b>accountAgeInGame:</b> $accountAgeInGame <br />
-            <b>ageInGame:</b> $ageInGame <br />
-            <b>balance:</b> $balance <br />
-            <b>gender:</b> $gender <br />
-            <b>partyName:</b> $partyName <br />
-            <b>ext:</b> $ext <br />
-        """.trimIndent().html()
-    }
-
-    /**
-     * 显示登录界面
-     */
+    /** 显示登录界面 */
     private fun showLoginView() {
         loginContainer.visibility = View.VISIBLE
-        accountContainer.visibility = View.GONE
+        accountManageContainer.visibility = View.GONE
         titleTv.text = "请登录"
     }
 
-    /**
-     * 显示登录成功后的账号管理界面
-     * @param isGuest Boolean
-     */
-    private fun showAccountView(isGuest: Boolean) {
-        accountContainer.visibility = View.VISIBLE
+    /** 显示登录成功后的账号管理界面 */
+    private fun showAccountManageView() {
+        accountManageContainer.visibility = View.VISIBLE
         loginContainer.visibility = View.GONE
         titleTv.text = "账号管理"
-        if (isGuest) {
-            bindContainer.visibility = View.VISIBLE
+
+        if (OmniSDK.instance.getBindAccountMode(appView.appActivity) == 0) {
+            // 隐藏账号绑定功能入口
+            bindTypeContainer.visibility = View.GONE
         } else {
-            bindContainer.visibility = View.GONE
+            bindTypeContainer.visibility = View.VISIBLE
         }
-        gameRoleInfoTv.text = """
-           <b><u><font color="red">创建游戏角色数据</font></u></b>
-        """.trimIndent().html()
+
+        if (OmniSDK.instance.getSwitchAccountMode(appView.appActivity) == 0) {
+            // 隐藏账号切换功能入口
+            switchTypeContainer.visibility = View.GONE
+        } else {
+            switchTypeContainer.visibility = View.VISIBLE
+        }
+
+        refreshGameRoleInfo()
+    }
+
+    /** 刷新角色数据 */
+    private fun refreshGameRoleInfo() {
+        if (appView.gameRoleInfo.uid.isNotBlank() && appView.gameRoleInfo.roleId.isNotBlank()) {
+            gameRoleInfoTv.text = appView.gameRoleInfo.let {
+                """
+                   <b><font color="#8B0000">游戏角色数据：</font></b><br />
+                   <b>uid:</b> ${it.uid} <br />
+                   <b>roleId:</b> ${it.roleId} <br />
+                   <b>roleLevel:</b> ${it.roleLevel} <br />
+                   <b>roleName:</b> ${it.roleName} <br />
+                   <b>roleType:</b> ${it.roleType} <br />
+                   <b>roleVipLevel:</b> ${it.roleVipLevel} <br />
+                   <b>roleFigure:</b> ${it.roleFigure} <br />
+                   <b>roleCreateTime:</b> ${it.roleCreateTime} <br />
+                   <b>serverId:</b> ${it.serverId} <br />
+                   <b>serverName:</b> ${it.serverName} <br />
+                   <b>zoneId:</b> ${it.zoneId} <br />
+                   <b>zoneName:</b> ${it.zoneName} <br />
+                   <b>accountAgeInGame:</b> ${it.accountAgeInGame} <br />
+                   <b>ageInGame:</b> ${it.ageInGame} <br />
+                   <b>balance:</b> ${it.balance} <br />
+                   <b>gender:</b> ${it.gender} <br />
+                   <b>partyName:</b> ${it.partyName} <br />
+                   <b>ext:</b> ${it.ext} <br />
+                """.trimIndent().html()
+            }
+        } else {
+            gameRoleInfoTv.text = """
+                <b><u><font color="red">创建游戏角色数据(用于事件数据监控追踪等等接口调用)</font></u></b>
+            """.trimIndent().html()
+        }
     }
 
     override fun onLoginSucceeded(userMap: Map<String, Any>, type: Int) {
+        appView.showToastMessage("登录成功")
         MainScope().launch {
-            appView.showToastMessage("登录成功")
-            showAccountView(type == 1)
             appView.setUser(userMap)
+            showAccountManageView()
+            cancelProcessingDialog()
         }
     }
 
     override fun onBindSucceeded(userMap: Map<String, Any>) {
+        appView.showToastMessage("绑定成功")
         MainScope().launch {
-            appView.showToastMessage("绑定成功")
-            showAccountView(false)
             appView.setUser(userMap)
+            showAccountManageView()
+            cancelProcessingDialog()
         }
     }
 
     override fun onSwitchSucceeded(userMap: Map<String, Any>) {
+        appView.showToastMessage("切换成功")
         MainScope().launch {
-            appView.showToastMessage("切换成功")
-            showAccountView(false)
             appView.setUser(userMap)
+            showAccountManageView()
+            cancelProcessingDialog()
         }
     }
 
-    override fun onFailed(responseCode: Pair<Int, String>) {
-        appView.showErrorDialog(responseCode.toString())
+    override fun onFailed(
+        sdkFailureResult: Pair<Int, String>,
+        channelFailureResult: Pair<Int, String>
+    ) {
+        if (channelFailureResult.first == OmniConstant.ResultCode.unspecified) {
+            appView.showErrorDialog(sdkFailureResult.toString())
+        } else {
+            appView.showErrorDialog(channelFailureResult.toString())
+        }
+        MainScope().launch {
+            cancelProcessingDialog()
+        }
     }
 
     override fun onCancelled() {
-        // 操作取消,无需弹提示
+        appView.showToastMessage("取消")
+        MainScope().launch {
+            cancelProcessingDialog()
+        }
     }
 
     override fun onLogoutSucceeded() {
+        appView.showToastMessage("登出成功")
         MainScope().launch {
+            appView.setUser(null)
             showLoginView()
             cancelProcessingDialog()
-            appView.setUser(emptyMap())
-            appView.showToastMessage("登出成功")
         }
     }
 
     override fun onLogoutFailed(responseCode: Pair<Int, String>) {
+        appView.showErrorDialog(responseCode.toString())
         MainScope().launch {
             cancelProcessingDialog()
-            appView.showErrorDialog(responseCode.toString())
         }
     }
 

@@ -30,6 +30,15 @@ public class SocialApi implements ISocialApi {
 
     /* ***************************** SDK 社交功能相关API接口示例 ********************************** */
 
+    private final String tag = "SDK: " + this.getClass().getName();
+    private final Activity demoActivity;
+    private final ISocialCallback callback;
+
+    public SocialApi(Activity activity, ISocialCallback socialCallback) {
+        this.demoActivity = activity;
+        this.callback = socialCallback;
+    }
+
     /**
      * 社交分享接口示例
      *
@@ -72,6 +81,8 @@ public class SocialApi implements ISocialApi {
 
     }
 
+    /* ****************************************************************************************** */
+
     /**
      * 社交邀请接口示例
      *
@@ -96,31 +107,6 @@ public class SocialApi implements ISocialApi {
                 callback.onFailed(responseCode);
             }
         });
-    }
-
-    /**
-     * 第三方平台用户账号信息
-     */
-    public static class SocialAccountInfo {
-        public String id = "";       // 第三方平台账号标示ID
-        public String nickName = ""; // 第三方平台账号昵称
-        public String gender = "";   // 男 `male` 女 `female`
-        public String imageUrl = ""; // 用户头像Url地址
-        public int width = 0;        // 头像宽度像素
-        public int height = 0;       // 头像高度像素
-
-        @Override
-        public String toString() {
-            return "SocialAccountInfo{" +
-                    "id='" + id + '\'' +
-                    ", nickName='" + nickName + '\'' +
-                    ", gender='" + gender + '\'' +
-                    ", imageUrl='" + imageUrl + '\'' +
-                    ", width=" + width +
-                    ", height=" + height +
-                    '}';
-        }
-
     }
 
     /**
@@ -194,17 +180,6 @@ public class SocialApi implements ISocialApi {
         });
     }
 
-    /* ****************************************************************************************** */
-
-    private final String tag = "SDK: " + this.getClass().getName();
-    private final Activity demoActivity;
-    private final ISocialCallback callback;
-
-    public SocialApi(Activity activity, ISocialCallback socialCallback) {
-        this.demoActivity = activity;
-        this.callback = socialCallback;
-    }
-
     @Override
     public void shareImpl(String platform, ShareType type, String title, String description, String link, ShareImageType imageType, String imageUri) {
         share(platform, type, title, description, link, imageType, imageUri);
@@ -223,5 +198,30 @@ public class SocialApi implements ISocialApi {
     @Override
     public void getFriendInfoImpl(String platform) {
         getFriendInfo(platform);
+    }
+
+    /**
+     * 第三方平台用户账号信息
+     */
+    public static class SocialAccountInfo {
+        public String id = "";       // 第三方平台账号标示ID
+        public String nickName = ""; // 第三方平台账号昵称
+        public String gender = "";   // 男 `male` 女 `female`
+        public String imageUrl = ""; // 用户头像Url地址
+        public int width = 0;        // 头像宽度像素
+        public int height = 0;       // 头像高度像素
+
+        @Override
+        public String toString() {
+            return "SocialAccountInfo{" +
+                    "id='" + id + '\'' +
+                    ", nickName='" + nickName + '\'' +
+                    ", gender='" + gender + '\'' +
+                    ", imageUrl='" + imageUrl + '\'' +
+                    ", width=" + width +
+                    ", height=" + height +
+                    '}';
+        }
+
     }
 }

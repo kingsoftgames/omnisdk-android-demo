@@ -15,6 +15,7 @@ import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.ICallback
  * @author: LuXing created on 2021/3/10 18:26
  *
  */
+@Suppress("NOTHING_TO_INLINE")
 abstract class DemoView(context: Context, attributeSet: AttributeSet?, defStyleAttr: Int) :
     RelativeLayout(
         context,
@@ -22,22 +23,23 @@ abstract class DemoView(context: Context, attributeSet: AttributeSet?, defStyleA
         defStyleAttr
     ), ICallback {
 
-    var TAG = "SDK(DemoView): "
+    var TAG = ""
 
+    /** 当DemoView被构建实例化后立即会被赋值 */
     lateinit var appView: AppView
 
-    val demoActivity get() = appView.demoActivity
+    val appActivity get() = appView.appActivity
+    val baseContext get() = appView.baseContext
+    val appContext get() = appView.appContext
 
     var hasAttached = false
 
-    /**
-     * 初始化View控件
-     */
+    /** 初始化View控件 */
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         if (!hasAttached) {
             hasAttached = true
-            TAG += this::class.simpleName!!
+            TAG = "${this::class.simpleName!!}# "
             initView()
         }
     }
@@ -46,49 +48,46 @@ abstract class DemoView(context: Context, attributeSet: AttributeSet?, defStyleA
 
     private var processingDialog: Dialog? = null
 
-    /**
-     * 显示加载框
-     */
+    /** 显示加载框 */
     override fun showProcessingDialog() {
-        processingDialog = Dialog(demoActivity).apply {
+        processingDialog = Dialog(appActivity).apply {
             setContentView(R.layout.demo_processing_dialog)
+            setCancelable(false)
+            setCanceledOnTouchOutside(false)
         }
         processingDialog!!.show()
     }
 
-    /**
-     * 取消加载框
-     */
+    /** 取消加载框 */
     override fun cancelProcessingDialog() {
-        try {
-            processingDialog?.cancel()
-            processingDialog = null
-        } catch (e: Exception) {
-            e.printStackTrace()
+        processingDialog?.let {
+            kotlin.runCatching {
+                it.cancel()
+            }
         }
+        processingDialog = null
     }
 
-    protected fun Int.editText(): EditText = findViewById<EditText>(this)
+    protected inline fun Int.editText(): EditText = findViewById(this)
 
-    protected fun EditText.content(): String =
+    protected inline fun EditText.content(): String =
         if (this.text != null && this.text.toString().trim().isNotBlank()) {
             this.text.toString()
         } else {
             ""
         }
 
-    protected fun EditText.checkContent() = if (this.content().isBlank()) {
+    protected inline fun EditText.checkContent() = if (this.content().isBlank()) {
         appView.showToastMessage("相关数据不能为空")
         false
     } else {
         true
     }
 
-    protected fun Int.button(): Button = findViewById<Button>(this)
+    protected inline fun Int.button(): Button = findViewById(this)
 
-    protected fun Int.addClickListener(execution: () -> Unit) {
-        val btn = findViewById<Button>(this)
-        btn.setOnClickListener {
+    protected inline fun Int.addClickListener(crossinline execution: () -> Unit) {
+        this.button().setOnClickListener {
             execution.invoke()
         }
     }

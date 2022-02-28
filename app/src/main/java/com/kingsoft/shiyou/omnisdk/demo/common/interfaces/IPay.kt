@@ -1,6 +1,7 @@
 package com.kingsoft.shiyou.omnisdk.demo.common.interfaces
 
 import com.kingsoft.shiyou.omnisdk.api.entity.Order
+import com.kingsoft.shiyou.omnisdk.api.entity.SkuType
 
 /**
  * Description:
@@ -10,6 +11,7 @@ import com.kingsoft.shiyou.omnisdk.api.entity.Order
  */
 interface IPayApi {
     fun payImpl(
+        skuType: SkuType,
         productId: String,
         productName: String,
         productDesc: String,
@@ -20,7 +22,11 @@ interface IPayApi {
         roleId: String,
         gameTradeNo: String,
         gameCallbackUrl: String,
-        extJson: String
+        extJson: String,
+        zoneId: String,
+        roleName: String,
+        roleLevel: String,
+        roleVipLevel: String
     )
 }
 

@@ -2,12 +2,20 @@ package com.kingsoft.shiyou.omnisdk.demo.common.view
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.Spinner
 import com.kingsoft.shiyou.omnisdk.api.entity.Order
+import com.kingsoft.shiyou.omnisdk.api.entity.SkuType
 import com.kingsoft.shiyou.omnisdk.demo.R
 import com.kingsoft.shiyou.omnisdk.demo.common.ApiManager
 import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.IPayApi
 import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.IPayCallback
+import com.kingsoft.shiyou.omnisdk.demo.common.utils.DemoLogger
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 import java.util.*
 
 /**
@@ -20,17 +28,30 @@ class PayDemoView : DemoView, IPayCallback {
 
     private lateinit var payApi: IPayApi
 
+    @Volatile
+    private var gameCno: String = ""
+        set(value) {
+            field = value
+            gameTradeNoEt.setText(value)
+        }
+
+    @Volatile
+    private var productSkuType: SkuType = SkuType.INAPP
     private val productIdEt: EditText by EditTextDelegate()
     private val productNameEt: EditText by EditTextDelegate()
     private val productDescEt: EditText by EditTextDelegate()
     private val productPriceEt: EditText by EditTextDelegate()
-    private val productTotalAmountEt: EditText by EditTextDelegate()
-    private val productCurrencyEt: EditText by EditTextDelegate()
+    private val payAmountEt: EditText by EditTextDelegate()
+    private val currencyEt: EditText by EditTextDelegate()
     private val serverIdEt: EditText by EditTextDelegate()
     private val roleIdEt: EditText by EditTextDelegate()
-    private val gameCnoEt: EditText by EditTextDelegate()
-    private val extDataEt: EditText by EditTextDelegate()
-    private val callbackUrlEt: EditText by EditTextDelegate()
+    private val gameTradeNoEt: EditText by EditTextDelegate()
+    private val gameCallbackUrlEt: EditText by EditTextDelegate()
+    private val extJsonEt: EditText by EditTextDelegate()
+    private val zoneIdEt: EditText by EditTextDelegate()
+    private val roleNameEt: EditText by EditTextDelegate()
+    private val roleLevelEt: EditText by EditTextDelegate()
+    private val roleVipLevelEt: EditText by EditTextDelegate()
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attributeSet: AttributeSet?) : this(context, attributeSet, 0)
@@ -41,136 +62,135 @@ class PayDemoView : DemoView, IPayCallback {
     )
 
     override fun initView() {
-
-        // 获取支付购买API接口实例
-        payApi = ApiManager.instance.getPayApi(this)
-
-        // 初始化输入EditText控件
+        payApi = ApiManager.instance.getPayApi(appActivity, this)
+        initProductSkuTypes()
         productIdEt
         productNameEt
         productDescEt
         productPriceEt
-        productTotalAmountEt
-        productCurrencyEt
+        payAmountEt
+        currencyEt
         serverIdEt
         roleIdEt
-        gameCnoEt
-        callbackUrlEt
-        extDataEt
-        // 监听按钮点击
+        gameTradeNoEt
+        gameCallbackUrlEt
+        extJsonEt
+        zoneIdEt
+        roleNameEt
+        roleLevelEt
+        roleVipLevelEt
         R.id.pay_demo_view_create_cno_btn.addClickListener {
             generateGameCno()
+            appView.showMessageDialog("订单号: $gameCno", "创建成功")
         }
         R.id.pay_demo_view_pay_btn.addClickListener {
-            if (checkPaymentData()) pay()
+            pay()
+        }
+        generateGameCno()
+    }
+
+    private fun initProductSkuTypes() {
+        val skuTypes = ArrayList<String>()
+        SkuType.values().forEach {
+            skuTypes.add(it.name)
+        }
+
+        val skuTypesSpinner = findViewById<Spinner>(R.id.pay_demo_view_product_type_spinner)
+        skuTypesSpinner.adapter =
+            ArrayAdapter(context, android.R.layout.simple_spinner_item, skuTypes)
+        skuTypesSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                (skuTypesSpinner.selectedItem as? String)?.let {
+                    productSkuType = SkuType.valueOf(it)
+                    DemoLogger.i(TAG, "selected productSkuType = $productSkuType")
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
     }
 
-    /**
-     * 检测支付数据的合法性
-     */
-    private fun checkPaymentData(): Boolean {
+    private fun pay() {
+        // 先检测必要的支付数据的合法性
         if (appView.getUser().isNullOrEmpty()) {
             appView.showToastMessage("请先登录账号，再进行支付")
-            return false
+            return
         }
         if (productIdEt.content().isBlank()) {
             appView.showToastMessage("产品ID不能为空")
-            return false
+            return
         }
         if (productPriceEt.content().toDoubleOrNull() == null) {
             appView.showToastMessage("产品价格错误")
-            return false
+            return
         }
-        if (productTotalAmountEt.content().toDoubleOrNull() == null) {
+        if (payAmountEt.content().toDoubleOrNull() == null) {
             appView.showToastMessage("支付总金额错误")
-            return false
-        }
-        if (productCurrencyEt.content().isBlank()) {
-            appView.showToastMessage("产品价格货币单位不能为空")
-            return false
+            return
         }
         if (roleIdEt.content().isBlank()) {
-            appView.showToastMessage("玩家角色ID标示不能为空")
-            return false
+            appView.showToastMessage("玩家角色账号ID标示不能为空")
+            return
         }
-        return true
-    }
+        showProcessingDialog()
 
-    // 支付
-    private fun pay() {
-
-        // 商品 ID (必传数据)
-        val productId = productIdEt.content()
-
-        // 商品名称，有则传值，无则保持和商品ID一致
-        val productName = productNameEt.content()
-
-        // 商品描述，有则传值，无则保持和商品ID一致
-        val productDesc = productDescEt.content()
-
-        // 商品价格(单位为元,必传数据),比如9.99，0.99等等
-        val productPrice = productPriceEt.content().toDouble()
-
-        // 实际支付的总金额(单位为元,必传数据)
-        val payAmount = productTotalAmountEt.content().toDouble()
-
-        // 商品价格对应的货币单位（必传数据）, 比如 USD HKD 等等
-        val currency = productCurrencyEt.content()
-
-        // 服务器 ID（必传数据），对于没有区服概念的游戏请直接传空字符串""
-        val serverId = serverIdEt.content()
-
-        // 游戏角色唯一标示ID（必传数据）
-        val roleId = roleIdEt.content()
-
-        // 游戏订单号ID.有则传值，没有则传空字符串""
-        val gameTradeNo = gameCnoEt.content()
-
-        // CP方服务器支付回调地址，有则传值，没有则传空字符串"".若传空字符串""则SDK将使用后台配置的回调地址
-        val gameCallbackUrl = callbackUrlEt.content()
-
-        // CP方自定义扩展数据,会在回调CP方服务器支付数据的时候原样返回.有则传值，没有则传空字符串""
-        val extJson = extDataEt.content()
-
+        // 开始支付
         payApi.payImpl(
-            productId,
-            productName,
-            productDesc,
-            productPrice,
-            payAmount,
-            currency,
-            serverId,
-            roleId,
-            gameTradeNo,
-            gameCallbackUrl,
-            extJson
+            productSkuType,
+            productIdEt.content(),
+            productNameEt.content(),
+            productDescEt.content(),
+            productPriceEt.content().toDouble(),
+            payAmountEt.content().toDouble(),
+            currencyEt.content(),
+            serverIdEt.content(),
+            roleIdEt.content(),
+            gameTradeNoEt.content(),
+            gameCallbackUrlEt.content(),
+            extJsonEt.content(),
+            zoneIdEt.content(),
+            roleNameEt.content(),
+            roleLevelEt.content(),
+            roleVipLevelEt.content()
         )
     }
 
-    private var gameCno: String = ""
-        set(value) {
-            field = value
-            gameCnoEt.setText(value)
-        }
-
-    /**
-     * 模拟订单号生成
-     */
+    /** 模拟游戏对接方订单号生成 */
     private fun generateGameCno() {
         gameCno = "sdk_" + UUID.randomUUID().toString().replace("-", "")
-        appView.showMessageDialog("订单号: $gameCno", "创建成功")
     }
 
     override fun onSucceeded(order: Order) {
+        MainScope().launch {
+            cancelProcessingDialog()
+        }
         appView.showMessageDialog("订单号: ${order.orderId}", "支付成功")
     }
 
     override fun onFailed(codeMsg: Pair<Pair<Int, String>, Pair<Int, String>?>) {
-        appView.showErrorDialog("`${codeMsg.first}` || `${codeMsg.second}`")
+        MainScope().launch {
+            cancelProcessingDialog()
+        }
+        // 注意200084 不要也不需要向用户展示，用户只需看到GP的提示就行；
+        // 因为GP会在一段时间内重复发送这个code类型，但其实只有一个订单，
+        // 游戏应该在用户订阅过一次后，隐藏对应的订阅商品
+        if (codeMsg.first.first != 200084) {
+            appView.showMessageDialog(
+                "OmniSdkError: ${codeMsg.first} , ChannelError: ${codeMsg.second}",
+                "支付失败"
+            )
+        }
     }
 
     override fun onCancelled() {
+        MainScope().launch {
+            cancelProcessingDialog()
+        }
         appView.showToastMessage("支付取消")
     }
 }

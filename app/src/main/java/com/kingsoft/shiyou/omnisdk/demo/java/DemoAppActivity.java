@@ -26,14 +26,14 @@ public class DemoAppActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ApiManager.getInstance().initialize(this, ApiManager.Language.JAVA);
-        appView = new AppView(this);
+        ApiManager.getInstance().initialize(ApiManager.Language.JAVA);
+        appView = new AppView();
+        appView.attachToActivity(this);
 
         // SDK API接口(必须调用)
         OmniSDK.getInstance().onCreate(this, savedInstanceState);
 
         // CP自己的代码
-
     }
 
     /**
@@ -224,15 +224,6 @@ public class DemoAppActivity extends AppCompatActivity {
      */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        // 拦截返回键
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            OmniSDK.getInstance().onExit(this, () -> {
-                finish(); // 杀掉UI
-                System.exit(0); // 杀掉进程
-            }, false);
-            return true;
-        }
-
         // SDK API(必须调用)
         if (OmniSDK.getInstance().onKeyDown(this, keyCode, event)) {
             return true;

@@ -1,10 +1,16 @@
 package com.kingsoft.shiyou.omnisdk.demo.common.utils
 
+import android.app.Activity
+import android.content.Context
 import android.content.DialogInterface
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.ContextThemeWrapper
+import com.google.android.material.R
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.kingsoft.shiyou.omnisdk.basic.LogUtils
+import com.kingsoft.shiyou.omnisdk.basic.RIdUtils
+import com.kingsoft.shiyou.omnisdk.basic.printDebugStackTrace
 
 /**
  * Description: 弹窗UI提示
@@ -14,8 +20,44 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
  */
 object DemoDialogUtil {
 
+    private fun getThemeContext(context: Context): Context {
+        return if (checkMaterialTheme(context)) {
+            LogUtils.debugI({ "DemoDialogUtil" }, { "app is material" })
+            context
+        } else {
+            LogUtils.debugI({ "DemoDialogUtil" }, { "app no material" })
+            ContextThemeWrapper(
+                context,
+                RIdUtils.getStyleId(context, "DialogActivityTheme")
+            )
+        }
+    }
+
+    private val MATERIAL_CHECK_ATTRS = intArrayOf(R.attr.colorPrimaryVariant)
+
+    private fun checkMaterialTheme(context: Context) = checkTheme(context, MATERIAL_CHECK_ATTRS)
+
+    private fun checkTheme(context: Context, themeAttributes: IntArray) =
+        isTheme(context, themeAttributes)
+
+    private fun isTheme(context: Context, themeAttributes: IntArray): Boolean {
+        try {
+            val a = context.obtainStyledAttributes(themeAttributes)
+            for (i in themeAttributes.indices) {
+                if (!a.hasValue(i)) {
+                    a.recycle()
+                    return false
+                }
+            }
+            a.recycle()
+        } catch (e: Exception) {
+            printDebugStackTrace { e }
+        }
+        return true
+    }
+
     fun showDialogWithContent(
-        activity: AppCompatActivity,
+        activity: Activity,
         title: String,
         content: String,
         confirmListener: DialogInterface.OnClickListener = DialogInterface.OnClickListener { _, _ -> },
@@ -23,7 +65,7 @@ object DemoDialogUtil {
         confirmString: String = "确定",
         cancelString: String = "取消"
     ): AlertDialog {
-        return MaterialAlertDialogBuilder(activity).apply {
+        return MaterialAlertDialogBuilder(getThemeContext(activity)).apply {
             setTitle(title)
             setMessage(content)
             setPositiveButton(confirmString, confirmListener)
@@ -32,7 +74,7 @@ object DemoDialogUtil {
     }
 
     fun showDialogWithView(
-        activity: AppCompatActivity,
+        activity: Activity,
         title: String?,
         layoutView: View,
         confirmListener: DialogInterface.OnClickListener? = null,
@@ -40,7 +82,7 @@ object DemoDialogUtil {
         confirmString: String = "确定",
         cancelString: String = "取消"
     ): AlertDialog {
-        return MaterialAlertDialogBuilder(activity).apply {
+        return MaterialAlertDialogBuilder(getThemeContext(activity)).apply {
             setTitle(title)
             setView(layoutView)
             if (confirmListener != null) setPositiveButton(confirmString, confirmListener)

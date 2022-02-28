@@ -15,9 +15,6 @@ android {
 		website_en {
 			dimension "default"
 		}
-		oppo_en {
-			dimension "default"
-		}
 	}
 }
 
@@ -26,21 +23,18 @@ dependencies {
 
 	// 封版|发版 前请 Omni 确认是否需要升级到最新版本。
 	// OmniSDK API 依赖（所有渠道包的公共依赖）
-	String apiVersion = "1.2.5" // Please replace with the latest version if needed.
+	String apiVersion = "2.0.0" // Please replace with the latest version if needed.
 	api("com.kingsoft.shiyou.omnisdk.component:api:$apiVersion")
 
 	// OmniSDK Plugin 依赖（所有渠道包的公共依赖）
-	implementation("com.kingsoft.shiyou.omnisdk.plugin:omni-account:1.1.0")
+	implementation("com.kingsoft.shiyou.omnisdk.plugin:omni-account:2.0.0")
 
 	// 渠道的各自依赖，根据 shiyou/*/kssyOmni.gradle 下各渠道配置脚本生成
 	// website_en
-	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:google-pay:3.0.0")
-	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:facebook:9.1.1")
-	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:google:19.0.0")
-	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:line:5.6.0")
-	website_enImplementation("com.kingsoft.shiyou.omnisdk.channel:website-en:1.0.8")
-
-	// oppo_en
-	oppo_enImplementation("com.kingsoft.shiyou.omnisdk.channel:oppo-en:1.0.9")
+	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:sentry:5.1.2.3")
+	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:google-pay:4.0.0.3")
+	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:facebook:11.3.0.2")
+	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:google:20.1.0")
+	website_enImplementation("com.kingsoft.shiyou.omnisdk.channel:website-en:1.1.1")
 
 }

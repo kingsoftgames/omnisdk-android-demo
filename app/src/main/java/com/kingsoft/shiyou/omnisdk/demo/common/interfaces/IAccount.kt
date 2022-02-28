@@ -17,7 +17,7 @@ interface IAccountCallback : ICallback {
     fun onLoginSucceeded(userMap: Map<String, Any>, type: Int)
     fun onBindSucceeded(userMap: Map<String, Any>)
     fun onSwitchSucceeded(userMap: Map<String, Any>)
-    fun onFailed(responseCode: Pair<Int, String>)
+    fun onFailed(sdkFailureResult: Pair<Int, String>, channelFailureResult: Pair<Int, String>)
     fun onCancelled()
     fun onLogoutSucceeded()
     fun onLogoutFailed(responseCode: Pair<Int, String>)

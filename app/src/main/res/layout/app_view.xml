@@ -7,41 +7,38 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/demo_app_header_container"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginStart="15dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp">
+        android:layout_marginEnd="16dp">
 
         <TextView
-            android:id="@+id/demo_app_channel_info_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:id="@+id/app_view_channel_info_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
             android:clickable="true"
-            android:focusable="true"
             android:gravity="start|center_vertical"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="14sp"
+            tools:ignore="KeyboardInaccessibleWidget" />
 
         <TextView
-            android:id="@+id/demo_app_user_info_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
+            android:id="@+id/app_view_user_info_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/app_view_channel_info_tv"
+            android:layout_marginTop="10dp"
             android:clickable="true"
-            android:focusable="true"
             android:gravity="start|center_vertical"
             android:textColor="@android:color/black"
-            android:textSize="18sp"
-            tools:ignore="RelativeOverlap" />
+            android:textSize="14sp"
+            tools:ignore="KeyboardInaccessibleWidget,RelativeOverlap" />
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/demo_app_content_rv"
+        android:id="@+id/app_view_function_views_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="15dp"

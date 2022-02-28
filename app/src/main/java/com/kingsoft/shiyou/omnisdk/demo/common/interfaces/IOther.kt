@@ -11,8 +11,8 @@ import android.content.Context
  */
 interface IOtherApi {
 
+    fun openBrowserActivityImpl(url: String, params: String)
     fun showScoreDialog()
-    fun webJsImpl()
 
     // Sunit茄子渠道功能方法接口
     fun invokeOnSunitEventMethod(context: Context, jsonStr: String)
@@ -21,6 +21,9 @@ interface IOtherApi {
     // Transsion传音渠道功能方法接口
     fun invokeShowFloatAdMethod(activity: Activity)
     fun invokeCloseFloatAdMethod(activity: Activity)
+
+    // 官网渠道功能方法接口
+    fun invokeQuerySkuDetailsList(skusList: List<String>, skuType: Int)
 }
 
 interface IOtherCallback : ICallback {

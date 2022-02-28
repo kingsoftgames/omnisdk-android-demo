@@ -28,7 +28,7 @@
             android:layout_centerVertical="true"
             android:clickable="true"
             android:focusable="true"
-            android:text="加载测试数据"
+            android:text="加载默认测试数据"
             android:textColor="@android:color/black"
             android:textSize="12sp" />
 
@@ -176,7 +176,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
                     android:background="@null"
-                    android:hint="体型"
+                    android:hint="角色体型"
                     android:imeOptions="actionDone"
                     android:inputType="text" />
             </LinearLayout>
@@ -338,7 +338,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
                     android:background="@null"
-                    android:hint="性别"
+                    android:hint="角色性别"
                     android:imeOptions="actionDone"
                     android:inputType="text" />
             </LinearLayout>
@@ -356,7 +356,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
                     android:background="@null"
-                    android:hint="所在公会或帮派"
+                    android:hint="公会或帮派"
                     android:imeOptions="actionDone"
                     android:inputType="text" />
             </LinearLayout>
@@ -375,7 +375,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
                     android:background="@null"
-                    android:hint="扩展参数"
+                    android:hint="自定义扩展数据"
                     android:imeOptions="actionDone"
                     android:inputType="text" />
             </LinearLayout>

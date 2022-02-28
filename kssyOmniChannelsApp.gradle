@@ -14,19 +14,10 @@ android {
 	productFlavors {
 		website_en {
 			dimension "default"
-			applicationId "com.*****"
+			applicationId "com.kingsoft.demo"
 			manifestPlaceholders = [
-					applovinKey: "*****",
 					facebookAppId: "*****",
-					facebookAppName: "*****",
-					googleAdmobAppid: "*****",
-			]
-		}
-		oppo_en {
-			dimension "default"
-			applicationId "com.********"
-			manifestPlaceholders = [
-					oppoAppKey: "********",
+					facebookAppName: "demo",
 			]
 		}
 	}
@@ -38,9 +29,7 @@ android {
 		// 多渠道资源配置，如果有
 		website_en {
 			assets.srcDirs += ["${project.rootDir}/shiyou/${name}/main/assets"]
-		}
-		oppo_en {
-			assets.srcDirs += ["${project.rootDir}/shiyou/${name}/main/assets"]
+			java.srcDirs += ["${project.rootDir}/shiyou/default/main/java"]
 		}
 	}
 }
