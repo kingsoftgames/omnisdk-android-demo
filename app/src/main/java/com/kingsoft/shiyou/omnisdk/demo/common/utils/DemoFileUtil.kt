@@ -1,7 +1,6 @@
 package com.kingsoft.shiyou.omnisdk.demo.common.utils
 
 import android.content.Context
-import android.util.Log
 import java.io.File
 
 /**
@@ -14,7 +13,7 @@ object DemoFileUtil {
 
     fun contentOfAssetFile(context: Context, fileName: String) = try {
         var content = ""
-        val inputStream = context.assets.open(fileName);
+        val inputStream = context.assets.open(fileName)
         content = inputStream.readBytes().toString(Charsets.UTF_8)
         inputStream.close()
         content
@@ -26,7 +25,7 @@ object DemoFileUtil {
     fun contentOfExternalFile(context: Context, fileName: String) = try {
         var content = ""
         val file = File(context.getExternalFilesDir(null), fileName)
-        Log.i("SDK", "external file path => ${file.absolutePath}")
+        DemoLogger.d("try to get the content of ${file.absolutePath}")
         if (file.exists()) {
             content = file.readText(Charsets.UTF_8)
         }

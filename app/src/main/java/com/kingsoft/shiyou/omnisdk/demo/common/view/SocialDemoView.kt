@@ -12,6 +12,10 @@ import com.kingsoft.shiyou.omnisdk.demo.R
 import com.kingsoft.shiyou.omnisdk.demo.common.ApiManager
 import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.ISocialApi
 import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.ISocialCallback
+import java.io.File
+import java.io.FileOutputStream
+import java.io.InputStream
+import java.io.OutputStream
 import java.util.*
 
 /**
@@ -53,7 +57,7 @@ class SocialDemoView : DemoView, ISocialCallback {
     override fun initView() {
 
         // 获取社交功能API接口实例
-        socialApi = ApiManager.instance.getSocialApi(this)
+        socialApi = ApiManager.instance.getSocialApi(appActivity, this)
 
         imageTypeContainer = findViewById(R.id.social_demo_view_share_image_type_container)
         initShareTypes()
@@ -105,7 +109,9 @@ class SocialDemoView : DemoView, ISocialCallback {
         val imageTypeSpinner = findViewById<Spinner>(R.id.social_demo_view_share_image_type_spinner)
         val imageTypes = ArrayList<String>()
         ShareImageType.values().forEach {
-            imageTypes.add(it.name)
+            if (it != ShareImageType.NO) {
+                imageTypes.add(it.name)
+            }
         }
         val adapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, imageTypes)
         imageTypeSpinner.adapter = adapter
@@ -117,6 +123,13 @@ class SocialDemoView : DemoView, ISocialCallback {
                 (imageTypeSpinner.selectedItem as? String)?.let {
                     shareImageType = ShareImageType.valueOf(it)
                     Log.i("SDK", "shareImageType = $shareImageType")
+
+                    if (shareImageType == ShareImageType.LOCAL) {
+                        val testImageFilePath = generateTestImage(appView.appActivity)
+                        shareImageSourceUrlEt.setText(testImageFilePath)
+                    } else {
+                        shareImageSourceUrlEt.setText(shareImageSourceUrlEt.content())
+                    }
                 }
             }
 
@@ -196,6 +209,38 @@ class SocialDemoView : DemoView, ISocialCallback {
         }
 
         socialApi.getFriendInfoImpl(platform)
+    }
+
+    /**
+     * 生成本地测试的图片文件
+     */
+    private fun generateTestImage(context: Context): String {
+        val testImageFile = File(context.getExternalFilesDir(null), "testImage.jpg")
+        if (testImageFile.exists()) {
+            appView.showToastMessage("测试图片`testImage.jpg`已生成")
+        } else {
+            var inputStream: InputStream? = null
+            var outputStream: OutputStream? = null
+            try {
+                testImageFile.createNewFile()
+                inputStream = context.assets.open("slit.jpg")
+                outputStream = FileOutputStream(testImageFile)
+                val buffer = ByteArray(1024 * 10)
+                var length = inputStream.read(buffer)
+                while (length != -1) {
+                    outputStream.write(buffer, 0, length)
+                    length = inputStream.read(buffer)
+                }
+                appView.showToastMessage("测试图片`testImage.jpg`生成")
+            } catch (e: Exception) {
+                appView.showToastMessage(e.toString())
+            } finally {
+                outputStream?.flush()
+                outputStream?.close()
+                inputStream?.close()
+            }
+        }
+        return testImageFile.absolutePath
     }
 
     override fun onSucceeded(resultJson: String) {

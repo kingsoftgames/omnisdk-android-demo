@@ -15,8 +15,7 @@
             android:id="@+id/account_demo_view_title_tv"
             style="@style/OmniDemoAppFunctionTitleStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="账号" />
+            android:layout_height="wrap_content" />
 
         <View
             android:layout_width="match_parent"
@@ -38,9 +37,10 @@
             style="@style/OmniDemoAppButtonStyle"
             android:layout_width="match_parent"
             android:layout_alignParentTop="true"
-            android:text="登录(或渠道登录)" />
+            android:text="登录" />
 
         <LinearLayout
+            android:id="@+id/account_demo_view_login_type_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/account_demo_view_login_btn"
@@ -63,7 +63,7 @@
                     android:background="@null"
                     android:hint="账号类型标示ID"
                     android:imeOptions="actionDone"
-                    android:inputType="number" />
+                    android:inputType="numberSigned" />
             </LinearLayout>
 
             <Button
@@ -76,7 +76,7 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/account_demo_view_account_container"
+        android:id="@+id/account_demo_view_account_manage_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/account_demo_view_title_layout"
@@ -123,11 +123,11 @@
                     android:background="@null"
                     android:hint="切换账号类型(默认不指定)"
                     android:imeOptions="actionDone"
-                    android:inputType="number" />
+                    android:inputType="numberSigned" />
             </LinearLayout>
 
             <Button
-                android:id="@+id/account_demo_view_switch_btn"
+                android:id="@+id/account_demo_view_switch_type_btn"
                 style="@style/OmniDemoAppButtonStyle"
                 android:layout_width="match_parent"
                 android:text="切换账号" />
@@ -156,11 +156,11 @@
                     android:background="@null"
                     android:hint="绑定账号类型(默认不指定)"
                     android:imeOptions="actionDone"
-                    android:inputType="number" />
+                    android:inputType="numberSigned" />
             </LinearLayout>
 
             <Button
-                android:id="@+id/account_demo_view_bind_btn"
+                android:id="@+id/account_demo_view_bind_type_btn"
                 style="@style/OmniDemoAppButtonStyle"
                 android:layout_width="match_parent"
                 android:text="绑定账号" />

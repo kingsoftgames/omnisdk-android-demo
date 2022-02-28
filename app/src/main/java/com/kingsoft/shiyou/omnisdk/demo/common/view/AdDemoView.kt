@@ -34,7 +34,7 @@ class AdDemoView : DemoView, IAdCallback {
     override fun initView() {
 
         // 获取广告相关功能API接口实例
-        adApi = ApiManager.instance.getAdApi(this)
+        adApi = ApiManager.instance.getAdApi(appActivity, this)
 
         // 横幅广告
         bannerIdEt

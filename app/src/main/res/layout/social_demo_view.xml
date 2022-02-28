@@ -97,7 +97,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="分享图片地址(URL): "
+                    android:text="图片地址: "
                     android:textColor="@android:color/black" />
 
                 <LinearLayout
@@ -112,6 +112,7 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="5dp"
                         android:background="@null"
+                        android:hint="https://* or /*"
                         android:imeOptions="actionDone"
                         android:importantForAutofill="no"
                         android:inputType="text"

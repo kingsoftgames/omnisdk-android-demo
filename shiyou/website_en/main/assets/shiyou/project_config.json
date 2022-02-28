@@ -1,6 +1,6 @@
 {
-  "package_name": "com.*****",
-  "version": "1.0.8",
+  "package_name": "com.kingsoft.demo",
+  "version": "2.0.0",
   "support": "sg",
   "plugin": [{
     "plugin_name": "account",
@@ -9,7 +9,7 @@
     "class_name": "",
     "description": "世游帐号功能插件",
     "artifactId": "omni-account",
-    "version": "1.0.8"
+    "version": "2.0.0"
   }, {
     "plugin_name": "googlepay",
     "is_account": false,
@@ -17,7 +17,7 @@
     "class_name": "",
     "description": "世游支付功能插件",
     "artifactId": "google-pay",
-    "version": "3.0.0"
+    "version": "4.0.0.3"
   }, {
     "plugin_name": "facebook",
     "is_account": true,
@@ -25,7 +25,7 @@
     "class_name": "",
     "description": "facebook插件",
     "artifactId": "facebook",
-    "version": "9.1.1"
+    "version": "11.3.0.2"
   }, {
     "plugin_name": "google",
     "is_account": true,
@@ -33,22 +33,14 @@
     "class_name": "",
     "description": "google插件",
     "artifactId": "google",
-    "version": "19.0.0"
-  }, {
-    "plugin_name": "line",
-    "is_account": true,
-    "account_type": 23,
-    "class_name": "",
-    "description": "line插件",
-    "artifactId": "line",
-    "version": "5.6.0"
+    "version": "20.1.0"
   }],
   "channel": [{
     "channel_name": "website_en",
     "class_name": "com.kingsoft.shiyou.omnisdk.channel.website.OmniChannel",
     "description": "海外官网渠道包",
     "artifactId": "website-en",
-    "version": "1.0.8"
+    "version": "1.1.1"
   }],
   "project": {
     "SgFriendInfos": "picture",
@@ -70,7 +62,7 @@
     "SgChannelId": "sgoverseas",
     "SgPlanId": "*****",
     "SgNotifyUrl": "*****",
-    "facebookAppName": "*****",
+    "facebookAppName": "demo",
     "applovinKey": "*****",
     "SgSafeApi": "https://api.omnisdk.com/",
     "SgPackageName": "com.*****",

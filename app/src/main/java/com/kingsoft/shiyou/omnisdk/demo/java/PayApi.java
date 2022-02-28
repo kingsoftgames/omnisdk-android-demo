@@ -1,105 +1,34 @@
 package com.kingsoft.shiyou.omnisdk.demo.java;
 
 import android.app.Activity;
-import android.util.Log;
 
-import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.kingsoft.shiyou.omnisdk.api.OmniSDK;
-import com.kingsoft.shiyou.omnisdk.api.callback.PayCallback;
+import com.kingsoft.shiyou.omnisdk.api.callback.PayNotifier;
 import com.kingsoft.shiyou.omnisdk.api.entity.Order;
 import com.kingsoft.shiyou.omnisdk.api.entity.Product;
+import com.kingsoft.shiyou.omnisdk.api.entity.SkuType;
 import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.IPayApi;
 import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.IPayCallback;
+import com.kingsoft.shiyou.omnisdk.demo.common.utils.DemoLogger;
 
 import kotlin.Pair;
 
 /**
- * Description: OMNI SDK支付API接口示例Demo
+ * Description: OmniSDK支付API接口代码示例Demo
  *
  * @author: LuXing created on 2021/3/23 13:37
  */
-@Keep
 public class PayApi implements IPayApi {
 
-    /* ******************************** SDK 支付API接口示例如下 *********************************** */
+    private final String tag = "PayApi# ";
 
-    public void pay() {
-
-        String productId = mProductId;       // 商品ID（必传数据）
-        String productName = mProductName;   // 商品名称（有则传值，无则保持和商品ID一致）
-        String productDesc = mProductDesc;   // 商品描述（有则传值，无则保持和商品ID一致）
-        double productPrice = mProductPrice; // 商品价格（必传数据，单位为元，比如9.99，0.99等等）
-        double payAmount = mPayAmount;       // 实际支付总金额（单位为元）
-        String currency = mCurrency;         // 价格金额对应的货币单位（必传数据，比如USD，HKD等等）
-        String serverId = mServerId;         // 服务器ID（必传数据，对于没有服务器概念的游戏直接传字符串"0"）
-        String roleId = mRoleId;             // 游戏角色唯一标示ID（必传数据）
-        String gameTradeNo = mGameTradeNo;   // CP方自身的订单号（有则传值，没有则传空字符串""）
-        /*
-         * CP方服务器支付结果回调地址，有则传值，没有则传空字符串""
-         * 若传空字符串""，则将使用SDK端后台配置的CP方服务器回调地址
-         */
-        String gameCallbackUrl = mGameCallbackUrl;
-        /*
-         * CP方可自定义的扩展数据，SDK服务器将在回调CP方服务器支付结果的时候原样返回
-         * 有则传值，没有则传空字符串""
-         */
-        String extJson = mExtJson;
-
-        // 创建支付商品数据实体
-        Product product = new Product(
-                productId,
-                productName,
-                productDesc,
-                productPrice,
-                payAmount,
-                currency,
-                serverId,
-                roleId,
-                gameTradeNo,
-                gameCallbackUrl,
-                extJson);
-
-        // 调用SDK支付接口进行支付
-        OmniSDK.getInstance().pay(demoActivity, product, new PayCallback() {
-            @Override
-            public void onSuccess(Order order, Pair<Pair<Integer, String>, Pair<Integer, String>> pair) {
-                /*
-                 * 支付成功，CP对接方必须以OMNI SDK服务器端通知CP服务器端的支付成功数据作为发货依据。
-                 *
-                 */
-                // OMNI SDK支付唯一订单号，CP方可按照自身需要使用该值来标示本次支付购买
-                String orderId = order.getOrderId();
-                Log.i(tag, "pay successfully, orderId = " + orderId);
-                callback.onSucceeded(order);
-            }
-
-            @Override
-            public void onFailure(Order order, Pair<Pair<Integer, String>, Pair<Integer, String>> codeMsg) {
-                // 支付失败, CP方可以按照自身需求进行业务处理，比如弹出"提示支付失败"提示等等
-                callback.onFailed(codeMsg);
-            }
-
-            @Override
-            public void onCancel() {
-                // 支付取消, 无需特别处理
-                callback.onCancelled();
-            }
-        });
-
-    }
-
-    /* ****************************************************************************************** */
-
-    private final String tag = "SDK: " + this.getClass().getName();
-    private final Activity demoActivity;
+    private final Activity appActivity;
     private final IPayCallback callback;
 
-    public PayApi(Activity activity, IPayCallback payCallback) {
-        this.demoActivity = activity;
-        this.callback = payCallback;
-    }
-
+    private SkuType mSkuType = SkuType.INAPP;
     private String mProductId = "";
     private String mProductName = "";
     private String mProductDesc = "";
@@ -111,20 +40,126 @@ public class PayApi implements IPayApi {
     private String mGameTradeNo = "";
     private String mGameCallbackUrl = "";
     private String mExtJson = "";
+    private String mZoneId = "";
+    private String mRoleName = "";
+    private String mRoleLevel = "";
+    private String mRoleVipLevel = "";
+
+    public PayApi(Activity activity, IPayCallback payCallback) {
+        this.appActivity = activity;
+        this.callback = payCallback;
+        setPayNotifier();
+    }
+
+    /* ********************************** OmniSDK支付接口示例如下 ********************************* */
+
+    /**
+     * 游戏对接方在调用支付接口前必须先设置支付结果数据回调监听
+     */
+    private void setPayNotifier() {
+
+        OmniSDK.getInstance().setPayNotifier(new PayNotifier() {
+
+            @Override
+            public void onSuccess(@NonNull Pair<Integer, String> sdkCodeMsg, @NonNull Order order) {
+                // 支付成功，游戏对接方必须以OmniSDK服务器端通知游戏服务器端的支付成功数据作为发货依据
+                String orderId = order.getOrderId(); // OmniSDK支付唯一订单号
+                DemoLogger.i(tag, "pay successfully, orderId = " + orderId);
+                callback.onSucceeded(order);
+            }
+
+            @Override
+            public void onFailure(
+                    @NonNull Pair<Integer, String> sdkCodeMsg,
+                    @Nullable Pair<Integer, String> channelCodeMsg,
+                    @NonNull Order order) {
+                // 支付失败，解析数据的时候请注意`channelCodeMsg`有可能为null
+                DemoLogger.e(tag, "pay failed: [ " + sdkCodeMsg + " , " + channelCodeMsg + " ]");
+                callback.onFailed(new Pair(sdkCodeMsg, channelCodeMsg));
+            }
+
+            @Override
+            public void onCancel() {
+                // 支付取消
+                DemoLogger.e(tag, "pay cancelled");
+                callback.onCancelled();
+            }
+
+        });
+    }
+
+    /**
+     * OmniSDK支付接口代码示例
+     */
+    public void pay() {
+        SkuType skuType = mSkuType;          // 商品类型（必传数据），普通消耗类型传值`SkuType.INAPP`，订阅类型传值`SkuType.SUBS`
+        String productId = mProductId;       // 商品ID（必传数据）
+        String productName = mProductName;   // 商品名称（有则传值，无则保持和商品ID一致）
+        String productDesc = mProductDesc;   // 商品描述（有则传值，无则保持和商品名称一致）
+        double productPrice = mProductPrice; // 商品价格（必传数据，单位为元，比如9.99，0.99等等）
+        double payAmount = mPayAmount;       // 支付金额（必传数据，单位为元，比如9.99，0.99等等）
+        String currency = mCurrency;         // 价格金额对应的货币单位（必传数据，比如USD,CNY,HKD等等）
+        String serverId = mServerId;         // 游戏服务器ID（必传数据，对于没有服务器概念的游戏直接传字符串"0"）
+        String roleId = mRoleId;             // 游戏角色账号唯一标示ID（必传数据）
+        String gameTradeNo = mGameTradeNo;   // 游戏对接方自身的订单号（有则传值，没有则自己创造一个不可重复的字符串）
+
+        // 游戏对接方接收支付结果的服务器回调地址，有则传值，没有则传空字符串""；
+        // 若传空字符串""，则将使用OmniSDK端后台配置的游戏服务器回调地址
+        String gameCallbackUrl = mGameCallbackUrl;
+
+        // 游戏对接方可自定义的扩展数据（Json字符串数据），SDK服务器将在回调游戏服务器支付结果的时候原样返回；
+        // 有则传值，没有则传空字符串""
+        String extJson = mExtJson;
+
+        String zoneId = mZoneId;              // 区服Zone ID标示（有则传值，没有则传空字符串""）
+        String roleName = mRoleName;          // 游戏角色名称（有则传值，无则保持和角色账号唯一标示ID一致）
+        String roleLevel = mRoleLevel;        // 游戏角色等级（有则传值，没有则传空字符串""）
+        String roleVipLevel = mRoleVipLevel;  // 游戏角色VIP等级（有则传值，没有则传空字符串""）
+
+        // 创建支付商品数据实体，务必注意所有字符串类型的数据项禁止传`null`值，若无值统一传入空字符串""
+        Product product = new Product(
+                skuType,
+                productId,
+                productName,
+                productDesc,
+                productPrice,
+                payAmount,
+                currency,
+                serverId,
+                roleId,
+                gameTradeNo,
+                gameCallbackUrl,
+                extJson,
+                zoneId,
+                roleName,
+                roleLevel,
+                roleVipLevel);
+
+        // 调用支付接口进行支付
+        OmniSDK.getInstance().pay(appActivity, product);
+    }
+
+    /* ****************************************************************************************** */
 
     @Override
     public void payImpl(
-            String productId,
-            String productName,
-            String productDesc,
+            @NonNull SkuType skuType,
+            @NonNull String productId,
+            @NonNull String productName,
+            @NonNull String productDesc,
             double productPrice,
             double payAmount,
-            String currency,
-            String serverId,
-            String roleId,
-            String gameTradeNo,
-            String gameCallbackUrl,
-            String extJson) {
+            @NonNull String currency,
+            @NonNull String serverId,
+            @NonNull String roleId,
+            @NonNull String gameTradeNo,
+            @NonNull String gameCallbackUrl,
+            @NonNull String extJson,
+            @NonNull String zoneId,
+            @NonNull String roleName,
+            @NonNull String roleLevel,
+            @NonNull String roleVipLevel) {
+        mSkuType = skuType;
         mProductId = productId;
         mProductName = productName;
         mProductDesc = productDesc;
@@ -133,9 +168,13 @@ public class PayApi implements IPayApi {
         mCurrency = currency;
         mServerId = serverId;
         mRoleId = roleId;
-        mGameTradeNo = (gameTradeNo == null) ? "" : gameTradeNo;
-        mGameCallbackUrl = (gameCallbackUrl == null) ? "" : gameCallbackUrl;
-        mExtJson = (extJson == null) ? "" : extJson;
+        mGameTradeNo = gameTradeNo;
+        mGameCallbackUrl = gameCallbackUrl;
+        mExtJson = extJson;
+        mZoneId = zoneId;
+        mRoleName = roleName;
+        mRoleLevel = roleLevel;
+        mRoleVipLevel = roleVipLevel;
         pay();
     }
 }

@@ -1,81 +1,50 @@
 package com.kingsoft.shiyou.omnisdk.demo.java;
 
-import android.app.Application;
 import android.content.Context;
 
-import androidx.multidex.MultiDex;
-
+import com.kingsoft.shiyou.omnisdk.api.OmniApplication;
 import com.kingsoft.shiyou.omnisdk.api.OmniSDK;
+import com.kingsoft.shiyou.omnisdk.api.entity.InitParams;
+import com.kingsoft.shiyou.omnisdk.demo.common.utils.DemoLogger;
 
 /**
- * Description: 若应用已经有自身定义的Application并继承其他的android.app.Application子类，
- * 则需要在其自定义Application的相应方法中添加如下代码:
- *
- * @author: LuXing created on 2021/3/22 17:25
+ * Description: 游戏应用自身`Application`类定义。
+ * <p>
+ * 请游戏对接方创建定义自身应用的`Application`类，并使其继承：`com.kingsoft.shiyou.omnisdk.api.OmniApplication`。
+ * 如自身有需要重写`Application`中相应的生命周期方法，并保证调用其对应的父类周期方法。
+ * 同时务必在AndroidManifest.xml文件中的<application> tag标签中申明name值为该类（按自身需要加上包名前缀）。示例如下：
+ * <application
+ * android:name=".java.DemoApplication"
+ * ...
+ * >
+ * ...
+ * </application>
  */
-public class DemoApplication extends Application {
+public class DemoApplication extends OmniApplication {
 
-    /**
-     * CP对接方必须在游戏自定义的Application类的attachBaseContext生命周期方法内调用如下方法
-     */
     @Override
     public void attachBaseContext(Context base) {
         super.attachBaseContext(base);
-        // 解决方法数超过64K问题
-        MultiDex.install(this);
+        DemoLogger.d("DemoApplication.attachBaseContext(...) called");
 
-        // CP对接方必须调用该方法
-        OmniSDK.getInstance().onApplicationAttachBaseContext(base);
+        // 构建OmniSDK初始化数据配置
+        InitParams initParams = new InitParams();
+        // 正式版本必须设置为`false`
+        initParams.setDebug(true);
+        // 正式版本必须设置为`Production`
+        initParams.setEnvironment("Beta");
+        // OmniSDK初始化数据配置接口调用
+        OmniSDK.getInstance().initialize(initParams);
 
-        // CP对接方自己的代码
+        // 游戏对接方自己的代码
     }
 
-    /**
-     * CP对接方必须在游戏自定义的Application类的onCreate生命周期方法内调用如下SDK API接口
-     */
     @Override
     public void onCreate() {
         super.onCreate();
-        // CP对接方必须调用该方法
-        OmniSDK.getInstance().onApplicationCreate(this);
+        DemoLogger.d("DemoApplication.onCreate(...) called");
 
-        // CP对接方自己的代码
-    }
-
-    /**
-     * CP对接方必须在游戏自定义的Application类中重载onLowMemory方法并在其中调用如下SDK API接口
-     */
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        // CP对接方必须调用该方法
-        OmniSDK.getInstance().onApplicationLowMemory();
-
-        // CP对接方自己的代码
-    }
-
-    /**
-     * CP对接方必须在游戏自定义的Application类中重载onTrimMemory方法并在其中调用如下SDK API接口
-     */
-    @Override
-    public void onTrimMemory(int level) {
-        super.onTrimMemory(level);
-        // CP对接方必须调用该方法
-        OmniSDK.getInstance().onApplicationTrimMemory();
-
-        // CP对接方自己的代码
-    }
-
-    /**
-     * CP对接方必须在游戏自定义的Application类的onTerminate生命周期方法内调用如下SDK API接口
-     */
-    @Override
-    public void onTerminate() {
-        super.onTerminate();
-        // CP对接方必须调用该方法
-        OmniSDK.getInstance().onApplicationTerminate();
-
-        // CP对接方自己的代码
+        // 游戏对接方自己的代码
     }
 
 }

@@ -2,7 +2,6 @@ package com.kingsoft.shiyou.omnisdk.demo.common.view
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.widget.EditText
 import android.widget.TextView
 import com.kingsoft.shiyou.omnisdk.api.entity.RoleInfo
@@ -49,16 +48,9 @@ class CreateGameRoleView : DemoView {
     override fun initView() {
         loadTestDataTv = findViewById(R.id.create_game_role_view_load_test_data_tv)
         loadTestDataTv.setOnClickListener {
-            Log.i(TAG, "load test game role data")
-            // 尝试加载测试游戏角色数据
-            if (TestData.instance().isTestDataAvailable(this::class.simpleName!!)) {
-                if (TestData.instance()
-                        .isTestDataItemAvailable(this::class.simpleName!!, this::roleIdEt.name)
-                ) {
-                    EditTextDelegate.initData(this, this::roleIdEt)
-                } else {
-                    appView.showToastMessage("角色ID为必要数据")
-                }
+            if (TestData.singletonInstance.testDataAvailableForDemoView(this::class.simpleName!!)) {
+                // 尝试加载测试游戏角色数据
+                EditTextDelegate.initData(this, this::roleIdEt)
                 EditTextDelegate.initData(this, this::roleNameEt)
                 EditTextDelegate.initData(this, this::roleLevelEt)
                 EditTextDelegate.initData(this, this::roleTypeEt)
@@ -75,11 +67,34 @@ class CreateGameRoleView : DemoView {
                 EditTextDelegate.initData(this, this::genderEt)
                 EditTextDelegate.initData(this, this::partyNameEt)
                 EditTextDelegate.initData(this, this::extEt)
+            } else {
+                appView.showToastMessage("无角色测试数据")
             }
         }
     }
 
-    var gameRole: RoleInfo
+    /**
+     * 当前游戏角色账号数据
+     * `uid` 用户账号ID
+     * `roleId` 角色ID
+     * `roleLevel` 角色等级
+     * `roleName` 角色名称
+     * `roleType` 角色类型
+     * `roleVipLevel` 角色VIP等级
+     * `roleFigure` 体型
+     * `roleCreateTime` 角色创建时间 Unix 时间戳，单位秒
+     * `serverId` 服ID
+     * `serverName` 服名称
+     * `zoneId` 区ID
+     * `zoneName` 区名称
+     * `accountAgeInGame` 账号游戏年龄（单位：天）
+     * `ageInGame` 角色游戏年龄（单位：天）
+     * `balance` 角色账户余额
+     * `gender` 性别
+     * `partyName` 所在公会或帮派
+     * `ext` 扩展参数
+     */
+    var gameRoleInfo: RoleInfo
         get() {
             return RoleInfo().apply {
                 uid = uidEt.content()
@@ -102,61 +117,61 @@ class CreateGameRoleView : DemoView {
                 ext = extEt.content()
             }
         }
-        set(value) {
+        set(inputRoleInfo) {
             uidEt = R.id.create_game_role_view_uid_et.editText().apply {
-                setText(value.uid)
+                setText(inputRoleInfo.uid)
             }
             roleIdEt = R.id.create_game_role_view_role_id_et.editText().apply {
-                setText(value.roleId)
+                setText(inputRoleInfo.roleId)
             }
             roleNameEt = R.id.create_game_role_view_role_name_et.editText().apply {
-                setText(value.roleName)
+                setText(inputRoleInfo.roleName)
             }
             roleLevelEt = R.id.create_game_role_view_role_level_et.editText().apply {
-                setText(value.roleLevel)
+                setText(inputRoleInfo.roleLevel)
             }
             roleTypeEt = R.id.create_game_role_view_role_type_et.editText().apply {
-                setText(value.roleType)
+                setText(inputRoleInfo.roleType)
             }
             roleVipLevelEt = R.id.create_game_role_view_role_vip_level_et.editText().apply {
-                setText(value.roleVipLevel)
+                setText(inputRoleInfo.roleVipLevel)
             }
             roleFigureEt = R.id.create_game_role_view_role_figure_et.editText().apply {
-                setText(value.roleFigure)
+                setText(inputRoleInfo.roleFigure)
             }
             roleCreateTimeEt = R.id.create_game_role_view_role_create_time_et.editText().apply {
-                setText(value.roleCreateTime)
+                setText(inputRoleInfo.roleCreateTime)
             }
             serverIdEt = R.id.create_game_role_view_server_id_et.editText().apply {
-                setText(value.serverId)
+                setText(inputRoleInfo.serverId)
             }
             serverNameEt = R.id.create_game_role_view_server_name_et.editText().apply {
-                setText(value.serverName)
+                setText(inputRoleInfo.serverName)
             }
             zoneIdEt = R.id.create_game_role_view_zone_id_et.editText().apply {
-                setText(value.zoneId)
+                setText(inputRoleInfo.zoneId)
             }
             zoneNameEt = R.id.create_game_role_view_zone_name_et.editText().apply {
-                setText(value.zoneName)
+                setText(inputRoleInfo.zoneName)
             }
             accountAgeInGameEt =
                 R.id.create_game_role_view_account_age_in_game_et.editText().apply {
-                    setText(value.accountAgeInGame)
+                    setText(inputRoleInfo.accountAgeInGame)
                 }
             ageInGameEt = R.id.create_game_role_view_age_in_game_et.editText().apply {
-                setText(value.ageInGame)
+                setText(inputRoleInfo.ageInGame)
             }
             balanceEt = R.id.create_game_role_view_balance_et.editText().apply {
-                setText(value.balance)
+                setText(inputRoleInfo.balance)
             }
             genderEt = R.id.create_game_role_view_gender_et.editText().apply {
-                setText(value.gender)
+                setText(inputRoleInfo.gender)
             }
             partyNameEt = R.id.create_game_role_view_party_name_et.editText().apply {
-                setText(value.partyName)
+                setText(inputRoleInfo.partyName)
             }
             extEt = R.id.create_game_role_view_ext_et.editText().apply {
-                setText(value.ext)
+                setText(inputRoleInfo.ext)
             }
         }
 

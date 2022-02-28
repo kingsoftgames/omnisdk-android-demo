@@ -20,8 +20,4 @@ object DemoResourceIdUtil {
     fun getId(context: Context, name: String): Int {
         return getIdentifier(context, name, "id")
     }
-
-    fun getDrawableId(context: Context, name: String): Int {
-        return getIdentifier(context, name, "drawable")
-    }
 }

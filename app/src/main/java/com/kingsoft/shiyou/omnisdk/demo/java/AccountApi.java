@@ -1,18 +1,21 @@
 package com.kingsoft.shiyou.omnisdk.demo.java;
 
 import android.app.Activity;
-import android.util.Log;
+import android.widget.Toast;
 
-import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
 
 import com.kingsoft.shiyou.omnisdk.api.OmniSDK;
-import com.kingsoft.shiyou.omnisdk.api.callback.BindAccountCallback;
-import com.kingsoft.shiyou.omnisdk.api.callback.LoginCallback;
-import com.kingsoft.shiyou.omnisdk.api.callback.ResponseCallback;
+import com.kingsoft.shiyou.omnisdk.api.callback.AccountNotifier;
 import com.kingsoft.shiyou.omnisdk.api.callback.SwitchAccountCallback;
+import com.kingsoft.shiyou.omnisdk.api.entity.OmniConstant;
+import com.kingsoft.shiyou.omnisdk.api.entity.UserInfo;
 import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils;
 import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.IAccountApi;
 import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.IAccountCallback;
+import com.kingsoft.shiyou.omnisdk.demo.common.utils.DemoLogger;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,203 +23,197 @@ import java.util.Map;
 import kotlin.Pair;
 
 /**
- * Description: OMNI SDK账号API接口示例Demo
+ * Description: OmniSDK账号相关业务API接口代码示例Demo
  *
  * @author: LuXing created on 2021/3/22 16:22
  */
-@Keep
 public class AccountApi implements IAccountApi {
 
-    /* ***************************** SDK 账号功能接口示例如下 ********************************** */
-
-    /**
-     * OMNI SDK账号登录接口示例（若无特殊说明,SDK登录接口为必须接入接口）
-     */
-    public void login() {
-
-        // 构建登录请求数据Map
-        Map<String, Object> loginParams = new HashMap<>();
-        /*
-         * 指定登录类型,其key值必须为`loginType`,value为int类型
-         * `0`或者不设置表示不指定特定登录类型,直接使用OMNI SDK登录界面。
-         * 非`0`表示CP使用自身的登录选项UI界面,在用户选择账号类型后传入对应的账号标示ID调用接口完成登录业务.
-         * （比如`1`为游客账号 `2`为邮箱账号 `3`为Facebook账号, `4`为Google账号等等）
-         */
-        loginParams.put("loginType", mLoginType);
-
-        // 调用SDK登录接口
-        OmniSDK.getInstance().login(demoActivity, loginParams, new LoginCallback() {
-            @Override
-            public void onSuccess() {
-
-                // 登录成功, 获取登录账号数据(Json字符串格式)
-                String userJson = OmniSDK.getInstance().getUserInfo();
-                Log.i(tag, "userJson = " + userJson);
-
-                // 账号Json数据解析(可将其转成Map数据结构或者org.json.JSONObject方式来进行解析)
-                Map<String, Object> userMap = OmniUtils.toMap(userJson);
-                // SDK账号唯一标示ID
-                String authUserId = userMap.get("uid").toString();
-                // 游戏CP方必须使用该uid作为账号唯一标示ID
-                String cpUid = userMap.get("cpUid").toString();
-                // SDK账号Token值 (CP对接方需验证其有效性)
-                String token = userMap.get("token").toString();
-                // 当前登录的账号类型 `1`为游客账号 `2`为邮箱账号 `3`Facebook账号 `4`Google账号等等
-                int accountType = (int) userMap.get("type");
-                // 是否为游客账号
-                boolean isGuestAccount = !((boolean) userMap.get("isRelated"));
-
-                // 按照需求解析更多账号数据信息
-                // CP自己的代码，比如进入游戏业务
-                callback.onLoginSucceeded(userMap, accountType);
-            }
-
-            @Override
-            public void onFailure(Pair<Integer, String> responseCode) {
-                // 登录失败, CP方按照自身逻辑进行业务处理
-                callback.onFailed(responseCode);
-            }
-
-            @Override
-            public void onCancel() {
-                // 登录取消
-                callback.onCancelled();
-            }
-        });
-    }
-
-    /**
-     * OMNI SDK账号切换接口示例（按需求接入）
-     */
-    public void switchAccount() {
-
-        // 构建切换账号请求数据Map
-        Map<String, Object> switchParams = new HashMap<>();
-
-        /*
-         * 指定切换账号类型,其key值必须为`switchType`,value为int类型
-         * `0`或者不设置表示不指定特定切换账号类型,直接使用OMNI SDK账号切换界面。
-         * 非`0`表示CP使用自身的切换账号选项UI界面,在用户选择账号类型后传入对应的账号标示ID调用接口完成切换业务.
-         * （比如 `2`为邮箱账号 `3`为Facebook账号, `4`为Google账号等等）
-         */
-        switchParams.put("switchType", mSwitchType);
-
-        // 调用SDK账号切换接口
-        OmniSDK.getInstance().switchAccount(demoActivity, switchParams, new SwitchAccountCallback() {
-            @Override
-            public void onSuccess() {
-
-                // 切换账号成功, 获取切换后的账号数据(Json字符串格式)
-                String userJson = OmniSDK.getInstance().getUserInfo();
-
-                // 账号Json数据解析(比如可以使用其将其转成Map数据结构来进行解析,或者其他方式)
-                Map<String, Object> userMap = OmniUtils.toMap(userJson);
-
-                // 如有需要，请参照登录成功回调(onSuccess)进行切换后的账号数据解析
-
-                // CP自己的代码，比如退出当前游戏账号，使用新切换的账号重新开始游戏
-                callback.onSwitchSucceeded(userMap);
-            }
-
-            @Override
-            public void onFailure(Pair<Integer, String> responseCode) {
-                // 切换失败,无需特别处理,回到游戏界面即可
-                callback.onFailed(responseCode);
-            }
-
-            @Override
-            public void onCancel() {
-                // 切换取消,无需特别处理,回到游戏界面即可
-                callback.onCancelled();
-            }
-        });
-    }
-
-    /**
-     * OMNI SDK账号绑定接口示例（按需求接入）
-     */
-    public void bindAccount() {
-
-        // 构建绑定账号请求数据Map
-        Map<String, Object> bindParams = new HashMap<>();
-
-        /*
-         * 指定绑定账号类型,其key值必须为`bindType`,value为int类型
-         * `0`或者不设置表示不指定特定绑定账号类型,直接使用OMNI SDK账号绑定界面。
-         * 非`0`表示CP使用自身的绑定账号选项UI界面,在用户选择账号类型后传入对应的账号标示ID调用接口完成绑定业务.
-         * （比如 `2`为邮箱账号 `3`为Facebook账号, `4`为Google账号等等）
-         */
-        bindParams.put("bindType", mBindType);
-
-        // 调用SDK账号绑定接口
-        OmniSDK.getInstance().bindAccount(demoActivity, bindParams, new BindAccountCallback() {
-            @Override
-            public void onSuccess() {
-
-                // 绑定成功, 获取绑定后的账号数据(Json字符串格式)
-                String userJson = OmniSDK.getInstance().getUserInfo();
-
-                // 账号Json数据解析(比如可以使用其将其转成Map数据结构来进行解析,或者其他方式)
-                Map<String, Object> userMap = OmniUtils.toMap(userJson);
-
-                // 如有需要，请参照登录成功回调(onSuccess)进行绑定后的账号数据解析
-
-                // CP自己的代码，比如给与玩家奖励等业务
-
-                callback.onBindSucceeded(userMap);
-
-            }
-
-            @Override
-            public void onFailure(Pair<Integer, String> responseCode) {
-                // 绑定失败
-                callback.onFailed(responseCode);
-            }
-
-            @Override
-            public void onCancel() {
-                // 绑定取消,无需特别处理
-                callback.onCancelled();
-            }
-        });
-    }
-
-    /**
-     * OMNI SDK 账号注销登出接口示例（必须接入）。
-     * 请在玩家在游戏内触发`登出`功能的时候先调用OMNI SDK 的登出接口，
-     * 当收到接口成功回调后才可以执行CP方自己的登出业务。
-     */
-    public void logout() {
-        OmniSDK.getInstance().logout(demoActivity, new ResponseCallback() {
-            @Override
-            public void onSuccess() {
-                // OMNI SDK已登出当前账号用户，游戏可以开始自己的登出业务逻辑
-                // CP自己的代码，比如注销游戏自身的账号回到游戏开始登录的界面等等
-                callback.onLogoutSucceeded();
-            }
-
-            @Override
-            public void onFailure(Pair<Integer, String> responseCode) {
-                // 登出失败,无需特别处理,回到游戏界面即可
-                callback.onLogoutFailed(responseCode);
-            }
-        });
-    }
-
-    /* ****************************************************************************************** */
-
-    private final String tag = "SDK: " + this.getClass().getName();
-    private final Activity demoActivity;
+    private final String tag = "AccountApi# ";
+    private final Activity appActivity;
     private final IAccountCallback callback;
-
     private int mLoginType = 0;
     private int mSwitchType = 0;
     private int mBindType = 0;
 
     public AccountApi(Activity activity, IAccountCallback accountCallback) {
-        this.demoActivity = activity;
+        this.appActivity = activity;
         this.callback = accountCallback;
+        this.setAccountNotifier();
     }
+
+    /* ******************************* OmniSDK账号功能接口示例如下 ******************************* */
+
+    /**
+     * 游戏CP对接方在触发任何账号相关业务接口前必须先设置账号相关结果数据回调监听，
+     * 用于监听账号登录，账号绑定，账号登出这些接口业务结果数据。
+     */
+    private void setAccountNotifier() {
+
+        OmniSDK.getInstance().setAccountNotifier(new AccountNotifier() {
+
+            @Override
+            public void onLoginSuccess() {
+                // 账号登录成功，获取账号Json数据
+                String userJson = OmniSDK.getInstance().getUserInfo();
+                DemoLogger.i(tag, "onLoginSuccess : " + userJson);
+
+                // 账号Json数据解析方式1：可将其转成`com.kingsoft.shiyou.omnisdk.api.entity.UserInfo`数据实体
+                // 然后按照需要提取数据实体中的各个数据项的值
+                UserInfo userInfo = OmniUtils.fromJson(userJson, UserInfo.class);
+
+                // 账号Json数据解析方式2：可将其转成Map数据结构或者`org.json.JSONObject`
+                Map<String, Object> userMap = OmniUtils.toMap(userJson);
+                // 账号唯一标示，CP对接方用来唯一标示游戏账号
+                String accountCpUid = userMap.get("cpUid").toString();
+                // 账号类型
+                int accountType = Integer.parseInt(userMap.get("type").toString());
+                // 账号Token，国内业务直接忽略其值，海外业务该值用于账号验证
+                String accountToken = userMap.get("token").toString();
+                DemoLogger.i(tag, "accountCpUid = " + accountCpUid);
+                DemoLogger.i(tag, "accountType = " + accountType);
+                DemoLogger.i(tag, "accountToken = " + accountToken);
+
+                callback.onLoginSucceeded(userMap, accountType);
+            }
+
+            @Override
+            public void onBindSuccess() {
+                // 账号绑定成功，CP对接方可以按照自身需求参照登录成功回调(onLoginSuccess)进行绑定后的账号数据解析
+                String userJson = OmniSDK.getInstance().getUserInfo();
+                DemoLogger.i(tag, "onBindSuccess : " + userJson);
+                callback.onBindSucceeded(OmniUtils.toMap(userJson));
+            }
+
+            @Override
+            public void onLogoutSuccess() {
+                // 账号登出成功，游戏可以开始自己的登出业务逻辑比如退出当前游戏角色账号等等
+                DemoLogger.i(tag, "onLogoutSuccess");
+                callback.onLogoutSucceeded();
+            }
+
+            @Override
+            public void onFailure(
+                    @NotNull Type type,
+                    @NotNull Pair<Integer, String> sdkFailureResult,
+                    @NonNull Pair<Integer, String> channelFailureResult
+            ) {
+                // 账号相关操作失败，如有需要可以通过回调字段`type`来区分具体是哪种账号业务操作失败
+
+                DemoLogger.e(tag, "onFailure : [ " + type + " , " + sdkFailureResult + " , " + channelFailureResult + " ]");
+                // 是否是用户主动取消操作导致的失败
+                boolean isCancelled = (sdkFailureResult.getFirst() == OmniConstant.ResultCode.accountCancelled);
+
+                // 根据特定的账号业务类型处理失败结果
+                if (type == Type.LOGIN) {
+                    // 账号登录失败，CP对接方需回调自身的登录UI界面等待用户再次触发登录操作
+
+                    if (isCancelled) {
+                        // 登录操作被主动取消
+                        callback.onCancelled();
+                    } else {
+                        callback.onFailed(sdkFailureResult, channelFailureResult);
+                    }
+                } else if (type == Type.BIND) {
+                    // 账号绑定失败，CP对接方可按自身需求处理
+
+                    if (isCancelled) {
+                        // 登录操作被主动取消
+                        callback.onCancelled();
+                    } else {
+                        callback.onFailed(sdkFailureResult, channelFailureResult);
+                    }
+                } else if (type == Type.LOGOUT) {
+                    // 账号登出失败，CP对接方需终止账号注销登出业务
+                    callback.onLogoutFailed(sdkFailureResult);
+                }
+            }
+
+            @Override
+            public void onKickedOut(boolean forceLogout) {
+                // 账号被动退出，该回调由OmniSDK主动发起调用。CP对接方必须处理该回调，立即退出当前游戏账号。
+                // 注意：该回调不是CP对接方主动调用账号登出接口后的回调，主动调用账号登出接口后的回调请参照`onLogoutSuccess`和`onFailure`
+                DemoLogger.e(tag, "onKickedOut(...) called, forceLogout = " + forceLogout);
+                if (forceLogout) {
+                    // 强制退出账号：一般指用户无意识地被迫强制退出账号，比如防沉迷机制导致用户被迫强制退出账号。
+                    new Thread(() -> {
+                        appActivity.runOnUiThread(() -> {
+                            Toast.makeText(appActivity, "被迫强制退出，应用3秒后关闭", Toast.LENGTH_SHORT).show();
+                        });
+                        try {
+                            // 模拟账号被强制退出前的业务处理（游戏对接方应该有自身的实现逻辑处理）
+                            Thread.sleep(3000);
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                        } catch (Throwable e) {
+                            e.printStackTrace();
+                        }
+                    }).start();
+                } else {
+                    // 非强制退出账号：一般指用户有意识地主动触发SDK内部`退出账号功能入口`发起的账号退出。
+                    callback.onLogoutSucceeded();
+                }
+            }
+
+        });
+    }
+
+    /**
+     * OmniSDK账号登录接口代码示例
+     */
+    public void login() {
+        // 构建登录请求数据Map
+        Map<String, String> loginParams = new HashMap<>();
+        // 按照自身对接需求设置登录账号类型
+        loginParams.put(OmniConstant.accountType, String.valueOf(mLoginType));
+        OmniSDK.getInstance().login(appActivity, loginParams);
+    }
+
+    /**
+     * OmniSDK账号绑定接口代码示例
+     */
+    public void bindAccount() {
+        // 构建绑定账号请求数据Map
+        Map<String, String> bindParams = new HashMap<>();
+        // 按照自身对接需求设置绑定账号类型
+        bindParams.put(OmniConstant.accountType, String.valueOf(mBindType));
+        OmniSDK.getInstance().bindAccount(appActivity, bindParams);
+    }
+
+    /**
+     * OmniSDK账号登出接口代码示例
+     */
+    public void logout() {
+        // 请当玩家在游戏内触发`登出`功能的时候先调用该接口，当收到成功登出回调后才可以执行CP方自己的登出业务
+        OmniSDK.getInstance().logout(appActivity);
+    }
+
+    /**
+     * OmniSDK账号切换接口代码示例，该接口不再被使用。
+     */
+    @Deprecated
+    public void switchAccount() {
+        Map<String, Object> switchParams = new HashMap<>();
+        switchParams.put(OmniConstant.accountType, mSwitchType);
+        OmniSDK.getInstance().switchAccount(appActivity, switchParams, new SwitchAccountCallback() {
+            @Override
+            public void onSuccess() {
+                String userJson = OmniSDK.getInstance().getUserInfo();
+                callback.onSwitchSucceeded(OmniUtils.toMap(userJson));
+            }
+
+            @Override
+            public void onFailure(Pair<Integer, String> responseCode) {
+                callback.onFailed(responseCode, responseCode);
+            }
+
+            @Override
+            public void onCancel() {
+                callback.onCancelled();
+            }
+        });
+    }
+
+    /* ****************************************************************************************** */
 
     @Override
     public void loginImpl(int type) {

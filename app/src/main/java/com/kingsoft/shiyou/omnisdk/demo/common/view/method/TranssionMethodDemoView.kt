@@ -27,13 +27,16 @@ class TranssionMethodDemoView : DemoView, IOtherCallback {
     )
 
     override fun initView() {
-        otherApi = ApiManager.instance.getOtherApi(this)
+        otherApi = ApiManager.instance.getOtherApi(appActivity, this)
 
         R.id.transsion_method_demo_view_show_float_btn.addClickListener {
-            otherApi.invokeShowFloatAdMethod(demoActivity)
+            otherApi.invokeShowFloatAdMethod(appActivity)
         }
         R.id.transsion_method_demo_view_close_float_btn.addClickListener {
-            otherApi.invokeCloseFloatAdMethod(demoActivity)
+            otherApi.invokeCloseFloatAdMethod(appActivity)
+        }
+        R.id.transsion_method_demo_view_query_skus_btn.addClickListener {
+            otherApi.invokeQuerySkuDetailsList(listOf(), 0)
         }
     }
 

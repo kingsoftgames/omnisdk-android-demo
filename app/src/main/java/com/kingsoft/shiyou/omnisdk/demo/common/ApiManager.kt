@@ -2,7 +2,6 @@ package com.kingsoft.shiyou.omnisdk.demo.common
 
 import android.app.Activity
 import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.*
-import java.lang.ref.WeakReference
 import java.util.*
 
 /**
@@ -24,31 +23,32 @@ class ApiManager private constructor() {
         val singletonInstance = ApiManager()
     }
 
-    private lateinit var demoActivity: WeakReference<Activity>
-    private lateinit var language: Language
+    private var language = Language.JAVA
 
-    fun initialize(activity: Activity, apiLanguage: Language) {
-        demoActivity = WeakReference<Activity>(activity)
+    fun initialize(apiLanguage: Language) {
         language = apiLanguage
     }
 
-    fun getAccountApi(callback: IAccountCallback): IAccountApi =
-        getApi("AccountApi", callback)
+    fun getExitApi(appActivity: Activity, callback: IExitCallback): IExitApi =
+        getApi(appActivity, "ExitApi", callback)
 
-    fun getPayApi(callback: IPayCallback): IPayApi =
-        getApi("PayApi", callback)
+    fun getAccountApi(appActivity: Activity, callback: IAccountCallback): IAccountApi =
+        getApi(appActivity, "AccountApi", callback)
 
-    fun getSocialApi(callback: ISocialCallback): ISocialApi =
-        getApi("SocialApi", callback)
+    fun getPayApi(appActivity: Activity, callback: IPayCallback): IPayApi =
+        getApi(appActivity, "PayApi", callback)
 
-    fun getAdApi(callback: IAdCallback): IAdApi =
-        getApi("AdApi", callback)
+    fun getSocialApi(appActivity: Activity, callback: ISocialCallback): ISocialApi =
+        getApi(appActivity, "SocialApi", callback)
 
-    fun getDataMonitorApi(callback: IDataMonitorCallback): IDataMonitorApi =
-        getApi("DataMonitorApi", callback)
+    fun getAdApi(appActivity: Activity, callback: IAdCallback): IAdApi =
+        getApi(appActivity, "AdApi", callback)
 
-    fun getOtherApi(callback: IOtherCallback): IOtherApi =
-        getApi("OtherApi", callback)
+    fun getDataMonitorApi(appActivity: Activity, callback: IDataMonitorCallback): IDataMonitorApi =
+        getApi(appActivity, "DataMonitorApi", callback)
+
+    fun getOtherApi(appActivity: Activity, callback: IOtherCallback): IOtherApi =
+        getApi(appActivity, "OtherApi", callback)
 
     /**
      * 反射获取Api实例
@@ -57,15 +57,15 @@ class ApiManager private constructor() {
      * @return Api实例
      */
     private inline fun <reified C, reified T> getApi(
+        appActivity: Activity,
         className: String,
         callback: C
     ): T {
         val fullClassName =
-            "com.kingsoft.shiyou.omnisdk.demo.${language.name.toLowerCase(Locale.US)}.${className}"
+            "com.kingsoft.shiyou.omnisdk.demo.${language.name.lowercase(Locale.US)}.${className}"
         val constructor =
-            Class.forName(fullClassName)
-                .getConstructor(Activity::class.java, C::class.java)
-        return constructor.newInstance(demoActivity.get(), callback) as T
+            Class.forName(fullClassName).getConstructor(Activity::class.java, C::class.java)
+        return constructor.newInstance(appActivity, callback) as T
     }
 
 }

@@ -39,5 +39,12 @@
         android:layout_below="@id/transsion_method_demo_view_show_float_btn"
         android:layout_marginTop="10dp"
         android:text="关闭悬浮窗广告" />
+    <Button
+        android:id="@+id/transsion_method_demo_view_query_skus_btn"
+        style="@style/OmniDemoAppButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_below="@id/transsion_method_demo_view_close_float_btn"
+        android:layout_marginTop="10dp"
+        android:text="获取本地化商品" />
 
 </com.kingsoft.shiyou.omnisdk.demo.common.view.method.TranssionMethodDemoView>
