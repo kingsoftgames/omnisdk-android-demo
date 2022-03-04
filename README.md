@@ -25,12 +25,11 @@ OmniSDK Android
 ## 语言指导
 
 - 使用Java语言对接, SDK接口示例代码都在 __com.kingsoft.shiyou.omnisdk.demo.java.*__ 包下，其他代码对接方无需关注。
-- 使用Kotlin语言对接, SDK接口示例代码都在 __com.kingsoft.shiyou.omnisdk.demo.kotlin.*__ 包下，其他代码对接方无需关注。
 
 ## 如何运行
 1. 通过 [Android Studio](https://developer.android.com/studio/intro?hl=zh-cn) 打开 Demo 工程；
-2. 请将从 `OmniSDK` 申请到 `shiyou` 文件夹替换 Demo 根目录下 `shiyou` 文件夹；
-3. 命令行执行 `gradlew omniPreChannels`，生成两个文件 ***kssyOmniChannels.gradle*** 和 ***kssyOmniChannelsRoot.gradle***；
+2. 请在 `OmniSDK` 后台配置好发布计划、插件参数、渠道参数等信息。 
+3. 通过 [OmniSDK Android Studio 插件 使用指南](https://d7n9vj8ces.feishu.cn/docs/doccnrAHvi2JCQO5RoDpTWls2Wc) 将配置好的参数下载，自动覆盖 demo 的 shiyou 及相关文件。
 4. 配置 `app/build.gradle` 下的签名配置节点，将其修改成自己签名信息。
 5. 点击IDE **Sync Project with Gradle Files** 按钮，进行依赖同步与初始化。
     - 或 `File > Sync Project with Gradle Files`。
