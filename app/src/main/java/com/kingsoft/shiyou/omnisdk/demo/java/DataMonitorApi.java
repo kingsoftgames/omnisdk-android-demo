@@ -11,6 +11,8 @@ import com.kingsoft.shiyou.omnisdk.api.entity.RoleInfo;
 import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.IDataMonitorApi;
 import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.IDataMonitorCallback;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Description: OmniSDK事件数据追踪埋点相关业务API接口代码示例Demo
  *
@@ -525,6 +527,7 @@ public class DataMonitorApi implements IDataMonitorApi {
         ).start();
     }
 
+
     @Override
     public void onEventImpl(
             RoleInfo roleInfo,
@@ -537,4 +540,8 @@ public class DataMonitorApi implements IDataMonitorApi {
         ).start();
     }
 
+    @Override
+    public void dataConsumeEvent(@NotNull RoleInfo roleInfo, int consumeNum) {
+        OmniSDK.getInstance().dataConsumeEvent(roleInfo, consumeNum);
+    }
 }

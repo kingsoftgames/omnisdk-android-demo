@@ -3,12 +3,16 @@ package com.kingsoft.shiyou.omnisdk.demo.java;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.kingsoft.shiyou.omnisdk.api.OmniSDK;
+import com.kingsoft.shiyou.omnisdk.api.callback.InitNotifier;
 import com.kingsoft.shiyou.omnisdk.demo.common.ApiManager;
+import com.kingsoft.shiyou.omnisdk.demo.common.utils.DemoLogger;
 import com.kingsoft.shiyou.omnisdk.demo.common.view.AppView;
 
 /**
@@ -18,6 +22,7 @@ import com.kingsoft.shiyou.omnisdk.demo.common.view.AppView;
  */
 public class DemoAppActivity extends AppCompatActivity {
 
+    private final String TAG = "DemoAppActivity# ";
     private AppView appView;
 
     /**
@@ -26,9 +31,25 @@ public class DemoAppActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DemoLogger.i(TAG, "onCreate(...) called");
+
         ApiManager.getInstance().initialize(ApiManager.Language.JAVA);
         appView = new AppView();
         appView.attachToActivity(this);
+
+        OmniSDK.getInstance().setInitNotifier(new InitNotifier() {
+            @Override
+            public void onSuccess() {
+                DemoLogger.i(TAG, "Initialization Done Successfully");
+                appView.setInitializedDone(true);
+            }
+
+            @Override
+            public void onFailure(@NonNull String message) {
+                DemoLogger.e(TAG, "Initialization Failed, error : " + message);
+                appView.setInitializedDone(false);
+            }
+        });
 
         // SDK API接口(必须调用)
         OmniSDK.getInstance().onCreate(this, savedInstanceState);
@@ -69,10 +90,13 @@ public class DemoAppActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
 
+        Log.e("SDK", "------------onResume----------------");
+
         // SDK API(必须调用)
         OmniSDK.getInstance().onResume(this);
 
         // CP自己的代码
+
     }
 
     /**

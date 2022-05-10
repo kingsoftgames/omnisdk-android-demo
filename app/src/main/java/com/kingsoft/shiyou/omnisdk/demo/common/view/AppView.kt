@@ -29,6 +29,10 @@ class AppView {
 
     private val tag = "AppView# "
 
+    /** SDK是否完成相关初始化业务 */
+    @Volatile
+    var initializedDone = false
+
     /** Demo应用主Activity */
     lateinit var appActivity: Activity
     val baseContext: Context get() = appActivity.baseContext

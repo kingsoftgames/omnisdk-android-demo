@@ -17,8 +17,12 @@ import com.kingsoft.shiyou.omnisdk.demo.common.utils.DemoLogger;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
 
 import kotlin.Pair;
 
@@ -36,13 +40,13 @@ public class AccountApi implements IAccountApi {
     private int mSwitchType = 0;
     private int mBindType = 0;
 
+    /* ******************************* OmniSDK账号功能接口示例如下 ******************************* */
+
     public AccountApi(Activity activity, IAccountCallback accountCallback) {
         this.appActivity = activity;
         this.callback = accountCallback;
         this.setAccountNotifier();
     }
-
-    /* ******************************* OmniSDK账号功能接口示例如下 ******************************* */
 
     /**
      * 游戏CP对接方在触发任何账号相关业务接口前必须先设置账号相关结果数据回调监听，
@@ -58,21 +62,55 @@ public class AccountApi implements IAccountApi {
                 String userJson = OmniSDK.getInstance().getUserInfo();
                 DemoLogger.i(tag, "onLoginSuccess : " + userJson);
 
-                // 账号Json数据解析方式1：可将其转成`com.kingsoft.shiyou.omnisdk.api.entity.UserInfo`数据实体
-                // 然后按照需要提取数据实体中的各个数据项的值
-                UserInfo userInfo = OmniUtils.fromJson(userJson, UserInfo.class);
+                // 账号Json数据解析方式1：将其转成`com.kingsoft.shiyou.omnisdk.api.entity.UserInfo`数据实体
+                UserInfo userInfo = OmniUtils.parseUserInfo(userJson);
+                // 账号唯一标示，CP对接方用来唯一标示游戏账号
+                String cpUid = userInfo.getCpUid();
+                // 登录账号类型标示
+                int type = userInfo.getType();
+                // 海外业务账号登录数据验证token值，国内业务忽略改值
+                String tokenId = userInfo.getTokenId();
+                // 国内业务登录账号数据的验证Sign值；海外业务无该数据
+                String verifySign = userInfo.getVerifySign();
+                // 国内业务验证Sign值产生的Unix时间戳，单位为秒；海外业务无该数据
+                long verifyTimestamp = userInfo.getVerifyTimestamp();
+                DemoLogger.i(tag, "verify : [ " +
+                        "uid : " + cpUid + " , " +
+                        "type : " + type + " , " +
+                        "verifySign : " + verifySign + " , " +
+                        "verifyTimestamp : " + verifyTimestamp + " ]");
 
-                // 账号Json数据解析方式2：可将其转成Map数据结构或者`org.json.JSONObject`
+                /*
+                 * 账号Json数据解析方式2：可将其转成Map数据结构或者`org.json.JSONObject`，获取相关数据项的key值如下：
+                 * `cpUid`: 账号唯一标示key值
+                 * `type`: 登录账号类型标示key值
+                 * `token`: 海外业务账号登录数据验证token数据对应的key值
+                 * `verifySign`: 国内业务登录账号数据的验证Sign值对应的key值
+                 * `verifyTimestamp`: 国内业务验证Sign值产生的Unix时间戳对应的key值
+                 */
                 Map<String, Object> userMap = OmniUtils.toMap(userJson);
                 // 账号唯一标示，CP对接方用来唯一标示游戏账号
                 String accountCpUid = userMap.get("cpUid").toString();
-                // 账号类型
+                // 登录账号类型标示
                 int accountType = Integer.parseInt(userMap.get("type").toString());
-                // 账号Token，国内业务直接忽略其值，海外业务该值用于账号验证
-                String accountToken = userMap.get("token").toString();
-                DemoLogger.i(tag, "accountCpUid = " + accountCpUid);
-                DemoLogger.i(tag, "accountType = " + accountType);
-                DemoLogger.i(tag, "accountToken = " + accountToken);
+                // 海外业务账号登录数据验证token值，国内业务忽略改值
+                String accountTokenId = userMap.get("token").toString();
+                // 国内业务登录账号数据的验证Sign值；海外业务无该数据
+                String accountVerifySign = "";
+                // 国内业务验证Sign值产生的Unix时间戳，单位为秒；海外业务无该数据
+                long accountVerifyTimestamp = 0;
+                if (userMap.get("verifySign") != null && userMap.get("verifySign").toString().length() > 0) {
+                    accountVerifySign = userMap.get("verifySign").toString();
+                    accountVerifyTimestamp = Long.parseLong(userMap.get("verifyTimestamp").toString());
+                }
+                DemoLogger.i(tag, "verify : [ " +
+                        "uid : " + accountCpUid + " , " +
+                        "type : " + accountType + " , " +
+                        "verifySign : " + accountVerifySign + " , " +
+                        "verifyTimestamp : " + accountVerifyTimestamp + " ]");
+
+                // 国内账号登录业务，游戏方在客户端收到登录成功的账号数据后需回传至游戏服务器端进行账号数据验证
+                sendToServerForVerification(accountCpUid, accountVerifyTimestamp, accountVerifySign);
 
                 callback.onLoginSucceeded(userMap, accountType);
             }
@@ -187,6 +225,8 @@ public class AccountApi implements IAccountApi {
         OmniSDK.getInstance().logout(appActivity);
     }
 
+    /* ****************************************************************************************** */
+
     /**
      * OmniSDK账号切换接口代码示例，该接口不再被使用。
      */
@@ -213,8 +253,6 @@ public class AccountApi implements IAccountApi {
         });
     }
 
-    /* ****************************************************************************************** */
-
     @Override
     public void loginImpl(int type) {
         mLoginType = type;
@@ -237,4 +275,43 @@ public class AccountApi implements IAccountApi {
     public void logoutImpl() {
         logout();
     }
+
+    /**
+     * 验证登录账号数据是否合法，务必注意此验证过程必须在服务器端进行
+     */
+    private void sendToServerForVerification(String uid, Long verifyTimestamp, String receivedVerifySign) {
+        // 验证算法为`HmacSHA1`
+        String HmacSHA1_Algorithm = "HmacSHA1";
+        // Omni方分配给游戏服务器方的共享密钥，此密钥禁止出现在客户端，必须在服务器端维护
+        String serverSecretKey = "19fdfa2847784585bee966a3b6c84cee";
+        // Omni方分配给游戏应用的AppId
+        String appId = "91000184";
+        try {
+            // 1.组建待验证的数据：appId={Omni方分配给游戏应用的AppId}&uid={账号UID}&verifyTimestamp={验证数据产生的时间戳}
+            String dataToVerified = "appId=" + appId + "&uid=" + uid + "&verifyTimestamp=" + verifyTimestamp;
+            DemoLogger.i(tag, "dataToVerified : " + dataToVerified);
+            // 2.进行`HmacSHA1`运算
+            Mac mac = Mac.getInstance(HmacSHA1_Algorithm);
+            mac.init(new SecretKeySpec(serverSecretKey.getBytes(StandardCharsets.UTF_8), HmacSHA1_Algorithm));
+            byte[] resultBytes = mac.doFinal(dataToVerified.getBytes(StandardCharsets.UTF_8));
+            // 3.将计算结果bytes转成Hex16进制编码的值
+            StringBuilder result = new StringBuilder();
+            for (int index = 0, len = resultBytes.length; index <= len - 1; index += 1) {
+                result.append(Integer.toHexString((resultBytes[index] >> 4) & 0xF));
+                result.append(Integer.toHexString(resultBytes[index] & 0xF));
+            }
+            String generatedSignInHex = result.toString();
+            DemoLogger.i(tag, "generatedSignInHex : " + generatedSignInHex);
+            // 4.验证是否一致
+            boolean verificationResult = generatedSignInHex.equals(receivedVerifySign);
+            if (verificationResult) {
+                DemoLogger.i(tag, "verify succeeded");
+            } else {
+                DemoLogger.e(tag, "verify failed");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

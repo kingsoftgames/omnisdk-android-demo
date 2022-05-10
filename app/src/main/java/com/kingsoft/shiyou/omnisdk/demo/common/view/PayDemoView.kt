@@ -137,7 +137,6 @@ class PayDemoView : DemoView, IPayCallback {
             appView.showToastMessage("玩家角色账号ID标示不能为空")
             return
         }
-        showProcessingDialog()
 
         // 开始支付
         payApi.payImpl(
@@ -158,6 +157,9 @@ class PayDemoView : DemoView, IPayCallback {
             roleLevelEt.content(),
             roleVipLevelEt.content()
         )
+
+        // 模拟生成新的CP游戏方订单号，确保下次调用支付接口时其值的唯一性
+        generateGameCno()
     }
 
     /** 模拟游戏对接方订单号生成 */
