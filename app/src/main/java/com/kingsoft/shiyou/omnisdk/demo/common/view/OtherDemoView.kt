@@ -15,6 +15,7 @@ import com.kingsoft.shiyou.omnisdk.demo.R
 import com.kingsoft.shiyou.omnisdk.demo.common.ApiManager
 import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.IOtherApi
 import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.IOtherCallback
+import com.kingsoft.shiyou.omnisdk.demo.common.utils.DemoLogger
 import com.kingsoft.shiyou.omnisdk.demo.common.utils.DemoResourceIdUtil
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
@@ -77,6 +78,8 @@ class OtherDemoView : DemoView, IOtherCallback {
         initChannelMethodDemoView()
     }
 
+    private val byteArrayList = mutableListOf<ByteArray>()
+
     private fun initErrorTrackingDemoView() {
 
         // 模拟设置用户信息
@@ -88,8 +91,8 @@ class OtherDemoView : DemoView, IOtherCallback {
             if (errorMessage.isNotBlank()) {
                 appView.showToastMessage("Tracking: $errorMessage")
                 val eventData = EventData().apply {
-                    tagMap["omni.message.error"] = "NetworkError"
-                    contextMap["Network Type"] = "WIFI"
+                    tagMap["omni.xxx.error"] = "NetworkError"
+                    contextMap["Tst Network Type"] = "WIFI"
                 }
                 SentryTrack.trackMessage(errorMessage, EventLevel.ERROR, eventData)
             }
@@ -101,8 +104,8 @@ class OtherDemoView : DemoView, IOtherCallback {
             if (eventName.isNotBlank()) {
                 appView.showToastMessage("Tracking: $eventName")
                 val eventData = EventData().apply {
-                    tagMap["omni.event.error"] = "LoadError"
-                    contextMap["Reason"] = "Timeout"
+                    tagMap["omni.event.tst.err"] = "LoadError"
+                    contextMap["omni.rea"] = "Timeout"
                 }
                 eventData.breadcrumbs.add(EventBreadcrumb("OmniLaunchGameSuccessfully"))
                 SentryTrack.trackEvent(eventName, EventLevel.FATAL, eventData)
@@ -170,7 +173,14 @@ class OtherDemoView : DemoView, IOtherCallback {
 
         R.id.other_demo_view_error_track_crash_error_btn.addClickListener {
             // 抛出空指针异常，模拟应用奔溃CRASH
-            throw NullPointerException("OmniTest:Null Pointer Exception")
+            // throw NullPointerException("OmniTest:Null Pointer Exception")
+            var count = 1000
+            while (count > 0) {
+                // 10M数据
+                byteArrayList.add(ByteArray(1024 * 1024 * 10))
+                DemoLogger.e("add data: $count")
+                count--
+            }
         }
     }
 

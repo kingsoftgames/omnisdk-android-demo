@@ -10,8 +10,11 @@ apply from: ("${rootProject.rootDir}/kssyOmniPlugin.gradle")
 
 // 导入 OmniSDK 依赖
 apply from: ("${rootProject.rootDir}/kssyOmniChannelsApp.gradle")
+// 导入 OmniSDK 依赖
+apply from: ("${rootProject.rootDir}/kssyOmniChannels.gradle")
 
-def signingPro = new Properties();
+// 签名
+def signingPro = new Properties()
 signingPro.load(new FileInputStream(file(rootProject.file("signing.properties"))))
 
 android {
@@ -24,9 +27,18 @@ android {
         versionCode 1
         versionName "1.0"
 
-//        ndk {
-//            abiFilters 'armeabi-v7a', 'x86', 'armeabi'
-//        }
+        ndk {
+            abiFilters "arm64-v8a"
+        }
+//
+//		splits {
+//			abi {
+//				enable true // 是否启用ABI拆分机制，默认
+//				reset()
+//				include "arm64-v8a", "armeabi-v7a" // 指明哪些ABI要拆分，现在通常就一个64位，比如*64*.apk
+//				universalApk true // 是否打包一个通用版本，包含所有的ABI：*universal*.apk
+//			}
+//		}
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -34,10 +46,23 @@ android {
     signingConfigs {
         // 签名配置
         release {
-            storeFile file("${rootProject.rootDir}/your-storeFile")
+            storeFile file("${rootProject.rootDir}/${signingPro["storeFilePath"]}")
             storePassword signingPro["storePassword"]
             keyAlias signingPro["keyAlias"]
             keyPassword signingPro["keyPassword"]
+
+            v1SigningEnabled false
+            v2SigningEnabled true
+        }
+
+        v1Release {
+            storeFile file("${rootProject.rootDir}/${signingPro["storeFilePath"]}")
+            storePassword signingPro["storePassword"]
+            keyAlias signingPro["keyAlias"]
+            keyPassword signingPro["keyPassword"]
+
+            v1SigningEnabled true
+            v2SigningEnabled false
         }
     }
 
@@ -48,6 +73,12 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
 //            proguardFiles file("${rootProject.rootDir}/proguard").listFiles().toList().toArray()
 //            proguardFiles file("game-rules.pro")
+//            productFlavors.oppo_cn.signingConfig signingConfigs.release
+//            productFlavors.huawei.signingConfig signingConfigs.release
+//            productFlavors.vivo_cn.signingConfig signingConfigs.release
+//            productFlavors.uc.signingConfig signingConfigs.v1Release
+//            productFlavors.mi.signingConfig signingConfigs.v1Release
+//            productFlavors.m4399.signingConfig signingConfigs.release
             signingConfig signingConfigs.release // release包签名
         }
     }

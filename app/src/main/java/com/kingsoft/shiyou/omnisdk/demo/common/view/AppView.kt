@@ -29,6 +29,10 @@ class AppView {
 
     private val tag = "AppView# "
 
+    /** SDK是否完成相关初始化业务 */
+    @Volatile
+    var initializedDone = false
+
     /** Demo应用主Activity */
     lateinit var appActivity: Activity
     val baseContext: Context get() = appActivity.baseContext
@@ -99,10 +103,10 @@ class AppView {
             this[R.layout.pay_demo_view] = null
             this[R.layout.data_monitor_demo_view] = null
             this[R.layout.social_demo_view] = null
+            this[R.layout.other_demo_view] = null
             if (ConfigData.singletonInstance.isEnPlatform()) {
                 // 国内渠道暂时无广告和其他功能模块
                 this[R.layout.ad_demo_view] = null
-                this[R.layout.other_demo_view] = null
             }
         }
 

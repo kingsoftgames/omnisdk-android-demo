@@ -1,35 +1,53 @@
 // apply app-level build.gradle
 
-// 1. 本配置文件通过运行"gradlew omniPreChannels"自动生成；
-// 2. 运行指令前请按接入文档编译章节，在shiyou目录下配置好渠道信息、资源；
-// 3. 每次增加新渠道、或渠道增加资源（shiyou/*/main/目录）、或渠道新增依赖时，都要运行指令，以生成最新配置；其他情况无需运行。
-// 4. 修改版本号无需运行指令；
-// 5. 请将本文件变更提交代码库，以支持项目服务器编译。
-// 6. 如果不懂Android-Variants-Build，请不要修改配置结构；项目只需要"运行脚本->升级版本号->提交代码库"即可。
+// 声明有 apply plugin: 'com.android.application'
 
-// 多渠道配置：使用控制面板（默认在左侧下位置: "Build Variants"）切换"Run"编译的渠道，即工程默认渠道。
+// 1. 本配置文件通过插件自动生成。
+// 2. 可以将本文件变更提交代码库，以支持项目服务器编译。
+// 3. 如果不了解 Gradle Variants Build，请直接使用默认生成的配置。
+
+// 切换默认渠道：使用控制面板（默认在左侧下位置: "Build Variants"）切换。
+
 android {
+	defaultConfig {
+
+		// 64位适配Android文档：https://developer.android.com/games/optimize/64-bit
+		// 小米应用商店支持 64 位架构适配指南，与官方文档差不多：https://dev.mi.com/distribute/doc/details?pId=1244
+		// so参考文章：https://juejin.cn/post/6955358032914022413
+
+		// 1. 引擎导出时勾选64位
+		// 2. 现在大多数渠道商店强制要求64位，因此默认64
+		ndk {
+			abiFilters "arm64-v8a" // abiFilters "arm64-v8a", "armeabi-v7a"
+		}
+
+		// app-level build.gradle：即有`apply plugin: 'com.android.application'`的文件
+		// 1. 如果需要增加其他ABI，将下面的splits配置复制到 app-level build.gradle对应的位置。
+		// 2. 不要直接修改这里的配置，gradle会自动合并两边的配置
+		// 3. ABI拆分不会额外增加编译时间
+//		splits {
+//			abi {
+//				enable true // 是否启用ABI拆分机制，true-开启
+//				reset()
+//				include "arm64-v8a" // 指明哪些ABI要拆分，现在通常就一个64位，比如*64*.apk
+//				universalApk true // 是否打包一个通用版本，包含所有的ABI：*universal*.apk
+//			}
+//		}
+	}
+
 	flavorDimensions "default"
 	// 多渠道列表
 	productFlavors {
-		website_en {
-			dimension "default"
-			applicationId "com.kingsoft.demo"
-			manifestPlaceholders = [
-					facebookAppId: "*****",
-					facebookAppName: "demo",
-			]
-		}
 	}
-
 	sourceSets {
 		main {
 			// 默认、所有资源渠道共享，不要修改。
 		}
-		// 多渠道资源配置，如果有
-		website_en {
-			assets.srcDirs += ["${project.rootDir}/shiyou/${name}/main/assets"]
-			java.srcDirs += ["${project.rootDir}/shiyou/default/main/java"]
-		}
 	}
 }
+
+// 华为渠道编译依赖
+if (getGradle().getStartParameter().getTaskRequests().toString().contains("Huawei")) {
+	apply plugin: "com.huawei.agconnect"
+}
+

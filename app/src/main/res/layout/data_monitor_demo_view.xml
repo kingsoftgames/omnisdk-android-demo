@@ -162,6 +162,12 @@
             android:layout_width="match_parent"
             android:layout_marginTop="10dp"
             android:text="用户关闭公告" />
+        <Button
+            android:id="@+id/data_monitor_demo_view_data_consume_event_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="买量数据付费上报" />
 
         <LinearLayout
             android:layout_width="match_parent"

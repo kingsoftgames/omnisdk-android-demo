@@ -1,0 +1,4 @@
+project.buildscript.dependencies {
+	// OmniSDK 编译插件
+	classpath("com.kingsoft.shiyou.omnisdk.build:plugin:4.0.+")
+}

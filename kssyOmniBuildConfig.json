@@ -1,0 +1,18 @@
+{
+  "debugMode": false,
+  "buildType": "assemble",
+  "buildTarget": "release",
+  "isBuildCps": true,
+  "outputsDir": "channels-output",
+  "buildChannels": "all",
+  "channels": [
+    {
+      "channelName": "huawei",
+      "buildType": "assemble,bundle"
+    },
+    {
+      "channelName": "jinshan",
+      "buildType": "assemble"
+    }
+  ]
+}

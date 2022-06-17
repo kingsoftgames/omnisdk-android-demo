@@ -149,6 +149,14 @@ class DataMonitorDemoView : DemoView, IDataMonitorCallback {
         R.id.data_monitor_demo_view_close_announcement_event_btn.addClickListener {
             dataMonitorApi.onCloseAnnouncementImpl()
         }
+        R.id.data_monitor_demo_view_data_consume_event_btn.addClickListener {
+            if (checkLoggedIn() && checkRoleInfo()) {
+                val num =  (0..10).random()
+                appView.showToastMessage("数量：$num")
+                dataMonitorApi.dataConsumeEvent(appView.gameRoleInfo, num)
+            }
+
+        }
 
         val initPayInfo = buildPayInfoFromJson(
             TestData.singletonInstance.getValue(

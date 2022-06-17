@@ -6,27 +6,22 @@ buildscript {
 //        mavenLocal()
         google()
         jcenter()
-        // 金山世游仓库
-        maven {
-            url "https://maven.shiyou.kingsoft.com/repository/public/"
-        }
-        // 如果有接入华为渠道，还需要手动声明这个依赖仓库，本配置不影响其他渠道。
-        maven {
-            url "https://developer.huawei.com/repo/"
-        }
+
+        apply from: ("${rootProject.rootDir}/kssyOmniBuildscriptRepositories.gradle")
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.1'
-        // 编译插件
-        classpath("com.kingsoft.shiyou.omnisdk.build:plugin:3.5.+")
+        classpath 'com.android.tools.build:gradle:4.2.2'
 
         // 游戏通常使用 java，不需要配置 kotlin
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        apply from: ("${rootProject.rootDir}/kssyOmniBuildscriptDependencies.gradle")
     }
 }
 
 allprojects {
     repositories {
+//        mavenLocal()
         google()
         jcenter()
     }

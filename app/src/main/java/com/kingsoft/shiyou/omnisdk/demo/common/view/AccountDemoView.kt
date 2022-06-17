@@ -63,7 +63,11 @@ class AccountDemoView : DemoView, IAccountCallback {
 
         loginButton = findViewById(R.id.account_demo_view_login_btn)
         loginButton.setOnClickListener {
-            accountApi.loginImpl(0)
+            if (appView.initializedDone) {
+                accountApi.loginImpl(0)
+            } else {
+                appView.showToastMessage("正在初始化，请稍后")
+            }
         }
 
         loginTypeContainer = findViewById(R.id.account_demo_view_login_type_container)
@@ -71,7 +75,11 @@ class AccountDemoView : DemoView, IAccountCallback {
         R.id.account_demo_view_login_type_btn.addClickListener {
             val loginType = loginTypeEt.content().toIntOrNull()
             loginType?.let {
-                accountApi.loginImpl(it)
+                if (appView.initializedDone) {
+                    accountApi.loginImpl(it)
+                } else {
+                    appView.showToastMessage("正在初始化，请稍后")
+                }
             } ?: appView.showToastMessage("无效账号类型")
         }
         if (OmniSDK.instance.getAccountMode(baseContext) == 2) {

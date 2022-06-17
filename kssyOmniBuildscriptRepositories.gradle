@@ -1,0 +1,12 @@
+def repos = {
+	// OmniSDK 仓库
+	maven {
+		url "https://maven.shiyou.kingsoft.com/repository/public/"
+	}
+	// 华为渠道依赖仓库，本配置不影响其他渠道。
+	maven {
+		url "https://developer.huawei.com/repo/"
+		allowInsecureProtocol = true
+	}
+}
+project.buildscript.repositories(repos)

@@ -106,6 +106,8 @@ interface IDataMonitorApi {
         eventBody: String
     )
 
+    fun dataConsumeEvent(roleInfo: RoleInfo, consumeNum: Int)
+
 }
 
 interface IDataMonitorCallback : ICallback {

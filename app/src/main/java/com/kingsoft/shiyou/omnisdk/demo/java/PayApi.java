@@ -1,5 +1,7 @@
 package com.kingsoft.shiyou.omnisdk.demo.java;
 
+import static com.kingsoft.shiyou.omnisdk.demo.common.ExtensionsKt.convert;
+
 import android.app.Activity;
 
 import androidx.annotation.NonNull;
@@ -66,6 +68,9 @@ public class PayApi implements IPayApi {
                 String orderId = order.getOrderId(); // OmniSDK支付唯一订单号
                 DemoLogger.i(tag, "pay successfully, orderId = " + orderId);
                 callback.onSucceeded(order);
+
+                // 支付完成
+                OmniSDK.getInstance().onPayFinish(convert(order));
             }
 
             @Override

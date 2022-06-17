@@ -1,10 +1,19 @@
-// apply project-level root build.gradle
+// apply project root-level build.gradle
 
-// 部分渠道需要的依赖仓库
 allprojects {
 	repositories {
+		google()
+		jcenter()
+		mavenCentral()
+
 		// OmniSDK 仓库
 		maven { url "https://maven.shiyou.kingsoft.com/repository/public/" }
 
+		// 头条JFrog Maven仓库，远程依赖的方式需要导入
+		maven { url "https://artifact.bytedance.com/repository/ttgamesdk/" }
+		//华为渠道
+		maven { url 'https://developer.huawei.com/repo/' }
+
+		maven { url "https://jitpack.io"}
 	}
 }

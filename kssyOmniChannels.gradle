@@ -1,40 +1,28 @@
-// apply libs-level(比如unityLibrary) build.gradle
+// apply libs-level build.gradle
 
-// 1. 本配置文件通过运行"gradlew omniPreChannels"自动生成；
-// 2. 运行指令前请按接入文档编译章节，在shiyou目录下配置好渠道信息、资源；
-// 3. 每次增加新渠道、或渠道增加资源（shiyou/*/main/目录）、或渠道新增依赖时，都要运行指令，以生成最新配置；其他情况无需运行。
-// 4. 修改版本号无需运行指令；
-// 5. 请将本文件变更提交代码库，以支持项目服务器编译。
-// 6. 如果不懂Android-Variants-Build，请不要修改配置结构；项目只需要"运行脚本->升级版本号->提交代码库"即可。
+// 声明有 apply plugin: 'com.android.library'
 
-// 多渠道配置：使用控制面板（默认在左侧下位置: "Build Variants"）切换"Run"编译的渠道，即工程默认渠道。
+// 1. 本配置文件通过插件自动生成。
+// 2. 可以将本文件变更提交代码库，以支持项目服务器编译。
+// 3. 如果不了解 Gradle Variants Build，请直接使用默认生成的配置。
+
+// 切换默认渠道：使用控制面板（默认在左侧下位置: "Build Variants"）切换。
+
 android {
-	flavorDimensions "default"
-	// 多渠道列表
-	productFlavors {
-		website_en {
-			dimension "default"
-		}
-	}
+
 }
 
 // 渠道依赖配置
 dependencies {
+	// 兼容 xgsdk 
+	implementation("com.kingsoft.shiyou.omnisdk.support:xgsdk:1.+")
 
-	// 封版|发版 前请 Omni 确认是否需要升级到最新版本。
-	// OmniSDK API 依赖（所有渠道包的公共依赖）
-	String apiVersion = "2.0.0" // Please replace with the latest version if needed.
-	api("com.kingsoft.shiyou.omnisdk.component:api:$apiVersion")
-
-	// OmniSDK Plugin 依赖（所有渠道包的公共依赖）
-	implementation("com.kingsoft.shiyou.omnisdk.plugin:omni-account:2.0.0")
-
-	// 渠道的各自依赖，根据 shiyou/*/kssyOmni.gradle 下各渠道配置脚本生成
-	// website_en
-	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:sentry:5.1.2.3")
-	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:google-pay:4.0.0.3")
-	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:facebook:11.3.0.2")
-	website_enImplementation("com.kingsoft.shiyou.omnisdk.plugin:google:20.1.0")
-	website_enImplementation("com.kingsoft.shiyou.omnisdk.channel:website-en:1.1.1")
+	// 封版|发版 前请通过插件更新配置到最新。
+	// OmniSDK API
+	String sdkVersion = "2.1.2"
+	api("com.kingsoft.shiyou.omnisdk.component:api:$sdkVersion") { force = true }
+	api("com.kingsoft.shiyou.omnisdk.component:basic:$sdkVersion") { force = true }
+	api("com.kingsoft.shiyou.omnisdk.component:core:$sdkVersion") { force = true }
+	api("com.kingsoft.shiyou.omnisdk.component:project:$sdkVersion") { force = true }
 
 }
