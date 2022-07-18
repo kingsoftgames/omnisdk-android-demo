@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>requestPermissions</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>OmniSDK</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="OmniSDK::com.kingsoft.shiyou.omnisdk.api.v3/OmniSDKApi/requestPermissions/#android.app.Activity#kotlin.String/PointingToDeclaration//-1876245343">
+  <div class="breadcrumbs"><a href="../../../index.html">OmniSDK</a><span class="delimiter">/</span><a href="../index.html">com.kingsoft.shiyou.omnisdk.api.v3</a><span class="delimiter">/</span><a href="index.html">OmniSDKApi</a><span class="delimiter">/</span><a href="request-permissions.html">requestPermissions</a></div>
+  <div class="cover ">
+    <h1 class="cover"><span>request</span><wbr></wbr><span><span>Permissions</span></span></h1>
+  </div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="request-permissions.html"><span class="token function">requestPermissions</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/app/Activity.html">Activity</a><span class="token punctuation">, </span></span><span class="parameter ">permissionJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">申请权限或权限组</p><h2 class=""> 申请权限或权限组</h2><h3 class=""> 政策</h3><ul><li><p class="paragraph">国内隐私权限政策规定玩家拒绝权限申请后，48小时不能重复弹窗申请，OmniSDK 内部处理。</p></li><li><p class="paragraph">如果在政策时限内，游戏多次调用相同权限申请，直接返回拒绝。</p></li></ul><h3 class=""> 描述</h3><p class="paragraph">本接口申请权限的逻辑按照 <a href="https://developer.android.com/guide/topics/permissions/overview">Android 官方权限申请流程</a>要求实现</p><ol><li><p class="paragraph">首次申请权限时，与其他第三方实现无区别；</p></li><li><p class="paragraph">根据国家相关隐私政策，建议在需要权限的时候再申请。不要扩大范围申请，否则可能影响审核政策。</p></li><li><p class="paragraph">**(在高版本)**首次被拒绝后，下次再申请前由系统显示rationaleContent的文案引导，用户同意才会触发权限申请；取消不触发，下次再重复这个流程。</p></li><li><p class="paragraph">**(在高版本)**用户第二次拒绝后，再次申请可能不会触发权限申请，需要引导用户到权限管理界面申请权限。</p></li></ol><h3 class=""><a href="request-permissions.html">permissionJson</a> 结构体</h3><div class="sample-container"><pre><code class="block lang-json" theme="idea">{<br>  &quot;rationaleContent&quot;: &quot;需要申请这组权限的理由文案；在高版本系统用户第一次拒绝请求后，再次申请前由系统显示引导&quot;,<br>  &quot;permissions&quot;: [<br>      &quot;android.permission-group.STORAGE&quot;,<br>      &quot;android.permission.READ_PHONE_STATE&quot;<br>  ]<br>}</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><h3 class=""> 接入说明</h3><ol><li><p class="paragraph">根据 Android 权限监听机制，权限结果回调只能在 <a href="https://developer.android.com/reference/kotlin/android/app/Activity.html#onrequestpermissionsresult">Activity.onRequestPermissionsResult</a> 收到。</p></li><li><p class="paragraph">为了简化游戏调用、注册步骤，游戏的主Activity 需要继承 OmniSdkActivity。</p></li><li><p class="paragraph">如果游戏接入 OmniSdkActivity，OmniSdkActivity 做好了 <a href="https://developer.android.com/reference/kotlin/android/app/Activity.html#onrequestpermissionsresult">Activity.onRequestPermissionsResult</a> 相关注册，游戏可在任意地方 使用<a href="register-permissions-callback.html">registerPermissionsCallback</a> 接收结果；</p></li><li><p class="paragraph">如果游戏没有接入 OmniSdkActivity，则需要参考 OmniSdkActivity 源码，进行相关的 <a href="https://developer.android.com/reference/kotlin/android/app/Activity.html#onrequestpermissionsresult">Activity.onRequestPermissionsResult</a> 注册。</p></li></ol><h2 class="">See also</h2><div data-togglable="See also"><div class="table" data-togglable="See also"><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>Permission</span><wbr></wbr><span><span>Model</span></span></div></span></div><div><div class="title"><div data-togglable="See also"></div></div></div></div></div><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><a href="register-permissions-callback.html"><span>com.</span><wbr></wbr><span>kingsoft.</span><wbr></wbr><span>shiyou.</span><wbr></wbr><span>omnisdk.</span><wbr></wbr><span>api.</span><wbr></wbr><span>v3.</span><wbr></wbr><span>OmniSDKApi</span></a></div></span></div><div><div class="title"><div data-togglable="See also"></div></div></div></div></div></div></div><h2 class="">Parameters</h2><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>rationale</span><wbr></wbr><span><span>Content</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">需要申请这组权限的理由文案；在高版本系统用户第一次拒绝请求后，再次申请前由系统显示引导。</p></div></div></div></div></div><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span><span>permissions</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">权限或权限组 <a href="https://developer.android.com/reference/kotlin/android/Manifest.html">android.Manifest</a></p></div></div></div></div></div></div></div></div></div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>

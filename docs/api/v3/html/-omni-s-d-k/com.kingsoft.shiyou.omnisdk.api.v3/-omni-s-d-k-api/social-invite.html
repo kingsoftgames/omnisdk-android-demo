@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>socialInvite</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script src="https://unpkg.com/kotlin-playground@1"></script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>OmniSDK</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="OmniSDK::com.kingsoft.shiyou.omnisdk.api.v3/OmniSDKApi/socialInvite/#android.app.Activity#kotlin.String/PointingToDeclaration//-1876245343">
+  <div class="breadcrumbs"><a href="../../../index.html">OmniSDK</a><span class="delimiter">/</span><a href="../index.html">com.kingsoft.shiyou.omnisdk.api.v3</a><span class="delimiter">/</span><a href="index.html">OmniSDKApi</a><span class="delimiter">/</span><a href="social-invite.html">socialInvite</a></div>
+  <div class="cover ">
+    <h1 class="cover"><span>social</span><wbr></wbr><span><span>Invite</span></span></h1>
+  </div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="social-invite.html"><span class="token function">socialInvite</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/app/Activity.html">Activity</a><span class="token punctuation">, </span></span><span class="parameter ">inviteJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">社交平台-邀请功能</p><h2 class=""> 社交平台-邀请功能</h2><h3 class=""> 描述</h3><p class="paragraph">仅部分平台支持，需要运营自己确认接入需求</p><h3 class=""><a href="social-invite.html">inviteJson</a> 数据结构体</h3><style>
+table th:first-of-type{width:15%}
+table th:nth-of-type(2){width:15%}
+table th:nth-of-type(3){width:20%}
+table th:nth-of-type(4){width:50%}
+</style><table><thead><tr><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>字段</strong></td><td><strong>声明</strong></td><td><strong>描述</strong></td><td><strong>范围</strong></td></tr><tr><td>platform</td><td>邀请平台</td><td>只能传一个，例：&quot;facebook&quot;</td><td>必传</td></tr><tr><td>message</td><td>邀请信息</td><td>需符合平台政策</td><td>必传</td></tr></tbody></table><h3 class="">platform 邀请平台标识</h3><table><thead><tr><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>字段</strong></td><td><strong>依赖</strong></td><td><strong>平台</strong></td><td><strong>说明</strong></td></tr><tr><td>facebook</td><td>facebook 插件</td><td>Facebook 社交平台</td><td>需要向平台申请权限</td></tr></tbody></table><h3 class=""><a href="social-invite.html">inviteJson</a> 示例</h3><div class="sample-container"><pre><code class="block lang-json" theme="idea">{<br>  &quot;platform&quot;: &quot;facebook&quot;,<br>  &quot;message&quot;: &quot;invite-message&quot;<br>}</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><h2 class="">Samples</h2><div class="sample-container"><pre><code class="runnablesample monospace block lang-kotlin" theme="idea">import android.app.Activity
+import android.content.Context
+import com.kingsoft.shiyou.omnisdk.api.v3.OmniSDK
+import com.kingsoft.shiyou.omnisdk.api.v3.callback.*
+import com.kingsoft.shiyou.omnisdk.api.v3.entity.*
+import com.kingsoft.shiyou.omnisdk.api.v3.interfaces.*
+import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils
+import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils.toJson
+fun main() { 
+   //sampleStart 
+   // 代码仅做参考，请根据需求按接口文档使用
+
+// java
+OmniSDK.getInstance().invite(activity, platform, json, new ResultCallback() {
+
+    @Override
+    public void onFailure(@NonNull Pair&lt;Integer, String&gt; responseCode) {
+        // 游戏处理回调结果
+    }
+
+    @Override
+    public void onSuccess(@NonNull String resultJson) {
+        // 游戏处理回调结果
+    }
+}); 
+   //sampleEnd
+}</code></pre></div><h2 class="">See also</h2><div data-togglable="See also"><div class="table" data-togglable="See also"><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>Social</span><wbr></wbr><span><span>Invite</span></span></div></span></div><div><div class="title"><div data-togglable="See also"></div></div></div></div></div></div></div><h2 class="">Parameters</h2><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span><span>activity</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">上下文</p></div></div></div></div></div><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>invite</span><wbr></wbr><span><span>Json</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">邀请信息</p></div></div></div></div></div></div></div></div></div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>

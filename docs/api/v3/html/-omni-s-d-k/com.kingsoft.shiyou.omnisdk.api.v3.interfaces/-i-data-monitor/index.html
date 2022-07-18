@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>IDataMonitor</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>OmniSDK</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="OmniSDK::com.kingsoft.shiyou.omnisdk.api.v3.interfaces/IDataMonitor///PointingToDeclaration//-1876245343">
+  <div class="breadcrumbs"><a href="../../../index.html">OmniSDK</a><span class="delimiter">/</span><a href="../index.html">com.kingsoft.shiyou.omnisdk.api.v3.interfaces</a><span class="delimiter">/</span><a href="index.html">IDataMonitor</a></div>
+  <div class="cover ">
+    <h1 class="cover"><span>IData</span><wbr></wbr><span><span>Monitor</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">IDataMonitor</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">数据统计相关接口</p><h3 class=""> 数据统计相关接口</h3><ul><li><p class="paragraph">标注'必接'的数据统计接口，必须接入</p></li></ul><h4 class="">Since</h4><p class="paragraph">3.0</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Inheritors">Inheritors</button></div>
+    <div class="tabs-section-body">
+      <h2 class="">Functions</h2>
+      <div class="table" data-togglable="Functions"><a data-name="-1963934634%2FFunctions%2F-1876245343" anchor-label="statisticsAddCommonParams" id="-1963934634%2FFunctions%2F-1876245343" data-filterable-set=":omniAPI:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="statistics-add-common-params.html"><span>statistics</span><wbr></wbr><span>Add</span><wbr></wbr><span>Common</span><wbr></wbr><span><span>Params</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1963934634%2FFunctions%2F-1876245343"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="statistics-add-common-params.html"><span class="token function">statisticsAddCommonParams</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">dataJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">向上报的数据中添加公共参数，即每条数据都包含的公共参数。</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="63389313%2FFunctions%2F-1876245343" anchor-label="statisticsCloseAnnouncement" id="63389313%2FFunctions%2F-1876245343" data-filterable-set=":omniAPI:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="statistics-close-announcement.html"><span>statistics</span><wbr></wbr><span>Close</span><wbr></wbr><span><span>Announcement</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="63389313%2FFunctions%2F-1876245343"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="statistics-close-announcement.html"><span class="token function">statisticsCloseAnnouncement</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">关闭公告时调用该接口。</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-793112196%2FFunctions%2F-1876245343" anchor-label="statisticsCreateRole" id="-793112196%2FFunctions%2F-1876245343" data-filterable-set=":omniAPI:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="statistics-create-role.html"><span>statistics</span><wbr></wbr><span>Create</span><wbr></wbr><span><span>Role</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-793112196%2FFunctions%2F-1876245343"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="statistics-create-role.html"><span class="token function">statisticsCreateRole</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">roleInfoJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">创建角色时调用（必接）</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1932760978%2FFunctions%2F-1876245343" anchor-label="statisticsEnterGame" id="-1932760978%2FFunctions%2F-1876245343" data-filterable-set=":omniAPI:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="statistics-enter-game.html"><span>statistics</span><wbr></wbr><span>Enter</span><wbr></wbr><span><span>Game</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1932760978%2FFunctions%2F-1876245343"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="statistics-enter-game.html"><span class="token function">statisticsEnterGame</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">roleInfoJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">进入游戏：进入游戏界面时调用（必接）</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1075129698%2FFunctions%2F-1876245343" anchor-label="statisticsEvent" id="-1075129698%2FFunctions%2F-1876245343" data-filterable-set=":omniAPI:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="statistics-event.html"><span>statistics</span><wbr></wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1075129698%2FFunctions%2F-1876245343"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="statistics-event.html"><span class="token function">statisticsEvent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">eventInfoJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">自定义事件，通过此接口进行自助数据上报及分析</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1982787905%2FFunctions%2F-1876245343" anchor-label="statisticsGameConfigLoaded" id="1982787905%2FFunctions%2F-1876245343" data-filterable-set=":omniAPI:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="statistics-game-config-loaded.html"><span>statistics</span><wbr></wbr><span>Game</span><wbr></wbr><span>Config</span><wbr></wbr><span><span>Loaded</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1982787905%2FFunctions%2F-1876245343"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="statistics-game-config-loaded.html"><span class="token function">statisticsGameConfigLoaded</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">游戏配置，加载完成</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1612750795%2FFunctions%2F-1876245343" anchor-label="statisticsGameResourceLoaded" id="-1612750795%2FFunctions%2F-1876245343" data-filterable-set=":omniAPI:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="statistics-game-resource-loaded.html"><span>statistics</span><wbr></wbr><span>Game</span><wbr></wbr><span>Resource</span><wbr></wbr><span><span>Loaded</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1612750795%2FFunctions%2F-1876245343"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="statistics-game-resource-loaded.html"><span class="token function">statisticsGameResourceLoaded</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">游戏资源，加载完成</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-58838536%2FFunctions%2F-1876245343" anchor-label="statisticsGameShippedFinish" id="-58838536%2FFunctions%2F-1876245343" data-filterable-set=":omniAPI:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="statistics-game-shipped-finish.html"><span>statistics</span><wbr></wbr><span>Game</span><wbr></wbr><span>Shipped</span><wbr></wbr><span><span>Finish</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-58838536%2FFunctions%2F-1876245343"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="statistics-game-shipped-finish.html"><span class="token function">statisticsGameShippedFinish</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">payInfoJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">跟踪玩家的支付信息，支付成功后，游戏成功发放道具后调用（必接）</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="633813863%2FFunctions%2F-1876245343" anchor-label="statisticsMissionBegin" id="633813863%2FFunctions%2F-1876245343" data-filterable-set=":omniAPI:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="statistics-mission-begin.html"><span>statistics</span><wbr></wbr><span>Mission</span><wbr></wbr><span><span>Begin</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="633813863%2FFunctions%2F-1876245343"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="statistics-mission-begin.html"><span class="token function">statisticsMissionBegin</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">missionInfoJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">跟踪玩家的任务或关卡完成情况：当开始某个任务或关卡时</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1515562552%2FFunctions%2F-1876245343" anchor-label="statisticsMissionFailure" id="-1515562552%2FFunctions%2F-1876245343" data-filterable-set=":omniAPI:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="statistics-mission-failure.html"><span>statistics</span><wbr></wbr><span>Mission</span><wbr></wbr><span><span>Failure</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1515562552%2FFunctions%2F-1876245343"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="statistics-mission-failure.html"><span class="token function">statisticsMissionFailure</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">missionInfoJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">跟踪玩家的任务或关卡完成情况：当某个任务或关卡执行失败时</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1554135679%2FFunctions%2F-1876245343" anchor-label="statisticsMissionSuccess" id="-1554135679%2FFunctions%2F-1876245343" data-filterable-set=":omniAPI:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="statistics-mission-success.html"><span>statistics</span><wbr></wbr><span>Mission</span><wbr></wbr><span><span>Success</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1554135679%2FFunctions%2F-1876245343"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="statistics-mission-success.html"><span class="token function">statisticsMissionSuccess</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">missionInfoJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">跟踪玩家的任务或关卡完成情况：当某个任务或关卡已经成功完成</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="422073003%2FFunctions%2F-1876245343" anchor-label="statisticsNewUserMission" id="422073003%2FFunctions%2F-1876245343" data-filterable-set=":omniAPI:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="statistics-new-user-mission.html"><span>statistics</span><wbr></wbr><span>New</span><wbr></wbr><span>User</span><wbr></wbr><span><span>Mission</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="422073003%2FFunctions%2F-1876245343"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="statistics-new-user-mission.html"><span class="token function">statisticsNewUserMission</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">roleInfoJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">用户完成新手任务时调用</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="536384137%2FFunctions%2F-1876245343" anchor-label="statisticsOpenAnnouncement" id="536384137%2FFunctions%2F-1876245343" data-filterable-set=":omniAPI:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="statistics-open-announcement.html"><span>statistics</span><wbr></wbr><span>Open</span><wbr></wbr><span><span>Announcement</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="536384137%2FFunctions%2F-1876245343"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="statistics-open-announcement.html"><span class="token function">statisticsOpenAnnouncement</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">打开公告时调用该接口。</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1044248982%2FFunctions%2F-1876245343" anchor-label="statisticsPaidReportWithVolume" id="-1044248982%2FFunctions%2F-1876245343" data-filterable-set=":omniAPI:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="statistics-paid-report-with-volume.html"><span>statistics</span><wbr></wbr><span>Paid</span><wbr></wbr><span>Report</span><wbr></wbr><span>With</span><wbr></wbr><span><span>Volume</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1044248982%2FFunctions%2F-1876245343"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="statistics-paid-report-with-volume.html"><span class="token function">statisticsPaidReportWithVolume</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">paidReportInfoJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">自定义买量数据付费上报</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1807170238%2FFunctions%2F-1876245343" anchor-label="statisticsPrivateFunCodeUse" id="-1807170238%2FFunctions%2F-1876245343" data-filterable-set=":omniAPI:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="statistics-private-fun-code-use.html"><span>statistics</span><wbr></wbr><span>Private</span><wbr></wbr><span>Fun</span><wbr></wbr><span>Code</span><wbr></wbr><span><span>Use</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1807170238%2FFunctions%2F-1876245343"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="statistics-private-fun-code-use.html"><span class="token function">statisticsPrivateFunCodeUse</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">funCodeInfoJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">用户使用专用的功能码（激活码、礼品码等）时</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-316188850%2FFunctions%2F-1876245343" anchor-label="statisticsPublicFunCodeUse" id="-316188850%2FFunctions%2F-1876245343" data-filterable-set=":omniAPI:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="statistics-public-fun-code-use.html"><span>statistics</span><wbr></wbr><span>Public</span><wbr></wbr><span>Fun</span><wbr></wbr><span>Code</span><wbr></wbr><span><span>Use</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-316188850%2FFunctions%2F-1876245343"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="statistics-public-fun-code-use.html"><span class="token function">statisticsPublicFunCodeUse</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">funCodeInfoJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">用户使用公用的功能码（激活码、礼品码等）时</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-465764627%2FFunctions%2F-1876245343" anchor-label="statisticsRoleLevelUp" id="-465764627%2FFunctions%2F-1876245343" data-filterable-set=":omniAPI:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="statistics-role-level-up.html"><span>statistics</span><wbr></wbr><span>Role</span><wbr></wbr><span>Level</span><wbr></wbr><span><span>Up</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-465764627%2FFunctions%2F-1876245343"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="statistics-role-level-up.html"><span class="token function">statisticsRoleLevelUp</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">roleInfoJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">角色等级升级时调用（必接）</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-843451638%2FFunctions%2F-1876245343" anchor-label="statisticsVirtualCurrencyConsume" id="-843451638%2FFunctions%2F-1876245343" data-filterable-set=":omniAPI:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="statistics-virtual-currency-consume.html"><span>statistics</span><wbr></wbr><span>Virtual</span><wbr></wbr><span>Currency</span><wbr></wbr><span><span>Consume</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-843451638%2FFunctions%2F-1876245343"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="statistics-virtual-currency-consume.html"><span class="token function">statisticsVirtualCurrencyConsume</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">virtualConsumeInfoJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">跟踪玩家的购买及消费行为：当玩家消费虚拟货币时</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1300877855%2FFunctions%2F-1876245343" anchor-label="statisticsVirtualCurrencyPurchase" id="-1300877855%2FFunctions%2F-1876245343" data-filterable-set=":omniAPI:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="statistics-virtual-currency-purchase.html"><span>statistics</span><wbr></wbr><span>Virtual</span><wbr></wbr><span>Currency</span><wbr></wbr><span><span>Purchase</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1300877855%2FFunctions%2F-1876245343"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="statistics-virtual-currency-purchase.html"><span class="token function">statisticsVirtualCurrencyPurchase</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">virtualPurchaseInfoJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">跟踪玩家的购买及消费行为：当玩家通过充值获得游戏内虚拟货币时</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-2098962481%2FFunctions%2F-1876245343" anchor-label="statisticsVirtualCurrencyReward" id="-2098962481%2FFunctions%2F-1876245343" data-filterable-set=":omniAPI:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="statistics-virtual-currency-reward.html"><span>statistics</span><wbr></wbr><span>Virtual</span><wbr></wbr><span>Currency</span><wbr></wbr><span><span>Reward</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2098962481%2FFunctions%2F-1876245343"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="statistics-virtual-currency-reward.html"><span class="token function">statisticsVirtualCurrencyReward</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">virtualRewardInfoJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">跟踪玩家的购买及消费行为：当玩家完成活动或任务后，系统赠送给玩家虚拟货币时</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="">Inheritors</h2>
+      <div class="table" data-togglable="Inheritors"><a data-name="2053165687%2FInheritors%2F-1876245343" anchor-label="IOmni" id="2053165687%2FInheritors%2F-1876245343" data-filterable-set=":omniAPI:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../-i-omni/index.html">IOmni</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2053165687%2FInheritors%2F-1876245343"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>

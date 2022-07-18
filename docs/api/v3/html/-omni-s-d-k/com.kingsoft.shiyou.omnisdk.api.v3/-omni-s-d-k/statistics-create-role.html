@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>statisticsCreateRole</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>OmniSDK</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="OmniSDK::com.kingsoft.shiyou.omnisdk.api.v3/OmniSDK/statisticsCreateRole/#kotlin.String/PointingToDeclaration//-1876245343">
+  <div class="breadcrumbs"><a href="../../../index.html">OmniSDK</a><span class="delimiter">/</span><a href="../index.html">com.kingsoft.shiyou.omnisdk.api.v3</a><span class="delimiter">/</span><a href="index.html">OmniSDK</a><span class="delimiter">/</span><a href="statistics-create-role.html">statisticsCreateRole</a></div>
+  <div class="cover ">
+    <h1 class="cover"><span>statistics</span><wbr></wbr><span>Create</span><wbr></wbr><span><span>Role</span></span></h1>
+  </div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="statistics-create-role.html"><span class="token function">statisticsCreateRole</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">roleInfoJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">创建角色时调用（必接）</p><h2 class=""> 创建角色时调用</h2><ul><li><p class="paragraph">必接</p></li></ul><h3 class=""> 描述</h3><ul><li><p class="paragraph">所有必须字段不能为空，否则会导致统计不完全，部分渠道审核无法通过。</p></li><li><p class="paragraph">请严格按照规定的字段长度进行设置，否则可能导致游戏崩溃异常。</p></li><li><p class="paragraph">数据统计接口的所有 <a href="statistics-create-role.html">roleInfoJson</a> 参数结构一样。</p></li></ul><h3 class=""><a href="statistics-create-role.html">roleInfoJson</a> 结构体</h3><style>
+table th:first-of-type{width:20%}
+table th:nth-of-type(2){width:10%}
+table th:nth-of-type(3){width:10%}
+table th:nth-of-type(4){width:55%}
+table th:nth-of-type(5){width:5%}
+</style><table><thead><tr><th></th><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>参数</strong></td><td><strong>类型</strong></td><td><strong>长度限制</strong></td><td><strong>描述</strong></td><td><strong>必须</strong></td></tr><tr><td>uid</td><td>String</td><td>128</td><td>用户ID，游戏必须使用登录时 SDK 返回的 cpUid</td><td>Y</td></tr><tr><td>roleId</td><td>String</td><td>32</td><td>角色ID</td><td>Y</td></tr><tr><td>roleName</td><td>String</td><td>64</td><td>游戏必须传入真实的角色名，建议中文</td><td>Y</td></tr><tr><td>roleType</td><td>String</td><td>20</td><td>角色类型，必须使用真实的角色类型，如法师，道士，战士，建议中文</td><td>N</td></tr><tr><td>roleCreateTime</td><td>String</td><td>10</td><td>角色创建时间（Unix时间戳，单位秒)，如：1461722392 (UC渠道要求必传真实值，否则无法通过审核)</td><td>Y</td></tr><tr><td>roleLevel</td><td>String</td><td>32</td><td>角色等级</td><td>Y</td></tr><tr><td>roleVipLevel</td><td>String</td><td>32</td><td>角色VIP等级</td><td>N</td></tr><tr><td>serverId</td><td>String</td><td>32</td><td>服ID：必须为纯数字，且不能超过2147483647（应用宝渠道要求）</td><td>Y</td></tr><tr><td>zoneId</td><td>String</td><td>32</td><td>区ID</td><td>Y</td></tr><tr><td>serverName</td><td>String</td><td>64</td><td>游戏必须传入真实的游戏服名称，建议中文</td><td>Y</td></tr><tr><td>zoneName</td><td>String</td><td>32</td><td>游戏大区名称：要与界面显示名称一致，如：界面显示（一区 桃园结义)，zoneName也必须传（一区 桃园结义）(UC渠道要求必传真实值，否则无法通过审核)</td><td>Y</td></tr><tr><td>partyName</td><td>String</td><td>32</td><td>公会名</td><td>N</td></tr><tr><td>gender</td><td>String</td><td>1</td><td>角色性别：m-男，f-女</td><td>Y</td></tr><tr><td>balance</td><td>String</td><td>128</td><td>角色账户余额</td><td>Y</td></tr><tr><td>ageInGame</td><td>String</td><td>64</td><td>角色游戏年龄（单位：天）</td><td>N</td></tr><tr><td>accountAgeInGame</td><td>String</td><td>64</td><td>账号游戏年龄（单位：天）</td><td>N</td></tr><tr><td>roleFigure</td><td>String</td><td>32</td><td>体型（比如正太、萝莉、大叔、御姐等）</td><td>N</td></tr><tr><td>ext</td><td>String</td><td>1024</td><td>扩展字段</td><td>N</td></tr></tbody></table><h3 class=""><a href="statistics-create-role.html">roleInfoJson</a> 示例</h3><div class="sample-container"><pre><code class="block lang-json" theme="idea">{<br>  &quot;accountAgeInGame&quot;: &quot;&quot;,<br>  &quot;ageInGame&quot;: &quot;&quot;,<br>  &quot;balance&quot;: &quot;&quot;,<br>  &quot;ext&quot;: &quot;OmniSDKTesting&quot;,<br>  &quot;gender&quot;: &quot;&quot;,<br>  &quot;partyName&quot;: &quot;&quot;,<br>  &quot;roleCreateTime&quot;: &quot;&quot;,<br>  &quot;roleFigure&quot;: &quot;&quot;,<br>  &quot;roleId&quot;: &quot;rid123456789&quot;,<br>  &quot;roleLevel&quot;: &quot;&quot;,<br>  &quot;roleName&quot;: &quot;Tester&quot;,<br>  &quot;roleType&quot;: &quot;&quot;,<br>  &quot;roleVipLevel&quot;: &quot;&quot;,<br>  &quot;serverId&quot;: &quot;&quot;,<br>  &quot;serverName&quot;: &quot;&quot;,<br>  &quot;uid&quot;: &quot;4399__2935579818&quot;,<br>  &quot;zoneId&quot;: &quot;&quot;,<br>  &quot;zoneName&quot;: &quot;&quot;<br> }</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><h2 class="">See also</h2><div data-togglable="See also"><div class="table" data-togglable="See also"><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>Statistics</span><wbr></wbr><span>Role</span><wbr></wbr><span><span>Info</span></span></div></span></div><div><div class="title"><div data-togglable="See also"></div></div></div></div></div></div></div></div></div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>

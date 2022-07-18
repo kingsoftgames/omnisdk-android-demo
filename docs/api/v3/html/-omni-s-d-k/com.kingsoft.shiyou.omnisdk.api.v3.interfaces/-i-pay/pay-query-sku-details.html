@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>payQuerySkuDetails</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>OmniSDK</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="OmniSDK::com.kingsoft.shiyou.omnisdk.api.v3.interfaces/IPay/payQuerySkuDetails/#android.app.Activity?#kotlin.String/PointingToDeclaration//-1876245343">
+  <div class="breadcrumbs"><a href="../../../index.html">OmniSDK</a><span class="delimiter">/</span><a href="../index.html">com.kingsoft.shiyou.omnisdk.api.v3.interfaces</a><span class="delimiter">/</span><a href="index.html">IPay</a><span class="delimiter">/</span><a href="pay-query-sku-details.html">payQuerySkuDetails</a></div>
+  <div class="cover ">
+    <h1 class="cover"><span>pay</span><wbr></wbr><span>Query</span><wbr></wbr><span>Sku</span><wbr></wbr><span><span>Details</span></span></h1>
+  </div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="pay-query-sku-details.html"><span class="token function">payQuerySkuDetails</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/app/Activity.html">Activity</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">queryJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">获取商品的本地化信息</p><h2 class=""> 获取商品的本地化信息</h2><h3 class=""> 描述</h3><ul><li><p class="paragraph">通常海外发行使用</p></li><li><p class="paragraph">一次只能查询同一类型的商品ID列表</p></li><li><p class="paragraph">仅部分支付渠道支持提供本地化信息</p></li></ul><h3 class=""><a href="pay-query-sku-details.html">queryJson</a> 结构体</h3><div class="sample-container"><pre><code class="block lang-json" theme="idea">{<br>  &quot;skuType&quot;: 0,<br>  &quot;skusList&quot;: [<br>    &quot;productId001&quot;,<br>    &quot;productId002&quot;,<br>    &quot;productId003&quot;<br>  ]<br>}</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><h4 class="">Since</h4><p class="paragraph">3.0 GooglePlay、transsion(传音)、honor(荣耀)</p><h2 class="">See also</h2><div data-togglable="See also"><div class="table" data-togglable="See also"><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><a href="../../com.kingsoft.shiyou.omnisdk.api.v3.entity/-pay-sku-details-info/index.html"><span>com.</span><wbr></wbr><span>kingsoft.</span><wbr></wbr><span>shiyou.</span><wbr></wbr><span>omnisdk.</span><wbr></wbr><span>api.</span><wbr></wbr><span>v3.</span><wbr></wbr><span>entity.</span><wbr></wbr><span>Pay</span><wbr></wbr><span>Sku</span><wbr></wbr><span>Details</span><wbr></wbr><span><span>Info</span></span></a></div></span></div><div><div class="title"><div data-togglable="See also"></div></div></div></div></div></div></div><h2 class="">Parameters</h2><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span><span>activity</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">上下文</p></div></div></div></div></div><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>sku</span><wbr></wbr><span><span>Type</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Int，商品类型：<code class="lang-kotlin">0</code> - 普通内购；<code class="lang-kotlin">1</code> - 订阅类型</p></div></div></div></div></div><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>skus</span><wbr></wbr><span><span>List</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">商品ID列表</p></div></div></div></div></div></div></div></div></div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>

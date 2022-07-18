@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>statisticsPayFinishWithGameShippedSuccessfully</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>OmniSDK</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="OmniSDK::com.kingsoft.shiyou.omnisdk.api.v3/OmniSDK/statisticsPayFinishWithGameShippedSuccessfully/#kotlin.String/PointingToDeclaration//-1876245343">
+  <div class="breadcrumbs"><a href="../../../index.html">OmniSDK</a><span class="delimiter">/</span><a href="../index.html">com.kingsoft.shiyou.omnisdk.api.v3</a><span class="delimiter">/</span><a href="index.html">OmniSDK</a><span class="delimiter">/</span><a href="statistics-pay-finish-with-game-shipped-successfully.html">statisticsPayFinishWithGameShippedSuccessfully</a></div>
+  <div class="cover ">
+    <h1 class="cover"><span>statistics</span><wbr></wbr><span>Pay</span><wbr></wbr><span>Finish</span><wbr></wbr><span>With</span><wbr></wbr><span>Game</span><wbr></wbr><span>Shipped</span><wbr></wbr><span><span>Successfully</span></span></h1>
+  </div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="statistics-pay-finish-with-game-shipped-successfully.html"><span class="token function">statisticsPayFinishWithGameShippedSuccessfully</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">payInfoJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">跟踪玩家的支付信息，支付成功后，游戏成功发放道具后调用（必接）</p><h3 class=""><a href="statistics-pay-finish-with-game-shipped-successfully.html">payInfoJson</a> 结构体</h3><style>
+table th:first-of-type{width:15%}
+table th:nth-of-type(2){width:10%}
+table th:nth-of-type(3){width:10%}
+table th:nth-of-type(4){width:50%}
+table th:nth-of-type(5){width:15%}
+</style><table><thead><tr><th></th><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>字段</strong></td><td><strong>类型</strong></td><td><strong>长度</strong></td><td><strong>描述</strong></td><td><strong>必须</strong></td></tr><tr><td>uid</td><td>String</td><td>128</td><td>用户ID，游戏必须使用登录时 SDK 返回的 cpUid</td><td>Y</td></tr><tr><td>gameTradeNo</td><td>String</td><td>64</td><td>游戏订单ID，不可重复的字符串</td><td>Y</td></tr><tr><td>productId</td><td>String</td><td>64</td><td>商品ID，与所有后台商品ID保持一致，否则渠道无法拉起支付</td><td>Y</td></tr><tr><td>productName</td><td>String</td><td>64</td><td>商品名称；不能包含特殊字符，包括 # &quot; & / ? $ ^ *:) \ < , = 回车 换行，否则部分渠道无法拉起支付</td><td>Y</td></tr><tr><td>productDesc</td><td>String</td><td>128</td><td>商品描述；不能包含特殊字符，包括 # &quot; & / ? $ ^ *:) \ < , = 回车 换行，否则部分渠道无法拉起支付</td><td>N</td></tr><tr><td>productUnit</td><td>String</td><td>64</td><td>商品单位，例如元宝</td><td>Y</td></tr><tr><td>productUnitPrice</td><td>String</td><td>10</td><td>商品单价；单位：元、美元，比如9.99美元，0.99港币等</td><td>N</td></tr><tr><td>productQuantity</td><td>String</td><td>10</td><td>产品数量，例如购买 60 元宝则传 60</td><td>Y</td></tr><tr><td>totalAmount</td><td>String</td><td>10</td><td>商品总金额，单位元</td><td>Y</td></tr><tr><td>payAmount</td><td>String</td><td>10</td><td>实际支付总额；单位：元、美元</td><td>Y</td></tr><tr><td>currencyName</td><td>String</td><td>64</td><td>实际支付的国际标准货币代码，比如CNY(人民币)/USD(美元)</td><td>Y</td></tr><tr><td>roleId</td><td>String</td><td>32</td><td>角色ID</td><td>Y</td></tr><tr><td>roleName</td><td>String</td><td>32</td><td>角色名称</td><td>国内-Y，海外-N</td></tr><tr><td>roleLevel</td><td>String</td><td>32</td><td>角色等级</td><td>国内-Y，海外-N</td></tr><tr><td>roleVipLevel</td><td>String</td><td>32</td><td>角色的VIP等级</td><td>国内-Y，海外-N</td></tr><tr><td>serverId</td><td>String</td><td>32</td><td>服ID：必须为纯数字，且不能超过2147483647（应用宝渠道要求）</td><td>Y</td></tr><tr><td>zoneId</td><td>String</td><td>32</td><td>区ID</td><td>国内-Y，海外-N</td></tr><tr><td>partyName</td><td>String</td><td>32</td><td>帮会名称</td><td>Y</td></tr><tr><td>paymentTypeName</td><td>String</td><td>128</td><td>支付渠道名 支付类型，例如支付宝(alipay)，银联(unionpay)，微信支付（weixinpay）,易宝支付（yeepay），未知渠道(unknown) paymentType不能填写：FREE（FREE不统计付费）</td><td>Y</td></tr><tr><td>gameCallbackUrl</td><td>String</td><td>128</td><td>支付回调地址，如果为空字符串，则使用后台配置的回调地址</td><td>Y</td></tr><tr><td>virtualCurrencyBalance</td><td>String</td><td>32</td><td>虚拟货币余额，需要此字段的渠道：快发、小米、VIVO</td><td>Y</td></tr><tr><td>additionalParams</td><td>String</td><td>-</td><td>透传参数</td><td>Y</td></tr><tr><td>extJson</td><td>String</td><td>2000</td><td>扩展参数，JSON 格式；无传空字符串</td><td>Y</td></tr></tbody></table><h2 class="">Parameters</h2><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>pay</span><wbr></wbr><span>Info</span><wbr></wbr><span><span>Json</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">支付信息</p></div></div></div></div></div></div></div></div></div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>getUserInfo</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script src="https://unpkg.com/kotlin-playground@1"></script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>OmniSDK</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="OmniSDK::com.kingsoft.shiyou.omnisdk.api.v3/OmniSDK/getUserInfo/#/PointingToDeclaration//-1876245343">
+  <div class="breadcrumbs"><a href="../../../index.html">OmniSDK</a><span class="delimiter">/</span><a href="../index.html">com.kingsoft.shiyou.omnisdk.api.v3</a><span class="delimiter">/</span><a href="index.html">OmniSDK</a><span class="delimiter">/</span><a href="get-user-info.html">getUserInfo</a></div>
+  <div class="cover ">
+    <h1 class="cover"><span>get</span><wbr></wbr><span>User</span><wbr></wbr><span><span>Info</span></span></h1>
+  </div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="get-user-info.html"><span class="token function">getUserInfo</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">获取用户信息</p><h2 class=""> 获取用户信息</h2><p class="paragraph">请在 <a href="account-login.html">accountLogin</a> 登录成功后调用，未登录成功前返回空。</p><h3 class=""> 用户信息 UserInfoJson 结构体</h3><style>
+table th:first-of-type{width:20%}
+table th:nth-of-type(2){width:80%}
+</style><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>名称</strong></td><td><strong>描述</strong></td></tr><tr><td>cpUid</td><td>OmniSDK 返回给游戏的账号ID</td></tr><tr><td>token</td><td>OmniSDK 返回给游戏的token，用于静默登录</td></tr><tr><td>accountType</td><td>登录的账号类型：AccountType；</br> 游客绑定社交帐号后显示为该社交帐号的类型。</td></tr><tr><td>userName</td><td>用户名：渠道可能返回空字符串</td></tr><tr><td>certification</td><td>（可能为空字符串）实名制及是否成年状态：<code class="org.jetbrains.dokka.pages.commenttable@3b1349dd lang-kotlin">-1</code>：渠道实现防沉迷；<code class="org.jetbrains.dokka.pages.commenttable@3b1349dd lang-kotlin">0</code>：未实名制；<code class="org.jetbrains.dokka.pages.commenttable@3b1349dd lang-kotlin">1</code>：未成年；<code class="org.jetbrains.dokka.pages.commenttable@3b1349dd lang-kotlin">2</code>：已成年；<code class="org.jetbrains.dokka.pages.commenttable@3b1349dd lang-kotlin">其他值</code>：该应用及渠道无实名信息。</td></tr><tr><td>isGuest</td><td>是否为游客账号</td></tr><tr><td>verifySign</td><td>海外：无，不需要；</br> 国内：账号的验证Sign值；安全上禁止本地存储。</td></tr><tr><td>verifyTimestamp</td><td>海外：无，不需要；</br> 国内：Sign值的Unix时间戳，单位为秒；安全上禁止本地存储。</td></tr><tr><td>ext</td><td>扩展参数</td></tr></tbody></table><h4 class="">Return</h4><p class="paragraph">null 或 UserInfoJson</p><h2 class="">Samples</h2><div class="sample-container"><pre><code class="runnablesample monospace block lang-kotlin" theme="idea">import android.app.Activity
+import android.content.Context
+import com.kingsoft.shiyou.omnisdk.api.v3.OmniSDK
+import com.kingsoft.shiyou.omnisdk.api.v3.callback.*
+import com.kingsoft.shiyou.omnisdk.api.v3.entity.*
+import com.kingsoft.shiyou.omnisdk.api.v3.interfaces.*
+import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils
+import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils.toJson
+fun main() { 
+   //sampleStart 
+   // 代码仅做参考，请根据需求按接口文档使用
+
+// java
+String json = OmniSDK.getInstance().getUserInfo();
+if (json != null) {
+    UserInfo userInfo = OmniUtils.parseUserInfo(json);
+} else {
+    // empty
+} 
+   //sampleEnd
+}</code></pre></div><h2 class="">See also</h2><div data-togglable="See also"><div class="table" data-togglable="See also"><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>User</span><wbr></wbr><span><span>Info</span></span></div></span></div><div><div class="title"><div data-togglable="See also"></div></div></div></div></div></div></div></div></div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>

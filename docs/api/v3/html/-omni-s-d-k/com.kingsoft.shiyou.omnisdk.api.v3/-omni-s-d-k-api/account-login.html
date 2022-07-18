@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>accountLogin</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script src="https://unpkg.com/kotlin-playground@1"></script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>OmniSDK</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="OmniSDK::com.kingsoft.shiyou.omnisdk.api.v3/OmniSDKApi/accountLogin/#android.app.Activity#kotlin.String/PointingToDeclaration//-1876245343">
+  <div class="breadcrumbs"><a href="../../../index.html">OmniSDK</a><span class="delimiter">/</span><a href="../index.html">com.kingsoft.shiyou.omnisdk.api.v3</a><span class="delimiter">/</span><a href="index.html">OmniSDKApi</a><span class="delimiter">/</span><a href="account-login.html">accountLogin</a></div>
+  <div class="cover ">
+    <h1 class="cover"><span>account</span><wbr></wbr><span><span>Login</span></span></h1>
+  </div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="account-login.html"><span class="token function">accountLogin</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/app/Activity.html">Activity</a><span class="token punctuation">, </span></span><span class="parameter ">accountType<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">登录</p><h2 class=""> 登录</h2><h3 class=""> 描述</h3><ul><li><p class="paragraph">账号登录，分为默认与自定义UI界面两种方式。</p></li><li><p class="paragraph"><strong><i>海外发行</i></strong>：<strong>游戏无账号功能时</strong>，需要提前调用登录接口，并通过游客类型账号进行静默注册登录。</p></li></ul><h3 class=""> 账号类型</h3><ul><li><p class="paragraph">通过查看 AccountType 确认账号类型的数值。</p></li><li><p class="paragraph"><code class="lang-kotlin">应用宝渠道</code> 比较特殊，有两种传值方法，请往下阅读【应用宝渠道的指定账号登录】小节。</p></li></ul><h3 class=""> 用户信息获取</h3><ul><li><p class="paragraph">收到 <a href="../../com.kingsoft.shiyou.omnisdk.api.v3.callback/-account-notifier/on-login-success.html">AccountNotifier.onLoginSuccess</a> 登录成功回调事件后，通过 <a href="get-user-info.html">getUserInfo</a> 获取用户信息。</p></li></ul><h3 class=""> UI 类型</h3><ul><li><p class="paragraph"><code class="lang-kotlin">0</code>，表示使用 OmniSDK 提供的默认登录UI界面及相关账号处理逻辑。</p></li><li><p class="paragraph"><code class="lang-kotlin">非0</code>，表示游戏自定义登录UI界面，通过指定账号类型进行登录，并自己处理账号逻辑、UI显示逻辑。</p></li></ul><h3 class=""> 接入注意事项</h3><ul><li><p class="paragraph">无论项目采用何种方式接入登录，<strong>重新初始化时必须调用一次 OmniSDK 的登录接口</strong>。</p></li><li><p class="paragraph">游戏调用 OmniSDK 登录API 后，要增加重复点击“锁屏”机制：定时解除“锁屏”或在时限内收到结果回调立即解除“锁屏”，防止在统计登录转化率数据时，重复点击事件被统计造成数据过低。</p></li></ul><h3 class=""> 静默登录说明</h3><ol><li><p class="paragraph">项目可以保存用户信息，但是不能以此为凭证来判断是否已登录。</p></li><li><p class="paragraph"><strong>重新初始化时必须调用一次 OmniSDK 的登录接口，必须与服务器通信验证后才算登录。</strong></p></li><li><p class="paragraph">用户已登录并且未登出，下次登录时，如果是同一账号类型，将进行静默登录（token有效期内）。</p></li><li><p class="paragraph">与上次登录的账号类型不同时，将是一次新登录。</p></li><li><p class="paragraph">自定义账号UI界面时，建议根据上次用户信息返回的账号类型（可保存），在下次进行登录时显示“上次登录账号”或直接静默登录，提供更好的用户体验。</p></li><li><p class="paragraph">自定义账号UI界面时，需要处理静默登录失败的逻辑，显示是登录失败，即重新弹出登录界面。</p></li></ol><h3 class=""> 自定义登录UI界面的注意事项</h3><ul><li><p class="paragraph">自定义方式游戏必须先调用接口 <a href="get-account-channel-mode.html">getAccountChannelMode</a> 获取账号模式判断渠道对帐号的显示要求，并额外保存相关信息、或逻辑处理。</p></li><li><p class="paragraph">游客账号处理：</p></li><ul><li><p class="paragraph">接入游客账号类型时，需要实现 <strong>账号绑定</strong> 逻辑，防止用户卸载重装后数据丢失。</p></li><li><p class="paragraph">接入游客账号类型时，需要引导用户主动绑定账号，防止数据丢失，比如充值、高级模式等场景。</p></li></ul></ul><h3 class=""> 切换账号实现</h3><ul><li><p class="paragraph">指非渠道自身账号界面（渠道自身控制），游戏界面提供切换账号入口。</p></li><li><p class="paragraph">v3 开始原来的 switch 接口废弃；</p></li><li><p class="paragraph">游戏可以通过 <a href="account-logout.html">accountLogout</a>、<a href="account-login.html">accountLogin</a> 逻辑实现自定义切换账号功能。</p></li><li><p class="paragraph">参考实现逻辑：</p></li><ol><li><p class="paragraph">用户点击账号切换按钮弹出可切换的账号界面，此时不做任何账号操作（即用户取消时无任何操作）；</p></li><li><p class="paragraph">用户选中并点击切换的账号类型，此时执行 <a href="account-logout.html">accountLogout</a> 并在收到登出结果回调后执行 <a href="account-login.html">accountLogin</a>，即完成账号切换。</p></li></ol></ul><h3 class=""> 应用宝渠道的指定账号登录</h3><h4 class=""> 指定账号说明</h4><ol><li><p class="paragraph">应用宝渠道允许游戏通过直接指定渠道内的QQ、微信类型等，直接通过进行登录，无需通过渠道登录界面再等用户选择。</p></li><li><p class="paragraph">有点类似 OmniSDK 的账号UI界面自定义，游戏登录界面的QQ、微信按钮点击后直接跳转到应用宝渠道的对应授权界面，无需打开应用宝渠道的登录界面。</p></li></ol><h4 class=""> 传值说明</h4><ol><li><p class="paragraph">如果不需要指定应用宝渠道内的账号，即直接调起渠道登录界面，则直接传 AccountType.CHANNEL 的值就行。</p></li><li><p class="paragraph">如果需要通过指定应用宝渠道内的账号直接登录，需要按规定的 <code class="lang-kotlin">JSON</code> 格式传参</p></li><li><p class="paragraph">参数定义：</p></li><ul><li><p class="paragraph">key：<code class="lang-kotlin">channelAccountType</code>。</p></li><li><p class="paragraph">value：<code class="lang-kotlin">1</code> 代表QQ，<code class="lang-kotlin">2</code> 代表微信。</p></li></ul></ol><h4 class=""> 应用宝指定账号登录 <code class="lang-kotlin">JSON</code> 参数规范</h4><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">{<br>  &quot;accountType&quot;: &quot;-1&quot;,<br>  &quot;channelAccountType&quot;:&quot;1|2&quot;<br>}</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><h2 class="">Samples</h2><div class="sample-container"><pre><code class="runnablesample monospace block lang-kotlin" theme="idea">import android.app.Activity
+import android.content.Context
+import com.kingsoft.shiyou.omnisdk.api.v3.OmniSDK
+import com.kingsoft.shiyou.omnisdk.api.v3.callback.*
+import com.kingsoft.shiyou.omnisdk.api.v3.entity.*
+import com.kingsoft.shiyou.omnisdk.api.v3.interfaces.*
+import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils
+import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils.toJson
+fun main() { 
+   //sampleStart 
+   // 代码仅做参考，请根据需求按接口文档使用
+
+// java
+// 构建登录请求数据Map
+Map&lt;String, Object&gt; loginParams = new HashMap&lt;&gt;();
+loginParams.put(OmniConstant.accountType, AccountType.NONE.getId());
+
+// 调用SDK登录接口
+OmniSDK.getInstance().login(activity, loginParams, new LoginCallback() {
+
+    @Override
+    public void onCancel() {
+        // 游戏处理回调结果
+    }
+
+    @Override
+    public void onFailure(@NonNull Pair&lt;Integer, String&gt; responseCode) {
+        // 游戏处理回调结果
+    }
+
+    @Override
+    public void onSuccess() {
+        // 游戏处理回调结果
+    }
+}); 
+   //sampleEnd
+}</code></pre></div><h2 class="">Parameters</h2><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span><span>activity</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">上下文</p></div></div></div></div></div><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>account</span><wbr></wbr><span><span>Type</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">账号类型 AccountType</p></div></div></div></div></div></div></div></div></div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>socialShare</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script src="https://unpkg.com/kotlin-playground@1"></script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>OmniSDK</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="OmniSDK::com.kingsoft.shiyou.omnisdk.api.v3/OmniSDK/socialShare/#android.app.Activity#kotlin.String/PointingToDeclaration//-1876245343">
+  <div class="breadcrumbs"><a href="../../../index.html">OmniSDK</a><span class="delimiter">/</span><a href="../index.html">com.kingsoft.shiyou.omnisdk.api.v3</a><span class="delimiter">/</span><a href="index.html">OmniSDK</a><span class="delimiter">/</span><a href="social-share.html">socialShare</a></div>
+  <div class="cover ">
+    <h1 class="cover"><span>social</span><wbr></wbr><span><span>Share</span></span></h1>
+  </div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":omniAPI:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="social-share.html"><span class="token function">socialShare</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/app/Activity.html">Activity</a><span class="token punctuation">, </span></span><span class="parameter ">shareJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">分享</p><h2 class=""> 分享</h2><h3 class=""> 描述</h3><ul><li><p class="paragraph">各分享平台，对分享方式、分享内容、分享类型等都有限制。</p></li><li><p class="paragraph">比如图片分享，部分平台允许通过其SDK带上文字描述、网页链接等；部分平台完全禁止，或只允许用户在拉起的分享界面主动编辑。</p></li><li><p class="paragraph">比如链接分享，部分平台会主动解析链接，让链接预展示；部分平台没有。</p></li></ul><h3 class=""> 分享方式</h3><ul><li><p class="paragraph">单个分享，即直接调起指定平台进行分享。</p></li><li><p class="paragraph">多个分享，即使用 OmniSDK 提供的分享弹窗UI界面，经过用户二次选择后分享到指定平台。</p></li></ul><h3 class=""> 图片分享</h3><ul><li><p class="paragraph">网络图片：</p></li><ol><li><p class="paragraph">需要游戏先申请成功存储权限；</p></li><li><p class="paragraph">可下载访问的有效图片链接。</p></li></ol><li><p class="paragraph">本地图片：</p></li><ol><li><p class="paragraph">需要游戏先申请成功存储权限；</p></li><li><p class="paragraph">可访问的本地图片uri地址；</p></li><li><p class="paragraph">通常使用应用私有存储目录：activity.getExternalFilesDir(null).getPath()，如需要其他存储目录请按 <a href="https://developer.android.com/reference/androidx/core/content/FileProvider">FileProvider</a> 官方说明配置和适配不同手机的权限申请（不同厂商会细化权限），否则 Android 高版本系统文件访问受限会导致直接崩溃。</p></li><li><p class="paragraph">本地图片地址拼接示例：imageUri = activity.getExternalFilesDir(null).getPath() + &quot;/{local_image}&quot;</p></li></ol><li><p class="paragraph"><strike>截图：</strike><strike><strong>废弃</strong></strike><strike>。</strike>经测试，部分引擎或引擎版本，使用 Android 原生截图方法时，只能截到空白屏，建议直接使用引擎提供的截图方法，转成本地图片分享方式。</p></li></ul><h3 class=""><a href="social-share.html">shareJson</a> 数据结构体</h3><style>
+table th:first-of-type{width:15%}
+table th:nth-of-type(2){width:15%}
+table th:nth-of-type(3){width:45%}
+table th:nth-of-type(4){width:25%}
+</style><table><thead><tr><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>字段</strong></td><td><strong>声明</strong></td><td><strong>描述</strong></td><td><strong>范围</strong></td></tr><tr><td>platform</td><td>分享平台</td><td>传一个时为单个分享，例：&quot;facebook&quot;；</br> 传多个时为多个分享，例：&quot;facebook,vk,system&quot;。</td><td>必传</td></tr><tr><td>share_type</td><td>分享类型</td><td><code class="org.jetbrains.dokka.pages.commenttable@3b1349dd lang-kotlin">0</code> - 链接或纯文本分享 </br><code class="org.jetbrains.dokka.pages.commenttable@3b1349dd lang-kotlin">1</code> - 群组分享，仅部分平台支持 </br><code class="org.jetbrains.dokka.pages.commenttable@3b1349dd lang-kotlin">2</code> - 图片分享</td><td>必传</td></tr><tr><td>image_type</td><td>图片类型</td><td><code class="org.jetbrains.dokka.pages.commenttable@3b1349dd lang-kotlin">0</code> - link 分享，无图片 </br><code class="org.jetbrains.dokka.pages.commenttable@3b1349dd lang-kotlin">1</code> - 网络图片 </br><code class="org.jetbrains.dokka.pages.commenttable@3b1349dd lang-kotlin">2</code> - 本地图片uri </br><code class="org.jetbrains.dokka.pages.commenttable@3b1349dd strikethrough lang-kotlin"><strike>3</strike></code><strike> - 截图，废弃</strike></td><td>必传</td></tr><tr><td>title</td><td>分享标题</td><td>分享标题，建议带上短链接</td><td>全平台，各平台有字数限制</td></tr><tr><td>content</td><td>分享文本</td><td>分享文本，建议描述与标题一样</td><td>部分平台有效，平台有字数限制</td></tr><tr><td>link</td><td>网页链接</td><td>网页链接，建议使用短链接</td><td>可选</td></tr><tr><td>image_uri</td><td>图片链接</td><td>图片链接，web-url或 local-uri，与 imageType 匹配</td><td>可选</td></tr></tbody></table><h3 class="">platform 分享平台标识</h3><table><thead><tr><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>字段</strong></td><td><strong>依赖</strong></td><td><strong>平台</strong></td></tr><tr><td>system</td><td>无</td><td>拉起手机系统分享界面；其他指定平台如无或异常，也会用于补位。</td><td></td></tr><tr><td>facebook</td><td>facebook 插件</td><td>Facebook 社交平台</td><td></td></tr><tr><td>vk</td><td>VK 插件</td><td>VK 社交平台</td><td></td></tr><tr><td>line</td><td>Line 插件</td><td>Line 社交平台</td><td></td></tr><tr><td>指定应用包名</td><td>无</td><td>OmniSDK 会调用，该平台在系统分享界面里注册的分享方式声明，拉起平台分享界面。</td><td></td></tr></tbody></table><h3 class=""><a href="social-share.html">shareJson</a> 示例</h3><div class="sample-container"><pre><code class="block lang-json" theme="idea">{<br>  &quot;platform&quot;: &quot;facebook,system&quot;,<br>  &quot;share_type&quot;: 0,<br>  &quot;image_type&quot;: 0,<br>  &quot;image_uri&quot;: &quot;uri&quot;,<br>  &quot;title&quot;: &quot;OmniShare&quot;,<br>  &quot;content&quot;: &quot;content&quot;,<br>  &quot;url&quot;: &quot;https://developers.facebook.com/&quot;<br>}</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><h2 class="">Samples</h2><div class="sample-container"><pre><code class="runnablesample monospace block lang-kotlin" theme="idea">import android.app.Activity
+import android.content.Context
+import com.kingsoft.shiyou.omnisdk.api.v3.OmniSDK
+import com.kingsoft.shiyou.omnisdk.api.v3.callback.*
+import com.kingsoft.shiyou.omnisdk.api.v3.entity.*
+import com.kingsoft.shiyou.omnisdk.api.v3.interfaces.*
+import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils
+import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils.toJson
+fun main() { 
+   //sampleStart 
+   // 代码仅做参考，请根据需求按接口文档使用
+
+// java
+// 创建分享数据实体，注意分享类型 ShareType、图片类型 ShareImageType，注意参数正确
+ShareParam shareParam = new ShareParam(
+    ShareType.IMAGE,
+    &quot;title&quot;,
+    &quot;description&quot;,
+    &quot;link&quot;,
+    ShareImageType.LOCAL,
+    &quot;shareUri&quot;);
+
+// 调用分享接口
+OmniSDK.getInstance().share(activity, platform, shareParam, new ResponseCallback() {
+
+    @Override
+    public void onFailure(@NonNull Pair&lt;Integer, String&gt; responseCode) {
+        // 游戏处理回调结果
+    }
+
+    @Override
+    public void onSuccess() {
+        // 游戏处理回调结果
+    }
+}); 
+   //sampleEnd
+}</code></pre></div><h2 class="">See also</h2><div data-togglable="See also"><div class="table" data-togglable="See also"><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>Social</span><wbr></wbr><span><span>Share</span></span></div></span></div><div><div class="title"><div data-togglable="See also"></div></div></div></div></div></div></div><h2 class="">Parameters</h2><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span><span>activity</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">上下文</p></div></div></div></div></div><div class="table-row" data-filterable-current=":omniAPI:dokkaHtml/release" data-filterable-set=":omniAPI:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>share</span><wbr></wbr><span><span>Json</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">分享信息</p></div></div></div></div></div></div></div></div></div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>
