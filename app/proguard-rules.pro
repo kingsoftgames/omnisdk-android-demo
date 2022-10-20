@@ -19,3 +19,7 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-dontwarn com.kingsoft.shiyou.omnisdk.demo.common.**
+-keep class com.kingsoft.shiyou.omnisdk.demo.common.** {*;}
+-dontwarn com.kingsoft.shiyou.omnisdk.demo.java.**
+-keep class com.kingsoft.shiyou.omnisdk.demo.java.** {*;}
