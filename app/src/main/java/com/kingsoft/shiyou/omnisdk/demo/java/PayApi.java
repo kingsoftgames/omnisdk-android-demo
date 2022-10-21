@@ -17,6 +17,7 @@ import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.IPayCallback;
 import com.kingsoft.shiyou.omnisdk.demo.common.utils.DemoLogger;
 
 import kotlin.Pair;
+import kotlin.jvm.Volatile;
 
 /**
  * Description: OmniSDK支付API接口代码示例Demo
@@ -47,6 +48,9 @@ public class PayApi implements IPayApi {
     private String mRoleLevel = "";
     private String mRoleVipLevel = "";
 
+    @Volatile
+    private Product productInPayProcess;
+
     public PayApi(Activity activity, IPayCallback payCallback) {
         this.appActivity = activity;
         this.callback = payCallback;
@@ -70,7 +74,7 @@ public class PayApi implements IPayApi {
                 callback.onSucceeded(order);
 
                 // 支付完成
-                OmniSDK.getInstance().onPayFinish(convert(order));
+                OmniSDK.getInstance().onPayFinish(convert(productInPayProcess, order));
             }
 
             @Override
@@ -122,7 +126,7 @@ public class PayApi implements IPayApi {
         String roleVipLevel = mRoleVipLevel;  // 游戏角色VIP等级（有则传值，没有则传空字符串""）
 
         // 创建支付商品数据实体，务必注意所有字符串类型的数据项禁止传`null`值，若无值统一传入空字符串""
-        Product product = new Product(
+        productInPayProcess = new Product(
                 skuType,
                 productId,
                 productName,
@@ -141,7 +145,7 @@ public class PayApi implements IPayApi {
                 roleVipLevel);
 
         // 调用支付接口进行支付
-        OmniSDK.getInstance().pay(appActivity, product);
+        OmniSDK.getInstance().pay(appActivity, productInPayProcess);
     }
 
     /* ****************************************************************************************** */

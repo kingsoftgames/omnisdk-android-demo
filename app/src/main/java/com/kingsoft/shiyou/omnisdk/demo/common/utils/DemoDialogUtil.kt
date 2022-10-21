@@ -73,6 +73,14 @@ object DemoDialogUtil {
         }.show()
     }
 
+    fun showDialogWithActivity(
+        activity: Activity,
+        title: String,
+        content: String
+    ): AlertDialog {
+        return showDialogWithContent(activity, title, content)
+    }
+
     fun showDialogWithView(
         activity: Activity,
         title: String?,

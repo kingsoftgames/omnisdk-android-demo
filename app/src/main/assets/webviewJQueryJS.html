@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>-->
+
+    <script type="text/javascript">
+$(function(){
+$('#someid').unbind("click").click(function(){
+if($(this).is(':checked')){
+
+setTimeout(function() {
+    alert("checked");
+},5000)
+
+}else{
+
+setTimeout(function() {
+var y=document.getElementById("header");
+    	y.innerHTML=name;
+    alert("not checked");
+},5000)
+
+}
+});
+});
+
+setTimeout(function() {
+    alert("首次打开延时弹窗");
+},5000)
+
+</script>
+
+</head>
+<body>
+
+</br>
+</br>
+<div id="divid"><input type="checkbox" id="someid">点击勾选或取消，延时5秒弹窗</div>
+
+</body>
+</html>

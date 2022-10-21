@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>OmniSDK WebDemo</title>
+    <style>
+       body{
+         width:100%;
+         background-color:#ECFFFF;
+       }
+       p{
+         font-size:2em;
+         color:#FF0000
+       }
+       h3{
+         font-size:2em;
+         color:#6651FF
+       }
+       label{
+         font-size:1.5em;
+       }
+       div{
+         padding:20px;
+         width:100%;
+         background-color:#99FFCC;
+       }
+       button{
+         font-size:1.5em;
+         width:500px;
+         height:50px
+       }
+    </style>
+
+    <script type="text/javascript">
+
+function getDeviceInfo() {
+    var data = window.syAndroid.getDeviceInfo();
+
+    alert(data)
+    setMessage(data)
+}
+
+function getChannelParams() {
+    var data = window.syAndroid.getChannelParams();
+
+    alert(data)
+    setMessage(data)
+}
+
+function getCpParams() {
+    var data = window.syAndroid.getCpParams();
+
+    alert(data)
+    setMessage(data)
+}
+
+function goBack() {
+    window.syAndroid.goBack();
+}
+function goForward() {
+    window.syAndroid.goForward();
+}
+function refresh() {
+    window.syAndroid.refresh();
+}
+function closeWeb() {
+    window.syAndroid.closeWeb();
+}
+
+function setOrientation() {
+    var obj = document.getElementById("orientation");
+    var index = obj.selectedIndex;
+    var text = obj.options[index].text;
+    var value = obj.options[index].value;
+    alert("切换至: " + text + "("+ parseInt(value) + ")")
+
+    // 调用Android端接口方法设置横竖屏模式
+    window.syAndroid.setOrientation(parseInt(value));
+}
+
+function copyContent() {
+    var obj = document.getElementById("copiedContentId");
+    window.syAndroid.toCopy(obj.value);
+}
+
+function share() {
+    var obj = document.getElementById("shareParamContentId");
+    var shareParam = obj.value
+    if (shareParam.length == 0) {
+      shareParam = "{\"platform\":\"facebook,system\",\"share_type\":0,\"title\":\"OmniShare\",\"content\":\"Game\",\"url\":\"https://developers.facebook.com/\",\"image_type\":0,\"image_uri\":\"\"}"
+    }
+    window.syAndroid.share(shareParam);
+}
+
+function startActivity1() {
+    var startActivityJson ={"intent":"alipayqr://platformapi/startapp?saId=10000007"}
+    var startActivityStr = JSON.stringify(startActivityJson);
+    window.syAndroid.startActivity(startActivityStr);
+}
+
+function startActivity2() {
+    var startActivityJson ={"intent":"#Intent;component=com.huya.nimo/com.huya.nimo.homepage.ui.activity.SplashActivity;end"}
+    var startActivityStr = JSON.stringify(startActivityJson);
+    window.syAndroid.startActivity(startActivityStr);
+}
+
+function saveContentToLocalDevice() {
+    var obj = document.getElementById("savedContentId");
+    window.localStorage.setItem("savedData",obj.value);
+    alert("存储成功");
+}
+
+function getContentFromLocalDevice() {
+    var content = window.localStorage.getItem("savedData");
+    alert("数据: " + content);
+}
+
+function getCurrentCookie(){
+  // 展现Cookie数据
+  alert(new Date().getTime() + " : " + document.cookie);
+}
+
+// 测试添加Cookie数据项
+/*
+function setCookie(){
+	var d = new Date();
+	d.setTime(d.getTime()+(10*24*60*60*1000));
+	var expires = "expires="+d.toGMTString();
+	document.cookie = "name=luxing; " + expires;
+	alert("already set cookie");
+}
+*/
+
+// 上传图片预览
+function uploadFile(obj) {
+    var file = obj.files[0];
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      var img = document.getElementById("uploadedImageId");
+      img.src = e.target.result;
+    }
+    reader.readAsDataURL(file)
+}
+
+function callNativeMethod() {
+
+    var libraryNameObj = document.getElementById("jniLibraryNameId");
+    var libraryName = libraryNameObj.value
+
+    var methodNameObj = document.getElementById("jniMethodNameId");
+    var methodName = methodNameObj.value
+
+    var signObj = document.getElementById("jniSignId");
+    var sign = signObj.value
+    if (sign.length == 0) {
+      sign = ""
+    }
+
+    var methodParamObj = document.getElementById("jniMethodParamId");
+    var methodParam = methodParamObj.value
+
+    var callingResult = window.syAndroid.callNativeMethod(libraryName,methodName,sign,methodParam);
+    alert("callingResult: " + callingResult);
+}
+
+function setMessage(msg){
+   var displayMessageObj = document.getElementById("displayMessage");
+   displayMessageObj.innerHTML = msg
+}
+    </script>
+
+</head>
+
+<body>
+<p id="displayMessage">Hello Omni</p>
+
+</br>
+<div>
+    <h3>界面操作：</h3>
+
+    <button type="button" onclick="goBack()">后退</button>
+    </br>
+    </br>
+
+    <button type="button" onclick="goForward()">前进</button>
+    </br>
+    </br>
+
+    <button type="button" onclick="refresh()">刷新</button>
+    </br>
+    </br>
+
+    <button type="button" onclick="closeWeb()">关闭</button>
+    </br>
+    </br>
+</div>
+</br>
+
+</br>
+<div>
+    <h3>获取数据操作：</h3>
+
+    <button type="button" onclick="getDeviceInfo()">获取设备信息数据</button>
+    </br>
+    </br>
+
+    <button type="button" onclick="getChannelParams()">获取APP应用数据</button>
+    </br>
+    </br>
+
+    <button type="button" onclick="getCpParams()">获取游戏对接方自定义数据</button>
+    </br>
+    </br>
+
+    <button type="button" onclick="getCurrentCookie()">获取Cookie数据</button>
+    </br>
+    </br>
+
+</div>
+</br>
+
+
+</br>
+<div>
+    <h3>横竖屏操作：</h3>
+
+    <label for="orientation">选择要设置的屏幕方向：</label>
+    <select id="orientation" style="width:300px;height:50px;font-size:1.6em;">
+        <option value="1">横屏</option>
+        <option value="2">竖屏</option>
+        <option value="0">用户感应</option>
+        <option value="10">横屏可感应</option>
+        <option value="20">竖屏可感应</option>
+    </select>
+    <br/>
+    <br/>
+    <button type="button" onclick="setOrientation()">切换</button>
+</div>
+</br>
+
+</br>
+<div>
+    <h3>复制内容到Android剪切板：</h3>
+
+    <p>请输入需要配置的内容：<input id="copiedContentId" type="text" name="copiedContent"
+                         style="width:300px;height:40px;"/></p>
+    <button type="button" onclick="copyContent()">复制</button>
+</div>
+</br>
+
+</br>
+<div>
+    <h3>本地数据存储：</h3>
+
+    <p>请输入需要存储的数据：<input id="savedContentId" type="text" name="savedContent"
+                         style="width:300px;height:40px;"/></p>
+    <button type="button" onclick="saveContentToLocalDevice()">存储</button>
+    <br/><br/>
+    <button type="button" onclick="getContentFromLocalDevice()">获取</button>
+    <br/>
+</div>
+</br>
+
+</br>
+<div>
+    <h3>本地文件上传：</h3>
+    <input id="fileChooserId"
+           type="file"
+           style="width:800px;height:60px;font-size:1.6em;"
+           onchange="uploadFile(this)"
+           accept="image/*"/>
+    <br/><br/>
+    <img width="800px" height="400px" id="uploadedImageId"/><br/>
+</div>
+</br>
+
+</br>
+<div>
+    <h3>分享操作：</h3>
+    <code style="font-size:1.6em;">
+        举例:
+        {"platform":"facebook,system","share_type":0,"title":"OmniShare","content":"Game","url":"https://developers.facebook.com/","image_type":0,"image_uri":""}
+    </code>
+    <p>请输入分享数据：</p>
+    <input id="shareParamContentId" type="text" name="shareParamContent"
+           style="width:80%;height:40px;"/><br/><br/>
+    <button type="button" onclick="share()">分享</button>
+</div>
+</br>
+
+</br>
+<div>
+    <h3>调用JNI方法：</h3>
+
+    <b>请输入SO库名称：</b><input id="jniLibraryNameId" type="text"
+                           style="width:80%;height:40px;"/><br/><br/>
+
+    <b>请输入方法名称：</b><input id="jniMethodNameId" type="text"
+                          style="width:80%;height:40px;"/><br/><br/>
+
+    <b>请输入安全签名：</b><input id="jniSignId" type="text" style="width:80%;height:40px;"/><br/><br/>
+    <b>请输入方法参数数据：</b><input id="jniMethodParamId" type="text"
+                            style="width:80%;height:40px;"/><br/><br/>
+
+    <button type="button" onclick="callNativeMethod()">调用</button>
+</div>
+</br>
+
+
+<input type="button" value="startActivity-scheme支付宝" onclick="startActivity1()">
+</br>
+</br>
+<input type="button" value="startActivity-intent-nimoTV" onclick="startActivity2()">
+</br>
+</br>
+
+</body>
+</html>

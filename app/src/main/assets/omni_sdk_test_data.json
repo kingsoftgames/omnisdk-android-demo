@@ -1,0 +1,105 @@
+{
+  "AccountDemoView": {
+    "loginTypeEt": ""
+  },
+  "CreateGameRoleView": {
+    "roleIdEt": "rid123456789",
+    "roleNameEt": "Tester",
+    "roleLevelEt": "",
+    "roleTypeEt": "",
+    "roleVipLevelEt": "",
+    "roleFigureEt": "",
+    "roleCreateTimeEt": "",
+    "serverIdEt": "",
+    "serverNameEt": "",
+    "zoneIdEt": "",
+    "zoneNameEt": "",
+    "accountAgeInGameEt": "",
+    "ageInGameEt": "",
+    "balanceEt": "",
+    "genderEt": "",
+    "partyNameEt": "",
+    "extEt": "OmniSDKTesting"
+  },
+  "PayDemoView": {
+    "productIdEt": "1",
+    "productNameEt": "60钻石",
+    "productDescEt": "购买60钻石畅玩游戏",
+    "productPriceEt": "1.0",
+    "payAmountEt": "1.0",
+    "currencyEt": "CNY",
+    "serverIdEt": "1",
+    "roleIdEt": "123456",
+    "gameTradeNoEt": "",
+    "gameCallbackUrlEt": "https://api.omnisdk.com/pout/test/cp_notify_ok",
+    "extJsonEt": "{\"loc\":\"cn\"}",
+    "zoneIdEt": "1",
+    "roleNameEt": "Tester",
+    "roleLevelEt": "1",
+    "roleVipLevelEt": "1"
+  },
+  "SocialDemoView": {
+    "sharePlatformEt": "facebook",
+    "shareTitleEt": "",
+    "shareDescriptionEt": "",
+    "shareContentLinkUrlEt": "https://developers.facebook.com/",
+    "shareImageSourceUrlEt": "https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png",
+    "invitePlatformEt": "facebook",
+    "inviteDataEt": "{\"message\":\"Invitation From Omni\"}",
+    "getSocialInfoPlatformEt": "facebook",
+    "getFriendSocialInfoPlatformEt": ""
+  },
+  "AdDemoView": {
+    "bannerIdEt": "",
+    "interstitialIdEt": "",
+    "videoIdEt": ""
+  },
+  "DataMonitorDemoView": {
+    "payInfo": {
+      "additionalParams": "",
+      "currencyName": "CNY",
+      "customInfo": "",
+      "gameTradeNo": "gno123456789",
+      "partyName": "partyName",
+      "payAmount": 1.0,
+      "paymentTypeName": "alipay",
+      "platTradeNo": "pno123456789",
+      "productDesc": "",
+      "productId": "1",
+      "productName": "60钻石",
+      "productQuantity": 1,
+      "productUnit": "1",
+      "productUnitPrice": 1.0,
+      "roleId": "roleId",
+      "roleLevel": "",
+      "roleName": "",
+      "roleVipLevel": "",
+      "serverId": "s101",
+      "totalAmount": 1.0,
+      "uid": "uid123456789",
+      "virtualCurrencyBalance": "",
+      "zoneId": ""
+    },
+    "trackMissionIdEt": "",
+    "trackMissionNameEt": "mission impossible",
+    "trackMissionCustomParamsEt": "",
+    "trackConsumeAmountEt": "",
+    "trackConsumeVirtualCurrencyTypeEt": "",
+    "trackConsumeVirtualCurrencyAmountEt": "",
+    "trackConsumeItemNameEt": "",
+    "trackConsumeItemNumEt": "",
+    "trackConsumeItemTypeEt": "",
+    "trackEventIdEt": "",
+    "trackEventDescriptionEt": "",
+    "trackEventValueEt": "",
+    "trackEventBodyEt": ""
+  },
+  "OtherDemoView": {
+    "urlEt": "https://www.youku.com/",
+    "paramsEt": "{\"default_browser\":false,\"show_refresh\":false,\"show_share\":true,\"show_close\":true,\"show_prev\":true,\"show_next\":true,\"layout\":0,\"orientation\":0,\"share_param\":{\"platform\":\"facebook,system\",\"share_type\":0,\"title\":\"OmniShare\",\"content\":\"Game\",\"url\":\"https://developers.facebook.com/\",\"image_type\":0,\"image_uri\":\"\"},\"game_headers\":{\"h5\":true,\"appid\":198707,\"platform\":\"android\",\"heg\":175.55},\"title\":\"Omni Webview\",\"game_ext\":\"roleId=123456789\"}"
+  },
+  "SunitMethodDemoView": {
+    "rewardedEt": "{\"scene\":\"home\",\"subPortals\":[\"portal1\"]}",
+    "eventEt": "{\"eventId\":\"levelUp\",\"params\":{\"level\":5}}"
+  }
+}

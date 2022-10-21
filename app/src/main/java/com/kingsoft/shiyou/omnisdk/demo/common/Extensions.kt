@@ -4,6 +4,7 @@ import android.text.Html
 import com.kingsoft.shiyou.omnisdk.api.OmniSDK
 import com.kingsoft.shiyou.omnisdk.api.entity.Order
 import com.kingsoft.shiyou.omnisdk.api.entity.PayInfo
+import com.kingsoft.shiyou.omnisdk.api.entity.Product
 import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils.parseUserInfo
 
 internal fun String.html() =
@@ -13,24 +14,24 @@ internal fun String.html() =
         Html.fromHtml(this)
     }
 
-fun convert(order: Order): PayInfo {
+fun convert(product: Product, order: Order): PayInfo {
     return PayInfo(
-        parseUserInfo(OmniSDK.instance.getUserInfo()!!)!!.uid,
+        parseUserInfo(OmniSDK.instance.getUserInfo()!!)!!.cpUid,
+        product.productId,
+        product.productName,
+        product.productDesc,
         "",
-        "",
-        "",
-        "",
-        0.0,
-        0,
-        0.0,
-        0.0,
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
+        product.productPrice,
+        1,
+        product.payAmount,
+        product.payAmount,
+        product.currency,
+        product.roleId,
+        product.roleName ?: "",
+        product.roleLevel ?: "0",
+        product.roleVipLevel ?: "0",
+        product.serverId,
+        product.zoneId ?: "",
         "",
         "",
         "",

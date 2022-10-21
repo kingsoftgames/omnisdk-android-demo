@@ -98,9 +98,11 @@ class AppView {
     private fun initFunctionViews() =
         functionViews.apply {
             this.clear()
+            this[R.layout.jinshan_demo_view] = null
             this[R.layout.exit_demo_view] = null
             this[R.layout.account_demo_view] = null
             this[R.layout.pay_demo_view] = null
+            this[R.layout.permisson_demo_view] = null
             this[R.layout.data_monitor_demo_view] = null
             this[R.layout.social_demo_view] = null
             this[R.layout.other_demo_view] = null

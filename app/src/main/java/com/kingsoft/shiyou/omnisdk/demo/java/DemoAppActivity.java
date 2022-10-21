@@ -11,9 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.kingsoft.shiyou.omnisdk.api.OmniSDK;
 import com.kingsoft.shiyou.omnisdk.api.callback.InitNotifier;
+import com.kingsoft.shiyou.omnisdk.api.callback.PermissionCallback;
 import com.kingsoft.shiyou.omnisdk.demo.common.ApiManager;
+import com.kingsoft.shiyou.omnisdk.demo.common.utils.DemoDialogUtil;
 import com.kingsoft.shiyou.omnisdk.demo.common.utils.DemoLogger;
 import com.kingsoft.shiyou.omnisdk.demo.common.view.AppView;
+
+import java.util.List;
 
 /**
  * Description: 应用主Activity
@@ -226,6 +230,20 @@ public class DemoAppActivity extends AppCompatActivity {
                 this, requestCode,
                 permissions,
                 grantResults);
+
+        OmniSDK.getInstance().registerRequestPermissions(requestCode, permissions, grantResults, new PermissionCallback() {
+
+            @Override
+            public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
+                runOnUiThread(() -> DemoDialogUtil.INSTANCE.showDialogWithActivity(DemoAppActivity.this, "拒绝权限组", perms.toString()));
+
+            }
+
+            @Override
+            public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
+                runOnUiThread(() -> DemoDialogUtil.INSTANCE.showDialogWithActivity(DemoAppActivity.this, "同意权限组", perms.toString()));
+            }
+        });
 
         // CP自己的代码
     }
