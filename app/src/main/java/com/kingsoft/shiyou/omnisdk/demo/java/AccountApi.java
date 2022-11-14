@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 
 import com.kingsoft.shiyou.omnisdk.api.OmniSDK;
 import com.kingsoft.shiyou.omnisdk.api.callback.AccountNotifier;
-import com.kingsoft.shiyou.omnisdk.api.callback.SwitchAccountCallback;
 import com.kingsoft.shiyou.omnisdk.api.entity.OmniConstant;
 import com.kingsoft.shiyou.omnisdk.api.entity.UserInfo;
 import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils;
@@ -232,25 +231,6 @@ public class AccountApi implements IAccountApi {
      */
     @Deprecated
     public void switchAccount() {
-        Map<String, Object> switchParams = new HashMap<>();
-        switchParams.put(OmniConstant.accountType, mSwitchType);
-        OmniSDK.getInstance().switchAccount(appActivity, switchParams, new SwitchAccountCallback() {
-            @Override
-            public void onSuccess() {
-                String userJson = OmniSDK.getInstance().getUserInfo();
-                callback.onSwitchSucceeded(OmniUtils.toMap(userJson));
-            }
-
-            @Override
-            public void onFailure(Pair<Integer, String> responseCode) {
-                callback.onFailed(responseCode, responseCode);
-            }
-
-            @Override
-            public void onCancel() {
-                callback.onCancelled();
-            }
-        });
     }
 
     @Override
