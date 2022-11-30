@@ -33,7 +33,7 @@
     "serverIdEt": "1",
     "roleIdEt": "123456",
     "gameTradeNoEt": "",
-    "gameCallbackUrlEt": "https://api.omnisdk.com/pout/test/cp_notify_ok",
+    "gameCallbackUrlEt": "https://a2.xgsdk.dev.seayoo.com/mock/recharge/notify",
     "extJsonEt": "{\"loc\":\"cn\"}",
     "zoneIdEt": "1",
     "roleNameEt": "Tester",
