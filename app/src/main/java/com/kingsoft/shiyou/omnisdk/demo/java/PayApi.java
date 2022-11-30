@@ -4,6 +4,7 @@ import static com.kingsoft.shiyou.omnisdk.demo.common.ExtensionsKt.convert;
 
 import android.app.Activity;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -24,6 +25,7 @@ import kotlin.jvm.Volatile;
  *
  * @author: LuXing created on 2021/3/23 13:37
  */
+@Keep
 public class PayApi implements IPayApi {
 
     private final String tag = "PayApi# ";
@@ -73,7 +75,7 @@ public class PayApi implements IPayApi {
                 DemoLogger.i(tag, "pay successfully, orderId = " + orderId);
                 callback.onSucceeded(order);
 
-                // 支付完成
+                //（必接）支付完成：跟踪玩家的支付信息，支付成功后，游戏成功发放道具后调用
                 OmniSDK.getInstance().onPayFinish(convert(productInPayProcess, order));
             }
 

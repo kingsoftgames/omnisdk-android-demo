@@ -7,7 +7,7 @@ package com.kingsoft.shiyou.omnisdk.demo.common.interfaces
  *
  */
 interface IExitApi {
-    fun onExitImpl(gameCustom: Boolean)
+    fun onExitImpl(hasGameCustomExitDialog: Boolean)
 }
 
 interface IExitCallback : ICallback {

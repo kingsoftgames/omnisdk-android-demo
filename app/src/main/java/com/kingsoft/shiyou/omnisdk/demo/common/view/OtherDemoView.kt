@@ -32,6 +32,7 @@ class OtherDemoView : DemoView, IOtherCallback {
 
     private val urlEt: EditText by EditTextDelegate()
     private val paramsEt: EditText by EditTextDelegate()
+    private val queryParamsEt: EditText by EditTextDelegate()
 
     private val errorTrackMessageEt: EditText by EditTextDelegate()
     private val errorTrackEventNameEt: EditText by EditTextDelegate()
@@ -52,6 +53,19 @@ class OtherDemoView : DemoView, IOtherCallback {
 
         urlEt
         paramsEt
+        queryParamsEt
+
+        R.id.other_demo_view_action_dialog_btn.addClickListener {
+            otherApi.doActionImpl()
+        }
+
+        R.id.other_demo_view_emulator_dialog_btn.addClickListener {
+            otherApi.checkEmulatorImpl()
+        }
+        R.id.other_demo_view_settings_dialog_btn.addClickListener {
+            otherApi.openAppPermissionSettingsImpl()
+        }
+
         R.id.other_demo_view_open_url_btn.addClickListener {
             val url = urlEt.content()
             val params = paramsEt.content()
@@ -63,16 +77,22 @@ class OtherDemoView : DemoView, IOtherCallback {
         }
 
         R.id.other_demo_view_open_local_url_btn.addClickListener {
-            val url = "file:///android_asset/webviewJS.html"
-            val params =
-                paramsEt.content().replace("\"default_browser\":true", "\"default_browser\":false")
-            otherApi.openBrowserActivityImpl(url, params)
+            otherApi.openBrowserActivityWithLocalImpl()
         }
 
         initErrorTrackingDemoView()
 
         R.id.other_demo_view_show_score_dialog_btn.addClickListener {
-            otherApi.showScoreDialog()
+            otherApi.showScoreDialogImpl()
+        }
+
+        R.id.pay_method_demo_view_query_inapp_skus_btn.addClickListener {
+            val params = queryParamsEt.content()
+            otherApi.invokeQuerySkuDetailsList(listOf(params), 0)
+        }
+        R.id.pay_method_demo_view_query_subs_skus_btn.addClickListener {
+            val params = queryParamsEt.content()
+            otherApi.invokeQuerySkuDetailsList(listOf(params), 1)
         }
 
         initChannelMethodDemoView()
@@ -216,7 +236,7 @@ class OtherDemoView : DemoView, IOtherCallback {
     }
 
     override fun onSucceeded(resultJson: String) {
-        appView.showToastMessage("操作成功: $resultJson")
+        appView.showMessageDialog(resultJson, "操作成功")
     }
 
     override fun onFailed(responseCode: Pair<Int, String>) {

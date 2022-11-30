@@ -50,6 +50,9 @@ class ApiManager private constructor() {
     fun getOtherApi(appActivity: Activity, callback: IOtherCallback): IOtherApi =
         getApi(appActivity, "OtherApi", callback)
 
+    fun getPermissionApi(appActivity: Activity, callback: IPermissionCallback): IPermissionApi =
+        getApi(appActivity, "PermissionApi", callback)
+
     /**
      * 反射获取Api实例
      * @param className Api类名

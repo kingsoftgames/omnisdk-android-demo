@@ -2,6 +2,8 @@ package com.kingsoft.shiyou.omnisdk.demo.java;
 
 import android.app.Activity;
 
+import androidx.annotation.Keep;
+
 import com.kingsoft.shiyou.omnisdk.api.OmniSDK;
 import com.kingsoft.shiyou.omnisdk.api.callback.ExitCallback;
 import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.IExitApi;
@@ -13,6 +15,7 @@ import com.kingsoft.shiyou.omnisdk.demo.common.utils.DemoLogger;
  *
  * @author: LuXing created on 2022/1/21 15:33
  */
+@Keep
 public class ExitApi implements IExitApi {
 
     private final String tag = "ExitApi# ";
@@ -58,9 +61,9 @@ public class ExitApi implements IExitApi {
     /* ****************************************************************************************** */
 
     @Override
-    public void onExitImpl(boolean gameCustom) {
-        DemoLogger.i(tag, "onExitImpl: gameCustom = " + gameCustom);
-        mGameCustom = gameCustom;
+    public void onExitImpl(boolean hasGameCustomExitDialog) {
+        DemoLogger.i(tag, "onExitImpl: gameCustom = " + hasGameCustomExitDialog);
+        mGameCustom = hasGameCustomExitDialog;
         onExit();
     }
 }

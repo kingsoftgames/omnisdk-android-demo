@@ -11,16 +11,18 @@ import android.content.Context
  */
 interface IOtherApi {
 
+    fun doActionImpl()
     fun openBrowserActivityImpl(url: String, params: String)
-    fun showScoreDialog()
+    fun openBrowserActivityWithLocalImpl()
+    fun checkEmulatorImpl()
+    fun showScoreDialogImpl()
+    fun openAppPermissionSettingsImpl()
+
+    fun invokeMethodImpl()
 
     // Sunit茄子渠道功能方法接口
-    fun invokeOnSunitEventMethod(context: Context, jsonStr: String)
-    fun invokeShowRewardedBadgeViewMethod(jsonStr: String)
-
-    // Transsion传音渠道功能方法接口
-    fun invokeShowFloatAdMethod(activity: Activity)
-    fun invokeCloseFloatAdMethod(activity: Activity)
+    fun invokeChannelSunitEventMethod(jsonStr: String)
+    fun invokeChannelSunitShowRewardedBadgeViewMethod(jsonStr: String)
 
     // 官网渠道功能方法接口
     fun invokeQuerySkuDetailsList(skusList: List<String>, skuType: Int)

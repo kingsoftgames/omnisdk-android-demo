@@ -37,12 +37,12 @@ class SunitMethodDemoView : DemoView, IOtherCallback {
         eventEt
         R.id.sunit_method_demo_view_rewarded_btn.addClickListener {
             if (rewardedEt.checkContent()) {
-                otherApi.invokeShowRewardedBadgeViewMethod(rewardedEt.content())
+                otherApi.invokeChannelSunitShowRewardedBadgeViewMethod(rewardedEt.content())
             }
         }
         R.id.sunit_method_demo_view_event_btn.addClickListener {
             if (eventEt.checkContent()) {
-                otherApi.invokeOnSunitEventMethod(appActivity.baseContext, eventEt.content())
+                otherApi.invokeChannelSunitEventMethod(eventEt.content())
             }
         }
     }

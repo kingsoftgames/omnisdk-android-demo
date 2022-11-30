@@ -26,7 +26,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/other_demo_view_url_layout"
+        android:id="@+id/other_demo_view_action_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/other_demo_view_title_layout"
@@ -38,7 +38,45 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="打开网页:" />
+            android:text="一些常用接口" />
+
+        <Button
+            android:id="@+id/other_demo_view_action_dialog_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="常用接口返回值" />
+
+        <Button
+            android:id="@+id/other_demo_view_emulator_dialog_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="检查是否为模拟器接口" />
+
+        <Button
+            android:id="@+id/other_demo_view_settings_dialog_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="打开系统权限设置界面接口" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/other_demo_view_url_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/other_demo_view_action_layout"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/demo_content_bg"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="网页测试" />
 
         <LinearLayout
             style="@style/OmniDemoAppInputStyle"
@@ -97,9 +135,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/other_demo_view_url_layout"
-        android:layout_margin="0dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/demo_content_bg"
         android:orientation="vertical"
-        android:padding="0dp">
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="部分渠道拥有" />
 
         <Button
             android:id="@+id/other_demo_view_show_score_dialog_btn"
@@ -111,10 +155,81 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/other_demo_view_error_track_layout"
+        android:id="@+id/other_demo_view_show_query_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/other_demo_view_show_score_layout"
+        android:layout_margin="0dp"
+        android:orientation="vertical"
+        android:padding="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/demo_content_bg"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:id="@+id/website_method_demo_view_title_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/OmniDemoAppFunctionTitleStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="部分渠道的特定支付类功能" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@android:color/darker_gray" />
+
+                <LinearLayout
+                    style="@style/OmniDemoAppInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp">
+
+                    <EditText
+                        android:id="@+id/other_demo_view_query_params_et"
+                        style="@null"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:background="@null"
+                        android:text="com.sungray.dhlove.usd.1"
+                        android:hint="查询的商品id：com.wlxx.giftpack.6change"
+                        android:imeOptions="actionDone"
+                        android:inputType="text" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/pay_method_demo_view_query_inapp_skus_btn"
+                    style="@style/OmniDemoAppButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:text="获取本地化普通商品" />
+
+                <Button
+                    android:id="@+id/pay_method_demo_view_query_subs_skus_btn"
+                    style="@style/OmniDemoAppButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:text="获取本地化订阅商品" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/other_demo_view_error_track_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/other_demo_view_show_query_layout"
         android:layout_marginTop="10dp"
         android:background="@drawable/demo_content_bg"
         android:orientation="vertical"

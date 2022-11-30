@@ -57,6 +57,15 @@ public class DemoAppActivity extends AppCompatActivity {
 
         // SDK API接口(必须调用)
         OmniSDK.getInstance().onCreate(this, savedInstanceState);
+        OmniSDK.getInstance().onCreate(this, savedInstanceState);
+
+//        注意：如果项目使用自己的隐私协议，则需要在用户同意隐私协议后调用 onCreate
+//         示例
+//         1. registerInitNotifier 注意顺序不变
+//         2. 同意项目的隐私协议后进行初始化
+//         if (isAgreementProjectPrivacy) {
+//             OmniSDK.getInstance().onCreate(this, savedInstanceState);
+//         }
 
         // CP自己的代码
     }

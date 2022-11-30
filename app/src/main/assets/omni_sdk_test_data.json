@@ -5,11 +5,11 @@
   "CreateGameRoleView": {
     "roleIdEt": "rid123456789",
     "roleNameEt": "Tester",
-    "roleLevelEt": "",
+    "roleLevelEt": "0",
     "roleTypeEt": "",
     "roleVipLevelEt": "",
     "roleFigureEt": "",
-    "roleCreateTimeEt": "",
+    "roleCreateTimeEt": "1668445162",
     "serverIdEt": "",
     "serverNameEt": "",
     "zoneIdEt": "",
@@ -22,10 +22,12 @@
     "extEt": "OmniSDKTesting"
   },
   "PayDemoView": {
-    "productIdEt": "1",
+    "productIdEt": "com.wlxx.giftpack.6change",
     "productNameEt": "60钻石",
     "productDescEt": "购买60钻石畅玩游戏",
     "productPriceEt": "1.0",
+    "productQuantityEt": "1",
+    "totalAmountEt": "1.0",
     "payAmountEt": "1.0",
     "currencyEt": "CNY",
     "serverIdEt": "1",
@@ -39,11 +41,11 @@
     "roleVipLevelEt": "1"
   },
   "SocialDemoView": {
-    "sharePlatformEt": "facebook",
+    "sharePlatformEt": "system",
     "shareTitleEt": "",
     "shareDescriptionEt": "",
-    "shareContentLinkUrlEt": "https://developers.facebook.com/",
-    "shareImageSourceUrlEt": "https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png",
+    "shareContentLinkUrlEt": "https://weibo.com/liuyifeiofficial?tabtype=feed",
+    "shareImageSourceUrlEt": "https://wx2.sinaimg.cn/mw2000/003yHo7Nly1h6s53ckfoej63402c01l002.jpg",
     "invitePlatformEt": "facebook",
     "inviteDataEt": "{\"message\":\"Invitation From Omni\"}",
     "getSocialInfoPlatformEt": "facebook",
@@ -96,10 +98,13 @@
   },
   "OtherDemoView": {
     "urlEt": "https://www.youku.com/",
-    "paramsEt": "{\"default_browser\":false,\"show_refresh\":false,\"show_share\":true,\"show_close\":true,\"show_prev\":true,\"show_next\":true,\"layout\":0,\"orientation\":0,\"share_param\":{\"platform\":\"facebook,system\",\"share_type\":0,\"title\":\"OmniShare\",\"content\":\"Game\",\"url\":\"https://developers.facebook.com/\",\"image_type\":0,\"image_uri\":\"\"},\"game_headers\":{\"h5\":true,\"appid\":198707,\"platform\":\"android\",\"heg\":175.55},\"title\":\"Omni Webview\",\"game_ext\":\"roleId=123456789\"}"
+    "paramsEt": "{\"web_url\":\"https://www.youku.com/\",\"show_share\":true,\"share_param\":{\"platform\":\"facebook,system\",\"share_type\":0,\"image_type\":0,\"image_uri\":0,\"title\":\"OmniShare\",\"content\":\"content\",\"url\":\"https://developers.facebook.com/\"},\"game_headers\":{\"h5\":true,\"appid\":198707,\"platform\":\"android\",\"heg\":175.55},\"custom_tabs_config\":{\"show_title\":true,\"close_icon\":\"R.drawable.ic_launcher\",\"toolbar_color\":\"#FF0000\"}}"
   },
   "SunitMethodDemoView": {
     "rewardedEt": "{\"scene\":\"home\",\"subPortals\":[\"portal1\"]}",
     "eventEt": "{\"eventId\":\"levelUp\",\"params\":{\"level\":5}}"
+  },
+  "PermissionDemoView": {
+    "customApplyEt": "{\"showDialog\":true,\"timeLimit\":48,\"permissions\":[{\"group\":[\"android.permission.REQUEST_INSTALL_PACKAGES\"],\"applyDialog\":{\"title\":\"温馨提示\",\"rationale\":\"(游戏)需要安装APk权限\\n\\n请允许权限申请\",\"ok\":\"允许\",\"cancel\":\"取消\"},\"guideDialog\":{\"title\":\"温馨提示\",\"rationale\":\"(游戏)需要安装APk权限\\n\\n请在系统设置界面，开启-允许来自此来源的应用，打开安装APK权限\",\"ok\":\"去开启\",\"cancel\":\"取消\"},\"specialDialog\":{\"title\":\"温馨提示\",\"rationale\":\"(游戏)需要安装APk权限\\n\\n请在系统设置界面，开启-允许来自此来源的应用，打开安装APK权限\",\"ok\":\"去开启\",\"cancel\":\"取消\"}}]}"
   }
 }

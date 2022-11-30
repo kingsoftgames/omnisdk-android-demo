@@ -17,6 +17,11 @@
             android:layout_height="wrap_content"
             android:text="权限申请" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="时间限制测试通过调整手机时间配置" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -80,20 +85,33 @@
             android:orientation="vertical"
             android:padding="10dp">
 
-            <EditText
-                android:id="@+id/permission_demo_view_et"
-                style="@null"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/demo_input_edit_bg"
-                android:gravity="top"
-                android:hint="自定义权限申请JSON`PayInfo`"
-                android:imeOptions="actionDone"
-                android:inputType="textMultiLine"
-                android:minLines="40"
-                android:textSize="16sp" />
+                android:layout_height="wrap_content"
+                android:text="自定义权限申请的JSON: " />
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/permission_demo_view_custom_apply_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="512dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:hint="自定义权限申请JSON"
+                    android:imeOptions="actionDone"
+                    android:inputType="textMultiLine"
+                    android:minLines="40"
+                    android:textSize="12sp"
+                    tools:ignore="SmallSp" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/permission_demo_view_btn"

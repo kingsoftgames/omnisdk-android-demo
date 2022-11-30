@@ -16,9 +16,11 @@ import kotlin.Pair;
 /**
  * Description: OMNI SDK广告功能相关API接口示例Demo
  *
- * @author: LuXing created on 2021/3/23 16:27
+ *
+ * "v2 的广告接口完全废弃，空方法"
  */
 @Keep
+@Deprecated
 public class AdApi implements IAdApi {
 
     /* ******************************** SDK 广告功能接口示例如下 ********************************** */

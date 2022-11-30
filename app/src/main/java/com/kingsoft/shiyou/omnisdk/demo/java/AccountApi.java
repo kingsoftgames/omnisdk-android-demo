@@ -3,6 +3,7 @@ package com.kingsoft.shiyou.omnisdk.demo.java;
 import android.app.Activity;
 import android.widget.Toast;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
 import com.kingsoft.shiyou.omnisdk.api.OmniSDK;
@@ -30,6 +31,7 @@ import kotlin.Pair;
  *
  * @author: LuXing created on 2021/3/22 16:22
  */
+@Keep
 public class AccountApi implements IAccountApi {
 
     private final String tag = "AccountApi# ";

@@ -184,8 +184,8 @@ class AppView {
         if (userMap.containsAccountInfo()) {
             val uid = userMap["uid"].toString()
             // 确保游戏角色的用户账号uid为当前登录的账号uid
-            gameRoleInfo.uid = uid
             val cpUid = userMap["cpUid"].toString()
+            gameRoleInfo.uid = cpUid
             val isNotGuestAccount = (true == (userMap["isRelated"] as? Boolean))
             if (isNotGuestAccount) {
                 userInfoTv.text = """
