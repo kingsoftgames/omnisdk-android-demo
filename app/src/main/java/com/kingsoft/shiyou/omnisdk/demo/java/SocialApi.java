@@ -13,10 +13,13 @@ import com.kingsoft.shiyou.omnisdk.api.callback.ResultCallback;
 import com.kingsoft.shiyou.omnisdk.api.entity.ShareImageType;
 import com.kingsoft.shiyou.omnisdk.api.entity.ShareParam;
 import com.kingsoft.shiyou.omnisdk.api.entity.ShareType;
+import com.kingsoft.shiyou.omnisdk.api.entity.SocialInfo;
+import com.kingsoft.shiyou.omnisdk.api.utils.OmniUtils;
 import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.ISocialApi;
 import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.ISocialCallback;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import kotlin.Pair;
 
@@ -122,13 +125,7 @@ public class SocialApi implements ISocialApi {
             public void onSuccess(String resultJson) {
                 try {
                     // 解析玩家社交账号信息数据
-                    SocialAccountInfo socialAccountInfo = new Gson().fromJson(resultJson, SocialAccountInfo.class);
-                    String id = socialAccountInfo.id;             // 第三方平台账号标示ID
-                    String nickName = socialAccountInfo.nickName; // 第三方平台账号昵称
-                    String gender = socialAccountInfo.gender;     // 男 `male` 女 `female`
-                    String imageUrl = socialAccountInfo.imageUrl; // 用户头像Url地址
-                    int width = socialAccountInfo.width;          // 头像宽度像素
-                    int height = socialAccountInfo.height;        // 头像高度像素
+                    SocialInfo socialAccountInfo = OmniUtils.fromJson(resultJson, SocialInfo.class);
 
                     Log.i(tag, socialAccountInfo.toString());
 
@@ -158,15 +155,8 @@ public class SocialApi implements ISocialApi {
             @Override
             public void onSuccess(String resultJson) {
                 // 解析玩家游戏好友的社交账号信息数据
-                ArrayList<SocialAccountInfo> friendsInList = new Gson().fromJson(resultJson, new TypeToken<ArrayList<SocialAccountInfo>>() {
-                }.getType());
-                for (SocialAccountInfo socialAccountInfo : friendsInList) {
-                    String id = socialAccountInfo.id;             // 第三方平台账号标示ID
-                    String nickName = socialAccountInfo.nickName; // 第三方平台账号昵称
-                    String imageUrl = socialAccountInfo.imageUrl; // 用户头像Url地址
-                    int width = socialAccountInfo.width;          // 头像宽度像素
-                    int height = socialAccountInfo.height;        // 头像高度像素
-
+                List<SocialInfo> friendsInList = OmniUtils.<SocialInfo>fromJson(resultJson);
+                for (SocialInfo socialAccountInfo : friendsInList) {
                     Log.i(tag, socialAccountInfo.toString());
                 }
                 callback.onSucceeded(resultJson);
