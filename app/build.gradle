@@ -18,12 +18,14 @@ def signingPro = new Properties()
 signingPro.load(new FileInputStream(file(rootProject.file("signing.properties"))))
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 31 // 这里因部分Android官方依赖库要求最低 31
+        // buildToolsVersion 如果引擎导出有此配置请直接注释删除，由 compileSdkVersion 控制
 
     defaultConfig {
         // applicationId "com.kingsoft.shiyou.omnisdk.demo" //不要配置，编译插件自动读取配置文件包名
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 28 // 国内最低28，海外最低31，渠道指定版本由OmniSDK编译插件处理。
+        // 不用理会 targetSdkVersion 的IDE红线提示
         versionCode 99999999 // 防止应用商店自动更新
         versionName "109.9"
 
