@@ -13,9 +13,15 @@ apply from: ("${rootProject.rootDir}/kssyOmniChannelsApp.gradle")
 // 导入 OmniSDK 依赖
 apply from: ("${rootProject.rootDir}/kssyOmniChannels.gradle")
 
-// 签名
+// 签名配置，为保证安全，密钥密码不要明文配置在这里，而是通过文件读取方式配置。比如 signing.properties
 def signingPro = new Properties()
 signingPro.load(new FileInputStream(file(rootProject.file("signing.properties"))))
+
+// 签名变量，注意这里加 ext. 以便全局可以引用到
+ext.signing_keystoreFile = file("${rootProject.rootDir}/${signingPro["storeFilePath"]}")
+ext.signing_keystorePassword = signingPro["storePassword"]
+ext.signing_keyAlias = signingPro["keyAlias"]
+ext.signing_keyPassword = signingPro["keyPassword"]
 
 android {
     compileSdkVersion 31 // 这里因部分Android官方依赖库要求最低 31
@@ -30,7 +36,7 @@ android {
         versionName "109.9"
 
         ndk {
-            abiFilters "arm64-v8a"
+            abiFilters "arm64-v8a", "armeabi-v7a", "x86"
         }
 //
 //		splits {
@@ -46,42 +52,29 @@ android {
     }
 
     signingConfigs {
-        // 签名配置
+        // 默认签名
         release {
-            storeFile file("${rootProject.rootDir}/${signingPro["storeFilePath"]}")
-            storePassword signingPro["storePassword"]
-            keyAlias signingPro["keyAlias"]
-            keyPassword signingPro["keyPassword"]
-
-            v1SigningEnabled false
-            v2SigningEnabled true
+            storeFile signing_keystoreFile
+            storePassword signing_keystorePassword
+            keyAlias signing_keyAlias
+            keyPassword signing_keyPassword
         }
-
-        v1Release {
-            storeFile file("${rootProject.rootDir}/${signingPro["storeFilePath"]}")
-            storePassword signingPro["storePassword"]
-            keyAlias signingPro["keyAlias"]
-            keyPassword signingPro["keyPassword"]
-
-            v1SigningEnabled true
-            v2SigningEnabled false
+        debug {
+            storeFile signing_keystoreFile
+            storePassword signing_keystorePassword
+            keyAlias signing_keyAlias
+            keyPassword signing_keyPassword
         }
     }
 
     buildTypes {
         release {
             minifyEnabled true // 开启代码混淆：保护代码、减少包大小
-//            multiDexKeepProguard = file("multidex-config.pro") // 分包配置
-            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
-//            proguardFiles file("${rootProject.rootDir}/proguard").listFiles().toList().toArray()
-//            proguardFiles file("game-rules.pro")
-//            productFlavors.oppo_cn.signingConfig signingConfigs.release
-//            productFlavors.huawei.signingConfig signingConfigs.release
-//            productFlavors.vivo_cn.signingConfig signingConfigs.release
-//            productFlavors.uc.signingConfig signingConfigs.v1Release
-//            productFlavors.mi.signingConfig signingConfigs.v1Release
-//            productFlavors.m4399.signingConfig signingConfigs.release
-            signingConfig signingConfigs.release // release包签名
+            // 64k方法数分包配置
+            multiDexKeepProguard = file("multidex-config.pro")
+            // 混淆配置
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+//            signingConfig signingConfigs.release // 注释掉这行，其他不变，签名版本由 kssyOmniSigning.gradle 配置控制
         }
     }
 
@@ -98,6 +91,9 @@ android {
     }
 
 }
+
+// 注意这行的顺序，是在 android{} 下方声明
+apply from: ("${rootProject.rootDir}/kssyOmniSigning.gradle")
 
 dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'

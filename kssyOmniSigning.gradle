@@ -1,0 +1,55 @@
+// 本配置为Omni根据渠道审核归纳的签名版本要求生成，部分渠道以最新审核标准为准。
+android {
+// 如何使用请阅读接入文档
+	signingConfigs {
+		v1 {
+			// v1 签名，部分渠道需要二次分包或只允许使用v1签名
+			storeFile signing_keystoreFile
+			storePassword signing_keystorePassword
+			keyAlias signing_keyAlias
+			keyPassword signing_keyPassword
+
+			v1SigningEnabled true
+			v2SigningEnabled false
+		}
+
+		// v2 即 signingConfigs.release
+
+		v3 {
+			// v3 签名，国内目前无要求，海外目前可选
+			storeFile signing_keystoreFile
+			storePassword signing_keystorePassword
+			keyAlias signing_keyAlias
+			keyPassword signing_keyPassword
+			
+			v1SigningEnabled true
+			v2SigningEnabled true
+
+			enableV3Signing true
+		}
+
+		// v4 签名，暂时无要求，可以不用理会。
+	}
+	productFlavors.all { flavor ->
+		println("flavor-name: ${flavor.name}")
+		switch (flavor.name) {
+			case "baidu2":
+			case "meizu":
+			case "htc":
+			case "yuewen":
+			case "yofun":
+			case "meituo":
+			case "pphd":
+			case "duoku":
+			case "miaole":
+			case "huizhi":
+			case "gamedog":
+			case "xmxia":
+				signingConfig signingConfigs.v1 // use v1(only v1) signature
+				break
+			default:
+				signingConfig signingConfigs.release // use default(v1+v2) signature for all other variants
+				break
+		}
+	}
+}
