@@ -3,7 +3,6 @@ package com.kingsoft.shiyou.omnisdk.demo.java;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 
 import androidx.annotation.NonNull;
@@ -20,9 +19,11 @@ import com.kingsoft.shiyou.omnisdk.demo.common.view.AppView;
 import java.util.List;
 
 /**
- * Description: 应用主Activity
+ * 继承非OmniSDK提供的Activity，注意顺序
  *
- * @author: LuXing created on 2021/3/15 9:30
+ * @see DemoIfExtendsOmniSdkActivity 如果继承OmniSdkActivity，请查看此类
+ *
+ * @author OmniSDK
  */
 public class DemoAppActivity extends AppCompatActivity {
 
@@ -30,7 +31,7 @@ public class DemoAppActivity extends AppCompatActivity {
     private AppView appView;
 
     /**
-     * CP对接方必须在游戏Activity的onCreate生命周期方法内调用如下SDK API接口
+     * 注意顺序
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class DemoAppActivity extends AppCompatActivity {
         appView = new AppView();
         appView.attachToActivity(this);
 
+        // 注意顺序
         OmniSDK.getInstance().setInitNotifier(new InitNotifier() {
             @Override
             public void onSuccess() {
@@ -69,9 +71,6 @@ public class DemoAppActivity extends AppCompatActivity {
         // CP自己的代码
     }
 
-    /**
-     * CP对接方必须在游戏Activity的onStart生命周期方法内调用如下SDK API接口
-     */
     @Override
     public void onStart() {
         super.onStart();
@@ -82,9 +81,6 @@ public class DemoAppActivity extends AppCompatActivity {
         // CP自己的代码
     }
 
-    /**
-     * CP对接方必须在游戏Activity的onRestart生命周期方法内调用如下SDK API接口
-     */
     @Override
     public void onRestart() {
         super.onRestart();
@@ -95,14 +91,9 @@ public class DemoAppActivity extends AppCompatActivity {
         // CP自己的代码
     }
 
-    /**
-     * CP对接方必须在游戏Activity的onResume生命周期方法内调用如下SDK API接口
-     */
     @Override
     public void onResume() {
         super.onResume();
-
-        Log.e("SDK", "------------onResume----------------");
 
         // SDK API(必须调用)
         OmniSDK.getInstance().onResume(this);
@@ -111,9 +102,6 @@ public class DemoAppActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * CP对接方必须在游戏Activity的onPause生命周期方法内调用如下SDK API接口
-     */
     @Override
     public void onPause() {
         super.onPause();
@@ -124,9 +112,6 @@ public class DemoAppActivity extends AppCompatActivity {
         // CP自己的代码
     }
 
-    /**
-     * CP对接方必须在游戏Activity的onStop生命周期方法内调用如下SDK API接口
-     */
     @Override
     public void onStop() {
         super.onStop();
@@ -137,9 +122,6 @@ public class DemoAppActivity extends AppCompatActivity {
         // CP自己的代码
     }
 
-    /**
-     * CP对接方必须在游戏Activity的onDestroy生命周期方法内调用如下SDK API接口
-     */
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -150,9 +132,6 @@ public class DemoAppActivity extends AppCompatActivity {
         // CP自己的代码
     }
 
-    /**
-     * CP对接方必须在游戏Activity的onNewIntent生命周期方法内调用如下SDK API接口
-     */
     @Override
     public void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
@@ -163,9 +142,6 @@ public class DemoAppActivity extends AppCompatActivity {
         // CP自己的代码
     }
 
-    /**
-     * CP对接方必须在游戏Activity中重载onSaveInstanceState方法并在其中调用如下SDK API接口
-     */
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -176,9 +152,6 @@ public class DemoAppActivity extends AppCompatActivity {
         // CP自己的代码
     }
 
-    /**
-     * CP对接方必须在游戏Activity中重载onRestoreInstanceState方法并在其中调用如下SDK API接口
-     */
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
@@ -189,9 +162,6 @@ public class DemoAppActivity extends AppCompatActivity {
         // CP自己的代码
     }
 
-    /**
-     * CP对接方必须在游戏Activity中重载onConfigurationChanged方法并在其中调用如下SDK API接口
-     */
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
@@ -202,9 +172,6 @@ public class DemoAppActivity extends AppCompatActivity {
         // CP自己的代码
     }
 
-    /**
-     * CP对接方必须在游戏Activity中重载onActivityResult方法并在其中调用如下SDK API接口
-     */
     @Override
     public void onActivityResult(
             int requestCode,
@@ -223,9 +190,6 @@ public class DemoAppActivity extends AppCompatActivity {
         // CP自己的代码
     }
 
-    /**
-     * CP对接方必须在游戏Activity中重载onRequestPermissionsResult方法并在其中调用如下SDK API接口
-     */
     @Override
     public void onRequestPermissionsResult(
             int requestCode,
@@ -256,9 +220,6 @@ public class DemoAppActivity extends AppCompatActivity {
         // CP自己的代码
     }
 
-    /**
-     * CP对接方必须在游戏Activity中重载onBackPressed方法并在其中调用如下SDK API接口
-     */
     @Override
     public void onBackPressed() {
         // SDK API(必须调用)
@@ -269,9 +230,6 @@ public class DemoAppActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    /**
-     * CP对接方必须在游戏Activity中重载onKeyDown方法并在其中调用如下SDK API接口
-     */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // SDK API(必须调用)

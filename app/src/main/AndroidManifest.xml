@@ -80,8 +80,21 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:theme,android:allowBackup">
 
+<!--        <activity-->
+<!--            android:name=".java.DemoAppActivity"-->
+<!--            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"-->
+<!--            android:exported="true"-->
+<!--            android:screenOrientation="sensor"-->
+<!--            android:theme="@style/Theme.OmniDemoMainActivity.Fullscreen">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+
         <activity
-            android:name=".java.DemoAppActivity"
+            android:name=".java.DemoIfExtendsOmniSdkActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:exported="true"
             android:screenOrientation="sensor"
