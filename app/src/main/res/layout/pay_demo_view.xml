@@ -576,6 +576,25 @@
 
         </LinearLayout>
 
+        <EditText
+            android:id="@+id/pay_demo_view_server_key_edt"
+            style="@null"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:hint="服务端Key，默认项目为91000184"
+            android:imeOptions="actionDone"
+            android:importantForAutofill="no"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/pay_demo_view_preorder_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="预下单" />
+
         <Button
             android:id="@+id/pay_demo_view_pay_btn"
             style="@style/OmniDemoAppButtonStyle"

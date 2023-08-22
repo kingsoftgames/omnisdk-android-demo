@@ -121,7 +121,7 @@ class AccountDemoView : DemoView, IAccountCallback {
             val switchType = switchTypeEt.content().toIntOrNull()
             switchType?.let {
                 accountApi.switchAccountImpl(it)
-            } ?: appView.showToastMessage("无效账号类型")
+            } ?: accountApi.switchAccountImpl(0)
         }
 
         // 账号绑定
@@ -131,7 +131,7 @@ class AccountDemoView : DemoView, IAccountCallback {
             val bindType = bindTypeEt.content().toIntOrNull()
             bindType?.let { type ->
                 accountApi.bindAccountImpl(type)
-            } ?: appView.showToastMessage("无效账号类型")
+            } ?: accountApi.bindAccountImpl(0)
         }
 
         // 账号登出

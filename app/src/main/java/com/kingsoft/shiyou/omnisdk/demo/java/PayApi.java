@@ -15,6 +15,7 @@ import com.kingsoft.shiyou.omnisdk.api.entity.Product;
 import com.kingsoft.shiyou.omnisdk.api.entity.SkuType;
 import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.IPayApi;
 import com.kingsoft.shiyou.omnisdk.demo.common.interfaces.IPayCallback;
+import com.kingsoft.shiyou.omnisdk.demo.common.manager.PreOrderManager;
 import com.kingsoft.shiyou.omnisdk.demo.common.utils.DemoLogger;
 
 import kotlin.Pair;
@@ -76,7 +77,9 @@ public class PayApi implements IPayApi {
                 callback.onSucceeded(order);
 
                 //（必接）支付完成：跟踪玩家的支付信息，支付成功后，游戏成功发放道具后调用
-                OmniSDK.getInstance().onPayFinish(convert(productInPayProcess, order));
+                if (productInPayProcess != null) {
+                    OmniSDK.getInstance().onPayFinish(convert(productInPayProcess, order));
+                }
             }
 
             @Override
@@ -116,8 +119,8 @@ public class PayApi implements IPayApi {
 
         // 游戏对接方接收支付结果的服务器回调地址，有则传值，没有则传空字符串""；
         // 若传空字符串""，则将使用OmniSDK端后台配置的游戏服务器回调地址
+        // 正式环境和测试环境 mock 地址不同，需要区分正式环境和测试环境
         String gameCallbackUrl = mGameCallbackUrl;
-
         // 游戏对接方可自定义的扩展数据（Json字符串数据），SDK服务器将在回调游戏服务器支付结果的时候原样返回；
         // 有则传值，没有则传空字符串""
         String extJson = mExtJson;
@@ -187,5 +190,14 @@ public class PayApi implements IPayApi {
         mRoleLevel = roleLevel;
         mRoleVipLevel = roleVipLevel;
         pay();
+    }
+
+    @Override
+    public void preOrderImpl(String serverKey, @NonNull String uid,
+                             @NonNull String roleId,
+                             @NonNull String productId,
+                             int totalAmount,
+                             @NonNull String gameTradeNo) {
+        PreOrderManager.Companion.getInstance().preOrder(serverKey, uid, roleId, productId, totalAmount, gameTradeNo, callback);
     }
 }

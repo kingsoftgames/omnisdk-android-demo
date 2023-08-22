@@ -12,6 +12,7 @@ import android.content.Context
 interface IOtherApi {
 
     fun doActionImpl()
+    fun getOAIdImpl()
     fun openBrowserActivityImpl(url: String, params: String)
     fun openBrowserActivityWithLocalImpl()
     fun checkEmulatorImpl()

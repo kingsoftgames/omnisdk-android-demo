@@ -28,10 +28,20 @@ interface IPayApi {
         roleLevel: String,
         roleVipLevel: String
     )
+
+    fun preOrderImpl(
+        serverKey: String,
+        uid: String,
+        roleId: String,
+        productId: String,
+        totalAmount: Int,
+        gameTradeNo: String
+    )
 }
 
 interface IPayCallback : ICallback {
     fun onSucceeded(order: Order)
     fun onFailed(codeMsg: Pair<Pair<Int, String>, Pair<Int, String>?>)
     fun onCancelled()
+    fun onPreOrderCallback(msg: String)
 }

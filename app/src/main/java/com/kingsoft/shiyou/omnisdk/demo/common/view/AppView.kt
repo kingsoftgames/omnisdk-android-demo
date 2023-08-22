@@ -17,6 +17,8 @@ import com.kingsoft.shiyou.omnisdk.demo.common.TestData
 import com.kingsoft.shiyou.omnisdk.demo.common.html
 import com.kingsoft.shiyou.omnisdk.demo.common.utils.DemoDialogUtil
 import com.kingsoft.shiyou.omnisdk.demo.common.utils.DemoLogger
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 
 /**
  * Description: Demo App 界面UI
@@ -89,6 +91,14 @@ class AppView {
         ConfigData.singletonInstance.initialize(appContext)
     }
 
+    public fun onInitializedDone(result: Boolean) {
+        this.initializedDone = result
+        // 等待初始化完成后，再初始化 UI 部分信息 (内部有依赖 OmniSDK API)
+        MainScope().launch {
+            initViews()
+        }
+    }
+
     /**
      * 初始化和加载各项业务功能Demo View
      *
@@ -135,7 +145,6 @@ class AppView {
             if (userMap.containsAccountInfo()) {
                 val userInfo = """
                     uid : ${userMap["uid"].toString()}
-                    cpUid : ${userMap["cpUid"].toString()}
                     type : ${userMap["type"].toString()}
                     token : ${userMap["token"].toString()}
                     showName : ${userMap["showName"].toString()}
@@ -184,16 +193,16 @@ class AppView {
         if (userMap.containsAccountInfo()) {
             val uid = userMap["uid"].toString()
             // 确保游戏角色的用户账号uid为当前登录的账号uid
-            val cpUid = userMap["cpUid"].toString()
-            gameRoleInfo.uid = cpUid
+//            val cpUid = userMap["cpUid"].toString()
+            gameRoleInfo.uid = uid
             val isNotGuestAccount = (true == (userMap["isRelated"] as? Boolean))
             if (isNotGuestAccount) {
                 userInfoTv.text = """
-                    <b><u><font color="blue">账号ID: ${cpUid}</font></u></b>
+                    <b><u><font color="blue">账号ID: ${uid}</font></u></b>
                 """.trimIndent().html()
             } else {
                 userInfoTv.text = """
-                    <b><u><font color="red">游客账号ID: ${cpUid}</font></u></b>
+                    <b><u><font color="red">游客账号ID: ${uid}</font></u></b>
                 """.trimIndent().html()
             }
         } else {
@@ -207,8 +216,7 @@ class AppView {
 
     private fun Map<String, Any>?.containsAccountInfo() =
         if (!(this.isNullOrEmpty())) {
-            this.containsKey("uid") && this["uid"].toString().length > 5 &&
-                    this.containsKey("cpUid") && this["cpUid"].toString().length > 5
+            this.containsKey("uid") && this["uid"].toString().length > 5
         } else {
             false
         }

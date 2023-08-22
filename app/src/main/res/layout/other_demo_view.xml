@@ -48,6 +48,13 @@
             android:text="常用接口返回值" />
 
         <Button
+            android:id="@+id/other_demo_view_oaid_dialog_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="返回设备OAID值(内部接口)" />
+
+        <Button
             android:id="@+id/other_demo_view_emulator_dialog_btn"
             style="@style/OmniDemoAppButtonStyle"
             android:layout_width="match_parent"

@@ -66,7 +66,7 @@ public class AccountApi implements IAccountApi {
                 // 账号Json数据解析方式1：将其转成`com.kingsoft.shiyou.omnisdk.api.entity.UserInfo`数据实体
                 UserInfo userInfo = OmniUtils.parseUserInfo(userJson);
                 // 账号唯一标示，CP对接方用来唯一标示游戏账号
-                String cpUid = userInfo.getCpUid();
+                String uid = userInfo.getUid();
                 // 登录账号类型标示
                 int type = userInfo.getType();
                 // 海外业务账号登录数据验证token值，国内业务忽略改值
@@ -76,14 +76,14 @@ public class AccountApi implements IAccountApi {
                 // 国内业务验证Sign值产生的Unix时间戳，单位为秒；海外业务无该数据
                 long verifyTimestamp = userInfo.getVerifyTimestamp();
                 DemoLogger.i(tag, "verify : [ " +
-                        "uid : " + cpUid + " , " +
+                        "uid : " + uid + " , " +
                         "type : " + type + " , " +
                         "verifySign : " + verifySign + " , " +
                         "verifyTimestamp : " + verifyTimestamp + " ]");
 
                 /*
                  * 账号Json数据解析方式2：可将其转成Map数据结构或者`org.json.JSONObject`，获取相关数据项的key值如下：
-                 * `cpUid`: 账号唯一标示key值
+                 * `cpUid`: 账号唯一标示key值 废弃
                  * `type`: 登录账号类型标示key值
                  * `token`: 海外业务账号登录数据验证token数据对应的key值
                  * `verifySign`: 国内业务登录账号数据的验证Sign值对应的key值
@@ -91,11 +91,12 @@ public class AccountApi implements IAccountApi {
                  */
                 Map<String, Object> userMap = OmniUtils.toMap(userJson);
                 // 账号唯一标示，CP对接方用来唯一标示游戏账号
-                String accountCpUid = userMap.get("cpUid").toString();
+                String accountUid = userMap.get("uid").toString();
                 // 登录账号类型标示
                 int accountType = Integer.parseInt(userMap.get("type").toString());
                 // 海外业务账号登录数据验证token值，国内业务忽略改值
                 String accountTokenId = userMap.get("token").toString();
+                String state = userMap.get("state").toString();
                 // 国内业务登录账号数据的验证Sign值；海外业务无该数据
                 String accountVerifySign = "";
                 // 国内业务验证Sign值产生的Unix时间戳，单位为秒；海外业务无该数据
@@ -105,13 +106,14 @@ public class AccountApi implements IAccountApi {
                     accountVerifyTimestamp = Long.parseLong(userMap.get("verifyTimestamp").toString());
                 }
                 DemoLogger.i(tag, "verify : [ " +
-                        "uid : " + accountCpUid + " , " +
+                        "uid : " + accountUid + " , " +
                         "type : " + accountType + " , " +
                         "verifySign : " + accountVerifySign + " , " +
+                        "state : " + state + " , " +
                         "verifyTimestamp : " + accountVerifyTimestamp + " ]");
 
                 // 国内账号登录业务，游戏方在客户端收到登录成功的账号数据后需回传至游戏服务器端进行账号数据验证
-                sendToServerForVerification(accountCpUid, accountVerifyTimestamp, accountVerifySign);
+                sendToServerForVerification(accountUid, accountVerifyTimestamp, accountVerifySign);
 
                 callback.onLoginSucceeded(userMap, accountType);
             }
@@ -233,6 +235,19 @@ public class AccountApi implements IAccountApi {
      */
     @Deprecated
     public void switchAccount() {
+        // 构建登录请求数据Map
+        Map<String, String> loginParams = new HashMap<>();
+        /*
+         * 指定切换账号类型,其key值必须为`switchType`,value为int类型
+         * `0`或者不设置表示不指定特定切换账号类型,直接使用OMNI SDK账号切换界面。
+         * 非`0`表示CP使用自身的切换账号选项UI界面,在用户选择账号类型后传入对应的账号标示ID调用接口完成切换业务.
+         * （比如 `2`为邮箱账号 `3`为Facebook账号, `4`为Google账号等等）
+         */
+
+        // 按照自身对接需求设置登录账号类型
+        loginParams.put(OmniConstant.accountType, String.valueOf(mSwitchType));
+        OmniSDK.getInstance().switchAccount(appActivity, loginParams);
+
     }
 
     @Override

@@ -72,6 +72,12 @@ public class OtherApi implements IOtherApi {
 
     }
 
+    @Override
+    public void getOAIdImpl() {
+        // 内部，暂时不对外提供
+        callback.onSucceeded("oaid");
+    }
+
     /**
      * 检查是否为模拟器
      */

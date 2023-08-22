@@ -32,7 +32,7 @@ public class DemoApplication extends OmniApplication {
         // 正式版本必须设置为`false`
         initParams.setDebug(true);
         // 正式版本必须设置为`Production`
-        initParams.setEnvironment("Beta");
+        initParams.setEnvironment("Production");
         // OmniSDK初始化数据配置接口调用
         OmniSDK.getInstance().initialize(initParams);
 

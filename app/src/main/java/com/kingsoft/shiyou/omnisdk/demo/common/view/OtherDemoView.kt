@@ -7,9 +7,13 @@ import android.view.View
 import android.widget.EditText
 import android.widget.FrameLayout
 import com.kingsoft.shiyou.omnisdk.api.OmniSDK
+import com.kingsoft.shiyou.omnisdk.basic.FileUtils
+import com.kingsoft.shiyou.omnisdk.basic.SharePreferenceUtils
 import com.kingsoft.shiyou.omnisdk.core.entity.EventBreadcrumb
 import com.kingsoft.shiyou.omnisdk.core.entity.EventData
 import com.kingsoft.shiyou.omnisdk.core.entity.EventLevel
+import com.kingsoft.shiyou.omnisdk.core.getOAId
+import com.kingsoft.shiyou.omnisdk.core.omniUserAgent
 import com.kingsoft.shiyou.omnisdk.core.utils.SentryTrack
 import com.kingsoft.shiyou.omnisdk.demo.R
 import com.kingsoft.shiyou.omnisdk.demo.common.ApiManager
@@ -19,7 +23,11 @@ import com.kingsoft.shiyou.omnisdk.demo.common.utils.DemoLogger
 import com.kingsoft.shiyou.omnisdk.demo.common.utils.DemoResourceIdUtil
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
+import java.io.ByteArrayInputStream
 import java.io.File
+import java.io.InputStream
+import java.security.cert.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 /**
@@ -57,6 +65,10 @@ class OtherDemoView : DemoView, IOtherCallback {
 
         R.id.other_demo_view_action_dialog_btn.addClickListener {
             otherApi.doActionImpl()
+        }
+
+        R.id.other_demo_view_oaid_dialog_btn.addClickListener {
+            otherApi.getOAIdImpl()
         }
 
         R.id.other_demo_view_emulator_dialog_btn.addClickListener {
@@ -236,11 +248,51 @@ class OtherDemoView : DemoView, IOtherCallback {
     }
 
     override fun onSucceeded(resultJson: String) {
-        appView.showMessageDialog(resultJson, "操作成功")
+        if (resultJson == "oaid") {
+            // 证书，运营后台上传，名称固定 "packageName.cert.pem"
+            val certName = "${context.packageName}.cert.pem"
+            val certInfo = FileUtils.readFileFromAssets(context, certName)
+            val androidSDK = omniUserAgent
+            val oaid = SharePreferenceUtils.getOAId(appActivity)
+            val format = getCertInfo(certInfo)
+            val result = "oaid: $oaid \n\n 设备信息: $androidSDK \n\n 证书信息:$format"
+            appView.showMessageDialog(result, "操作成功")
+        } else {
+            appView.showMessageDialog(resultJson, "操作成功")
+        }
     }
 
     override fun onFailed(responseCode: Pair<Int, String>) {
         appView.showToastMessage("操作失败: $responseCode")
+    }
+
+    /**
+     * 格式化证书，输出证书信息方便检查是否正确
+     */
+    private fun getCertInfo(appCertPem: String): String {
+        val inStream: InputStream = ByteArrayInputStream(appCertPem.toByteArray())
+        val appCert: X509Certificate
+        try {
+            val fact = CertificateFactory.getInstance("X.509")
+            appCert = fact.generateCertificate(inStream) as X509Certificate
+        } catch (e: CertificateException) {
+            return "[Cert Format Error](通常是无证书或证书配置错误)"
+        }
+        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val certInfo = """
+             Cert: 
+             SubjectName: ${appCert.subjectX500Principal.name}
+             Not Before: ${sdf.format(appCert.notBefore)}
+             Not After: ${sdf.format(appCert.notAfter)}
+             """.trimIndent()
+        try {
+            appCert.checkValidity()
+        } catch (e: CertificateExpiredException) {
+            return "$certInfo\n[Expired]"
+        } catch (e: CertificateNotYetValidException) {
+            return "$certInfo\n[NotYetValid]"
+        }
+        return "$certInfo\n[Valid]"
     }
 
 }

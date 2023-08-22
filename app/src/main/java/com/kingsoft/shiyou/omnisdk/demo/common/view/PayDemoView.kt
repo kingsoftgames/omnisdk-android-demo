@@ -53,6 +53,8 @@ class PayDemoView : DemoView, IPayCallback {
     private val roleLevelEt: EditText by EditTextDelegate()
     private val roleVipLevelEt: EditText by EditTextDelegate()
 
+    private var serverKeyEt: EditText? = null
+
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attributeSet: AttributeSet?) : this(context, attributeSet, 0)
     constructor(context: Context, attributeSet: AttributeSet?, defStyleAttr: Int) : super(
@@ -79,6 +81,7 @@ class PayDemoView : DemoView, IPayCallback {
         roleNameEt
         roleLevelEt
         roleVipLevelEt
+        serverKeyEt = findViewById(R.id.pay_demo_view_server_key_edt)
         R.id.pay_demo_view_create_cno_btn.addClickListener {
             generateGameCno()
             appView.showMessageDialog("订单号: $gameCno", "创建成功")
@@ -86,8 +89,41 @@ class PayDemoView : DemoView, IPayCallback {
         R.id.pay_demo_view_pay_btn.addClickListener {
             pay()
         }
+
+        R.id.pay_demo_view_preorder_btn.addClickListener {
+            preOrder()
+        }
         generateGameCno()
     }
+
+    private fun preOrder() {
+        if (appView.getUser().isNullOrEmpty()) {
+            appView.showToastMessage("请先登录账号，再进行支付")
+            return
+        }
+        if (roleIdEt.content().isBlank()) {
+            appView.showToastMessage("玩家角色账号ID标示不能为空")
+            return
+        }
+        if (productIdEt.content().isBlank()) {
+            appView.showToastMessage("产品ID不能为空")
+            return
+        }
+        if (payAmountEt.content().toDoubleOrNull() == null) {
+            appView.showToastMessage("支付总金额错误")
+            return
+        }
+        payApi.preOrderImpl(
+            serverKeyEt?.text.toString(),
+            appView.getUser()["uid"].toString(),
+            roleIdEt.content(),
+            productIdEt.content(),
+            payAmountEt.content().toDouble().toInt() * 100,
+            gameCno
+        )
+
+    }
+
 
     private fun initProductSkuTypes() {
         val skuTypes = ArrayList<String>()
@@ -194,5 +230,9 @@ class PayDemoView : DemoView, IPayCallback {
             cancelProcessingDialog()
         }
         appView.showToastMessage("支付取消")
+    }
+
+    override fun onPreOrderCallback(msg: String) {
+        appView.showToastMessage("预下单回调：$msg")
     }
 }
