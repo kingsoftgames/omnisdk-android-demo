@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.kingsoft.shiyou.omnisdk.demo.v3.common.view.PayDemoView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/OmniDemoViewStyle"
+    android:importantForAutofill="no"
+    tools:ignore="HardcodedText">
+
+    <LinearLayout
+        android:id="@+id/v3_pay_demo_view_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/OmniDemoAppFunctionTitleStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="支付(产品购买)" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="1dp"
+            android:background="@android:color/darker_gray" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v3_pay_demo_view_title_layout"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="1dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="5dp"
+                android:text="点击选择产品类型 > "
+                android:textColor="@android:color/black" />
+
+            <Spinner
+                android:id="@+id/v3_pay_demo_view_product_type_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/holo_orange_dark" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="产品ID: "
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:imeOptions="actionDone">
+
+                <EditText
+                    android:id="@+id/v3_pay_demo_view_product_id_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="比如: 1"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:inputType="text" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="产品名称: "
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:imeOptions="actionDone">
+
+                <EditText
+                    android:id="@+id/v3_pay_demo_view_product_name_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="比如: 60钻石"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:inputType="text" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="产品描述: "
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:imeOptions="actionDone">
+
+                <EditText
+                    android:id="@+id/v3_pay_demo_view_product_desc_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="比如: 购买60钻石畅玩游戏"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:inputType="text" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="产品价格(单位元): "
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:imeOptions="actionDone">
+
+                <EditText
+                    android:id="@+id/v3_pay_demo_view_product_price_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="比如: 1.0,9.99等等"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="支付金额(单位元): "
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:imeOptions="actionDone">
+
+                <EditText
+                    android:id="@+id/v3_pay_demo_view_pay_amount_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="比如: 99.99等等"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="价格货币单位: "
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:imeOptions="actionDone">
+
+                <EditText
+                    android:id="@+id/v3_pay_demo_view_currency_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="比如: USD HKD CNY等等"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:inputType="text" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="服务器ID: "
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:imeOptions="actionDone">
+
+                <EditText
+                    android:id="@+id/v3_pay_demo_view_server_id_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="比如: s101"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:inputType="text" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="角色ID: "
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:imeOptions="actionDone">
+
+                <EditText
+                    android:id="@+id/v3_pay_demo_view_role_id_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="比如: rid123456789"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:inputType="text" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/v3_pay_demo_view_create_cno_btn"
+                style="@style/OmniDemoAppButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="创建订单号" />
+
+            <TextView
+                android:id="@+id/v3_pay_demo_view_cno_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:text="游戏自身订单号: "
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_marginEnd="1dp"
+                android:layout_toStartOf="@id/v3_pay_demo_view_create_cno_btn"
+                android:layout_toEndOf="@id/v3_pay_demo_view_cno_tv"
+                android:imeOptions="actionDone">
+
+                <EditText
+                    android:id="@+id/v3_pay_demo_view_game_trade_no_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="比如: 123456789000000"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:inputType="text" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="游戏回调地址URL: "
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:imeOptions="actionDone">
+
+                <EditText
+                    android:id="@+id/v3_pay_demo_view_game_callback_url_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="比如: https://api.omnisdk.com/pout/test/cp_notify_ok"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:inputType="textUri" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="游戏自定义数据: "
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:imeOptions="actionDone">
+
+                <EditText
+                    android:id="@+id/v3_pay_demo_view_ext_json_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="比如: {&quot;loc&quot;:&quot;cn&quot;}"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:inputType="text" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="区ID(Zone ID): "
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:imeOptions="actionDone">
+
+                <EditText
+                    android:id="@+id/v3_pay_demo_view_zone_id_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="比如: zone123"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:inputType="text" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="角色名称: "
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:imeOptions="actionDone">
+
+                <EditText
+                    android:id="@+id/v3_pay_demo_view_role_name_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="比如: Jackass"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:inputType="text" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="角色等级: "
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:imeOptions="actionDone">
+
+                <EditText
+                    android:id="@+id/v3_pay_demo_view_role_level_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="比如: 100"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:inputType="text" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="角色VIP等级: "
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:imeOptions="actionDone">
+
+                <EditText
+                    android:id="@+id/v3_pay_demo_view_role_vip_level_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:hint="比如: 10"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:inputType="text" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/v3_pay_demo_view_server_key_edt"
+            style="@null"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:hint="服务端Key，默认项目为91000184"
+            android:imeOptions="actionDone"
+            android:importantForAutofill="no"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/v3_pay_demo_view_pay_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="支付" />
+    </LinearLayout>
+
+</com.kingsoft.shiyou.omnisdk.demo.v3.common.view.PayDemoView>

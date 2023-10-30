@@ -96,6 +96,9 @@ android {
 apply from: ("${rootProject.rootDir}/kssyOmniSigning.gradle")
 
 dependencies {
+    implementation fileTree(include: ['*.aar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
     implementation(project(":library"))
 }

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.kingsoft.shiyou.omnisdk.demo.v3.common.view.DataMonitorDemoView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/OmniDemoViewStyle"
+    android:importantForAutofill="no"
+    tools:ignore="HardcodedText">
+
+    <LinearLayout
+        android:id="@+id/v3_data_monitor_demo_view_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/OmniDemoAppFunctionTitleStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="事件数据监控追踪" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="*可在登录成功后的`账号管理`模块中创建角色数据用于事件数据监控追踪"
+            android:textColor="#FF0000"
+            android:textSize="10sp"
+            tools:ignore="SmallSp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="1dp"
+            android:background="@android:color/darker_gray" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v3_data_monitor_demo_view_title_layout"
+        android:layout_margin="0dp"
+        android:orientation="vertical"
+        android:padding="0dp">
+
+        <Button
+            android:id="@+id/v3_data_monitor_demo_view_create_game_role_event_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="角色创建" />
+
+        <Button
+            android:id="@+id/v3_data_monitor_demo_view_enter_game_event_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="角色进入游戏" />
+
+        <Button
+            android:id="@+id/v3_data_monitor_demo_view_level_up_event_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="角色等级升级" />
+
+        <Button
+            android:id="@+id/v3_data_monitor_demo_view_data_consume_event_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="买量数据付费上报" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/demo_content_bg"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="支付完成成功事件(PayInfo): " />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="**请保持输入的文本数据为Json数据格式,`productId`不能为空**"
+                android:textColor="#FF0000"
+                android:textSize="10sp"
+                tools:ignore="SmallSp" />
+
+            <LinearLayout
+                style="@style/OmniDemoAppInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/v3_data_monitor_demo_view_pay_info_et"
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="640dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:hint="Json数据格式的`PayInfo`"
+                    android:imeOptions="actionDone"
+                    android:inputType="textMultiLine"
+                    android:minLines="40"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/v3_data_monitor_demo_view_pay_info_event_btn"
+                style="@style/OmniDemoAppButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:text="监控(追踪)" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.kingsoft.shiyou.omnisdk.demo.v3.common.view.DataMonitorDemoView>

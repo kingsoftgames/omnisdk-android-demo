@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.kingsoft.shiyou.omnisdk.demo.v3.common.view.OtherDemoView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/OmniDemoViewStyle"
+    android:importantForAutofill="no"
+    tools:ignore="HardcodedText">
+
+    <LinearLayout
+        android:id="@+id/v3_other_demo_view_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/OmniDemoAppFunctionTitleStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="其他功能" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="1dp"
+            android:background="@android:color/darker_gray" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/v3_other_demo_view_action_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v3_other_demo_view_title_layout"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/demo_content_bg"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="一些常用接口" />
+
+        <Button
+            android:id="@+id/v3_other_demo_view_action_dialog_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="常用接口返回值" />
+
+        <Button
+            android:id="@+id/v3_other_demo_view_oaid_dialog_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="返回设备OAID值(内部接口)" />
+
+        <Button
+            android:id="@+id/v3_other_demo_view_emulator_dialog_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="检查是否为模拟器接口" />
+
+        <Button
+            android:id="@+id/v3_other_demo_view_settings_dialog_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="打开系统权限设置界面接口" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/v3_other_demo_view_url_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v3_other_demo_view_action_layout"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/demo_content_bg"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="网页测试" />
+
+        <LinearLayout
+            style="@style/OmniDemoAppInputStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp">
+
+            <EditText
+                android:id="@+id/v3_other_demo_view_url_et"
+                style="@null"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:background="@null"
+                android:hint="Url地址"
+                android:imeOptions="actionDone"
+                android:inputType="textUri" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/OmniDemoAppInputStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp">
+
+            <EditText
+                android:id="@+id/v3_other_demo_view_params_et"
+                style="@null"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:background="@null"
+                android:hint="Json格式的参数数据"
+                android:imeOptions="actionDone"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/v3_other_demo_view_open_url_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="浏览" />
+
+        <Button
+            android:id="@+id/v3_other_demo_view_open_local_url_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="本地网页浏览" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/v3_other_demo_view_show_score_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v3_other_demo_view_url_layout"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/demo_content_bg"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="部分渠道拥有" />
+
+        <Button
+            android:id="@+id/v3_other_demo_view_show_score_dialog_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="应用商店评分" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/v3_other_demo_view_show_query_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v3_other_demo_view_show_score_layout"
+        android:layout_margin="0dp"
+        android:orientation="vertical"
+        android:padding="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/demo_content_bg"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:id="@+id/v3_website_method_demo_view_title_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/OmniDemoAppFunctionTitleStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="部分渠道的特定支付类功能" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@android:color/darker_gray" />
+
+                <LinearLayout
+                    style="@style/OmniDemoAppInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp">
+
+                    <EditText
+                        android:id="@+id/v3_other_demo_view_query_params_et"
+                        style="@null"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:background="@null"
+                        android:text="com.sungray.dhlove.usd.1"
+                        android:hint="查询的商品id：com.wlxx.giftpack.6change"
+                        android:imeOptions="actionDone"
+                        android:inputType="text" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/v3_pay_method_demo_view_query_inapp_skus_btn"
+                    style="@style/OmniDemoAppButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:text="获取本地化普通商品" />
+
+                <Button
+                    android:id="@+id/v3_pay_method_demo_view_query_subs_skus_btn"
+                    style="@style/OmniDemoAppButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:text="获取本地化订阅商品" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/v3_other_demo_view_error_track_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v3_other_demo_view_show_query_layout"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/demo_content_bg"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="错误追踪调试:"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <LinearLayout
+            style="@style/OmniDemoAppInputStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp">
+
+            <EditText
+                android:id="@+id/v3_other_demo_view_error_track_message_et"
+                style="@null"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:background="@null"
+                android:hint="自定义错误信息"
+                android:imeOptions="actionDone"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/v3_other_demo_view_error_track_message_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="2dp"
+            android:text="捕获上报自定义`错误信息`" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/black" />
+
+        <LinearLayout
+            style="@style/OmniDemoAppInputStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp">
+
+            <EditText
+                android:id="@+id/v3_other_demo_view_error_track_event_name_et"
+                style="@null"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:background="@null"
+                android:hint="自定义错误事件唯一标示名称"
+                android:imeOptions="actionDone"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/v3_other_demo_view_error_track_custom_event_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="2dp"
+            android:text="捕获上报自定义`错误事件`" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/black" />
+
+        <Button
+            android:id="@+id/v3_other_demo_view_error_track_divide_error_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:text="捕获上报`被零整除`异常" />
+
+        <Button
+            android:id="@+id/v3_other_demo_view_error_track_out_of_index_error_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="捕获上报`index溢出`异常" />
+
+        <Button
+            android:id="@+id/v3_other_demo_view_error_track_anr_error_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="捕获上报`ANR`异常（应用奔溃）" />
+
+        <Button
+            android:id="@+id/v3_other_demo_view_error_track_crash_error_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="捕获上报`CRASH`异常（应用奔溃）" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/v3_other_demo_view_channel_method_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v3_other_demo_view_error_track_layout"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/darker_gray"
+        android:orientation="vertical"
+        android:padding="0dp" />
+
+</com.kingsoft.shiyou.omnisdk.demo.v3.common.view.OtherDemoView>
