@@ -19,7 +19,6 @@ import com.kingsoft.shiyou.omnisdk.demo.v3.common.interfaces.IPayCallback;
 import com.kingsoft.shiyou.omnisdk.demo.v3.common.utils.DemoLogger;
 
 
-
 /**
  * Description: OmniSDK支付API接口代码示例Demo
  *
@@ -66,28 +65,29 @@ public class PayApi implements IPayApi {
 
     /**
      * 上报游戏发货完成事件
-     * @param orderId  sdk订单号
+     *
+     * @param orderId sdk订单号
      */
     private static void trackPurchase(String orderId) {
         OmniSDKLoginInfo loginInfo = OmniSDKv3.getInstance().getLoginInfo();
-        if (mPurchaseOptions!=null && loginInfo!=null){
+        if (mPurchaseOptions != null && loginInfo != null) {
             OmniSDKPurchaseEvent event = OmniSDKPurchaseEvent.builder()
                     .userId(loginInfo.getUserId())
                     .orderId(orderId)
-                    .productId(mPurchaseOptions.getProductId())
-                    .productDesc(mPurchaseOptions.getProductDesc())
-                    .productUnitPrice(mPurchaseOptions.getProductUnitPrice())
-                    .productName(mPurchaseOptions.getProductName())
-                    .currency(mPurchaseOptions.getCurrency())
-                    .gameServerId(mPurchaseOptions.getGameServerId())
-                    .gameRoleVipLevel(mPurchaseOptions.getGameRoleVipLevel())
-                    .gameRoleLevel(mPurchaseOptions.getGameRoleLevel())
-                    .gameRoleName(mPurchaseOptions.getGameRoleName())
-                    .gameRoleId(mPurchaseOptions.getGameRoleId())
-                    .gameOrderId(mPurchaseOptions.getGameOrderId())
-                    .extJson(mPurchaseOptions.getExtJson())
-                    .purchaseQuantity(mPurchaseOptions.getPurchaseQuantity())
-                    .purchaseAmount(mPurchaseOptions.getPurchaseAmount())
+                    .productId(mPurchaseOptions.getProductId() != null ? mPurchaseOptions.getProductId() : "")
+                    .productDesc(mPurchaseOptions.getProductDesc() != null ? mPurchaseOptions.getProductDesc() : "")
+                    .productUnitPrice(mPurchaseOptions.getProductUnitPrice() != null ? mPurchaseOptions.getProductUnitPrice() : 0)
+                    .productName(mPurchaseOptions.getProductName() != null ? mPurchaseOptions.getProductName() : "")
+                    .currency(mPurchaseOptions.getCurrency() != null ? mPurchaseOptions.getCurrency() : "")
+                    .gameServerId(mPurchaseOptions.getGameServerId() != null ? mPurchaseOptions.getGameServerId() : "")
+                    .gameRoleVipLevel(mPurchaseOptions.getGameRoleVipLevel() != null ? mPurchaseOptions.getGameRoleVipLevel() : "")
+                    .gameRoleLevel(mPurchaseOptions.getGameRoleLevel() != null ? mPurchaseOptions.getGameRoleLevel() : "")
+                    .gameRoleName(mPurchaseOptions.getGameRoleName() != null ? mPurchaseOptions.getGameRoleName() : "")
+                    .gameRoleId(mPurchaseOptions.getGameRoleId() != null ? mPurchaseOptions.getGameRoleId() : "")
+                    .gameOrderId(mPurchaseOptions.getGameOrderId() != null ? mPurchaseOptions.getGameOrderId() : "")
+                    .extJson(mPurchaseOptions.getExtJson() != null ? mPurchaseOptions.getExtJson() : "")
+                    .purchaseQuantity(mPurchaseOptions.getPurchaseQuantity() != null ? mPurchaseOptions.getPurchaseQuantity() : 0)
+                    .purchaseAmount(mPurchaseOptions.getPurchaseAmount() != null ? mPurchaseOptions.getPurchaseAmount() : 0)
                     .build();
             OmniSDKv3.getInstance().track(event);
         }
