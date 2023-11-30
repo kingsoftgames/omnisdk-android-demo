@@ -116,6 +116,7 @@ class AppView {
             this[R.layout.v3_pay_demo_view] = null
             this[R.layout.v3_permisson_demo_view] = null
             this[R.layout.v3_data_monitor_demo_view] = null
+            this[R.layout.v3_ads_demo_view] = null
             this[R.layout.v3_social_demo_view] = null
             this[R.layout.v3_other_demo_view] = null
         }

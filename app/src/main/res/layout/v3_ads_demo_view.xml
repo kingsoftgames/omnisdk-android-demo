@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.kingsoft.shiyou.omnisdk.demo.v3.common.view.AdsDemoView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/OmniDemoViewStyle"
+    android:importantForAutofill="no"
+    tools:ignore="HardcodedText">
+
+    <LinearLayout
+        android:id="@+id/v3_ads_demo_view_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/OmniDemoAppFunctionTitleStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="广告相关" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="1dp"
+            android:background="@android:color/darker_gray" />
+    </LinearLayout>
+
+
+
+
+<!--  目前只有激励视频一种形式   -->
+    <LinearLayout
+        android:id="@+id/v3_ads_demo_view_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v3_ads_demo_view_title_layout"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/demo_content_bg"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            style="@style/OmniDemoAppInputStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp">
+
+            <EditText
+                android:id="@+id/v3_ads_demo_view_placement_et"
+                style="@null"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:background="@null"
+                android:hint="Omni后台分配广告位ID"
+                android:imeOptions="actionDone"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:visibility="gone"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="5dp"
+                android:text="点击选择广告类型 > "
+                android:textColor="@android:color/black" />
+
+            <Spinner
+                android:id="@+id/v3_ads_demo_view_ads_type_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/holo_orange_dark" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/v3_ads_demo_view_preload_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="广告预加载(Preload)" />
+
+        <Button
+            android:id="@+id/v3_ads_demo_view_show_btn"
+            style="@style/OmniDemoAppButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="广告展示(Show)" />
+    </LinearLayout>
+
+</com.kingsoft.shiyou.omnisdk.demo.v3.common.view.AdsDemoView>

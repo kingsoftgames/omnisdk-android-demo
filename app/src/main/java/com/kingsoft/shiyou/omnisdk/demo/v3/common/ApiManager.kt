@@ -1,20 +1,7 @@
 package com.kingsoft.shiyou.omnisdk.demo.v3.common
 
 import android.app.Activity
-import com.kingsoft.shiyou.omnisdk.demo.v3.common.interfaces.IAccountApi
-import com.kingsoft.shiyou.omnisdk.demo.v3.common.interfaces.IAccountCallback
-import com.kingsoft.shiyou.omnisdk.demo.v3.common.interfaces.IDataMonitorApi
-import com.kingsoft.shiyou.omnisdk.demo.v3.common.interfaces.IDataMonitorCallback
-import com.kingsoft.shiyou.omnisdk.demo.v3.common.interfaces.IExitApi
-import com.kingsoft.shiyou.omnisdk.demo.v3.common.interfaces.IExitCallback
-import com.kingsoft.shiyou.omnisdk.demo.v3.common.interfaces.IOtherApi
-import com.kingsoft.shiyou.omnisdk.demo.v3.common.interfaces.IOtherCallback
-import com.kingsoft.shiyou.omnisdk.demo.v3.common.interfaces.IPayApi
-import com.kingsoft.shiyou.omnisdk.demo.v3.common.interfaces.IPayCallback
-import com.kingsoft.shiyou.omnisdk.demo.v3.common.interfaces.IPermissionApi
-import com.kingsoft.shiyou.omnisdk.demo.v3.common.interfaces.IPermissionCallback
-import com.kingsoft.shiyou.omnisdk.demo.v3.common.interfaces.ISocialApi
-import com.kingsoft.shiyou.omnisdk.demo.v3.common.interfaces.ISocialCallback
+import com.kingsoft.shiyou.omnisdk.demo.v3.common.interfaces.*
 import java.util.*
 
 /**
@@ -62,6 +49,9 @@ class ApiManager private constructor() {
 
     fun getPermissionApi(appActivity: Activity, callback: IPermissionCallback): IPermissionApi =
         getApi(appActivity, "PermissionApi", callback)
+
+    fun getAdsApi(appActivity: Activity, callback: IAdsCallback): IAdsApi =
+        getApi(appActivity, "AdsApi", callback)
 
     /**
      * 反射获取Api实例
